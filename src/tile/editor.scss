@@ -1,0 +1,119 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-uwai-uwai {
+	border: 1px dotted #f00;
+}
+
+.blade-links {
+	max-width: 276px;
+	width: 100%;
+	display: block;
+	position: relative;
+	overflow: hidden;
+	margin: 0 auto;
+  }
+  
+  .blade-links .blade-links__box {
+	display: block;
+	position: relative;
+	width: 100%;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	margin: 0 auto;
+  }
+  
+  @media (min-width: 768px) {
+	.blade-links .blade-links__box {
+	  display: block;
+	  position: relative;
+	}
+  }
+  
+  .blade-links .blade-links__box-link {
+	width: 100%;
+	background: #00598C;
+	height: 102px;
+	display: block;
+	position: relative;
+	color: #FFFFFF;
+	font-size: 24px;
+	font-weight: 27px;
+	font-weight: bold;
+	padding: 16px 0 0 24px;
+	text-decoration: none;
+  }
+  
+  @media (min-width: 768px) {
+	.blade-links .blade-links__box-link {
+	  width: 100%;
+	  height: 160px;
+	  padding: 24px 0 0 16px;
+	}
+  }
+  
+  .blade-links .blade-links__box-link:hover {
+	background: #0079BF !important;
+  }
+  
+  .blade-links .blade-links__box-link:focus {
+	outline: 1px dotted #FFFFFF;
+	outline-offset: -8px;
+  }
+  
+  .blade-links .blade-links__box-link::before {
+	display: block;
+	content: '';
+	width: 25px;
+	height: 4px;
+	background: #FFD100;
+	margin-bottom: 12px;
+  }
+  
+  @media (min-width: 768px) {
+	.blade-links .blade-links__box-link::before {
+	  margin-bottom: 28px;
+	}
+  }
+  
+  .blade-links .blade-links__box-link span {
+	display: block;
+	max-width: 200px;
+	width: fit-content;
+	width: max-content;
+	text-decoration: none;
+	font-weight: bold;
+	overflow-wrap: break-word;
+  }
+  
+  @media (min-width: 768px) {
+	.blade-links .blade-links__box-link span {
+	  max-width: 150px;
+	}
+  }
+  
+  @media (min-width: 1024px) {
+	.blade-links .blade-links__box-link span {
+	  max-width: 200px;
+	}
+  }
+  
+  .blade-links.grey .blade-links__box-link {
+	background: #EBEBEB !important;
+	color: #00598C;
+  }
+  
+  .blade-links.grey .blade-links__box-link:hover {
+	background: #0079BF !important;
+	color: #FFFFFF;
+  }
+  
+  .blade-links.grey .blade-links__box-link:focus {
+	outline: 1px dotted #0079BF;
+	outline-offset: -8px;
+  }
+  

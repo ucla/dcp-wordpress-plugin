@@ -1,0 +1,51 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-uwai-uwai {
+	border: 1px dotted #f00;
+}
+
+.btn {
+	display: inline-block;
+	text-decoration: none;
+	width: fit-content;
+	width: max-content;
+  }
+  
+  .btn.white {
+	padding: 10px 14px 6px;
+	background: #FFFFFF;
+	color: #00598C !important;
+	border: 2px solid #00598C;
+	border-radius: 2px;
+  }
+  
+  .btn.white:hover, .btn.white:focus {
+	background: #0079BF;
+	color: #FFFFFF !important;
+	border: 2px solid #0079BF;
+  }
+  
+  .btn.white:focus {
+	outline: 1px dotted #212121;
+	outline: 5px auto -webkit-focus-ring-color;
+  }
+  
+  .btn.white:active {
+	background: #003B5C;
+	color: #FFFFFF !important;
+	border: 2px solid #003B5C;
+  }
+  
+  .btn.white:disabled {
+	color: #757575 !important;
+	border: 2px solid #757575;
+  }
+  
+  .btn.white:disabled:hover {
+	background: #FFFFFF;
+	cursor: default;
+  }
