@@ -29,7 +29,7 @@ export default function save( {
 } ) {
 	return (
 		<div className={ className }>
-			<div className={"blade-links" + (greyStyle ?? "")}>
+			<div className={ 'blade-links' + ( greyStyle ?? '' ) }>
 				<div className="blade-links__box">
 					<a
 						className="blade-links__box-link"

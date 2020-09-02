@@ -46,10 +46,7 @@ registerBlockType( 'uwai/link-tile', {
 	 * This is a short description for your block, can be translated with `i18n` functions.
 	 * It will be shown in the Block Tab in the Settings Sidebar.
 	 */
-	description: __(
-		'UCLA styled tile for linking to other content.',
-		'uwai'
-	),
+	description: __( 'UCLA styled tile for linking to other content.', 'uwai' ),
 
 	/**
 	 * Blocks are grouped into categories to help users browse and discover them.
@@ -69,6 +66,38 @@ registerBlockType( 'uwai/link-tile', {
 	supports: {
 		// Removes support for an HTML mode.
 		html: false,
+	},
+
+	/**
+	 * List of attributes that this block stores for the content, styling, etc.
+	 */
+	attributes: {
+		title: {
+			type: 'string',
+			source: 'text',
+			selector: 'span',
+		},
+		url: {
+			type: 'string',
+			source: 'attribute',
+			selector: 'a',
+			attribute: 'href',
+		},
+		linkTarget: {
+			type: 'string',
+			source: 'attribute',
+			selector: 'a',
+			attribute: 'target',
+		},
+		greyStyle: {
+			type: 'string',
+		},
+		rel: {
+			type: 'string',
+			source: 'attribute',
+			selector: 'a',
+			attribute: 'rel',
+		},
 	},
 
 	/**
@@ -116,6 +145,35 @@ registerBlockType( 'uwai/button', {
 	supports: {
 		// Removes support for an HTML mode.
 		html: false,
+	},
+
+	/**
+	 * List of attributes that this block stores for the content, styling, etc.
+	 */
+	attributes: {
+		title: {
+			type: 'string',
+			source: 'text',
+			selector: 'span',
+		},
+		url: {
+			type: 'string',
+			source: 'attribute',
+			selector: 'a',
+			attribute: 'href',
+		},
+		linkTarget: {
+			type: 'string',
+			source: 'attribute',
+			selector: 'a',
+			attribute: 'target',
+		},
+		rel: {
+			type: 'string',
+			source: 'attribute',
+			selector: 'a',
+			attribute: 'rel',
+		},
 	},
 
 	/**
