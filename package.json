@@ -4,6 +4,7 @@
 	"description": "UWAI's Block for wordpress.",
 	"author": "UWAI Team",
 	"main": "build/index.js",
+	"prettier": "@wordpress/prettier-config",
 	"scripts": {
 		"build": "wp-scripts build",
 		"format:js": "wp-scripts format-js",

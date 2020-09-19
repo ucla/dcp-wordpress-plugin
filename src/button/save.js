@@ -19,23 +19,27 @@ import { RichText } from '@wordpress/block-editor';
  * @param {string} props.attributes.url
  * @param {string} props.attributes.linkTarget
  * @param {string} props.attributes.rel
+ * @param {string} props.attributes.style
+ * @param {boolean} props.attributes.play
+ * @param {boolean} props.attributes.disabled
  * @param {string} props.className
  * @return {WPElement} Element to render.
  */
 export default function save( {
-	attributes: { title, url, linkTarget, rel },
+	attributes: { title, url, linkTarget, rel, style, play, disabled },
 	className,
 } ) {
 	return (
 		<div className={ className }>
-					<a
-						className="btn white mb-80 mb-xs-64 mt-32"
-						href={ url }
-						target={ linkTarget }
-						rel={ rel }
-					>
-						<RichText.Content tagName="span" value={ title } />
-					</a>
+			<a
+				className={ `btn ${ style } ${ play ? 'play' : '' }` }
+				href={ url }
+				target={ linkTarget }
+				rel={ rel }
+				disabled={ disabled }
+			>
+				<RichText.Content tagName="span" value={ title } />
+			</a>
 		</div>
 	);
 }

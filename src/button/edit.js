@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
-import { __ } from "@wordpress/i18n";
+import { __ } from '@wordpress/i18n';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -11,103 +11,110 @@ import { __ } from "@wordpress/i18n";
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import "./editor.scss";
+import './editor.scss';
 
-import { useState, useCallback } from "@wordpress/element";
+import { useState, useCallback } from '@wordpress/element';
 import {
-  KeyboardShortcuts,
-  PanelBody,
-  TextControl,
-  ToggleControl,
-  ToolbarButton,
-  ToolbarGroup,
-  Popover,
-} from "@wordpress/components";
+	KeyboardShortcuts,
+	PanelBody,
+	TextControl,
+	ToggleControl,
+	ToolbarButton,
+	ToolbarGroup,
+	Popover,
+	SelectControl,
+} from '@wordpress/components';
 import {
-  BlockControls,
-  InspectorControls,
-  RichText,
-  __experimentalLinkControl as LinkControl,
-} from "@wordpress/block-editor";
-import { rawShortcut, displayShortcut } from "@wordpress/keycodes";
-import { link, linkOff } from "@wordpress/icons";
+	BlockControls,
+	InspectorControls,
+	RichText,
+	__experimentalLinkControl as LinkControl,
+} from '@wordpress/block-editor';
+import { rawShortcut, displayShortcut } from '@wordpress/keycodes';
+import { link, linkOff } from '@wordpress/icons';
 
-const NEW_TAB_REL = "noreferrer noopener";
+const NEW_TAB_REL = 'noreferrer noopener';
 
-function URLPicker({
-  isSelected,
-  url,
-  setAttributes,
-  opensInNewTab,
-  onToggleOpenInNewTab,
-}) {
-  const [isURLPickerOpen, setIsURLPickerOpen] = useState(false);
-  const urlIsSet = !!url;
-  const urlIsSetandSelected = urlIsSet && isSelected;
-  const openLinkControl = () => {
-    setIsURLPickerOpen(true);
-    return false; // prevents default behaviour for event
-  };
-  const unlinkButton = () => {
-    setAttributes({
-      url: undefined,
-      linkTarget: undefined,
-      rel: undefined,
-    });
-    setIsURLPickerOpen(false);
-  };
-  const linkControl = (isURLPickerOpen || urlIsSetandSelected) && (
-    <Popover position="bottom center" onClose={() => setIsURLPickerOpen(false)}>
-      <LinkControl
-        className="wp-block-navigation-link__inline-link-input"
-        value={{ url, opensInNewTab }}
-        onChange={({ url: newURL = "", opensInNewTab: newOpensInNewTab }) => {
-          setAttributes({ url: newURL });
+function URLPicker( {
+	isSelected,
+	url,
+	setAttributes,
+	opensInNewTab,
+	onToggleOpenInNewTab,
+} ) {
+	const [ isURLPickerOpen, setIsURLPickerOpen ] = useState( false );
+	const urlIsSet = !! url;
+	const urlIsSetandSelected = urlIsSet && isSelected;
+	const openLinkControl = () => {
+		setIsURLPickerOpen( true );
+		return false; // prevents default behaviour for event
+	};
+	const unlinkButton = () => {
+		setAttributes( {
+			url: undefined,
+			linkTarget: undefined,
+			rel: undefined,
+		} );
+		setIsURLPickerOpen( false );
+	};
+	const linkControl = ( isURLPickerOpen || urlIsSetandSelected ) && (
+		<Popover
+			position="bottom center"
+			onClose={ () => setIsURLPickerOpen( false ) }
+		>
+			<LinkControl
+				className="wp-block-navigation-link__inline-link-input"
+				value={ { url, opensInNewTab } }
+				onChange={ ( {
+					url: newURL = '',
+					opensInNewTab: newOpensInNewTab,
+				} ) => {
+					setAttributes( { url: newURL } );
 
-          if (opensInNewTab !== newOpensInNewTab) {
-            onToggleOpenInNewTab(newOpensInNewTab);
-          }
-        }}
-      />
-    </Popover>
-  );
-  return (
-    <>
-      <BlockControls>
-        <ToolbarGroup>
-          {!urlIsSet && (
-            <ToolbarButton
-              name="link"
-              icon={link}
-              title={__("Link")}
-              shortcut={displayShortcut.primary("k")}
-              onClick={openLinkControl}
-            />
-          )}
-          {urlIsSetandSelected && (
-            <ToolbarButton
-              name="link"
-              icon={linkOff}
-              title={__("Unlink")}
-              shortcut={displayShortcut.primaryShift("k")}
-              onClick={unlinkButton}
-              isActive={true}
-            />
-          )}
-        </ToolbarGroup>
-      </BlockControls>
-      {isSelected && (
-        <KeyboardShortcuts
-          bindGlobal
-          shortcuts={{
-            [rawShortcut.primary("k")]: openLinkControl,
-            [rawShortcut.primaryShift("k")]: unlinkButton,
-          }}
-        />
-      )}
-      {linkControl}
-    </>
-  );
+					if ( opensInNewTab !== newOpensInNewTab ) {
+						onToggleOpenInNewTab( newOpensInNewTab );
+					}
+				} }
+			/>
+		</Popover>
+	);
+	return (
+		<>
+			<BlockControls>
+				<ToolbarGroup>
+					{ ! urlIsSet && (
+						<ToolbarButton
+							name="link"
+							icon={ link }
+							title={ __( 'Link' ) }
+							shortcut={ displayShortcut.primary( 'k' ) }
+							onClick={ openLinkControl }
+						/>
+					) }
+					{ urlIsSetandSelected && (
+						<ToolbarButton
+							name="link"
+							icon={ linkOff }
+							title={ __( 'Unlink' ) }
+							shortcut={ displayShortcut.primaryShift( 'k' ) }
+							onClick={ unlinkButton }
+							isActive={ true }
+						/>
+					) }
+				</ToolbarGroup>
+			</BlockControls>
+			{ isSelected && (
+				<KeyboardShortcuts
+					bindGlobal
+					shortcuts={ {
+						[ rawShortcut.primary( 'k' ) ]: openLinkControl,
+						[ rawShortcut.primaryShift( 'k' ) ]: unlinkButton,
+					} }
+				/>
+			) }
+			{ linkControl }
+		</>
+	);
 }
 
 /**
@@ -121,77 +128,132 @@ function URLPicker({
  * @param {string} [props.attributes.url]
  * @param {string} [props.attributes.linkTarget]
  * @param {string} [props.attributes.rel]
+ * @param {string} [props.attributes.style]
+ * @param {boolean} [props.attributes.disabled]
+ * @param {boolean} [props.attributes.play]
  * @param {string} [props.setAttributes]
  * @param {string} [props.isSelected]
  * @param {string} [props.className] Class name generated for the block.
  * @return {WPElement} Element to render.
  */
-export default function Edit({
-  attributes: { title, url, linkTarget, rel },
-  setAttributes,
-  isSelected,
-  className,
-}) {
-  const onChangeTitle = (value) => {
-    setAttributes({ title: value });
-  };
-  const onSetLinkRel = useCallback(
-    (value) => {
-      setAttributes({ rel: value });
-    },
-    [setAttributes]
-  );
-  const onToggleOpenInNewTab = useCallback(
-    (value) => {
-      const newLinkTarget = value ? "_blank" : undefined;
+export default function Edit( {
+	attributes: { title, url, linkTarget, rel, style, disabled, play },
+	setAttributes,
+	isSelected,
+	className,
+} ) {
+	const onChangeTitle = ( value ) => {
+		setAttributes( { title: value } );
+	};
+	const onSetLinkRel = useCallback(
+		( value ) => {
+			setAttributes( { rel: value } );
+		},
+		[ setAttributes ]
+	);
+	const onToggleOpenInNewTab = useCallback(
+		( value ) => {
+			const newLinkTarget = value ? '_blank' : undefined;
 
-      let updatedRel = rel;
-      if (newLinkTarget && !rel) {
-        updatedRel = NEW_TAB_REL;
-      } else if (!newLinkTarget && rel === NEW_TAB_REL) {
-        updatedRel = undefined;
-      }
+			let updatedRel = rel;
+			if ( newLinkTarget && ! rel ) {
+				updatedRel = NEW_TAB_REL;
+			} else if ( ! newLinkTarget && rel === NEW_TAB_REL ) {
+				updatedRel = undefined;
+			}
 
-      setAttributes({
-        linkTarget: newLinkTarget,
-        rel: updatedRel,
-      });
-    },
-    [rel, setAttributes]
-  );
-  // Creates a <p class='wp-block-cgb-block-dcp-test'></p>.
-  return (
-    <div className={className}>
-      <span class="btn white mb-80 mb-xs-64 mt-32">
-        <RichText
-          withoutInteractiveFormatting
-          tagName="span"
-          placeholder={__("A cool button...", "gutenberg-examples")}
-          value={title}
-          onChange={onChangeTitle}
-        />
-      </span>
-      <URLPicker
-        url={url}
-        setAttributes={setAttributes}
-        isSelected={isSelected}
-        opensInNewTab={linkTarget === "_blank"}
-        onToggleOpenInNewTab={onToggleOpenInNewTab}
-      />
-      <InspectorControls>
-        <PanelBody title={__("Link settings")}>
-          <ToggleControl
-            label={__("Open in new tab")}
-            onChange={onToggleOpenInNewTab}
-            checked={linkTarget === "_blank"}
-          />
-          <TextControl
-            label={__("Link rel")}
-            value={rel || ""}
-            onChange={onSetLinkRel}
-          />
-        </PanelBody>
-      </InspectorControls>
-    </div>
-  );
+			setAttributes( {
+				linkTarget: newLinkTarget,
+				rel: updatedRel,
+			} );
+		},
+		[ rel, setAttributes ]
+	);
+	const onSetStyle = ( newStyle ) => {
+		setAttributes( { style: newStyle } );
+	};
+	const toggleAttribute = ( attribute ) => {
+		// eslint-disable-next-line no-console
+		console.log( 'wow', attribute );
+		return ( newValue ) => {
+			// eslint-disable-next-line no-console
+			console.log( 'yeen', newValue );
+
+			newValue = newValue === undefined ? true : newValue;
+			setAttributes( { [ attribute ]: newValue } );
+		};
+	};
+	// Creates a <p class='wp-block-cgb-block-dcp-test'></p>.
+	return (
+		<div className={ className }>
+			<a
+				className={ `btn ${ style } ${ play ? 'play' : '' }` }
+				href={ url }
+				target={ linkTarget }
+				rel={ rel }
+				disabled={ disabled }
+			>
+				<RichText
+					withoutInteractiveFormatting
+					tagName="span"
+					placeholder={ __( 'A cool button…', 'gutenberg-examples' ) }
+					value={ title }
+					onChange={ onChangeTitle }
+				/>
+			</a>
+			<URLPicker
+				url={ url }
+				setAttributes={ setAttributes }
+				isSelected={ isSelected }
+				opensInNewTab={ linkTarget === '_blank' }
+				onToggleOpenInNewTab={ onToggleOpenInNewTab }
+			/>
+			<InspectorControls>
+				<PanelBody title={ __( 'Link settings' ) }>
+					<ToggleControl
+						label={ __( 'Open in new tab' ) }
+						onChange={ onToggleOpenInNewTab }
+						checked={ linkTarget === '_blank' }
+					/>
+					<TextControl
+						label={ __( 'Link rel' ) }
+						value={ rel || '' }
+						onChange={ onSetLinkRel }
+					/>
+				</PanelBody>
+				<PanelBody title={ __( 'Button Style' ) }>
+					<SelectControl
+						label="Button Style"
+						value={ style }
+						options={ [
+							{ label: 'Default', value: '' },
+							{ label: 'Primary', value: 'btn--lightbg' },
+							{ label: 'Primary Dark', value: 'btn--darkbg' },
+							{ label: 'Secondary', value: 'btn--secondary' },
+							{ label: 'Tertiary', value: 'btn--tertiary' },
+						] }
+						onChange={ onSetStyle }
+					/>
+					{ /* <ToggleControl
+						label="Disabled"
+						help={
+							disabled
+								? 'Button is disabled.'
+								: 'Button is enabled.'
+						}
+						checked={ disabled }
+						onChange={ toggleAttribute( 'disabled' ) }
+					/> */ }
+					<ToggleControl
+						label="Play Icon"
+						help={
+							play ? 'Play icon show.' : 'No play icon showed.'
+						}
+						checked={ play }
+						onChange={ toggleAttribute( 'play' ) }
+					/>
+				</PanelBody>
+			</InspectorControls>
+		</div>
+	);
 }

@@ -168,7 +168,7 @@ export default function Edit( {
 	);
 	const onToggleGreyStyle = useCallback(
 		( value ) => {
-			const greyStyle = value ? ' grey' : null;
+			greyStyle = value ? ' grey' : null;
 
 			setAttributes( {
 				greyStyle,
@@ -176,10 +176,9 @@ export default function Edit( {
 		},
 		[ setAttributes ]
 	);
-	// Creates a <p class='wp-block-cgb-block-dcp-test'></p>.
 	return (
 		<div className={ className }>
-			<div className="blade-links">
+			<div className={ 'blade-links' + ( greyStyle ?? '' ) }>
 				<div className="blade-links__box">
 					<span className="blade-links__box-link">
 						<RichText
@@ -202,8 +201,9 @@ export default function Edit( {
 				opensInNewTab={ linkTarget === '_blank' }
 				onToggleOpenInNewTab={ onToggleOpenInNewTab }
 			/>
+
 			<InspectorControls>
-			<PanelBody title={ __( 'Link settings' ) }>
+				<PanelBody title={ __( 'Link settings' ) }>
 					<ToggleControl
 						label={ __( 'Open in new tab' ) }
 						onChange={ onToggleOpenInNewTab }

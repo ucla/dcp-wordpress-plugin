@@ -6,15 +6,43 @@
  */
 
 .wp-block-uwai-uwai {
-	background-color: var(--wp-admin-theme-color);
+	background-color: var( --wp-admin-theme-color );
 	color: #fff;
 	padding: 2px;
 }
 
-  
-  .blade-links {
-	margin: 1em!important;
-  }
-  
+.blade-links {
+	margin: 1em !important;
+}
+
+a.btn.play::before {
+	display: inline-block;
+	content: '';
+	width: 15px;
+	height: 15px;
+	background: url(/wp-content/themes/ucla-sc/images/icons/play-white.svg);
+	background-size: contain;
+	margin-right: 5px;
+}
+
+a.btn--secondary.play:hover::before {
+    background: url(/wp-content/themes/ucla-sc/images/icons/play-white.svg);
+    background-size: contain
+}
+
+a.btn--secondary.play::before {
+    background: url(/wp-content/themes/ucla-sc/images/icons/play-defaultblue.svg);
+    background-size: contain
+}
+
+a.btn--tertiary.play:hover::before {
+    background: url(/wp-content/themes/ucla-sc/images/icons/play-white.svg);
+    background-size: contain
+}
+
+a.btn--tertiary.play::before {
+    background: url(/wp-content/themes/ucla-sc/images/icons/play-defaultblue.svg);
+    background-size: contain
+}
 /*    @import '../../node_modules/ucla-bruin-components/public/css/ucla-lib.min.css';
- */  
+ */
