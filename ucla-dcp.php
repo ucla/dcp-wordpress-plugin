@@ -41,7 +41,7 @@ function ucla_dcp_ucla_dcp_block_init() {
 		filemtime( "$dir/$editor_css" )
 	);
 
-	$style_css = 'build/style-index.css';
+	$style_css = 'build/index.css';
 	wp_register_style(
 		'uwai-uwai-block',
 		plugins_url( $style_css, __FILE__ ),
