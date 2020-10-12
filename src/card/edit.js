@@ -184,7 +184,7 @@ export default function Edit( {
 					<ToggleControl
 						label={ __( 'Switch to the "Grey" style of tile' ) }
 						onChange={ onToggleGreyStyle }
-						checked={ greyStyle === ' grey' }
+						checked={ greyStyle }
 					/>
 				</PanelBody>
 			</InspectorControls>

@@ -6816,7 +6816,7 @@ function Edit(_ref2) {
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToggleControl"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Switch to the "Grey" style of tile'),
     onChange: onToggleGreyStyle,
-    checked: greyStyle === ' grey'
+    checked: greyStyle
   }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("article", {
     className: className + ' basic-card' + (greyStyle ? '-grey' : '')
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
@@ -7004,7 +7004,7 @@ function save(_ref) {
 /*! exports provided: name, title, category, textdomain, supports, attributes, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"name\":\"uwai/event-card\",\"title\":\"UWAI Event Card\",\"category\":\"common\",\"textdomain\":\"uwai\",\"supports\":{\"html\":false},\"attributes\":{\"title\":{\"type\":\"string\",\"source\":\"text\",\"selector\":\"span\"},\"mediaAlt\":{\"type\":\"string\",\"source\":\"attribute\",\"selector\":\"img\",\"attribute\":\"alt\",\"default\":\"\"},\"mediaId\":{\"type\":\"number\"},\"mediaType\":{\"type\":\"string\"},\"mediaUrl\":{\"type\":\"string\",\"source\":\"attribute\",\"selector\":\"img\",\"attribute\":\"src\"},\"greyStyle\":{\"type\":\"boolean\"},\"month\":{\"type\":\"string\",\"source\":\"text\",\"selector\":\".event-card-info__month\"},\"day\":{\"type\":\"string\",\"source\":\"text\",\"selector\":\".event-card-info__day\"},\"number\":{\"type\":\"string\",\"source\":\"text\",\"selector\":\".event-card-info__number\"},\"time\":{\"type\":\"string\",\"source\":\"text\",\"selector\":\".event-card-info__time-body\"},\"location\":{\"type\":\"string\",\"source\":\"text\",\"selector\":\".event-card-info__location-body\"}}}");
+module.exports = JSON.parse("{\"name\":\"uwai/event-card\",\"title\":\"UWAI Event Card\",\"category\":\"common\",\"textdomain\":\"uwai\",\"supports\":{\"html\":false},\"attributes\":{\"title\":{\"type\":\"string\",\"source\":\"text\",\"selector\":\"span\"},\"mediaAlt\":{\"type\":\"string\",\"source\":\"attribute\",\"selector\":\"img\",\"attribute\":\"alt\",\"default\":\"\"},\"mediaId\":{\"type\":\"number\"},\"mediaType\":{\"type\":\"string\"},\"mediaUrl\":{\"type\":\"string\",\"source\":\"attribute\",\"selector\":\"img\",\"attribute\":\"src\"},\"month\":{\"type\":\"string\",\"source\":\"text\",\"selector\":\".event-card-info__month\"},\"day\":{\"type\":\"string\",\"source\":\"text\",\"selector\":\".event-card-info__day\"},\"number\":{\"type\":\"string\",\"source\":\"text\",\"selector\":\".event-card-info__number\"},\"time\":{\"type\":\"string\",\"source\":\"text\",\"selector\":\".event-card-info__time-body\"},\"location\":{\"type\":\"string\",\"source\":\"text\",\"selector\":\".event-card-info__location-body\"}}}");
 
 /***/ }),
 
@@ -7109,7 +7109,6 @@ function Edit(_ref2) {
       mediaType = attributes.mediaType,
       mediaUrl = attributes.mediaUrl,
       title = attributes.title,
-      greyStyle = attributes.greyStyle,
       day = attributes.day,
       month = attributes.month,
       number = attributes.number,
@@ -7162,13 +7161,6 @@ function Edit(_ref2) {
     setAttributes({
       mediaAlt: newMediaAlt
     });
-  };
-
-  var onToggleGreyStyle = function onToggleGreyStyle(value) {
-    greyStyle = value ? ' grey' : null;
-    setAttributes({
-      greyStyle: greyStyle
-    });
   }; // eslint-disable-next-line no-console
 
 
@@ -7211,14 +7203,8 @@ function Edit(_ref2) {
     help: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ExternalLink"], {
       href: "https://www.w3.org/WAI/tutorials/images/decision-tree"
     }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Describe the purpose of the image')), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Leave empty if the image is purely decorative.'))
-  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
-    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Style')
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToggleControl"], {
-    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Switch to the "Grey" style of tile'),
-    onChange: onToggleGreyStyle,
-    checked: greyStyle === ' grey'
-  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("article", {
-    className: className + ' event-card' + (greyStyle ? '-grey' : '')
+  })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("article", {
+    className: className + ' event-card'
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
     className: "event-card__image",
     src: mediaUrl !== null && mediaUrl !== void 0 ? mediaUrl : '/wp-content/plugins/wp-uwai-plugin/event-card-example-1.jpg',
@@ -7415,7 +7401,6 @@ __webpack_require__.r(__webpack_exports__);
  * @param {string} props.attributes.number
  * @param {string} props.attributes.time
  * @param {string} props.attributes.location
- * @param {boolean} props.attributes.greyStyle
  * @param {string} props.className
  * @return {WPElement} Element to render.
  */
@@ -7425,7 +7410,6 @@ function save(_ref) {
       title = _ref$attributes.title,
       mediaUrl = _ref$attributes.mediaUrl,
       mediaAlt = _ref$attributes.mediaAlt,
-      greyStyle = _ref$attributes.greyStyle,
       day = _ref$attributes.day,
       month = _ref$attributes.month,
       number = _ref$attributes.number,
@@ -7435,7 +7419,7 @@ function save(_ref) {
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     className: className
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("article", {
-    className: 'event-card' + (greyStyle ? '-grey' : '')
+    className: 'event-card'
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
     className: "event-card__image",
     src: mediaUrl !== null && mediaUrl !== void 0 ? mediaUrl : '/wp-content/plugins/wp-uwai-plugin/event-card-example-1.jpg',
@@ -7788,7 +7772,7 @@ function Edit(_ref2) {
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToggleControl"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Switch to the "Grey" style of tile'),
     onChange: onToggleGreyStyle,
-    checked: greyStyle === ' grey'
+    checked: greyStyle
   }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("article", {
     className: className + ' person-card' + (greyStyle ? '-grey' : '')
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {

@@ -31,9 +31,6 @@
 			"selector": "img",
 			"attribute": "src"
 		},
-		"greyStyle": {
-			"type": "boolean"
-		},
 		"month": {
 			"type": "string",
 			"source": "text",

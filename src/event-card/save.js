@@ -24,7 +24,6 @@ import { RichText, InnerBlocks } from '@wordpress/block-editor';
  * @param {string} props.attributes.number
  * @param {string} props.attributes.time
  * @param {string} props.attributes.location
- * @param {boolean} props.attributes.greyStyle
  * @param {string} props.className
  * @return {WPElement} Element to render.
  */
@@ -33,7 +32,6 @@ export default function save( {
 		title,
 		mediaUrl,
 		mediaAlt,
-		greyStyle,
 		day,
 		month,
 		number,
@@ -44,7 +42,7 @@ export default function save( {
 } ) {
 	return (
 		<div className={ className }>
-			<article className={ 'event-card' + ( greyStyle ? '-grey' : '' ) }>
+			<article className={ 'event-card' }>
 				<img
 					className="event-card__image"
 					src={

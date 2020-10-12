@@ -82,12 +82,11 @@ export default function Edit( {
 	isSelected,
 	className,
 } ) {
-	let {
+	const {
 		mediaAlt,
 		mediaType,
 		mediaUrl,
 		title,
-		greyStyle,
 		day,
 		month,
 		number,
@@ -126,13 +125,6 @@ export default function Edit( {
 		setAttributes( { mediaAlt: newMediaAlt } );
 	};
 
-	const onToggleGreyStyle = ( value ) => {
-		greyStyle = value ? ' grey' : null;
-
-		setAttributes( {
-			greyStyle,
-		} );
-	};
 	// eslint-disable-next-line no-console
 	console.log( mediaId );
 	return (
@@ -205,19 +197,8 @@ export default function Edit( {
 						) }
 					</div>
 				</PanelBody>
-				<PanelBody title={ __( 'Style' ) }>
-					<ToggleControl
-						label={ __( 'Switch to the "Grey" style of tile' ) }
-						onChange={ onToggleGreyStyle }
-						checked={ greyStyle === ' grey' }
-					/>
-				</PanelBody>
 			</InspectorControls>
-			<article
-				className={
-					className + ' event-card' + ( greyStyle ? '-grey' : '' )
-				}
-			>
+			<article className={ className + ' event-card' }>
 				<img
 					className="event-card__image"
 					src={
