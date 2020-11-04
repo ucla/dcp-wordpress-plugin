@@ -23,6 +23,8 @@ This plugin contains a varaity of UCLA branded, accessible blocks for the Gutenb
 - Styled Buttons
 ### WIP Blocks (Unstable and likely to break without notice)
 - Profile Card
+- Event Card
+- Basic Card
 
 For backwards compatibility, if this section is missing, the full length of the short description will be used, and
 Markdown parsed.
