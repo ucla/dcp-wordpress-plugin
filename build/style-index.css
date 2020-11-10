@@ -1,97 +1,10 @@
-/**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
- */
-.wp-block-uwai-uwai {
-  background-color: var(--wp-admin-theme-color);
-  color: #fff;
-  padding: 2px; }
+.wp-block-uwai-uwai{background-color:var(--wp-admin-theme-color);color:#fff;padding:2px}.blade-links{margin:1em !important}a.btn.play::before{display:inline-block;content:'';width:15px;height:15px;background:url(/wp-content/themes/ucla-sc/images/icons/play-white.svg);background-size:contain;margin-right:5px}a.btn--secondary.play:hover::before{background:url(/wp-content/themes/ucla-sc/images/icons/play-white.svg);background-size:contain}a.btn--secondary.play::before{background:url(/wp-content/themes/ucla-sc/images/icons/play-defaultblue.svg);background-size:contain}a.btn--tertiary.play:hover::before{background:url(/wp-content/themes/ucla-sc/images/icons/play-white.svg);background-size:contain}a.btn--tertiary.play::before{background:url(/wp-content/themes/ucla-sc/images/icons/play-defaultblue.svg);background-size:contain}.blade-links .blade-links__box-link{color:#fff !important}
 
-.blade-links {
-  margin: 1em !important; }
+.wp-block-uwai-uwai{background-color:var(--wp-admin-theme-color);color:#fff;padding:2px}.blade-links{margin:1em !important}
 
-a.btn.play::before {
-  display: inline-block;
-  content: '';
-  width: 15px;
-  height: 15px;
-  background: url(/wp-content/themes/ucla-sc/images/icons/play-white.svg);
-  background-size: contain;
-  margin-right: 5px; }
+.wp-block-uwai-uwai{background-color:var(--wp-admin-theme-color);color:#fff;padding:2px}.blade-links{margin:1em !important}
 
-a.btn--secondary.play:hover::before {
-  background: url(/wp-content/themes/ucla-sc/images/icons/play-white.svg);
-  background-size: contain; }
+.wp-block-uwai-uwai{background-color:var(--wp-admin-theme-color);color:#fff;padding:2px}.blade-links{margin:1em !important}
 
-a.btn--secondary.play::before {
-  background: url(/wp-content/themes/ucla-sc/images/icons/play-defaultblue.svg);
-  background-size: contain; }
+.wp-block-uwai-uwai{background-color:var(--wp-admin-theme-color);color:#fff;padding:2px}.blade-links{margin:1em !important}
 
-a.btn--tertiary.play:hover::before {
-  background: url(/wp-content/themes/ucla-sc/images/icons/play-white.svg);
-  background-size: contain; }
-
-a.btn--tertiary.play::before {
-  background: url(/wp-content/themes/ucla-sc/images/icons/play-defaultblue.svg);
-  background-size: contain; }
-
-/**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
- */
-.wp-block-uwai-uwai {
-  background-color: var(--wp-admin-theme-color);
-  color: #fff;
-  padding: 2px; }
-
-.blade-links {
-  margin: 1em !important; }
-
-/**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
- */
-.wp-block-uwai-uwai {
-  background-color: var(--wp-admin-theme-color);
-  color: #fff;
-  padding: 2px; }
-
-.blade-links {
-  margin: 1em !important; }
-
-/**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
- */
-.wp-block-uwai-uwai {
-  background-color: var(--wp-admin-theme-color);
-  color: #fff;
-  padding: 2px; }
-
-.blade-links {
-  margin: 1em !important; }
-
-/**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
- */
-.wp-block-uwai-uwai {
-  background-color: var(--wp-admin-theme-color);
-  color: #fff;
-  padding: 2px; }
-
-.blade-links {
-  margin: 1em !important; }
-
-
-/*# sourceMappingURL=style-index.css.map*/
