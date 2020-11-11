@@ -1,0 +1,611 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-uwai-uwai {
+	border: 1px dotted #f00;
+}
+
+.blade-links {
+	max-width: 276px;
+	width: 100%;
+	display: block;
+	position: relative;
+	overflow: hidden;
+	margin: 0 auto;
+  }
+  
+  .blade-links .blade-links__box {
+	display: block;
+	position: relative;
+	width: 100%;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	margin: 0 auto;
+  }
+  
+  @media (min-width: 768px) {
+	.blade-links .blade-links__box {
+	  display: block;
+	  position: relative;
+	}
+  }
+  
+  .blade-links .blade-links__box-link {
+	width: 100%;
+	background: #00598C;
+	height: 102px;
+	display: block;
+	position: relative;
+	color: #FFFFFF;
+	font-size: 24px;
+	font-weight: 27px;
+	font-weight: bold;
+	padding: 16px 0 0 24px;
+	text-decoration: none;
+  }
+  
+  @media (min-width: 768px) {
+	.blade-links .blade-links__box-link {
+	  width: 100%;
+	  height: 160px;
+	  padding: 24px 0 0 16px;
+	}
+  }
+  
+  .blade-links .blade-links__box-link:hover {
+	background: #0079BF !important;
+  }
+  
+  .blade-links .blade-links__box-link:focus {
+	outline: 1px dotted #FFFFFF;
+	outline-offset: -8px;
+  }
+  
+  .blade-links .blade-links__box-link::before {
+	display: block;
+	content: '';
+	width: 25px;
+	height: 4px;
+	background: #FFD100;
+	margin-bottom: 12px;
+  }
+  
+  @media (min-width: 768px) {
+	.blade-links .blade-links__box-link::before {
+	  margin-bottom: 28px;
+	}
+  }
+  
+  .blade-links .blade-links__box-link span {
+	display: block;
+	max-width: 200px;
+	width: fit-content;
+	width: max-content;
+	text-decoration: none;
+	font-weight: bold;
+	overflow-wrap: break-word;
+  }
+  
+  @media (min-width: 768px) {
+	.blade-links .blade-links__box-link span {
+	  max-width: 150px;
+	}
+  }
+  
+  @media (min-width: 1024px) {
+	.blade-links .blade-links__box-link span {
+	  max-width: 200px;
+	}
+  }
+  
+  .blade-links.grey .blade-links__box-link {
+	background: #EBEBEB !important;
+	color: #00598C;
+  }
+  
+  .blade-links.grey .blade-links__box-link:hover {
+	background: #0079BF !important;
+	color: #FFFFFF;
+  }
+  
+  .blade-links.grey .blade-links__box-link:focus {
+	outline: 1px dotted #0079BF;
+	outline-offset: -8px;
+  }
+  
+
+  
+  .featured-image > img {
+	  height: 50vh;
+	  width: auto;
+	  margin: auto;
+	  display: block
+  }
+  
+  .post-time {
+	  margin-top: 10px;
+	  margin-bottom: 40px;
+	  font-size: 1rem;
+	  font-weight: 700;
+  }
+  
+  @media (min-width: 1024px) {
+	  .post-header {
+		  margin-bottom: 30px !important;
+	  }
+  }
+  
+  body,html {
+	  overflow-x: hidden;
+  }
+  
+  h2.fancy::before {
+	margin-right: 18px;
+	border-left: 8px solid #FFD100;
+	content: "";
+  
+  }
+  
+  h2.fancy {
+	color: white !important;
+	font-size: 2.25rem !important;
+	font-weight: bold !important;
+  }
+  
+  .custom_events_manager_list td {
+	padding: 10px;
+  }
+  
+  .custom_events_manager_list th {
+	font-weight: bold;
+	font-size: 2rem
+  
+  }
+  
+  .custom_events_manager_list thead tr:first-child th {
+	width: 200px !important;
+  }
+  
+  .custom_events_manager_list {
+	margin-bottom: 30px;
+  }
+  
+  
+  
+  /*******
+  
+  Hero
+  
+  The HTML structure consists of:
+  
+  I. Section Tag - This section tag is used to style the size of
+  the section across mobile, tablet and desktop platforms. It also
+  wraps the two child classes in section II and III below
+  
+  <section id="hero" class="section group" aria-labelledby="hero-heading">
+	CONTENT IN FROM II and III BETWEEEN
+  </section>
+  
+  II. Copy Div
+  
+	  The top level 'copy' div includes a copy wrapper that wraps the:
+  
+	  a. Screen-reader - Only shown to screen readers. The text should
+	  be the same as the headline in section II-b.
+		<h1 id="hero-heading" class="screenreader-only"> SCREEN READER TEXT
+  
+	  b. Headline - Main header of this section. The text is wrapped in
+	  the with spans(ribbon).
+	  PLEASE_NOTE: As the hero's content is changed, each span's margin
+	  and/or padding will need to be adjusted to adjust spacing between
+	  words. This includes specific breakpoints across devices
+  
+	  <div class="copy__headline">
+		<span class="copy__headline-ribbon">HEADLINE</span>
+		<span class="copy__headline-ribbon">TEXT</span>
+  
+	  c. Supporting Text -  Short excerpt text supporting main headline
+		<p class="copy__supporting-text">SUPPORTING TEXT
+  
+	  d. Button - CTA button
+  
+		(1) no video link
+		<a class="copy__cta" href="LINK" data-width="1128" data-height="634">
+		  <button class="copy__cta-button btn primary-blue">
+			<span class="copy__cta-button-text">TEXT IN BUTTON
+  
+		(2) with video link
+		<a class="copy__cta fancybox" href="VIDEO LINK" data-width="1128" data-height="634">
+		  <button class="copy__cta-button btn primary-blue">
+			<img class="copy__cta-button-play" src="/img/play-button.svg" alt="">
+			<span class="copy__cta-button-text">TEXT IN BUTTON
+  
+  III. Graphics Div - Graphics div wraps:
+  
+	  a. Main section's image - Image's link is included within the stylsheet
+		<div class="graphics__image" role="img" aria-label="DESCRIPTION OF IMAGE">
+  
+	  b. Yellow molecule graphic
+		<img class="graphics__molecule" src="/img/polygon.png" alt="">
+  
+  Example:
+  
+  I. Main section
+  <section id="hero" class="section group" aria-labelledby="hero-heading">
+  
+	II. Copy Div
+	<div class="copy">
+	  <div class="col span_3_of_12 copy__wrapper">
+		// a. Screen-reader
+		<h1 id="hero-heading" class="screenreader-only">U.S. High Schools Grapple with Political Incivility</h1>
+		// b. Headline/ribbon
+		  <div class="copy__headline">
+		  <span class="copy__headline-ribbon">U.S. HIGH</span>
+		  <span class="copy__headline-ribbon">SCHOOLS</span>
+		  <span class="copy__headline-ribbon">GRAPPLE WITH</span>
+		  <span class="copy__headline-ribbon">POLITICAL</span>
+		  <span class="copy__headline-ribbon">INCIVILITY</span>
+		</div>
+		// c. Supporting text
+		<p class="copy__supporting-text">A UCLA report reveals rising hate in schools across the country, and highlights efforts to address the behavior.</p>
+		// d. CTA button
+		<a class="copy__cta" href="https://centerx.gseis.ucla.edu/ucla-idea-survey-finds-schools-challenged-by-political-incivility-racial-tensions/" data-width="1128" data-height="634">
+		  <button class="copy__cta-button btn primary-blue">
+			<span class="copy__cta-button-text">Read the Article</span>
+		  </button>
+		</a>
+	  </div>
+	</div>
+  
+	III. Graphics Div
+	<div class="col span_9_of_12 graphics">
+	  // a. Section's Image
+	  <div class="graphics__image" role="img" aria-label="Girl in distress against locker"></div>
+	  // b. Molecule Graphic
+	  <img class="graphics__molecule" src="/img/polygon.png" alt="">
+	</div>
+  
+  </section>
+   *******/
+  
+   section#hero {
+	position: relative;
+	width: 100%;
+	height: 600px;
+	clear: both;
+  }
+  
+  @media only screen and (min-width: 600px) {
+	section#hero {
+	  height: 680px;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	section#hero {
+	  height: 800px;
+	}
+  }
+  
+  @media only screen and (min-width: 900px) {
+	section#hero {
+	  height: 480px;
+	}
+  }
+  
+  @media (min-width: 1024px) {
+	section#hero {
+	  height: 650px;
+	  padding-top: 48px;
+	}
+  }
+  
+  @media only screen and (min-width: 1200px) {
+	section#hero .copy {
+	  max-width: 1200px;
+	  margin: 0 auto;
+	}
+  }
+  
+  section#hero .copy__wrapper {
+	position: absolute;
+	max-width: 460px;
+	margin-top: 205px;
+	padding-left: 24px;
+	z-index: 1;
+  }
+  
+  @media only screen and (min-width: 480px) {
+	section#hero .copy__wrapper {
+	  width: 100% !important;
+	}
+  }
+  
+  @media (min-width: 480px) {
+	section#hero .copy__wrapper {
+	  margin-top: 275px;
+	}
+  }
+  
+  @media (min-width: 600px) {
+	section#hero .copy__wrapper {
+	  max-width: 100%;
+	  margin-top: 350px;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	section#hero .copy__wrapper {
+	  margin-top: 500px;
+	}
+  }
+  
+  @media only screen and (min-width: 900px) {
+	section#hero .copy__wrapper {
+	  position: relative;
+	  max-width: 580px;
+	  margin-top: 48px;
+	}
+  }
+  
+  @media (min-width: 1280px) {
+	section#hero .copy__wrapper {
+	  padding-left: 0;
+	}
+  }
+  
+  section#hero .copy__headline {
+	margin-bottom: 26px;
+	font-size: 2rem;
+	font-weight: bold;
+	line-height: 2rem;
+	text-transform: uppercase;
+	color: #FFFFFF;
+  }
+  
+  @media only screen and (max-width: 320px) {
+	section#hero .copy__headline {
+	  font-size: 1.75rem;
+	  line-height: 1.75rem;
+	}
+  }
+  
+  @media only screen and (min-width: 900px) {
+	section#hero .copy__headline {
+	  font-size: 3rem;
+	  line-height: 3rem;
+	}
+  }
+  
+  section#hero .copy__headline-ribbon {
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 2px;
+	background: #2774AE;
+  }
+  
+  section#hero .copy__headline-ribbon:nth-child(4),
+  section#hero .copy__headline-ribbon:nth-child(5) {
+	margin-left: 0;
+	padding-left: 6px;
+  }
+  
+  @media only screen and (min-width: 394px) {
+	section#hero .copy__headline-ribbon:nth-child(2) {
+	  margin-left: -10px;
+	  padding-left: 0;
+	}
+  }
+  
+  @media only screen and (min-width: 401px) {
+	section#hero .copy__headline-ribbon:nth-child(5) {
+	  margin-left: -10px;
+	  padding-left: 0;
+	}
+  }
+  
+  @media (min-width: 600px) {
+	section#hero .copy__headline-ribbon {
+	  padding: 6px 8px;
+	}
+  
+	section#hero .copy__headline-ribbon:nth-child(4) {
+	  margin-left: -10px;
+	  padding-left: 0;
+	}
+  
+	section#hero .copy__headline-ribbon:nth-child(5) {
+	  margin-left: 0;
+	  padding-left: 6px;
+	}
+  }
+  
+  @media only screen and (min-width: 619px) {
+	section#hero .copy__headline-ribbon:nth-child(3),
+	section#hero .copy__headline-ribbon:nth-child(5) {
+	  margin-left: -10px;
+	  padding-left: 0;
+	}
+  
+	section#hero .copy__headline-ribbon:nth-child(4) {
+	  margin-left: 0;
+	  padding-left: 6px;
+	}
+  }
+  
+  @media only screen and (min-width: 787px) {
+	section#hero .copy__headline-ribbon:nth-child(3),
+	section#hero .copy__headline-ribbon:nth-child(4) {
+	  margin-left: -10px;
+	  padding-left: 0;
+	}
+  
+	section#hero .copy__headline-ribbon:nth-child(5) {
+	  margin-left: 0;
+	  padding-left: 6px;
+	}
+  }
+  
+  @media only screen and (min-width: 900px) {
+	section#hero .copy__headline-ribbon {
+	  padding: 6px 12px;
+	}
+  
+	section#hero .copy__headline-ribbon:nth-child(2) {
+	  margin-left: -14px;
+	  padding-left: 0;
+	}
+  
+	section#hero .copy__headline-ribbon:nth-child(3) {
+	  margin-left: 0;
+	  padding-left: 6px;
+	}
+  
+	section#hero .copy__headline-ribbon:nth-child(4) {
+	  margin-left: 0;
+	  padding-left: 6px;
+	}
+  
+  /*   section#hero .copy__headline-ribbon:nth-child(5) {
+	  margin-left: -15px;
+	  padding-left: 6px;
+	} */
+  }
+  
+  section#hero .copy__supporting-text {
+	width: 90%;
+	max-width: 480px;
+	margin-bottom: 12px;
+	background: white;
+  }
+  
+  @media (min-width: 600px) {
+	section#hero .copy__supporting-text {
+	  width: 65%;
+	  margin-bottom: 24px;
+	  padding: 24px 24px 24px 0;
+	}
+  }
+  
+  @media only screen and (min-width: 900px) {
+	section#hero .copy__supporting-text {
+	  width: 65%;
+	  margin-bottom: 24px;
+	}
+  }
+  
+  @media (min-width: 1280px) {
+	section#hero .copy__supporting-text {
+	  padding: 24px 24px 24px 0;
+	}
+  }
+  
+  section#hero .copy .copy__cta-button {
+	padding: 12px 16px 8px;
+	background-color: #00598C;
+	border: none;
+	border-radius: 2px;
+	color: #FFFFFF;
+	font-weight: bold;
+	cursor: pointer;
+  }
+  
+  section#hero .copy .copy__cta-button:hover {
+	background-color: #0079BF;
+  }
+  
+  section#hero .copy .copy__cta-button:active {
+	background-color: #003B5C;
+  }
+  
+  section#hero .copy .copy__cta-button:focus {
+	-webkit-box-shadow: none;
+			box-shadow: none;
+	outline: 1px dotted #FFFFFF;
+	outline-offset: -3px;
+  }
+  
+  section#hero .copy .copy__cta-button:visited {
+	background-color: #5223B0;
+  }
+  
+  section#hero .copy .copy__cta-button-play {
+	vertical-align: bottom;
+  }
+  
+  section#hero .copy .copy__cta-button-text {
+	position: relative;
+	bottom: 5px;
+	margin-left: 4px;
+  }
+  
+  section#hero .graphics {
+	position: relative;
+	margin: 0;
+  }
+  
+  @media only screen and (min-width: 480px) {
+	section#hero .graphics {
+	  width: 100% !important;
+	  margin-bottom: 0;
+	}
+  }
+  
+  @media only screen and (min-width: 900px) {
+	section#hero .graphics {
+	  position: absolute;
+	  max-width: 55%;
+	  right: 0;
+	}
+  }
+  
+  @media (min-width: 1024px) {
+	section#hero .graphics {
+	  max-width: 63%;
+	}
+  }
+  
+  section#hero .graphics__image {
+	overflow: hidden;
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 379px;
+	background-position: center center;
+	background-image: url(/wp-content/themes/ucla-sc-child/img/hero-image.jpg);
+  }
+  
+  @media (min-width: 768px) {
+	section#hero .graphics__image {
+	  height: 475px;
+	  background-image: url(/wp-content/themes/ucla-sc-child/img/hero-image.jpg);
+	}
+  }
+  
+  @media (min-width: 1024px) {
+	section#hero .graphics__image {
+	  height: 588px;
+	  background-image: url(/wp-content/themes/ucla-sc-child/img/hero-image.jpg);
+	}
+  }
+  
+  section#hero .graphics__molecule {
+	position: absolute;
+	width: auto;
+	height: 60px;
+	bottom: -18px;
+	right: 0;
+	opacity: 0.8;
+  }
+  
+  @media (min-width: 600px) {
+	section#hero .graphics__molecule {
+	  height: 160px;
+	  bottom: -50px;
+	}
+  }
+  
+  

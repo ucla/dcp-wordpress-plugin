@@ -112,8 +112,6 @@ export default function Edit( {
 			greyStyle: value,
 		} );
 	};
-	// eslint-disable-next-line no-console
-	console.log( mediaId );
 	return (
 		<>
 			<InspectorControls>

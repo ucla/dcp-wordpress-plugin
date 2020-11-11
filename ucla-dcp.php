@@ -32,6 +32,13 @@ function ucla_dcp_ucla_dcp_block_init() {
 		$script_asset['dependencies'],
 		$script_asset['version']
 	);
+	wp_localize_script(
+		'uwai-uwai-block-editor',
+		'js_data',
+		array(
+			'path' => plugins_url( '', __FILE__ )
+		)
+	);
 
 	$editor_css = 'build/index.css';
 	wp_register_style(

@@ -125,8 +125,6 @@ export default function Edit( {
 		setAttributes( { mediaAlt: newMediaAlt } );
 	};
 
-	// eslint-disable-next-line no-console
-	console.log( mediaId );
 	return (
 		<>
 			<InspectorControls>

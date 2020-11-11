@@ -108,8 +108,6 @@ export default function Edit( {
 		} );
 	};
 
-	// eslint-disable-next-line no-console
-	console.log( mediaId );
 	return (
 		<>
 			<InspectorControls>

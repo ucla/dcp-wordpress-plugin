@@ -1,0 +1,40 @@
+{
+	"name": "uwai/hero-banner",
+	"title": "UWAI Hero",
+	"category": "common",
+	"textdomain": "uwai",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"body": {
+			"type": "string",
+			"source": "text",
+			"selector": ".copy__supporting-text"
+		},
+		"row1": {
+			"type": "string"
+		},
+		"row2": {
+			"type": "string"
+		},
+		"row3": {
+			"type": "string"
+		},
+		"row4": {
+			"type": "string"
+		},
+		"mediaAlt": {
+			"type": "string"
+		},
+		"mediaId": {
+			"type": "number"
+		},
+		"mediaType": {
+			"type": "string"
+		},
+		"mediaUrl": {
+			"type": "string"
+		}
+	}
+}
