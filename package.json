@@ -18,6 +18,6 @@
 	},
 	"dependencies": {
 		"@wordpress/icons": "^2.4.0",
-		"ucla-bruin-components": "git+https://avelikanov@bitbucket.org/uclaucomm/ucla-bruin-components.git#feature/CL-64-create-cards-components"
+		"ucla-bruin-components": "git+ssh://git@bitbucket.org/uclaucomm/ucla-bruin-components.git#main"
 	}
 }

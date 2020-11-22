@@ -32,6 +32,7 @@ import * as tile from './tile';
 import * as card from './card';
 import * as eventCard from './event-card';
 import * as profileCard from './profile-card';
+import * as storyCard from './story-card';
 import * as hero from './hero';
 
 /**
@@ -64,6 +65,7 @@ export const registerUwaiBlocks = () => {
 		eventCard,
 		profileCard,
 		hero,
+		storyCard,
 	].forEach( registerBlock );
 };
 
