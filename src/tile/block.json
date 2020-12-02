@@ -1,0 +1,37 @@
+{
+	"name": "uwai/link-tile",
+	"title": "UWAI Link Tile",
+	"category": "common",
+	"textdomain": "uwai",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"title": {
+			"type": "string",
+			"source": "text",
+			"selector": "span"
+		},
+		"url": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "a",
+			"attribute": "href"
+		},
+		"linkTarget": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "a",
+			"attribute": "target"
+		},
+		"greyStyle": {
+			"type": "string"
+		},
+		"rel": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "a",
+			"attribute": "rel"
+		}
+	}
+}

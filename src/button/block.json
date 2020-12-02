@@ -1,0 +1,43 @@
+{
+	"name": "uwai/button",
+	"title": "UWAI Button",
+	"category": "common",
+	"textdomain": "uwai",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"title": {
+			"type": "string",
+			"source": "text",
+			"selector": "span"
+		},
+		"url": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "a",
+			"attribute": "href"
+		},
+		"linkTarget": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "a",
+			"attribute": "target"
+		},
+		"rel": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "a",
+			"attribute": "rel"
+		},
+		"style": {
+			"type": "string"
+		},
+		"play": {
+			"type": "boolean"
+		},
+		"disabled": {
+			"type": "boolean"
+		}
+	}
+}
