@@ -22,18 +22,18 @@ import {
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './global.scss';
+import '../node_modules/ucla-bruin-components/public/css/ucla-lib.min.css';
 
 /**
  * Internal dependencies
  */
 import * as button from './button';
 import * as tile from './tile';
+import * as card from './card';
 
 /**
- * Function to register an individual block.
  *
  * @param {Object} block The block to be registered.
- *
  */
 const registerBlock = ( block ) => {
 	if ( ! block ) {
@@ -55,6 +55,11 @@ export const registerUwaiBlocks = () => {
 		// in various contexts — like the inserter and auto-complete components.
 		button,
 		tile,
+		card,
+		eventCard,
+		profileCard,
+		hero,
+		storyCard,
 	].forEach( registerBlock );
 };
 

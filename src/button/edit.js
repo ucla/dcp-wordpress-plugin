@@ -173,24 +173,17 @@ export default function Edit( {
 		setAttributes( { style: newStyle } );
 	};
 	const toggleAttribute = ( attribute ) => {
-		// eslint-disable-next-line no-console
-		console.log( 'wow', attribute );
 		return ( newValue ) => {
-			// eslint-disable-next-line no-console
-			console.log( 'yeen', newValue );
 
 			newValue = newValue === undefined ? true : newValue;
 			setAttributes( { [ attribute ]: newValue } );
 		};
 	};
-	// Creates a <p class='wp-block-cgb-block-dcp-test'></p>.
+
 	return (
 		<div className={ className }>
-			<a
+			<span
 				className={ `btn ${ style } ${ play ? 'play' : '' }` }
-				href={ url }
-				target={ linkTarget }
-				rel={ rel }
 				disabled={ disabled }
 			>
 				<RichText
@@ -200,7 +193,7 @@ export default function Edit( {
 					value={ title }
 					onChange={ onChangeTitle }
 				/>
-			</a>
+			</span>
 			<URLPicker
 				url={ url }
 				setAttributes={ setAttributes }

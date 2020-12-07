@@ -1,0 +1,43 @@
+{
+	"name": "uwai/profile-card",
+	"title": "UWAI Profile Card",
+	"category": "common",
+	"textdomain": "uwai",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"title": {
+			"type": "string",
+			"source": "text",
+			"selector": "h3 span"
+		},
+		"department": {
+			"type": "string",
+			"source": "text",
+			"selector": "h4 span"
+		},
+		"mediaAlt": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "img",
+			"attribute": "alt",
+			"default": ""
+		},
+		"mediaId": {
+			"type": "number"
+		},
+		"mediaType": {
+			"type": "string"
+		},
+		"mediaUrl": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "img",
+			"attribute": "src"
+		},
+		"greyStyle": {
+			"type": "boolean"
+		}
+	}
+}

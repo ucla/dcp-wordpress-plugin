@@ -15,6 +15,10 @@
  *
  * @see https://developer.wordpress.org/block-editor/tutorials/block-tutorial/applying-styles-with-stylesheets/
  */
+
+require 'libs/updater.php';
+new PluginUpdater(__FILE__, 'avelikanov/testpg', 'master');
+
 function ucla_dcp_ucla_dcp_block_init() {
 	$dir = dirname( __FILE__ );
 
@@ -32,6 +36,13 @@ function ucla_dcp_ucla_dcp_block_init() {
 		$script_asset['dependencies'],
 		$script_asset['version']
 	);
+	wp_localize_script(
+		'uwai-uwai-block-editor',
+		'js_data',
+		array(
+			'path' => plugins_url( '', __FILE__ )
+		)
+	);
 
 	$editor_css = 'build/index.css';
 	wp_register_style(
@@ -41,7 +52,7 @@ function ucla_dcp_ucla_dcp_block_init() {
 		filemtime( "$dir/$editor_css" )
 	);
 
-	$style_css = 'build/style-index.css';
+	$style_css = 'build/index.css';
 	wp_register_style(
 		'uwai-uwai-block',
 		plugins_url( $style_css, __FILE__ ),

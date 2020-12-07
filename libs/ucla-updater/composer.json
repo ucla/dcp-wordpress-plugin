@@ -1,0 +1,20 @@
+{
+	"name": "uclaucomm/ucla-updater",
+	"type": "library",
+	"description": "A custom update checker for WordPress plugins and themes.",
+	"keywords": ["wordpress", "plugin updates", "automatic updates", "theme updates"],
+	"license": "BSD",
+	"authors": [
+		{
+			"name": "Alex Velikanov",
+			"email": "alecv@ucla.edu"
+		}
+	],
+	"require": {
+		"php": ">=5.2.0",
+		"erusev/parsedown": "^1.7"
+	},
+	"autoload": {
+		"files": ["updater.php"]
+	}
+}
