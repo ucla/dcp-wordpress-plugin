@@ -13,8 +13,5 @@
 	"require": {
 		"php": ">=5.2.0",
 		"erusev/parsedown": "^1.7"
-	},
-	"autoload": {
-		"files": ["updater.php"]
 	}
 }

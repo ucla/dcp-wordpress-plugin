@@ -1,12 +1,12 @@
 <?php return array (
   'root' => 
   array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
+    'pretty_version' => 'dev-master',
+    'version' => 'dev-master',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
+    'reference' => '5d5279794868cf91612583f19cc00267bf0fafa3',
     'name' => 'uclaucomm/ucla-updater',
   ),
   'versions' => 
@@ -22,12 +22,12 @@
     ),
     'uclaucomm/ucla-updater' => 
     array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => '5d5279794868cf91612583f19cc00267bf0fafa3',
     ),
   ),
 );
