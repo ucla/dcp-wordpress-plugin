@@ -30,6 +30,10 @@ import '../node_modules/ucla-bruin-components/public/css/ucla-lib.min.css';
 import * as button from './button';
 import * as tile from './tile';
 import * as card from './card';
+import * as eventCard from './event-card';
+import * as hero from './hero';
+import * as profileCard from './profile-card';
+import * as storyCard from './story-card';
 
 /**
  *
