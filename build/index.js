@@ -6633,7 +6633,7 @@ function save(_ref) {
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     className: className
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
-    className: "btn ".concat(style, " ").concat(play ? 'play' : ''),
+    className: "btn page ".concat(style, " ").concat(play ? 'play' : ''),
     href: url,
     target: linkTarget,
     rel: rel,

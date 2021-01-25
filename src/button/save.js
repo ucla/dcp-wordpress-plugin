@@ -32,7 +32,7 @@ export default function save( {
 	return (
 		<div className={ className }>
 			<a
-				className={ `btn ${ style } ${ play ? 'play' : '' }` }
+				className={ `btn page ${ style } ${ play ? 'play' : '' }` }
 				href={ url }
 				target={ linkTarget }
 				rel={ rel }
