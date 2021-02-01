@@ -21,7 +21,7 @@ import {
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import './global.scss';
+import './style.scss';
 import '../node_modules/ucla-bruin-components/public/css/ucla-lib.min.css';
 
 /**
