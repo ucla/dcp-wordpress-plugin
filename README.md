@@ -18,6 +18,7 @@ UWAI&#39;s Blocks for wordpress.
 This plugin contains a varaity of UCLA branded, accessible blocks for the Gutenberg editor.
 
 ## Development Documentation
+- [Setup your development environment](https://developer.wordpress.org/block-editor/handbook/tutorials/devenv/)
 - [Gettings started with Gutenberg](https://developer.wordpress.org/block-editor/)
 - NPM [@wordpress/create-block](https://www.npmjs.com/package/@wordpress/create-block)
 - [Create a guten block](https://developer.wordpress.org/block-editor/handbook/tutorials/create-block/)
