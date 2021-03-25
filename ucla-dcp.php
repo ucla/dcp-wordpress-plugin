@@ -1,10 +1,10 @@
 <?php
 /**
- * Plugin Name:     UWAI
- * Description:     UWAI&#39;s Block for wordpress.
- * Version:         0.1.0
- * Author:          UWAI Team
- * Text Domain:     uwai
+ * Plugin Name:     UCLA-WP Plugin
+ * Description:     UCLA branded and ADA complaint components. CUrrently in beta, not reccomended for production use.
+ * Version:         0.1.1
+ * Author:          Computing and Disabilities Program and Strategic Communications
+ * Text Domain:     ucla-wp-plugin
  *
  * @package         uwai
  */
