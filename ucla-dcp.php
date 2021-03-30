@@ -16,8 +16,8 @@
  * @see https://developer.wordpress.org/block-editor/tutorials/block-tutorial/applying-styles-with-stylesheets/
  */
 
-require 'libs/ucla-updater/updater.php';
-new PluginUpdater(__FILE__, 'avelikanov/testpg', 'master');
+/* require 'libs/ucla-updater/updater.php';
+new PluginUpdater(__FILE__, 'avelikanov/testpg', 'master'); */
 
 function ucla_dcp_ucla_dcp_block_init() {
 	$dir = dirname( __FILE__ );
