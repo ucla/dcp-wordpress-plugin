@@ -53,7 +53,6 @@ Pull the repository into /wp-content/plugins/ on a local WordPress environment a
 
 **0.1.0 - 2020**
 
-### 0.1.0
 * Initial Release
 
 Contributors:      UCLA Web Accessibility Initiative Team, [UCLA OIT Disabilities and Computing Program](https://dcp.ucla.edu/), [UCLA Strategic Communications](https://strategic-communications.ucla.edu/)
