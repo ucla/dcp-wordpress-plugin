@@ -1,10 +1,10 @@
 <?php
 /**
- * Plugin Name:     UWAI
- * Description:     UWAI&#39;s Block for wordpress.
- * Version:         0.1.0
- * Author:          UWAI Team
- * Text Domain:     uwai
+ * Plugin Name:     UCLA-WP Plugin
+ * Description:     UCLA branded and ADA complaint components. CUrrently in beta, not reccomended for production use.
+ * Version:         0.1.1
+ * Author:          Computing and Disabilities Program and Strategic Communications
+ * Text Domain:     ucla-wp-plugin
  *
  * @package         uwai
  */
@@ -15,6 +15,10 @@
  *
  * @see https://developer.wordpress.org/block-editor/tutorials/block-tutorial/applying-styles-with-stylesheets/
  */
+
+/* require 'libs/ucla-updater/updater.php';
+new PluginUpdater(__FILE__, 'avelikanov/testpg', 'master'); */
+
 function ucla_dcp_ucla_dcp_block_init() {
 	$dir = dirname( __FILE__ );
 
@@ -31,6 +35,13 @@ function ucla_dcp_ucla_dcp_block_init() {
 		plugins_url( $index_js, __FILE__ ),
 		$script_asset['dependencies'],
 		$script_asset['version']
+	);
+	wp_localize_script(
+		'uwai-uwai-block-editor',
+		'js_data',
+		array(
+			'path' => plugins_url( '', __FILE__ )
+		)
 	);
 
 	$editor_css = 'build/index.css';
