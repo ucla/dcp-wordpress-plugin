@@ -2,6 +2,7 @@
 * Version:           0.1.1
 
 **Requirements**
+
 * PHP 7.^
 * Minimum WordPress Version: 5.3.2 - 5.7
 
