@@ -10,7 +10,7 @@
 
 This plugin contains UCLA branded, accessible blocks for the Gutenberg editor. It is recommended this plugin be used with  [UCLA's Official WordPress Theme](https://bitbucket.org/uclaucomm/ucla-wp/src/distribution/).
 
-## Development Getting Started
+## Development Getting Started  
 
 Experience with node, javascript and local development environments is recommended.
 
@@ -25,6 +25,14 @@ If you are not familiar with the Gutenberg editor or working in react, these lin
 - [Github Component Examples(Gutenberg Source Code)](https://github.com/WordPress/gutenberg/tree/5b81cbc66c5d52f9603f77a60ec7864150173dd0/packages/components/src)
 
 
+### Issues and Bug Reporting
+
+To report an issue or bug please ad it to the [repository issue board](https://bitbucket.org/uclaucomm/ucla-wp-plugin/issues?status=new&status=open). Any community are welcome to contribute code solution or constructive comments to open issues on the board.
+
+### Branching
+
+All campus member must branch from development and submit all pull requests back into the development branch.
+
 ### Run Locally
 
 Pull the repository into /wp-content/plugins/ on a local WordPress environment and run `npm install`.
@@ -36,8 +44,6 @@ Pull the repository into /wp-content/plugins/ on a local WordPress environment a
 `npm start` - start local development
 
 ## Installation
-
-This section describes how to install the plugin and get it working.
 
 1. Place the repository at `/wp-content/plugins/ucla-wp-plugin`
 2. Activate the plugin by navigating to the plugins page in the admin and selective the activate link under "UCLA-WP Plugin".
