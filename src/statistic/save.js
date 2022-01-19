@@ -55,7 +55,7 @@ export default function save({
 						<RichText.Content
 							tagName="span"
 							className="stat-tout__number"
-							value={attributes.statistic1}
+							value={statistic1}
 						/>
 						<RichText.Content
 							tagName="span"
