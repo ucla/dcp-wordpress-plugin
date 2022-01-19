@@ -9,9 +9,6 @@
 	"attributes": {
 		"title": {
 			"type": "string"
-		},
-		"body": {
-			"type": "string"
 		}
 	}
 }

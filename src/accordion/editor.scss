@@ -26,6 +26,10 @@
 	margin: 0 auto;
 }
 
+.accordion__content {
+	display: block;
+}
+
 @media (min-width: 768px) {
 	.blade-links .blade-links__box {
 		display: block;

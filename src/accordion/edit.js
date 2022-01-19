@@ -59,20 +59,21 @@ export default function Edit({
 }) {
 	let {
 		title,
-		body,
 	} = attributes;
-
 	const onChangeTitle = (value) => {
 		setAttributes({ title: value });
 	};
-
-	const onChangeBody = (value) => {
-		setAttributes({ body: value });
-	};
+	const [showBody, setShowBody] = useState(false);
+	const onClick = () => {
+		setShowBody(!showBody)
+	}
+	// const onChangeBody = (value) => {
+	// 	setAttributes({ body: value });
+	// };
 
 	return (
 		<>
-			<InspectorControls>
+			{/* <InspectorControls>
 				<PanelBody title={__('Content')}>
 					<TextControl
 						label={__('Inner text')}
@@ -80,7 +81,7 @@ export default function Edit({
 						onChange={onChangeBody}
 					/>
 				</PanelBody>
-			</InspectorControls>
+			</InspectorControls> */}
 			<article className={className}>
 				<section class="accordion">
 					<dl>
@@ -93,7 +94,7 @@ export default function Edit({
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque maximus sed tellus id ullamcorper. In iaculis dolor vitae urna mattis, vel pellentesque dui semper. Sed dignissim, lorem eget tincidunt sollicitudin, nulla nibh gravida arcu, a fringilla turpis risus id eros. Aliquam lobortis iaculis nunc. Integer imperdiet lacus eget arcu aliquam volutpat. Integer molestie consequat facilisis. Nam dui odio, hendrerit porttitor elit ac, auctor tristique dui. Proin a bibendum sem, ac laoreet neque. Vestibulum elit sem, tincidunt eu lorem at, ullamcorper gravida nulla. Phasellus nec ex eros. Donec at odio eget turpis luctus euismod. Fusce mi ex, tincidunt nec accumsan fringilla, tincidunt venenatis ex. Praesent hendrerit quis dolor hendrerit tristique. Quisque ut metus turpis.
 							</p>
 						</dd> */}
-						<button class="accordion__title" aria-expanded="false">
+						<button onMouseDown={onClick} class="accordion__title" aria-expanded="false">
 						<dt>
 							{/* Title */}
 							<RichText
@@ -105,17 +106,8 @@ export default function Edit({
 							/>
 						</dt>
 					</button>
-
-					<dd class="accordion__content"> 
-						<RichText.Content
-							tagName="span"
-							// className="copy__headline-ribbon"
-							value={attributes.body}
-							placeholder="Text here"
-						/>
-						{/* <p>         
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque maximus sed tellus id ullamcorper. In iaculis dolor vitae urna mattis, vel pellentesque dui semper. Sed dignissim, lorem eget tincidunt sollicitudin, nulla nibh gravida arcu, a fringilla turpis risus id eros. Aliquam lobortis iaculis nunc. Integer imperdiet lacus eget arcu aliquam volutpat. Integer molestie consequat facilisis. Nam dui odio, hendrerit porttitor elit ac, auctor tristique dui. Proin a bibendum sem, ac laoreet neque. Vestibulum elit sem, tincidunt eu lorem at, ullamcorper gravida nulla. Phasellus nec ex eros. Donec at odio eget turpis luctus euismod. Fusce mi ex, tincidunt nec accumsan fringilla, tincidunt venenatis ex. Praesent hendrerit quis dolor hendrerit tristique. Quisque ut metus turpis.
-						</p> */}
+					<dd class="accordion__content" style={{ display: `${showBody ? 'block' : 'none'}` }}> 
+						<InnerBlocks />
 					</dd>
 					</dl>    
 				</section>
