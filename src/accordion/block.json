@@ -1,0 +1,17 @@
+{
+	"name": "uwai/accordion",
+	"title": "UWAI Accordion",
+	"category": "common",
+	"textdomain": "uwai",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"title": {
+			"type": "string"
+		},
+		"body": {
+			"type": "string"
+		}
+	}
+}

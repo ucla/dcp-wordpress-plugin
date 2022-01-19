@@ -1,0 +1,44 @@
+{
+	"name": "uwai/statistic",
+	"title": "UWAI Statistic",
+	"category": "common",
+	"textdomain": "uwai",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"title": {
+			"type": "string"
+		},
+		"segments": {
+			"type": "string"
+		},
+		"var1": {
+			"type": "string"
+		},
+		"var2": {
+			"type": "string"
+		},
+		"var3": {
+			"type": "string"
+		},
+		"statistic1": {
+			"type": "string"
+		},
+		"label1": {
+			"type": "string"
+		},
+		"statistic2": {
+			"type": "string"
+		},
+		"label2": {
+			"type": "string"
+		},
+		"statistic3": {
+			"type": "string"
+		},
+		"label3": {
+			"type": "string"
+		}
+	}
+}

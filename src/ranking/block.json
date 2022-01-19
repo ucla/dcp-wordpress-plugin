@@ -1,0 +1,44 @@
+{
+	"name": "uwai/ranking",
+	"title": "UWAI Ranking",
+	"category": "common",
+	"textdomain": "uwai",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"title": {
+			"type": "string"
+		},
+		"segments": {
+			"type": "string"
+		},
+		"ranking1": {
+			"type": "string"
+		},
+		"label1": {
+			"type": "string"
+		},
+		"source1": {
+			"type": "string"
+		},
+		"ranking2": {
+			"type": "string"
+		},
+		"label2": {
+			"type": "string"
+		},
+		"source2": {
+			"type": "string"
+		},
+		"ranking3": {
+			"type": "string"
+		},
+		"label3": {
+			"type": "string"
+		},
+		"source3": {
+			"type": "string"
+		}
+	}
+}

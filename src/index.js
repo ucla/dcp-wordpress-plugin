@@ -27,12 +27,16 @@ import '../node_modules/ucla-bruin-components/public/css/ucla-lib.min.css';
 /**
  * Internal dependencies
  */
+import * as accordion from './accordion';
 import * as button from './button';
 import * as tile from './tile';
 import * as card from './card';
 import * as eventCard from './event-card';
+import * as factoid from './factoid';
 import * as hero from './hero';
 import * as profileCard from './profile-card';
+import * as ranking from './ranking';
+import * as statistic from './statistic';
 import * as storyCard from './story-card';
 
 /**
@@ -57,12 +61,16 @@ export const registerUwaiBlocks = () => {
 	[
 		// Common blocks are grouped at the top to prioritize their display
 		// in various contexts — like the inserter and auto-complete components.
+		accordion,
 		button,
 		tile,
 		card,
 		eventCard,
+		factoid,
 		profileCard,
 		hero,
+		ranking,
+		statistic,
 		storyCard,
 	].forEach( registerBlock );
 };
