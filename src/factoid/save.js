@@ -6,7 +6,7 @@
  */
 import './style.scss';
 
-import { RichText, InnerBlocks } from '@wordpress/block-editor';
+import { RichText } from '@wordpress/block-editor';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -17,13 +17,7 @@ import { RichText, InnerBlocks } from '@wordpress/block-editor';
  * @param {Object} [props]           Properties passed from the editor.
  * @param {Object} props.attributes
  * @param {string} props.attributes.title
- * @param {string} props.attributes.mediaUrl
- * @param {string} props.attributes.mediaAlt
- * @param {string} props.attributes.url
- * @param {string} props.attributes.rel
- * @param {string} props.attributes.mediaAlt
- * @param {boolean} props.attributes.greyStyle
- * @param {boolean} props.attributes.department
+ * @param {string} props.attributes.body
  * @param {string} props.className
  * @return {WPElement} Element to render.
  */
@@ -37,9 +31,9 @@ export default function save({
 				tagName="h3"
 				value={title}
 			/>
-			<aside class="stat-wrapper clearfix">
-				<div class="stat-tout stat-tout--inline">
-					<div class="stat-tout__info-wrap">
+			<aside className="stat-wrapper clearfix">
+				<div className="stat-tout stat-tout--inline">
+					<div className="stat-tout__info-wrap">
 						<RichText.Content
 							tagName="span"
 							className="stat-tout__label"

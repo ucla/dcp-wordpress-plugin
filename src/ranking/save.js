@@ -6,7 +6,7 @@
  */
 import './style.scss';
 
-import { RichText, InnerBlocks } from '@wordpress/block-editor';
+import { RichText } from '@wordpress/block-editor';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -17,13 +17,16 @@ import { RichText, InnerBlocks } from '@wordpress/block-editor';
  * @param {Object} [props]           Properties passed from the editor.
  * @param {Object} props.attributes
  * @param {string} props.attributes.title
- * @param {string} props.attributes.mediaUrl
- * @param {string} props.attributes.mediaAlt
- * @param {string} props.attributes.url
- * @param {string} props.attributes.rel
- * @param {string} props.attributes.mediaAlt
- * @param {boolean} props.attributes.greyStyle
- * @param {boolean} props.attributes.department
+ * @param {string} props.attributes.segments
+ * @param {string} props.attributes.ranking1
+ * @param {string} props.attributes.label1
+ * @param {string} props.attributes.source1
+ * @param {string} props.attributes.ranking2
+ * @param {string} props.attributes.label2
+ * @param {string} props.attributes.source2
+ * @param {string} props.attributes.ranking3
+ * @param {string} props.attributes.label3
+ * @param {string} props.attributes.source3
  * @param {string} props.className
  * @return {WPElement} Element to render.
  */
@@ -50,14 +53,14 @@ export default function save({
 				value={title}
 			/>
 			{!segments || segments == '1' ?
-				<aside class="stat-wrapper clearfix">
-					<div class="stat-tout">
+				<aside className="stat-wrapper clearfix">
+					<div className="stat-tout">
 						<RichText.Content
 							tagName="span"
 							className="stat-tout__number"
 							value={ranking1}
 						/>
-						<div class="stat-tout__info-wrap">
+						<div className="stat-tout__info-wrap">
 							<RichText.Content
 								tagName="span"
 								className="stat-tout__label"
@@ -72,14 +75,14 @@ export default function save({
 					</div>
 				</aside>
 			: segments == '1, inline' ?
-				<aside class="stat-wrapper clearfix">
-					<div class="stat-tout stat-tout--inline">
+				<aside className="stat-wrapper clearfix">
+					<div className="stat-tout stat-tout--inline">
 						<RichText.Content
 							tagName="span"
 							className="stat-tout__number"
 							value={ranking1}
 						/>
-						<div class="stat-tout__info-wrap">
+						<div className="stat-tout__info-wrap">
 							<RichText.Content
 								tagName="span"
 								className="stat-tout__label"
@@ -94,15 +97,15 @@ export default function save({
 					</div>
 				</aside>
 			: segments == '2' ?
-				<div class="stat-set">
-					<aside class="stat-wrapper clearfix">
-						<div class="stat-tout stat-tout--inline">
+				<div className="stat-set">
+					<aside className="stat-wrapper clearfix">
+						<div className="stat-tout stat-tout--inline">
 							<RichText.Content
 								tagName="span"
 								className="stat-tout__number"
 								value={ranking1}
 							/>
-							<div class="stat-tout__info-wrap">
+							<div className="stat-tout__info-wrap">
 								<RichText.Content
 									tagName="span"
 									className="stat-tout__label"
@@ -117,14 +120,14 @@ export default function save({
 						</div>
 					</aside>
 
-					<aside class="stat-wrapper clearfix">
-						<div class="stat-tout stat-tout--inline">
+					<aside className="stat-wrapper clearfix">
+						<div className="stat-tout stat-tout--inline">
 							<RichText.Content
 								tagName="span"
 								className="stat-tout__number"
 								value={ranking2}
 							/>
-							<div class="stat-tout__info-wrap">
+							<div className="stat-tout__info-wrap">
 								<RichText.Content
 									tagName="span"
 									className="stat-tout__label"
@@ -140,15 +143,15 @@ export default function save({
 					</aside>
 				</div>
 			:
-				<div class="stat-set">
-					<aside class="stat-wrapper clearfix">
-						<div class="stat-tout">
+				<div className="stat-set">
+					<aside className="stat-wrapper clearfix">
+						<div className="stat-tout">
 							<RichText.Content
 								tagName="span"
 								className="stat-tout__number"
 								value={ranking1}
 							/>
-							<div class="stat-tout__info-wrap">
+							<div className="stat-tout__info-wrap">
 								<RichText.Content
 									tagName="span"
 									className="stat-tout__label"
@@ -163,14 +166,14 @@ export default function save({
 						</div>
 					</aside>
 
-					<aside class="stat-wrapper clearfix">
-						<div class="stat-tout">
+					<aside className="stat-wrapper clearfix">
+						<div className="stat-tout">
 							<RichText.Content
 								tagName="span"
 								className="stat-tout__number"
 								value={ranking2}
 							/>
-							<div class="stat-tout__info-wrap">
+							<div className="stat-tout__info-wrap">
 								<RichText.Content
 									tagName="span"
 									className="stat-tout__label"
@@ -185,14 +188,14 @@ export default function save({
 						</div>
 					</aside>
 
-					<aside class="stat-wrapper clearfix">
-						<div class="stat-tout">
+					<aside className="stat-wrapper clearfix">
+						<div className="stat-tout">
 							<RichText.Content
 								tagName="span"
 								className="stat-tout__number"
 								value={ranking3}
 							/>
-							<div class="stat-tout__info-wrap">
+							<div className="stat-tout__info-wrap">
 								<RichText.Content
 									tagName="span"
 									className="stat-tout__label"

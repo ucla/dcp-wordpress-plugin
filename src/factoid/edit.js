@@ -14,30 +14,10 @@ import { __ } from '@wordpress/i18n';
  */
 import './editor.scss';
 
-import { useState, useCallback } from '@wordpress/element';
-import {
-	KeyboardShortcuts,
-	PanelBody,
-	TextareaControl,
-	ExternalLink,
-	Button,
-	ToggleControl,
-	TextControl,
-	ToolbarButton,
-	ToolbarGroup,
-	Popover,
-} from '@wordpress/components';
 import {
 	InspectorControls,
 	RichText,
-	InnerBlocks,
-	MediaUpload,
-	MediaUploadCheck,
-	BlockControls,
-	__experimentalLinkControl as LinkControl,
 } from '@wordpress/block-editor';
-import { rawShortcut, displayShortcut } from '@wordpress/keycodes';
-import { link, linkOff } from '@wordpress/icons';
 
 
 /**
@@ -81,9 +61,9 @@ export default function Edit({
 					onChange={onChangeTitle}
 					placeholder='UCLA Factoid'
 				/>
-				<aside class="stat-wrapper clearfix">
-					<div class="stat-tout stat-tout--inline">
-						<div class="stat-tout__info-wrap">
+				<aside className="stat-wrapper clearfix">
+					<div className="stat-tout stat-tout--inline">
+						<div className="stat-tout__info-wrap">
 							<RichText
 								tagName="span"
 								className="stat-tout__label"

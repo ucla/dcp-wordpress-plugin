@@ -14,30 +14,11 @@ import { __ } from '@wordpress/i18n';
  */
 import './editor.scss';
 
-import { useState, useCallback } from '@wordpress/element';
+import { useState } from '@wordpress/element';
 import {
-	KeyboardShortcuts,
-	PanelBody,
-	TextareaControl,
-	ExternalLink,
-	Button,
-	ToggleControl,
-	TextControl,
-	ToolbarButton,
-	ToolbarGroup,
-	Popover,
-} from '@wordpress/components';
-import {
-	InspectorControls,
 	RichText,
 	InnerBlocks,
-	MediaUpload,
-	MediaUploadCheck,
-	BlockControls,
-	__experimentalLinkControl as LinkControl,
 } from '@wordpress/block-editor';
-import { rawShortcut, displayShortcut } from '@wordpress/keycodes';
-import { link, linkOff } from '@wordpress/icons';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -57,58 +38,39 @@ export default function Edit({
 	isSelected,
 	className,
 }) {
+	
 	let {
 		title,
 	} = attributes;
+	
 	const onChangeTitle = (value) => {
 		setAttributes({ title: value });
 	};
+	
 	const [showBody, setShowBody] = useState(false);
+	
 	const onClick = () => {
-		setShowBody(!showBody)
-	}
-	// const onChangeBody = (value) => {
-	// 	setAttributes({ body: value });
-	// };
+		setShowBody(!showBody);
+	};
 
 	return (
 		<>
-			{/* <InspectorControls>
-				<PanelBody title={__('Content')}>
-					<TextControl
-						label={__('Inner text')}
-						value={attributes.body || ''}
-						onChange={onChangeBody}
-					/>
-				</PanelBody>
-			</InspectorControls> */}
 			<article className={className}>
-				<section class="accordion">
+				<section className="accordion">
 					<dl>
-						{/* <button class="accordion__title" aria-expanded="false">
-							<dt>Title</dt>
+						<button onMouseDown={onClick} className="accordion__title" aria-expanded="false">
+							<dt>
+								<RichText
+									tagName="span"
+									value={attributes.title}
+									onChange={onChangeTitle}
+									placeholder="Title here"
+								/>
+							</dt>
 						</button>
-
-						<dd class="accordion__content"> 
-							<p>         
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque maximus sed tellus id ullamcorper. In iaculis dolor vitae urna mattis, vel pellentesque dui semper. Sed dignissim, lorem eget tincidunt sollicitudin, nulla nibh gravida arcu, a fringilla turpis risus id eros. Aliquam lobortis iaculis nunc. Integer imperdiet lacus eget arcu aliquam volutpat. Integer molestie consequat facilisis. Nam dui odio, hendrerit porttitor elit ac, auctor tristique dui. Proin a bibendum sem, ac laoreet neque. Vestibulum elit sem, tincidunt eu lorem at, ullamcorper gravida nulla. Phasellus nec ex eros. Donec at odio eget turpis luctus euismod. Fusce mi ex, tincidunt nec accumsan fringilla, tincidunt venenatis ex. Praesent hendrerit quis dolor hendrerit tristique. Quisque ut metus turpis.
-							</p>
-						</dd> */}
-						<button onMouseDown={onClick} class="accordion__title" aria-expanded="false">
-						<dt>
-							{/* Title */}
-							<RichText
-								tagName="span"
-								// className="copy__headline-ribbon"
-								value={attributes.title}
-								onChange={onChangeTitle}
-								placeholder="Title here"
-							/>
-						</dt>
-					</button>
-					<dd class="accordion__content" style={{ display: `${showBody ? 'block' : 'none'}` }}> 
-						<InnerBlocks />
-					</dd>
+						<dd className="accordion__content" style={{ display: `${showBody ? 'block' : 'none'}` }}> 
+							<InnerBlocks />
+						</dd>
 					</dl>    
 				</section>
 			</article>

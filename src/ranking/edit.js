@@ -14,33 +14,14 @@ import { __ } from '@wordpress/i18n';
  */
 import './editor.scss';
 
-import { useState, useCallback } from '@wordpress/element';
 import {
-	KeyboardShortcuts,
 	PanelBody,
-	TextareaControl,
-	ExternalLink,
-	Button,
-	ToggleControl,
-	TextControl,
-	ToolbarButton,
-	ToolbarGroup,
-	Popover,
 	SelectControl,
 } from '@wordpress/components';
 import {
 	InspectorControls,
 	RichText,
-	InnerBlocks,
-	MediaUpload,
-	MediaUploadCheck,
-	BlockControls,
-	__experimentalLinkControl as LinkControl,
 } from '@wordpress/block-editor';
-import { rawShortcut, displayShortcut } from '@wordpress/keycodes';
-import { link, linkOff } from '@wordpress/icons';
-
-
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -144,8 +125,8 @@ export default function Edit({
 					placeholder='UCLA Ranking'
 				/>
 				{!attributes.segments || attributes.segments == '1' ?
-					<aside class="stat-wrapper clearfix">
-						<div class="stat-tout">
+					<aside className="stat-wrapper clearfix">
+						<div className="stat-tout">
 							<RichText
 								tagName="span"
 								className="stat-tout__number"
@@ -153,7 +134,7 @@ export default function Edit({
 								onChange={onChangeRanking1}
 								placeholder='#1'
 							/>
-							<div class="stat-tout__info-wrap">
+							<div className="stat-tout__info-wrap">
 								<RichText
 									tagName="span"
 									className="stat-tout__label"
@@ -172,8 +153,8 @@ export default function Edit({
 						</div>
 					</aside>
 				: attributes.segments == '1, inline' ?
-					<aside class="stat-wrapper clearfix">
-						<div class="stat-tout stat-tout--inline">
+					<aside className="stat-wrapper clearfix">
+						<div className="stat-tout stat-tout--inline">
 							<RichText
 								tagName="span"
 								className="stat-tout__number"
@@ -181,7 +162,7 @@ export default function Edit({
 								onChange={onChangeRanking1}
 								placeholder='#1'
 							/>
-							<div class="stat-tout__info-wrap">
+							<div className="stat-tout__info-wrap">
 								<RichText
 									tagName="span"
 									className="stat-tout__label"
@@ -200,9 +181,9 @@ export default function Edit({
 						</div>
 					</aside>
 				: attributes.segments == '2' ?
-					<div class="stat-set">
-						<aside class="stat-wrapper clearfix">
-							<div class="stat-tout stat-tout--inline">
+					<div className="stat-set">
+						<aside className="stat-wrapper clearfix">
+							<div className="stat-tout stat-tout--inline">
 								<RichText
 									tagName="span"
 									className="stat-tout__number"
@@ -210,7 +191,7 @@ export default function Edit({
 									onChange={onChangeRanking1}
 									placeholder='#1'
 								/>
-								<div class="stat-tout__info-wrap">
+								<div className="stat-tout__info-wrap">
 									<RichText
 										tagName="span"
 										className="stat-tout__label"
@@ -229,8 +210,8 @@ export default function Edit({
 							</div>
 						</aside>
 
-						<aside class="stat-wrapper clearfix">
-							<div class="stat-tout stat-tout--inline">
+						<aside className="stat-wrapper clearfix">
+							<div className="stat-tout stat-tout--inline">
 								<RichText
 									tagName="span"
 									className="stat-tout__number"
@@ -238,7 +219,7 @@ export default function Edit({
 									onChange={onChangeRanking2}
 									placeholder='#2'
 								/>
-								<div class="stat-tout__info-wrap">
+								<div className="stat-tout__info-wrap">
 									<RichText
 										tagName="span"
 										className="stat-tout__label"
@@ -258,9 +239,9 @@ export default function Edit({
 						</aside>
 					</div>
 				:
-					<div class="stat-set">
-						<aside class="stat-wrapper clearfix">
-							<div class="stat-tout">
+					<div className="stat-set">
+						<aside className="stat-wrapper clearfix">
+							<div className="stat-tout">
 								<RichText
 									tagName="span"
 									className="stat-tout__number"
@@ -268,7 +249,7 @@ export default function Edit({
 									onChange={onChangeRanking1}
 									placeholder='#1'
 								/>
-								<div class="stat-tout__info-wrap">
+								<div className="stat-tout__info-wrap">
 									<RichText
 										tagName="span"
 										className="stat-tout__label"
@@ -287,8 +268,8 @@ export default function Edit({
 							</div>
 						</aside>
 
-						<aside class="stat-wrapper clearfix">
-							<div class="stat-tout">
+						<aside className="stat-wrapper clearfix">
+							<div className="stat-tout">
 								<RichText
 									tagName="span"
 									className="stat-tout__number"
@@ -296,7 +277,7 @@ export default function Edit({
 									onChange={onChangeRanking2}
 									placeholder='#2'
 								/>
-								<div class="stat-tout__info-wrap">
+								<div className="stat-tout__info-wrap">
 									<RichText
 										tagName="span"
 										className="stat-tout__label"
@@ -315,8 +296,8 @@ export default function Edit({
 							</div>
 						</aside>
 
-						<aside class="stat-wrapper clearfix">
-							<div class="stat-tout">
+						<aside className="stat-wrapper clearfix">
+							<div className="stat-tout">
 								<RichText
 									tagName="span"
 									className="stat-tout__number"
@@ -324,7 +305,7 @@ export default function Edit({
 									onChange={onChangeRanking3}
 									placeholder='#3'
 								/>
-								<div class="stat-tout__info-wrap">
+								<div className="stat-tout__info-wrap">
 									<RichText
 										tagName="span"
 										className="stat-tout__label"
