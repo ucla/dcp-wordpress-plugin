@@ -14,28 +14,15 @@ import { __ } from '@wordpress/i18n';
  */
 import './editor.scss';
 import {
-	KeyboardShortcuts,
 	PanelBody,
-	TextareaControl,
-	ExternalLink,
-	Button,
-	ToggleControl,
-	TextControl,
-	ToolbarButton,
-	ToolbarGroup,
-	Popover,
 	SelectControl,
 } from '@wordpress/components';
 import {
 	InspectorControls,
 	RichText,
-	InnerBlocks,
-	MediaUpload,
-	MediaUploadCheck,
-	BlockControls,
-	__experimentalLinkControl as LinkControl,
 } from '@wordpress/block-editor';
 import { useState } from '@wordpress/element';
+
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -69,13 +56,13 @@ export default function Edit({
 	};
 
 	const onChangeTitle = (value, titleNum) => {
-		const newTabContent = attributes.tabContent.slice();
+		const newTabContent = tabContent.slice();
 		newTabContent[Number(titleNum)-1].title = value;
 		setAttributes({ tabContent: newTabContent });
 	};
 
 	const onChangeContent = (value, titleNum) => {
-		const newTabContent = attributes.tabContent.slice();
+		const newTabContent = tabContent.slice();
 		newTabContent[Number(titleNum)-1].content = value;
 		setAttributes({ tabContent: newTabContent });
 	};
@@ -86,7 +73,7 @@ export default function Edit({
 				<PanelBody title={ __( 'Statistic Style' ) }>
 					<SelectControl
 						label="Number of Tabs"
-						value={ attributes.numTabs }
+						value={ numTabs }
 						options={ [
 							{ label: '2', value: '2' },
 							{ label: '3', value: '3' },
@@ -100,8 +87,8 @@ export default function Edit({
 			</InspectorControls>
 			<div className={`tabs ${className ? className : ''}`}>
 				<div role="tablist" aria-label="content-tabs">
-					{attributes.tabContent.map((tabInfo) => {
-						if ((Number(tabInfo.id) > Number(attributes.numTabs)))
+					{tabContent.map((tabInfo) => {
+						if ((Number(tabInfo.id) > Number(numTabs)))
 							return null;
 						return (
 							<button
@@ -121,8 +108,8 @@ export default function Edit({
 						);
 					})}
 				</div>
-				{attributes.tabContent.map((tabInfo) => {
-					if ((Number(tabInfo.id) > Number(attributes.numTabs)))
+				{tabContent.map((tabInfo) => {
+					if ((Number(tabInfo.id) > Number(numTabs)))
 						return null;
 					return (
 						<div
@@ -135,6 +122,7 @@ export default function Edit({
 							hidden={currentTab == tabInfo.id ? "" : "hidden"}
 						>
 							<RichText
+								tagName='p'
 								value={tabInfo.content}
 								onChange={(value) => onChangeContent(value, tabInfo.id)}
 							/>

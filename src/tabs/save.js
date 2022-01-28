@@ -7,6 +7,7 @@
 import './style.scss';
 
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
+import { useState } from '@wordpress/element';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -17,7 +18,7 @@ import { RichText, InnerBlocks } from '@wordpress/block-editor';
  * @param {Object} [props]           Properties passed from the editor.
  * @param {Object} props.attributes
  * @param {string} props.attributes.numTabs
- * @param {string} props.attributes.tabContent
+ * @param {array} props.attributes.tabContent
  * @param {string} props.className
  * @return {WPElement} Element to render.
  */
@@ -26,26 +27,18 @@ export default function save({
 	className,
 }) {
 
-	const [currentTab, setCurrentTab] = useState("1");
-
 	return (
-		<div className={`tabs ${className ? className : ''}`}>
+		<section className={`tabs ${className ? className : ''}`}>
 			<div role="tablist" aria-label="content-tabs">
 				{tabContent.map((tabInfo) => {
-					console.log(tabContent)
-					console.log(tabInfo)
-					console.log(attributes)
-					console.log(numTabs)
 					if ((Number(tabInfo.id) > Number(numTabs)))
 						return null;
 					return (
 						<button
-							onClick={() => setCurrentTab(tabInfo.id)}
 							id={"panel-0" + tabInfo.id}
 							key={"panel-0" + tabInfo.id}
 							className="btn tablinks"
 							role="tab"
-							aria-selected={currentTab == tabInfo.id ? "true" : "false"}
 							aria-controls={"panel-0" + tabInfo.id + "-tab"}
 						>
 							<RichText.Content value={tabInfo.title}/>
@@ -64,12 +57,16 @@ export default function save({
 						role="tabpanel"
 						aria-labelledby={"panel-0" + tabInfo.id}
 						className="tabcontent"
-						hidden={currentTab == tabInfo.id ? "" : "hidden"}
+						hidden={tabInfo.id === "1" ? false : true}
 					>
-						<RichText.Content value={tabInfo.content}/>
+						<RichText.Content
+							tagName='p'
+							value={tabInfo.content}
+						/>
 					</div>
 				);
 			})}
-		</div>
+		</section>
 	);
 }
+ 
