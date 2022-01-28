@@ -40,6 +40,7 @@ export default function save({
 							className="btn tablinks"
 							role="tab"
 							aria-controls={"panel-0" + tabInfo.id + "-tab"}
+							aria-selected={tabInfo.id === "1" ? true : false}
 						>
 							<RichText.Content value={tabInfo.title}/>
 						</button>

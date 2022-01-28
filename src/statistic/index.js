@@ -26,7 +26,7 @@ export const settings = {
 	 * This is a short description for your block, can be translated with `i18n` functions.
 	 * It will be shown in the Block Tab in the Settings Sidebar.
 	 */
-	description: __( 'UCLA styled highlight of an important fact, data point, or ranking.', 'uwai' ),
+	description: __( 'UCLA styled highlight of an important statistic.', 'uwai' ),
 
 	/**
 	 * Blocks are grouped into categories to help users browse and discover them.

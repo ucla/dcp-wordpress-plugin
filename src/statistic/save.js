@@ -6,7 +6,7 @@
  */
 import './style.scss';
 
-import { RichText, InnerBlocks } from '@wordpress/block-editor';
+import { RichText } from '@wordpress/block-editor';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -29,163 +29,36 @@ import { RichText, InnerBlocks } from '@wordpress/block-editor';
  */
 export default function save({
 	attributes: {
-		title,
 		segments,
-		var1,
-		var2,
-		var3,
-		statistic1,
-		label1,
-		statistic2,
-		label2,
-		statistic3,
-		label3,
+		inline,
+		statistics,
 	},
 	className,
 }) {
 	return (
-		<div className={className}>
-			<RichText.Content
-				tagName="h3"
-				value={title}
-			/>
-			{!segments || segments == "1" ?
-				<aside class="stat-wrapper clearfix">
-					<div class="stat-tout">
-						<RichText.Content
-							tagName="span"
-							className="stat-tout__number"
-							value={statistic1}
-						/>
-						<RichText.Content
-							tagName="span"
-							className="stat-tout__label"
-							value={label1}
-						/>
-					</div>
-				</aside>
-			: segments == "1, inline" ?
-				<aside class="stat-wrapper clearfix">
-					<div class="stat-tout stat-tout--inline">
-						<RichText.Content
-							tagName="span"
-							className="stat-tout__number"
-							value={statistic1}
-						/>
-						<RichText.Content
-							tagName="span"
-							className="stat-tout__label"
-							value={label1}
-						/>
-					</div>
-				</aside>
-			: segments == "1, multivar" ?
-				<aside class="stat-wrapper clearfix">
-					<div class="stat-tout stat-tout--inline">
-						<span class="stat-tout__number">
-							{var1}
-							<span> {var2}</span>
-							{var3}
-						</span>
-						<div class="stat-tout__info-wrap">
-							<RichText.Content
-								tagName="span"
-								className="stat-tout__label"
-								value={label1}
-							/>
-						</div>
-					</div>
-				</aside>
-			: segments == "2" ?
-				<div class="stat-set">
-					<aside class="stat-wrapper clearfix">
-						<div class="stat-tout">
+		<div className={className + " stat-set"}>
+			{statistics.map((stat) => {
+				if (Number(stat.id) > Number(segments))
+					return null;
+				return(
+					<aside className="stat-wrapper clearfix" key={"statistic-0" + stat.id}>
+						<div className={`stat-tout ${inline ? 'stat-tout--inline' : ''}`}>
 							<RichText.Content
 								tagName="span"
 								className="stat-tout__number"
-								value={statistic1}
+								value={stat.number}
 							/>
-							<div class="stat-tout__info-wrap">
+							<div className="stat-tout__info-wrap">
 								<RichText.Content
 									tagName="span"
 									className="stat-tout__label"
-									value={label1}
+									value={stat.label}
 								/>
 							</div>
 						</div>
 					</aside>
-
-					<aside class="stat-wrapper clearfix">
-						<div class="stat-tout">
-							<RichText.Content
-								tagName="span"
-								className="stat-tout__number"
-								value={statistic2}
-							/>
-							<div class="stat-tout__info-wrap">
-								<RichText.Content
-									tagName="span"
-									className="stat-tout__label"
-									value={label2}
-								/>
-							</div>
-						</div>
-					</aside>
-				</div>
-			:
-				<div class="stat-set">
-					<aside class="stat-wrapper">
-						<div class="stat-tout">
-							<RichText.Content
-								tagName="span"
-								className="stat-tout__number"
-								value={statistic1}
-							/>
-							<div class="stat-tout__info-wrap">
-								<RichText.Content
-									tagName="span"
-									className="stat-tout__label"
-									value={label1}
-								/>
-							</div>
-						</div>
-					</aside>
-
-					<aside class="stat-wrapper">
-						<div class="stat-tout">
-							<RichText.Content
-								tagName="span"
-								className="stat-tout__number"
-								value={statistic2}
-							/>
-							<div class="stat-tout__info-wrap">
-								<RichText.Content
-									tagName="span"
-									className="stat-tout__label"
-									value={label2}
-								/>
-							</div>
-						</div>
-					</aside>
-
-					<aside class="stat-wrapper">
-						<div class="stat-tout">
-							<RichText.Content
-								tagName="span"
-								className="stat-tout__number"
-								value={statistic3}
-							/>
-							<div class="stat-tout__info-wrap">
-								<RichText.Content
-									tagName="span"
-									className="stat-tout__label"
-									value={label3}
-								/>
-							</div>
-						</div>
-					</aside>
-				</div>
-			}
+				);
+			})}
 		</div>
 	);
 }

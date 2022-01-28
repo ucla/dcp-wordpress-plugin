@@ -21,10 +21,6 @@
 				{ "id": "5", "title": "Title 5", "content": "Description 5" },
 				{ "id": "6", "title": "Title 6", "content": "Description 6" }
 			]
-		},
-		"currentTab": {
-			"type": "string",
-			"default": "1"
 		}
 	}
 }
