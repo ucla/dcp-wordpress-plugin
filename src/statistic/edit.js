@@ -49,6 +49,14 @@ export default function Edit({
 		statistics,
 	} = attributes;
 
+	const onChangeSegments = (value) => {
+		setAttributes({ segments: value });
+	};
+
+	const onToggleInline = (value) => {
+		setAttributes({ inline: value });
+	};
+
 	const onChangeNumber = (value, id) => {
 		const newStatistics = statistics.slice();
 		newStatistics[Number(id)-1].number = value;
@@ -59,14 +67,6 @@ export default function Edit({
 		const newStatistics = statistics.slice();
 		newStatistics[Number(id)-1].label = value;
 		setAttributes({ statistics: newStatistics });
-	};
-
-	const onChangeSegments = (value) => {
-		setAttributes({ segments: value });
-	};
-
-	const onToggleInline = (value) => {
-		setAttributes({ inline: value });
 	};
 
 	return (

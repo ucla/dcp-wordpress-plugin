@@ -16,201 +16,49 @@ import { RichText } from '@wordpress/block-editor';
  * @see https://developer.wordpress.org/block-editor/developers/block-api/block-edit-save/#save
  * @param {Object} [props]           Properties passed from the editor.
  * @param {Object} props.attributes
- * @param {string} props.attributes.title
  * @param {string} props.attributes.segments
- * @param {string} props.attributes.ranking1
- * @param {string} props.attributes.label1
- * @param {string} props.attributes.source1
- * @param {string} props.attributes.ranking2
- * @param {string} props.attributes.label2
- * @param {string} props.attributes.source2
- * @param {string} props.attributes.ranking3
- * @param {string} props.attributes.label3
- * @param {string} props.attributes.source3
+ * @param {Boolean} props.attributes.inline
+ * @param {Array} props.attributes.rankings
  * @param {string} props.className
  * @return {WPElement} Element to render.
  */
 export default function save({
 	attributes: {
-		title,
 		segments,
-		ranking1,
-		label1,
-		source1,
-		ranking2,
-		label2,
-		source2,
-		ranking3,
-		label3,
-		source3,
+		inline,
+		rankings,
 	},
 	className,
 }) {
 	return (
-		<div className={className}>
-			<RichText.Content
-				tagName="h3"
-				value={title}
-			/>
-			{!segments || segments == '1' ?
-				<aside className="stat-wrapper clearfix">
-					<div className="stat-tout">
-						<RichText.Content
-							tagName="span"
-							className="stat-tout__number"
-							value={ranking1}
-						/>
-						<div className="stat-tout__info-wrap">
-							<RichText.Content
-								tagName="span"
-								className="stat-tout__label"
-								value={label1}
-							/>
-							<RichText.Content
-								tagName="span"
-								className="stat-tout__source"
-								value={source1}
-							/>
-						</div>
-					</div>
-				</aside>
-			: segments == '1, inline' ?
-				<aside className="stat-wrapper clearfix">
-					<div className="stat-tout stat-tout--inline">
-						<RichText.Content
-							tagName="span"
-							className="stat-tout__number"
-							value={ranking1}
-						/>
-						<div className="stat-tout__info-wrap">
-							<RichText.Content
-								tagName="span"
-								className="stat-tout__label"
-								value={label1}
-							/>
-							<RichText.Content
-								tagName="span"
-								className="stat-tout__source"
-								value={source1}
-							/>
-						</div>
-					</div>
-				</aside>
-			: segments == '2' ?
-				<div className="stat-set">
-					<aside className="stat-wrapper clearfix">
-						<div className="stat-tout stat-tout--inline">
+		<div className={className + ' stat-set'}>
+			{rankings.map((rank) => {
+				if (Number(rank.id) > Number(segments))
+					return null;
+				return (
+					<aside className="stat-wrapper clearfix" key={"ranking-0" + rank.id}>
+						<div className={`stat-tout ${inline ? "stat-tout--inline" : ""}`}>
 							<RichText.Content
 								tagName="span"
 								className="stat-tout__number"
-								value={ranking1}
+								value={rank.ranking}
 							/>
 							<div className="stat-tout__info-wrap">
 								<RichText.Content
 									tagName="span"
 									className="stat-tout__label"
-									value={label1}
+									value={rank.label}
 								/>
 								<RichText.Content
 									tagName="span"
 									className="stat-tout__source"
-									value={source1}
+									value={rank.source}
 								/>
 							</div>
 						</div>
 					</aside>
-
-					<aside className="stat-wrapper clearfix">
-						<div className="stat-tout stat-tout--inline">
-							<RichText.Content
-								tagName="span"
-								className="stat-tout__number"
-								value={ranking2}
-							/>
-							<div className="stat-tout__info-wrap">
-								<RichText.Content
-									tagName="span"
-									className="stat-tout__label"
-									value={label2}
-								/>
-								<RichText.Content
-									tagName="span"
-									className="stat-tout__source"
-									value={source2}
-								/>
-							</div>
-						</div>
-					</aside>
-				</div>
-			:
-				<div className="stat-set">
-					<aside className="stat-wrapper clearfix">
-						<div className="stat-tout">
-							<RichText.Content
-								tagName="span"
-								className="stat-tout__number"
-								value={ranking1}
-							/>
-							<div className="stat-tout__info-wrap">
-								<RichText.Content
-									tagName="span"
-									className="stat-tout__label"
-									value={label1}
-								/>
-								<RichText.Content
-									tagName="span"
-									className="stat-tout__source"
-									value={source1}
-								/>
-							</div>
-						</div>
-					</aside>
-
-					<aside className="stat-wrapper clearfix">
-						<div className="stat-tout">
-							<RichText.Content
-								tagName="span"
-								className="stat-tout__number"
-								value={ranking2}
-							/>
-							<div className="stat-tout__info-wrap">
-								<RichText.Content
-									tagName="span"
-									className="stat-tout__label"
-									value={label2}
-								/>
-								<RichText.Content
-									tagName="span"
-									className="stat-tout__source"
-									value={source2}
-								/>
-							</div>
-						</div>
-					</aside>
-
-					<aside className="stat-wrapper clearfix">
-						<div className="stat-tout">
-							<RichText.Content
-								tagName="span"
-								className="stat-tout__number"
-								value={ranking3}
-							/>
-							<div className="stat-tout__info-wrap">
-								<RichText.Content
-									tagName="span"
-									className="stat-tout__label"
-									value={label3}
-								/>
-								<RichText.Content
-									tagName="span"
-									className="stat-tout__source"
-									value={source3}
-								/>
-							</div>
-						</div>
-					</aside>
-				</div>
-			}
+				);
+			})}
 		</div>
 	);
 }

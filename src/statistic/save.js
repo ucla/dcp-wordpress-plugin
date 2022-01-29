@@ -16,14 +16,9 @@ import { RichText } from '@wordpress/block-editor';
  * @see https://developer.wordpress.org/block-editor/developers/block-api/block-edit-save/#save
  * @param {Object} [props]           Properties passed from the editor.
  * @param {Object} props.attributes
- * @param {string} props.attributes.title
- * @param {string} props.attributes.mediaUrl
- * @param {string} props.attributes.mediaAlt
- * @param {string} props.attributes.url
- * @param {string} props.attributes.rel
- * @param {string} props.attributes.mediaAlt
- * @param {boolean} props.attributes.greyStyle
- * @param {boolean} props.attributes.department
+ * @param {string} props.attributes.segments
+ * @param {Boolean} props.attributes.inline
+ * @param {Array} props.attributes.statistics
  * @param {string} props.className
  * @return {WPElement} Element to render.
  */

@@ -7,38 +7,21 @@
 		"html": false
 	},
 	"attributes": {
-		"title": {
-			"type": "string"
-		},
 		"segments": {
-			"type": "string"
+			"type": "string",
+			"default": "1"
 		},
-		"ranking1": {
-			"type": "string"
+		"inline": {
+			"type": "boolean",
+			"default": false
 		},
-		"label1": {
-			"type": "string"
-		},
-		"source1": {
-			"type": "string"
-		},
-		"ranking2": {
-			"type": "string"
-		},
-		"label2": {
-			"type": "string"
-		},
-		"source2": {
-			"type": "string"
-		},
-		"ranking3": {
-			"type": "string"
-		},
-		"label3": {
-			"type": "string"
-		},
-		"source3": {
-			"type": "string"
+		"rankings": {
+			"type": "array",
+			"default": [
+				{"id": "1", "ranking": "#1", "label": "Text here", "source": "Source"},
+				{"id": "2", "ranking": "#2", "label": "Text here", "source": "Source"},
+				{"id": "3", "ranking": "#3", "label": "Text here", "source": "Source"}
+			]
 		}
 	}
 }

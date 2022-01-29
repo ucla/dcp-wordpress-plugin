@@ -39,13 +39,8 @@ export default function Edit({
 	className,
 }) {
 	let {
-		title,
 		body,
 	} = attributes;
-
-	const onChangeTitle = (value) => {
-		setAttributes({ title: value });
-	};
 
 	const onChangeBody = (value) => {
 		setAttributes({ body: value });
@@ -55,23 +50,15 @@ export default function Edit({
 		<>
 			<InspectorControls />
 			<article className={className}>
-				<RichText
-					tagName="h3"
-					value={title}
-					onChange={onChangeTitle}
-					placeholder='UCLA Factoid'
-				/>
 				<aside className="stat-wrapper clearfix">
-					<div className="stat-tout stat-tout--inline">
-						<div className="stat-tout__info-wrap">
-							<RichText
-								tagName="span"
-								className="stat-tout__label"
-								value={body}
-								onChange={onChangeBody}
-								placeholder='Some text'
-							/>
-						</div>
+					<div className="stat-tout stat-tout--inline stat-tout__info-wrap">
+						<RichText
+							tagName="span"
+							className="stat-tout__label"
+							value={body}
+							onChange={onChangeBody}
+							placeholder='Some text'
+						/>
 					</div>
 				</aside>
 			</article>

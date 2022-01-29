@@ -17,6 +17,7 @@ import './editor.scss';
 import {
 	PanelBody,
 	SelectControl,
+	ToggleControl,
 } from '@wordpress/components';
 import {
 	InspectorControls,
@@ -42,61 +43,35 @@ export default function Edit({
 	className,
 }) {
 	let {
-		title,
-		segments = "1",
-		ranking1,
-		label1,
-		source1,
-		ranking2,
-		label2,
-		source2,
-		ranking3,
-		label3,
-		source3,
+		segments,
+		inline,
+		rankings,
 	} = attributes;
-
-	const onChangeTitle = (value) => {
-		setAttributes({ title: value });
-	};
 
 	const onChangeSegments = (value) => {
 		setAttributes({ segments: value });
 	};
 
-	const onChangeRanking1 = (value) => {
-		setAttributes({ ranking1: value });
+	const onToggleInline = (value) => {
+		setAttributes({ inline: value });
 	};
 
-	const onChangeLabel1 = (value) => {
-		setAttributes({ label1: value });
+	const onChangeRanking = (value, id) => {
+		const newRankings = rankings.slice();
+		newRankings[Number(id)-1].ranking = value;
+		setAttributes({ rankings: newRankings });
+	};
+	
+	const onChangeLabel = (value, id) => {
+		const newRankings = rankings.slice();
+		newRankings[Number(id)-1].label = value;
+		setAttributes({ rankings: newRankings });
 	};
 
-	const onChangeSource1 = (value) => {
-		setAttributes({ source1: value });
-	};
-
-	const onChangeRanking2 = (value) => {
-		setAttributes({ ranking2: value });
-	};
-
-	const onChangeLabel2 = (value) => {
-		setAttributes({ label2: value });
-	};
-
-	const onChangeSource2 = (value) => {
-		setAttributes({ source2: value });
-	};
-
-	const onChangeRanking3 = (value) => {
-		setAttributes({ ranking3: value });
-	};
-
-	const onChangeLabel3 = (value) => {
-		setAttributes({ label3: value });
-	};
-
-	const onChangeSource3 = (value) => {
-		setAttributes({ source3: value });
+	const onChangeSource = (value, id) => {
+		const newRankings = rankings.slice();
+		newRankings[Number(id)-1].source = value;
+		setAttributes({ rankings: newRankings });
 	};
 
 	return (
@@ -105,226 +80,55 @@ export default function Edit({
 				<PanelBody title={ __( 'Ranking Style' ) }>
 					<SelectControl
 						label="Number of Segments"
-						defaultValue='1'
-						value={ attributes.segments }
+						value={ segments }
 						options={ [
-							{ label: 'Single', value: '1' },
-							{ label: 'Single, inline', value: '1, inline' },
-							{ label: 'Two across', value: '2' },
-							{ label: 'Three across', value: '3' },
+							{ label: '1', value: '1' },
+							{ label: '2', value: '2' },
+							{ label: '3', value: '3' },
 						] }
 						onChange={ onChangeSegments }
 					/>
+					<ToggleControl
+						label={__('Label Inline')}
+						onChange={onToggleInline}
+						checked={inline}
+					/>
 				</PanelBody>
 			</InspectorControls>
-			<article className={className}>
-				<RichText
-					tagName="h3"
-					value={attributes.title}
-					onChange={onChangeTitle}
-					placeholder='UCLA Ranking'
-				/>
-				{!attributes.segments || attributes.segments == '1' ?
-					<aside className="stat-wrapper clearfix">
-						<div className="stat-tout">
-							<RichText
-								tagName="span"
-								className="stat-tout__number"
-								value={attributes.ranking1}
-								onChange={onChangeRanking1}
-								placeholder='#1'
-							/>
-							<div className="stat-tout__info-wrap">
-								<RichText
-									tagName="span"
-									className="stat-tout__label"
-									value={attributes.label1}
-									onChange={onChangeLabel1}
-									placeholder="Text here"
-								/>
-								<RichText
-									tagName="span"
-									className="stat-tout__source"
-									value={attributes.source1}
-									onChange={onChangeSource1}
-									placeholder='Source'
-								/>
-							</div>
-						</div>
-					</aside>
-				: attributes.segments == '1, inline' ?
-					<aside className="stat-wrapper clearfix">
-						<div className="stat-tout stat-tout--inline">
-							<RichText
-								tagName="span"
-								className="stat-tout__number"
-								value={attributes.ranking1}
-								onChange={onChangeRanking1}
-								placeholder='#1'
-							/>
-							<div className="stat-tout__info-wrap">
-								<RichText
-									tagName="span"
-									className="stat-tout__label"
-									value={attributes.label1}
-									onChange={onChangeLabel1}
-									placeholder='Text here'
-								/>
-								<RichText
-									tagName="span"
-									className="stat-tout__source"
-									value={attributes.source1}
-									onChange={onChangeSource1}
-									placeholder='Source'
-								/>
-							</div>
-						</div>
-					</aside>
-				: attributes.segments == '2' ?
-					<div className="stat-set">
-						<aside className="stat-wrapper clearfix">
-							<div className="stat-tout stat-tout--inline">
+			<article className={className + ' stat-set'}>
+				{rankings.map((rank) => {
+					if (Number(rank.id) > Number(segments))
+						return null;
+					return (
+						<aside className="stat-wrapper clearfix" key={"ranking-0" + rank.id}>
+							<div className={`stat-tout ${inline ? "stat-tout--inline" : ""}`}>
 								<RichText
 									tagName="span"
 									className="stat-tout__number"
-									value={attributes.ranking1}
-									onChange={onChangeRanking1}
+									value={rank.ranking}
+									onChange={(value) => onChangeRanking(value, rank.id)}
 									placeholder='#1'
 								/>
 								<div className="stat-tout__info-wrap">
 									<RichText
 										tagName="span"
 										className="stat-tout__label"
-										value={attributes.label1}
-										onChange={onChangeLabel1}
-										placeholder='Text here'
+										value={rank.label}
+										onChange={(value) => onChangeLabel(value, rank.id)}
+										placeholder="Text here"
 									/>
 									<RichText
 										tagName="span"
 										className="stat-tout__source"
-										value={attributes.source1}
-										onChange={onChangeSource1}
+										value={rank.source}
+										onChange={(value) => onChangeSource(value, rank.id)}
 										placeholder='Source'
 									/>
 								</div>
 							</div>
 						</aside>
-
-						<aside className="stat-wrapper clearfix">
-							<div className="stat-tout stat-tout--inline">
-								<RichText
-									tagName="span"
-									className="stat-tout__number"
-									value={attributes.ranking2}
-									onChange={onChangeRanking2}
-									placeholder='#2'
-								/>
-								<div className="stat-tout__info-wrap">
-									<RichText
-										tagName="span"
-										className="stat-tout__label"
-										value={attributes.label2}
-										onChange={onChangeLabel2}
-										placeholder='Text here'
-									/>
-									<RichText
-										tagName="span"
-										className="stat-tout__source"
-										value={attributes.source2}
-										onChange={onChangeSource2}
-										placeholder='Source'
-									/>
-								</div>
-							</div>
-						</aside>
-					</div>
-				:
-					<div className="stat-set">
-						<aside className="stat-wrapper clearfix">
-							<div className="stat-tout">
-								<RichText
-									tagName="span"
-									className="stat-tout__number"
-									value={attributes.ranking1}
-									onChange={onChangeRanking1}
-									placeholder='#1'
-								/>
-								<div className="stat-tout__info-wrap">
-									<RichText
-										tagName="span"
-										className="stat-tout__label"
-										value={attributes.label1}
-										onChange={onChangeLabel1}
-										placeholder='Text here'
-									/>
-									<RichText
-										tagName="span"
-										className="stat-tout__source"
-										value={attributes.source1}
-										onChange={onChangeSource1}
-										placeholder='Source'
-									/>
-								</div>
-							</div>
-						</aside>
-
-						<aside className="stat-wrapper clearfix">
-							<div className="stat-tout">
-								<RichText
-									tagName="span"
-									className="stat-tout__number"
-									value={attributes.ranking2}
-									onChange={onChangeRanking2}
-									placeholder='#2'
-								/>
-								<div className="stat-tout__info-wrap">
-									<RichText
-										tagName="span"
-										className="stat-tout__label"
-										value={attributes.label2}
-										onChange={onChangeLabel2}
-										placeholder='Text here'
-									/>
-									<RichText
-										tagName="span"
-										className="stat-tout__source"
-										value={attributes.source2}
-										onChange={onChangeSource2}
-										placeholder='Source'
-									/>
-								</div>
-							</div>
-						</aside>
-
-						<aside className="stat-wrapper clearfix">
-							<div className="stat-tout">
-								<RichText
-									tagName="span"
-									className="stat-tout__number"
-									value={attributes.ranking3}
-									onChange={onChangeRanking3}
-									placeholder='#3'
-								/>
-								<div className="stat-tout__info-wrap">
-									<RichText
-										tagName="span"
-										className="stat-tout__label"
-										value={attributes.label3}
-										onChange={onChangeLabel3}
-										placeholder='Text here'
-									/>
-									<RichText
-										tagName="span"
-										className="stat-tout__source"
-										value={attributes.source3}
-										onChange={onChangeSource3}
-										placeholder='Source'
-									/>
-								</div>
-							</div>
-						</aside>
-					</div>
-				}
+					);
+				})}
 			</article>
 		</>
 	);
