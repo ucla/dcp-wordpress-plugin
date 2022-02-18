@@ -18,6 +18,7 @@
 	},
 	"dependencies": {
 		"@wordpress/icons": "^2.4.0",
-		"ucla-bruin-components": "https://bitbucket.org/uclaucomm/ucla-bruin-components.git#main"
+		"react-image-gallery": "^1.2.7",
+		"ucla-bruin-components": "https://bitbucket.org/uclaucomm/ucla-bruin-component-library.git#campus"
 	}
 }

@@ -1,0 +1,180 @@
+{
+	"name": "uwai/carousel",
+	"title": "UWAI Carousel",
+	"category": "common",
+	"textdomain": "uwai",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"mediaAlt": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "img",
+			"attribute": "alt",
+			"default": ""
+		},
+		"mediaId": {
+			"type": "number"
+		},
+		"mediaUrl": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "img",
+			"attribute": "src"
+		},
+		"thumbnail": {
+			"type": "boolean",
+			"default": false
+		},
+		"thumbnailPos": {
+			"type": "string",
+			"default": "bottom"
+		},
+		"titleVisible": {
+			"type": "boolean",
+			"default": false
+		},
+		"titleText": {
+			"type": "string",
+			"default": "UCLA Title"
+		},
+		"autoplay": {
+			"type": "boolean",
+			"default": false
+		},
+		"autoplayInterval": {
+			"type": "string",
+			"default": "3"
+		},
+		"fullscreen": {
+			"type": "boolean",
+			"default": false
+		},
+		"captionColor": {
+			"type": "string",
+			"default": "white on dark"
+		},
+		"captionLocation": {
+			"type": "string",
+			"default": "bottom left"
+		},
+		"captionSize": {
+			"type": "string",
+			"default": "medium"
+		},
+		"numSlides": {
+			"type": "string",
+			"default": "4"
+		},
+		"slideList": {
+			"type": "array",
+			"default": [
+				{
+					"original": "https://picsum.photos/id/1018/1000/600/",
+					"originalClass": "blue-on-yellow",
+					"originalAlt": "",
+					"thumbnail": "https://picsum.photos/id/1018/250/150",
+					"originalHeight": "600",
+					"originalWidth": "1000",
+					"thumbnailHeight": "150",
+					"thumbnailWidth": "250",
+					"description": "Hello there",
+					"link": "",
+					"mediaID": ""
+				},
+				{
+					"original": "https://picsum.photos/id/1015/1000/600/",
+					"originalClass": "blue-on-yellow",
+					"originalAlt": "",
+					"thumbnail": "https://picsum.photos/id/1015/250/150/",
+					"originalHeight": "600",
+					"originalWidth": "1000",
+					"thumbnailHeight": "150",
+					"thumbnailWidth": "250",
+					"description": "Image 2",
+					"link": "",
+					"mediaID": ""
+				},
+				{
+					"original": "https://picsum.photos/id/1019/1000/600/",
+					"originalClass": "blue-on-yellow",
+					"originalAlt": "",
+					"thumbnail": "https://picsum.photos/id/1019/250/150/",
+					"originalHeight": "600",
+					"originalWidth": "1000",
+					"thumbnailHeight": "150",
+					"thumbnailWidth": "250",
+					"description": "Image 3",
+					"link": "",
+					"mediaID": ""
+				},
+				{
+					"original": "https://picsum.photos/id/1018/1000/600/",
+					"originalClass": "blue-on-yellow",
+					"originalAlt": "",
+					"thumbnail": "https://picsum.photos/id/1018/250/150",
+					"originalHeight": "600",
+					"originalWidth": "1000",
+					"thumbnailHeight": "150",
+					"thumbnailWidth": "250",
+					"description": "Hello there 4",
+					"link": "",
+					"mediaID": ""
+				},
+				{
+					"original": "https://picsum.photos/id/1015/1000/600/",
+					"originalClass": "blue-on-yellow",
+					"originalAlt": "",
+					"thumbnail": "https://picsum.photos/id/1015/250/150/",
+					"originalHeight": "600",
+					"originalWidth": "1000",
+					"thumbnailHeight": "150",
+					"thumbnailWidth": "250",
+					"description": "Image 5",
+					"link": "",
+					"mediaID": ""
+				},
+				{
+					"original": "https://picsum.photos/id/1019/1000/600/",
+					"originalClass": "blue-on-yellow",
+					"originalAlt": "",
+					"thumbnail": "https://picsum.photos/id/1019/250/150/",
+					"originalHeight": "600",
+					"originalWidth": "1000",
+					"thumbnailHeight": "150",
+					"thumbnailWidth": "250",
+					"description": "Image 6",
+					"link": "",
+					"mediaID": ""
+				},
+				{
+					"original": "https://picsum.photos/id/1018/1000/600/",
+					"originalClass": "blue-on-yellow",
+					"originalAlt": "",
+					"thumbnail": "https://picsum.photos/id/1018/250/150",
+					"originalHeight": "600",
+					"originalWidth": "1000",
+					"thumbnailHeight": "150",
+					"thumbnailWidth": "250",
+					"description": "Hello there 7",
+					"link": "",
+					"mediaID": ""
+				},
+				{
+					"original": "https://picsum.photos/id/1015/1000/600/",
+					"originalClass": "blue-on-yellow",
+					"originalAlt": "",
+					"thumbnail": "https://picsum.photos/id/1015/250/150/",
+					"originalHeight": "600",
+					"originalWidth": "1000",
+					"thumbnailHeight": "150",
+					"thumbnailWidth": "250",
+					"description": "Image 8",
+					"link": "",
+					"mediaID": ""
+				}
+			]
+		}
+	}
+}
