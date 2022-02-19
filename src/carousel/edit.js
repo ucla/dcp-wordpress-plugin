@@ -98,9 +98,6 @@ export default function Edit({
 	let {
 		titleVisible,
 		titleText,
-		mediaAlt,
-		mediaUrl,
-		mediaId,
 		thumbnail,
 		thumbnailPos,
 		autoplay,
@@ -180,6 +177,7 @@ export default function Edit({
 	const setTitleVisible = (value) => {
 		if (value && (captionLocation == "Top left" ||
 				captionLocation == "Top center" || captionLocation == "Top right")) {
+			var captions = document.getElementsByClassName("image-gallery-description");
 			for (var k in captions) {
 				if (captions[k] && captions[k]['style']) {
 					captions[k]['style']['top'] = "initial";
@@ -233,9 +231,10 @@ export default function Edit({
 				break;
 		}
 		for (var k in captions) {
-			console.log(captions[k]['style']);
-			captions[k]['style']['color'] = textColor;
-			captions[k]['style']['backgroundColor'] = backgroundColor;
+			if (captions[k] && captions[k]['style']) {
+				captions[k]['style']['color'] = textColor;
+				captions[k]['style']['backgroundColor'] = backgroundColor;
+			}
 		}
 		setAttributes({captionColor: value});
 	}
@@ -289,8 +288,10 @@ export default function Edit({
 					if (captions[k] && captions[k]['style']) {
 						captions[k]['style']['top'] = "initial";
 						captions[k]['style']['bottom'] = "70px";
-						captions[k]['style']['left'] = "44%";
+						captions[k]['style']['left'] = "initial";
 						captions[k]['style']['right'] = "initial";
+						captions[k]['style']['marginLeft'] = "auto";
+						captions[k]['style']['marginRight'] = "auto";
 					}
 				}
 				break;
@@ -305,11 +306,11 @@ export default function Edit({
 				}
 				break;
 		}
-
 		setAttributes({captionLocation: value});
 	}
 
 	const onChangeCaptionSize = (value) => {
+		var captions = document.getElementsByClassName("image-gallery-description");
 		for (var k in captions) {
 			if (captions[k] && captions[k]['style']) {
 				captions[k]['style']['fontSize'] = value;
@@ -318,8 +319,6 @@ export default function Edit({
 		setAttributes({captionSize: value});
 	}
 
-	console.log(attributes);
-	
 	return (
 		<>
 			<InspectorControls>
@@ -392,8 +391,8 @@ export default function Edit({
 						value={captionSize}
 						options={[
 							{label: 'Small', value: '18px'},
-							{label: 'Medium', value: '26px'},
-							{label: 'Large', value: '34px'},
+							{label: 'Medium', value: '24px'},
+							{label: 'Large', value: '30px'},
 						]}
 						onChange={onChangeCaptionSize}
 					/>
@@ -403,7 +402,7 @@ export default function Edit({
 						return null;
 					return (
 						<PanelBody title={__( 'Slide ' + String(index + 1))}>
-							<div className="editor-post-featured-image">
+							{/* <div className="editor-post-featured-image">
 								<MediaUploadCheck>
 									<MediaUpload
 										onSelect={ onSelectMedia }
@@ -464,7 +463,7 @@ export default function Edit({
 										}
 									/>
 								) }
-							</div>
+							</div> */}
 							<TextControl
 								label={__('Description')}
 								value={slide.description}
@@ -540,23 +539,42 @@ export default function Edit({
 						backgroundColor: "#2774AE",
             zIndex: "1",
 						padding: "10px",
-						visibility: titleVisible ? "" : "hidden" 
+						visibility: titleVisible ? "" : "hidden",
+						maxWidth: "35%",
+						textTransform: "uppercase"
 					}}
 				>
 					{titleText}
 				</h3>
 				<div style={{zIndex: "-1"}}>
 				<ImageGallery
-					items={slideList.slice(0, numSlides)}
-					showBullets={true}
-					// onClick={(e) => console.log(e)}
-					// onMouseOver={(e) => console.log(e)}
-					showThumbnails={thumbnail}
-					thumbnailPosition={thumbnailPos}
-					showPlayButton={autoplay}
-					autoPlay={autoplay}
-					slideInterval={isNaN(Number(autoplayInterval)) ? 3000 : Number(autoplayInterval) * 1000}
-					showFullscreenButton={fullscreen}
+					items={
+						[
+								{
+									original: 'https://picsum.photos/id/1018/1000/600/',
+									thumbnail: 'https://picsum.photos/id/1018/250/150/',
+								},
+								{
+									original: 'https://picsum.photos/id/1015/1000/600/',
+									thumbnail: 'https://picsum.photos/id/1015/250/150/',
+								},
+								{
+									original: 'https://picsum.photos/id/1019/1000/600/',
+									thumbnail: 'https://picsum.photos/id/1019/250/150/',
+								},
+							]
+						// slideList.slice(0, numSlides)
+						}
+					// showBullets={true}
+					// // onClick={(e) => console.log(e)}
+					// // onMouseOver={(e) => console.log(e)}
+					// showThumbnails={thumbnail}
+					// thumbnailPosition={thumbnailPos}
+					// showPlayButton={autoplay}
+					// autoPlay={autoplay}
+					// slideInterval={autoplayInterval*1000}
+					// showFullscreenButton={fullscreen}
+					// additionalClass={"image-fit"}
 				/>
 				</div>
 			</article>

@@ -7,22 +7,7 @@
 		"html": false
 	},
 	"attributes": {
-		"mediaAlt": {
-			"type": "string",
-			"source": "attribute",
-			"selector": "img",
-			"attribute": "alt",
-			"default": ""
-		},
-		"mediaId": {
-			"type": "number"
-		},
-		"mediaUrl": {
-			"type": "string",
-			"source": "attribute",
-			"selector": "img",
-			"attribute": "src"
-		},
+
 		"thumbnail": {
 			"type": "boolean",
 			"default": false
