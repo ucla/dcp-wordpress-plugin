@@ -250,6 +250,8 @@ export default function Edit({
 						captions[k]['style']['bottom'] = "initial";
 						captions[k]['style']['left'] = "0%";
 						captions[k]['style']['right'] = "initial";
+						captions[k]['style']['position'] = "absolute";
+						captions[k]['style']['textAlign'] = "initial";
 					}
 				}
 				break;
@@ -258,8 +260,12 @@ export default function Edit({
 					if (captions[k] && captions[k]['style']) {
 						captions[k]['style']['top'] = "15px";
 						captions[k]['style']['bottom'] = "initial";
-						captions[k]['style']['left'] = "44%";
+						// captions[k]['style']['left'] = "44%";
+						// captions[k]['style']['right'] = "initial";
+						captions[k]['style']['left'] = "initial";
 						captions[k]['style']['right'] = "initial";
+						// captions[k]['style']['position'] = "relative";
+						captions[k]['style']['textAlign'] = "center";
 					}
 				}
 				break;
@@ -270,6 +276,8 @@ export default function Edit({
 						captions[k]['style']['bottom'] = "initial";
 						captions[k]['style']['left'] = "initial";
 						captions[k]['style']['right'] = "0%";
+						captions[k]['style']['position'] = "absolute";
+						captions[k]['style']['textAlign'] = "initial";
 					}
 				}
 				break;
@@ -280,6 +288,8 @@ export default function Edit({
 						captions[k]['style']['bottom'] = "70px";
 						captions[k]['style']['left'] = "0%";
 						captions[k]['style']['right'] = "initial";
+						captions[k]['style']['position'] = "absolute";
+						captions[k]['style']['textAlign'] = "initial";
 					}
 				}
 				break;
@@ -288,10 +298,10 @@ export default function Edit({
 					if (captions[k] && captions[k]['style']) {
 						captions[k]['style']['top'] = "initial";
 						captions[k]['style']['bottom'] = "70px";
-						captions[k]['style']['left'] = "initial";
+						captions[k]['style']['left'] = "0%";
 						captions[k]['style']['right'] = "initial";
-						captions[k]['style']['marginLeft'] = "auto";
-						captions[k]['style']['marginRight'] = "auto";
+						captions[k]['style']['position'] = "absolute";
+						captions[k]['style']['textAlign'] = "center";
 					}
 				}
 				break;
@@ -302,6 +312,8 @@ export default function Edit({
 						captions[k]['style']['bottom'] = "70px";
 						captions[k]['style']['left'] = "initial";
 						captions[k]['style']['right'] = "0%";
+						captions[k]['style']['position'] = "absolute";
+						captions[k]['style']['textAlign'] = "initial";
 					}
 				}
 				break;
@@ -361,9 +373,9 @@ export default function Edit({
 							{label: 'Yellow on blue', value: 'Yellow on blue'},
 							{label: 'White on blue', value: 'White on blue'},
 							{label: 'White on light blue', value: 'White on light blue'},
+							{label: 'Blue on white', value: 'Blue on white'},
 							{label: 'White on dark', value: 'White on dark'},
 							{label: 'Black on white', value: 'Black on white'},
-							{label: 'Blue on white', value: 'Blue on white'},
 						]}
 						onChange={onChangeCaptionColor}
 					/>
@@ -390,8 +402,8 @@ export default function Edit({
 						label="Caption Size"
 						value={captionSize}
 						options={[
-							{label: 'Small', value: '18px'},
-							{label: 'Medium', value: '24px'},
+							{label: 'Small', value: '14px'},
+							{label: 'Medium', value: '22px'},
 							{label: 'Large', value: '30px'},
 						]}
 						onChange={onChangeCaptionSize}
@@ -530,26 +542,37 @@ export default function Edit({
 						visibility: titleVisible ? "" : "hidden" 
 					}}
 				/>
-				<h3 style={{
+				<h1 style={{
 						position: "absolute",
             left: "20px",
-            top: "30px",
-						fontSize: "40px",
+            top: "20px",
+						fontSize: "44px",
 						color: "white",
-						backgroundColor: "#2774AE",
             zIndex: "1",
-						padding: "10px",
+						padding: "4px",
 						visibility: titleVisible ? "" : "hidden",
-						maxWidth: "35%",
-						textTransform: "uppercase"
+						maxWidth: "540px",
+						textTransform: "uppercase",
+						lineHeight: "60px"
 					}}
 				>
-					{titleText}
-				</h3>
+					{titleText.split(" ").map((word) =>
+						<span style={{
+							marginTop: "2px",
+							marginBottom: "2px",
+							marginLeft: "-8px",
+							marginRight: "-8px",
+							paddingLeft: "16px",
+							paddingRight: "16px",
+							backgroundColor: "#2774AE",
+							display: "inline-block"
+						}}>{word}</span>)
+					}
+				</h1>
 				<div style={{zIndex: "-1"}}>
-				<ImageGallery
-					items={
-						[
+					<ImageGallery
+						items={
+							[
 								{
 									original: 'https://picsum.photos/id/1018/1000/600/',
 									thumbnail: 'https://picsum.photos/id/1018/250/150/',
@@ -563,19 +586,18 @@ export default function Edit({
 									thumbnail: 'https://picsum.photos/id/1019/250/150/',
 								},
 							]
-						// slideList.slice(0, numSlides)
+							// slideList.slice(0, numSlides)
 						}
-					// showBullets={true}
-					// // onClick={(e) => console.log(e)}
-					// // onMouseOver={(e) => console.log(e)}
-					// showThumbnails={thumbnail}
-					// thumbnailPosition={thumbnailPos}
-					// showPlayButton={autoplay}
-					// autoPlay={autoplay}
-					// slideInterval={autoplayInterval*1000}
-					// showFullscreenButton={fullscreen}
-					// additionalClass={"image-fit"}
-				/>
+						showBullets={true}
+						// onClick={(e) => console.log(e)}
+						// onMouseOver={(e) => console.log(e)}
+						showThumbnails={thumbnail}
+						thumbnailPosition={thumbnailPos}
+						showPlayButton={autoplay}
+						autoPlay={autoplay}
+						slideInterval={autoplayInterval*1000}
+						showFullscreenButton={fullscreen}
+					/>
 				</div>
 			</article>
 		</>

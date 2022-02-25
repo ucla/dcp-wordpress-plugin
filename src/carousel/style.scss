@@ -10,7 +10,11 @@
 	padding: 2px;
 }
 
-  
-  .blade-links {
+.image-gallery-image {
+	object-fit: cover !important;
+	max-height: calc(100vh - 200px) !important;
+}
+
+.blade-links {
 	margin: 1em!important;
-  }
+}

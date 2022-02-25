@@ -30,7 +30,7 @@
 		},
 		"autoplayInterval": {
 			"type": "string",
-			"default": "3"
+			"default": "5"
 		},
 		"fullscreen": {
 			"type": "boolean",
