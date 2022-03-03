@@ -13,9 +13,10 @@ import { __ } from '@wordpress/i18n';
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss';
-import '../../node_modules/react-image-gallery/styles/scss/image-gallery.scss';
 
-import ImageGallery from 'react-image-gallery';
+import './style.scss';
+
+import { useEffect, useState } from 'react';
 import {
 	PanelBody,
 	TextareaControl,
@@ -24,6 +25,7 @@ import {
 	ToggleControl,
 	SelectControl,
 	TextControl,
+	RangeControl,
 } from '@wordpress/components';
 import {
 	InspectorControls,
@@ -32,12 +34,7 @@ import {
 	MediaUpload,
 	MediaUploadCheck,
 } from '@wordpress/block-editor';
-
-const BLUE = "#003B5C";
-const LIGHTBLUE = "#005587";
-const YELLOW = "#FFD100";
-const WHITE = "#FFFFFF";
-const BLACK = "#000000";
+import Splide from '@splidejs/splide';
 
 function attributesFromMedia( { attributes, setAttributes } ) {
 	return ( media ) => {
@@ -91,18 +88,16 @@ function attributesFromMedia( { attributes, setAttributes } ) {
 export default function Edit({
 	attributes,
 	setAttributes,
-	isSelected,
+	clientId,
 	className,
 }) {
 
 	let {
+		sliderId,
 		titleVisible,
 		titleText,
-		thumbnail,
-		thumbnailPos,
 		autoplay,
 		autoplayInterval,
-		fullscreen,
 		captionColor,
 		captionLocation,
 		captionSize,
@@ -110,47 +105,78 @@ export default function Edit({
 		slideList,
 	} = attributes;
 
-	const handleLink = (index) => {
-		const link = slideList[index].link;
-		if (link != "") window.open(link, "_blank");
+	if (!sliderId) {
+		setAttributes({sliderId: `ucla-slider-${clientId}`});
 	}
 
-	const onSelectMedia = attributesFromMedia( { attributes, setAttributes } );
+	// const onSelectMedia = attributesFromMedia( { attributes, setAttributes } );
 
-	const onMediaAltChange = ( newMediaAlt ) => {
-		setAttributes( { mediaAlt: newMediaAlt } );
-	};
+	// const onMediaAltChange = ( newMediaAlt ) => {
+	// 	setAttributes( { mediaAlt: newMediaAlt } );
+	// };
 
 	const setNumSlides = (value) => {
 		setAttributes({numSlides: value});
 	}
 
-	const setSlideDescription = (value, index) => {
-		const newSlides = slideList.slice();
-		newSlides[index].description = value;
-		setAttributes({slideList: newSlides});
-	}
-
-	const setSlideMedia = (value, index) => {
-		const newSlides = slideList.slice();
-		newSlides[index].original = value;
-		newSlides[index].thumbnail = value;
-		setAttributes({slideList: newSlides});
-	}
-
-	const setOriginalAlt = (value, index) => {
-		const newSlides = slideList.slice();
-		newSlides[index].originalAlt = value;
-		setAttributes({slideList: newSlides});
-	}
-
-	const setSlideLink = (value, index) => {
+	const setLink = (value, index) => {
 		const newSlides = slideList.slice();
 		newSlides[index].link = value;
 		setAttributes({slideList: newSlides});
 	}
 
-	const onToggleAutoplay = (value) => {
+	const setCaption = (value, index) => {
+		const newSlides = slideList.slice();
+		newSlides[index].caption = value;
+		setAttributes({slideList: newSlides});
+	}
+
+	const setCaptionLocation = (value) => {
+		const newSlides = slideList.slice();
+		newSlides[index].captionLocation = value;
+		setAttributes({slideList: newSlides});
+	}
+
+	// const setSlideMedia = (value, index) => {
+	// 	const newSlides = slideList.slice();
+	// 	newSlides[index].original = value;
+	// 	newSlides[index].thumbnail = value;
+	// 	setAttributes({slideList: newSlides});
+	// }
+
+	// const setOriginalAlt = (value, index) => {
+	// 	const newSlides = slideList.slice();
+	// 	newSlides[index].originalAlt = value;
+	// 	setAttributes({slideList: newSlides});
+	// }
+
+	const setTitleVisible = (value) => {
+		if (value) {
+			const newSlides = slideList.slice();
+			for (var i = 0; i < newSlides.length; i++) {
+				if (newSlides[i].captionLocation == "caption-top-left" ||
+						newSlides[i].captionLocation == "caption-top-center" ||
+						newSlides[i].captionLocation == "caption-top-right")
+					newSlides[i].captionLocation = "caption-bottom-right";
+			}
+			setAttributes({slideList: newSlides});
+		}
+		setAttributes({titleVisible: value});
+	}
+
+	const setTitleText = (value) => {
+		setAttributes({titleText: value});
+	}
+
+	const setCaptionColor = (value) => {
+		setAttributes({captionColor: value});
+	}
+
+	const setCaptionSize = (value) => {
+		setAttributes({captionSize: value});
+	}
+
+	const setAutoplay = (value) => {
 		setAttributes({autoplay: value});
 	}
 
@@ -162,183 +188,36 @@ export default function Edit({
 		setAttributes({autoplayInterval: num});
 	}
 
-	const onToggleThumbnail = (value) => {
-		setAttributes({thumbnail: value});
+	const mountSplide = () => {
+		new Splide(`#${sliderId}`, {
+			type: 'loop',
+			// autoplay: autoplay,
+			// interval: String(Number(autoplayInterval) * 1000),
+		}).mount();
 	}
 
-	const setThumbnailPos = (value) => {
-		setAttributes({thumbnailPos: value});
+	useEffect(() => {
+		if (sliderId)
+			mountSplide();
+		else
+			useEffect(mountSplide, [sliderId]);
+	}, []);
+
+	const [isPlay, setIsPlay] = useState(false);
+
+	const togglePlay = () => {
+		setIsPlay(!isPlay);
 	}
-
-	const onToggleFullscreen = (value) => {
-		setAttributes({fullscreen: value});
-	}
-
-	const setTitleVisible = (value) => {
-		if (value && (captionLocation == "Top left" ||
-				captionLocation == "Top center" || captionLocation == "Top right")) {
-			var captions = document.getElementsByClassName("image-gallery-description");
-			for (var k in captions) {
-				if (captions[k] && captions[k]['style']) {
-					captions[k]['style']['top'] = "initial";
-					captions[k]['style']['bottom'] = "70px";
-					captions[k]['style']['left'] = "initial";
-					captions[k]['style']['right'] = "0%";
-				}
-			}
-			setAttributes({captionLocation: "Bottom right", titleVisible: value});
-		} else {
-			setAttributes({titleVisible: value});
-		}
-	}
-
-	const setTitleText = (value) => {
-		setAttributes({titleText: value});
-	}
-
-	const onChangeCaptionColor = (value) => {
-		var captions = document.getElementsByClassName("image-gallery-description");
-		var textColor = "";
-		var backgroundColor = "";
-		switch (value) {
-			case "Blue on yellow":
-				textColor = BLUE;
-				backgroundColor = YELLOW;
-				break;
-			case "Yellow on blue":
-				textColor = YELLOW;
-				backgroundColor = BLUE;
-				break;
-			case "White on blue":
-				textColor = WHITE;
-				backgroundColor = BLUE;
-				break;
-			case "White on light blue":
-				textColor = WHITE;
-				backgroundColor = LIGHTBLUE;
-				break;
-			case "White on dark":
-				textColor = WHITE;
-				backgroundColor = "rgba(0, 0, 0, 0.6)";
-				break;
-			case "Black on white":
-				textColor = BLACK;
-				backgroundColor = WHITE;
-				break;
-			case "Blue on white":
-				textColor = LIGHTBLUE;
-				backgroundColor = WHITE;
-				break;
-		}
-		for (var k in captions) {
-			if (captions[k] && captions[k]['style']) {
-				captions[k]['style']['color'] = textColor;
-				captions[k]['style']['backgroundColor'] = backgroundColor;
-			}
-		}
-		setAttributes({captionColor: value});
-	}
-
-	const onChangeCaptionLocation = (value) => {
-		var captions = document.getElementsByClassName("image-gallery-description");
-
-		switch (value) {
-			case 'Top left':
-				for (var k in captions) {
-					if (captions[k] && captions[k]['style']) {
-						captions[k]['style']['top'] = "70px";
-						captions[k]['style']['bottom'] = "initial";
-						captions[k]['style']['left'] = "0%";
-						captions[k]['style']['right'] = "initial";
-						captions[k]['style']['position'] = "absolute";
-						captions[k]['style']['textAlign'] = "initial";
-					}
-				}
-				break;
-			case 'Top center':
-				for (var k in captions) {
-					if (captions[k] && captions[k]['style']) {
-						captions[k]['style']['top'] = "15px";
-						captions[k]['style']['bottom'] = "initial";
-						// captions[k]['style']['left'] = "44%";
-						// captions[k]['style']['right'] = "initial";
-						captions[k]['style']['left'] = "initial";
-						captions[k]['style']['right'] = "initial";
-						// captions[k]['style']['position'] = "relative";
-						captions[k]['style']['textAlign'] = "center";
-					}
-				}
-				break;
-			case 'Top right':
-				for (var k in captions) {
-					if (captions[k] && captions[k]['style']) {
-						captions[k]['style']['top'] = "70px";
-						captions[k]['style']['bottom'] = "initial";
-						captions[k]['style']['left'] = "initial";
-						captions[k]['style']['right'] = "0%";
-						captions[k]['style']['position'] = "absolute";
-						captions[k]['style']['textAlign'] = "initial";
-					}
-				}
-				break;
-			case 'Bottom left':
-				for (var k in captions) {
-					if (captions[k] && captions[k]['style']) {
-						captions[k]['style']['top'] = "initial";
-						captions[k]['style']['bottom'] = "70px";
-						captions[k]['style']['left'] = "0%";
-						captions[k]['style']['right'] = "initial";
-						captions[k]['style']['position'] = "absolute";
-						captions[k]['style']['textAlign'] = "initial";
-					}
-				}
-				break;
-			case 'Bottom center':
-				for (var k in captions) {
-					if (captions[k] && captions[k]['style']) {
-						captions[k]['style']['top'] = "initial";
-						captions[k]['style']['bottom'] = "70px";
-						captions[k]['style']['left'] = "0%";
-						captions[k]['style']['right'] = "initial";
-						captions[k]['style']['position'] = "absolute";
-						captions[k]['style']['textAlign'] = "center";
-					}
-				}
-				break;
-			case 'Bottom right':
-				for (var k in captions) {
-					if (captions[k] && captions[k]['style']) {
-						captions[k]['style']['top'] = "initial";
-						captions[k]['style']['bottom'] = "70px";
-						captions[k]['style']['left'] = "initial";
-						captions[k]['style']['right'] = "0%";
-						captions[k]['style']['position'] = "absolute";
-						captions[k]['style']['textAlign'] = "initial";
-					}
-				}
-				break;
-		}
-		setAttributes({captionLocation: value});
-	}
-
-	const onChangeCaptionSize = (value) => {
-		var captions = document.getElementsByClassName("image-gallery-description");
-		for (var k in captions) {
-			if (captions[k] && captions[k]['style']) {
-				captions[k]['style']['fontSize'] = value;
-			}
-		}
-		setAttributes({captionSize: value});
-	}
-
+	
 	return (
 		<>
-			<InspectorControls>
-				<PanelBody title={ __( 'Title' ) }>
-					<ToggleControl
+	 		<InspectorControls>
+	 			<PanelBody title={ __( 'Title' ) }>
+	 				<ToggleControl
 						label={ __( 'Visible' ) }
 						onChange={setTitleVisible}
 						checked={titleVisible}
+						help='Turning on title will move any captions near top of image to bottom.'
 					/>
 					{titleVisible ?
 						<TextControl
@@ -349,19 +228,12 @@ export default function Edit({
 					}
 				</PanelBody>
 				<PanelBody title={ __( 'Slide Number' ) }>
-					<SelectControl
+					<RangeControl
 						label="Number of slides"
-						value={numSlides}
-						options={[
-							{label: '2', value: '2'},
-							{label: '3', value: '3'},
-							{label: '4', value: '4'},
-							{label: '5', value: '5'},
-							{label: '6', value: '6'},
-							{label: '7', value: '7'},
-							{label: '8', value: '8'},
-						]}
+						value={Number(numSlides)}
 						onChange={setNumSlides}
+						min={2}
+						max={8}
 					/>
 				</PanelBody>
 				<PanelBody title={ __( 'Caption Styling' ) }>
@@ -369,44 +241,25 @@ export default function Edit({
 						label="Caption Color"
 						value={captionColor}
 						options={[
-							{label: 'Blue on yellow', value: 'Blue on yellow'},
-							{label: 'Yellow on blue', value: 'Yellow on blue'},
-							{label: 'White on blue', value: 'White on blue'},
-							{label: 'White on light blue', value: 'White on light blue'},
-							{label: 'Blue on white', value: 'Blue on white'},
-							{label: 'White on dark', value: 'White on dark'},
-							{label: 'Black on white', value: 'Black on white'},
+							{label: 'Blue on yellow', value: 'caption-blue-on-yellow'},
+							{label: 'Yellow on blue', value: 'caption-yellow-on-blue'},
+							{label: 'White on blue', value: 'caption-white-on-blue'},
+							{label: 'White on light blue', value: 'caption-white-on-lightblue'},
+							{label: 'Blue on white', value: 'caption-blue-on-white'},
+							{label: 'White on dark', value: 'caption-white-on-dark'},
+							{label: 'Black on white', value: 'caption-black-on-white'},
 						]}
-						onChange={onChangeCaptionColor}
-					/>
-					<SelectControl
-						label="Caption Location"
-						value={captionLocation}
-						options={
-							titleVisible ?
-								[ {label: 'Bottom left', value: 'Bottom left'},
-									{label: 'Bottom center', value: 'Bottom center'},
-									{label: 'Bottom right', value: 'Bottom right'},
-								] : [
-									{label: 'Top left', value: 'Top left'},
-									{label: 'Top center', value: 'Top center'},
-									{label: 'Top right', value: 'Top right'},
-									{label: 'Bottom left', value: 'Bottom left'},
-									{label: 'Bottom center', value: 'Bottom center'},
-									{label: 'Bottom right', value: 'Bottom right'},
-								]
-						}
-						onChange={onChangeCaptionLocation}
+						onChange={setCaptionColor}
 					/>
 					<SelectControl
 						label="Caption Size"
 						value={captionSize}
 						options={[
-							{label: 'Small', value: '14px'},
-							{label: 'Medium', value: '22px'},
-							{label: 'Large', value: '30px'},
+							{label: 'Small', value: 'caption-small'},
+							{label: 'Medium', value: 'caption-medium'},
+							{label: 'Large', value: 'caption-large'},
 						]}
-						onChange={onChangeCaptionSize}
+						onChange={setCaptionSize}
 					/>
 				</PanelBody>
 				{slideList.map((slide, index) => {
@@ -477,22 +330,42 @@ export default function Edit({
 								) }
 							</div> */}
 							<TextControl
-								label={__('Description')}
-								value={slide.description}
-								onChange={(value) => setSlideDescription(value, index)}
+								label={__('Caption')}
+								value={slide.caption}
+								onChange={(value) => setCaption(value, index)}
+							/>
+							<SelectControl
+								label="Caption Location"
+								value={slide.captionLocation}
+								options={
+									titleVisible ?
+										[ {label: 'Top left', value: 'caption-top-left'},
+											{label: 'Top center', value: 'caption-top-center'},
+											{label: 'Top right', value: 'caption-top-right'},
+										] : [
+											{label: 'Top left', value: 'caption-top-left'},
+											{label: 'Top center', value: 'caption-top-center'},
+											{label: 'Top right', value: 'caption-top-right'},
+											{label: 'Bottom left', value: 'caption-bottom-left'},
+											{label: 'Bottom center', value: 'caption-bottom-center'},
+											{label: 'Bottom right', value: 'caption-bottom-right'},
+										]
+								}
+								onChange={(value) => setCaptionLocation(value, index)}
 							/>
 							<TextControl
 								label={__('Link URL')}
 								value={slide.link}
-								onChange={(value) => setSlideLink(value, index)}
+								onChange={(value) => setLink(value, index)}
+								help="When linking to an external site, be sure to use 'https://'"
 							/>
 						</PanelBody>
 					);
 				})}
-				<PanelBody title={ __( 'Autoplay' ) }>
-					<ToggleControl
+	 			<PanelBody title={ __( 'Autoplay' ) }>
+	 				<ToggleControl
 						label={ __( 'Autoplay active' ) }
-						onChange={onToggleAutoplay}
+						onChange={setAutoplay}
 						checked={autoplay}
 					/>
 					{autoplay ?
@@ -500,106 +373,156 @@ export default function Edit({
 							label={__('Slide delay (seconds)')}
 							value={autoplayInterval}
 							onChange={setAutoplayInterval}
+							help='Must be at least 5 seconds long.'
 						/>
 					: null}
-				</PanelBody>
-				<PanelBody title={ __( 'Image Thumbnails' ) }>
-					<ToggleControl
-						label={ __( 'Show thumbnail bar' ) }
-						onChange={onToggleThumbnail}
-						checked={thumbnail}
-					/>
-					{thumbnail ?
-						<SelectControl
-							label="Thumbnail position"
-							value={thumbnailPos}
-							options={[
-								{label: 'Top', value: 'top'},
-								{label: 'Right', value: 'right'},
-								{label: 'Bottom', value: 'bottom'},
-								{label: 'Left', value: 'left'},
-							]}
-							onChange={setThumbnailPos}
-						/>
-					: null}
-				</PanelBody>
-				<PanelBody title={ __( 'Fullscreen' ) }>
-					<ToggleControl
-						label={ __( 'Allow fullscreen option' ) }
-						onChange={onToggleFullscreen}
-						checked={fullscreen}
-					/>
 				</PanelBody>
 			</InspectorControls>
-			<article>
+			<article className={className}>
 				<img
 					src='/website1/wp-content/plugins/wp-uwai-plugin/molecule.png'
-					style={{
-						position: "absolute",
-            left: "-50px",
-            top: "30px",
-            zIndex: "1",
-						visibility: titleVisible ? "" : "hidden" 
-					}}
+					className={`title-image ${titleVisible ? "" : "hidden"}`}
 				/>
-				<h1 style={{
-						position: "absolute",
-            left: "20px",
-            top: "20px",
-						fontSize: "44px",
-						color: "white",
-            zIndex: "1",
-						padding: "4px",
-						visibility: titleVisible ? "" : "hidden",
-						maxWidth: "540px",
-						textTransform: "uppercase",
-						lineHeight: "60px"
-					}}
-				>
+				<h1 className={`title-text ${titleVisible ? "" : "hidden"}`}>
 					{titleText.split(" ").map((word) =>
-						<span style={{
-							marginTop: "2px",
-							marginBottom: "2px",
-							marginLeft: "-8px",
-							marginRight: "-8px",
-							paddingLeft: "16px",
-							paddingRight: "16px",
-							backgroundColor: "#2774AE",
-							display: "inline-block"
-						}}>{word}</span>)
-					}
+						<span className='title-word'>
+							{word}
+						</span>
+					)}
 				</h1>
-				<div style={{zIndex: "-1"}}>
-					<ImageGallery
-						items={
-							[
-								{
-									original: 'https://picsum.photos/id/1018/1000/600/',
-									thumbnail: 'https://picsum.photos/id/1018/250/150/',
-								},
-								{
-									original: 'https://picsum.photos/id/1015/1000/600/',
-									thumbnail: 'https://picsum.photos/id/1015/250/150/',
-								},
-								{
-									original: 'https://picsum.photos/id/1019/1000/600/',
-									thumbnail: 'https://picsum.photos/id/1019/250/150/',
-								},
-							]
-							// slideList.slice(0, numSlides)
-						}
-						showBullets={true}
-						// onClick={(e) => console.log(e)}
-						// onMouseOver={(e) => console.log(e)}
-						showThumbnails={thumbnail}
-						thumbnailPosition={thumbnailPos}
-						showPlayButton={autoplay}
-						autoPlay={autoplay}
-						slideInterval={autoplayInterval*1000}
-						showFullscreenButton={fullscreen}
+				{autoplay ?
+					<img
+						src={isPlay ? '/website1/wp-content/plugins/wp-uwai-plugin/pause_button.png' : '/website1/wp-content/plugins/wp-uwai-plugin/pause_button.png'}
+						style={{width: '30px', height: '30px', position: 'absolute', left: '30px', top: '555px', zIndex: "30", cursor: 'pointer'}}
+						onClick={togglePlay}
 					/>
+				: null}		
+				<div id={sliderId} className="splide">
+					<div className="splide__track">
+						<ul className="splide__list">
+							<li className="splide__slide">
+								<div className="splide__slide__container">
+									{/* {slideList[0].link == '' ?
+										<img
+											src="https://picsum.photos/id/1018/1000/600/"
+											className="splide-image"
+										/>
+									: */}
+										<a href={slideList[0].link} target="_blank">
+											<img
+												src="https://picsum.photos/id/1014/1000/600/"
+												className="splide-image"
+											/>
+										</a>
+									{/* } */}
+								</div>
+								<p className={`splide-caption ${captionSize} ${slideList[0].captionLocation} ${captionColor}`}>
+									{slideList[0].caption}
+								</p>
+							</li>
+							<li className="splide__slide">
+								<div className="splide__slide__container">
+									{/* {slideList[1].link == '' ?
+										<img src="https://picsum.photos/id/1018/1000/600/" />
+									: */}
+										<a href={slideList[1].link} target="_blank">
+											<img src="https://picsum.photos/id/1015/1000/600/" />
+										</a>
+									{/* } */}
+								</div>
+								<p className={`splide-caption ${captionSize} ${slideList[1].captionLocation} ${captionColor}`}>
+									{slideList[1].caption}
+								</p>
+							</li>
+							<li className="splide__slide">
+								<div className="splide__slide__container">
+									{/* {slideList[2].link == '' ?
+										<img src="https://picsum.photos/id/1018/1000/600/" />
+									: */}
+										<a href={slideList[2].link} target="_blank">
+											<img src="https://picsum.photos/id/1016/1000/600/" />
+										</a>
+									{/* } */}
+								</div>
+								<p className={`splide-caption ${captionSize} ${slideList[2].captionLocation} ${captionColor}`}>
+									{slideList[2].caption}
+								</p>
+							</li>
+							<li className="splide__slide">
+								<div className="splide__slide__container">
+									{/* {slideList[3].link == '' ?
+										<img src="https://picsum.photos/id/1018/1000/600/" />
+									: */}
+										<a href={slideList[3].link} target="_blank">
+											<img src="https://picsum.photos/id/1013/1000/600/" />
+										</a>
+									{/* } */}
+								</div>
+								<p className={`splide-caption ${captionSize} ${slideList[3].captionLocation} ${captionColor}`}>
+									{slideList[3].caption}
+								</p>
+							</li>
+							<li className="splide__slide">
+								<div className="splide__slide__container">
+									{/* {slideList[4].link == '' ?
+										<img src="https://picsum.photos/id/1018/1000/600/" />
+									: */}
+										<a href={slideList[4].link} target="_blank">
+											<img src="https://picsum.photos/id/1018/1000/600/" />
+										</a>
+									{/* } */}
+								</div>
+								<p className={`splide-caption ${captionSize} ${slideList[4].captionLocation} ${captionColor}`}>
+									{slideList[4].caption}
+								</p>
+							</li>
+							<li className="splide__slide">
+								<div className="splide__slide__container">
+									{/* {slideList[5].link == '' ?
+										<img src="https://picsum.photos/id/1018/1000/600/" />
+									: */}
+										<a href={slideList[5].link} target="_blank">
+											<img src="https://picsum.photos/id/1019/1000/600/" />
+										</a>
+									{/* } */}
+								</div>
+								<p className={`splide-caption ${captionSize} ${slideList[5].captionLocation} ${captionColor}`}>
+									{slideList[5].caption}
+								</p>
+							</li>
+							<li className="splide__slide">
+								<div className="splide__slide__container">
+									{/* {slideList[6].link == '' ?
+										<img src="https://picsum.photos/id/1018/1000/600/" />
+									: */}
+										<a href={slideList[6].link} target="_blank">
+											<img src="https://picsum.photos/id/1020/1000/600/" />
+										</a>
+									{/* } */}
+								</div>
+								<p className={`splide-caption ${captionSize} ${slideList[6].captionLocation} ${captionColor}`}>
+									{slideList[6].caption}
+								</p>
+							</li>
+							<li className="splide__slide">
+								<div className="splide__slide__container">
+									{/* {slideList[7].link == '' ?
+										<img src="https://picsum.photos/id/1018/1000/600/" />
+									: */}
+										<a href={slideList[7].link} target="_blank">
+											<img src="https://picsum.photos/id/1021/1000/600/" />
+										</a>
+									{/* } */}
+								</div>
+								<p className={`splide-caption ${captionSize} ${slideList[7].captionLocation} ${captionColor}`}>
+									{slideList[7].caption}
+								</p>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</article>
 		</>
 	);
+
 }

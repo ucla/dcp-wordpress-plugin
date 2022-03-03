@@ -5,10 +5,7 @@
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
 import './style.scss';
-import '../../node_modules/react-image-gallery/styles/scss/image-gallery.scss';
-
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
-import * as ImageGallery from '../../node_modules/react-image-gallery/build/image-gallery.js';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -24,78 +21,142 @@ import * as ImageGallery from '../../node_modules/react-image-gallery/build/imag
  */
 export default function save({
 	attributes: {
+		sliderId,
 		titleVisible,
 		titleText,
-		thumbnail,
-		thumbnailPos,
-		autoplay,
-		autoplayInterval,
-		fullscreen,
 		captionColor,
-		captionLocation,
 		captionSize,
 		numSlides,
 		slideList
 	},
 	className,
 }) {
-	console.log(ImageGallery);
+
 	return (
 		<div className={className}>
-				<img
-					src='/website1/wp-content/plugins/wp-uwai-plugin/molecule.png'
-					style={{
-						position: "absolute",
-						left: "-50px",
-						top: "30px",
-						zIndex: "1",
-						// visibility: titleVisible ? "" : "hidden" 
-					}}
-				/>
-				<h3 style={{
-						position: "absolute",
-						left: "20px",
-						top: "30px",
-						fontSize: "40px",
-						color: "white",
-						backgroundColor: "#2774AE",
-						zIndex: "1",
-						padding: "10px",
-						// visibility: titleVisible ? "" : "hidden",
-						maxWidth: "35%",
-						textTransform: "uppercase"
-					}}
-				>
-					{titleText}
-				</h3>
-				<h1>hello there!~!!</h1>
-				<div style={{zIndex: "-1"}}>
-					<ImageGallery
-						items={[
-								{
-									original: 'https://picsum.photos/id/1018/1000/600/',
-									thumbnail: 'https://picsum.photos/id/1018/250/150/',
-								},
-								{
-									original: 'https://picsum.photos/id/1015/1000/600/',
-									thumbnail: 'https://picsum.photos/id/1015/250/150/',
-								},
-								{
-									original: 'https://picsum.photos/id/1019/1000/600/',
-									thumbnail: 'https://picsum.photos/id/1019/250/150/',
-								},
-							]}
-						// showBullets={true}
-						// onClick={(e) => console.log(e)}
-						// onMouseOver={(e) => console.log(e)}
-						// showThumbnails={thumbnail}
-						// thumbnailPosition={thumbnailPos}
-						// showPlayButton={autoplay}
-						// autoPlay={autoplay}
-						// slideInterval={autoplayInterval*1000}
-						// showFullscreenButton={fullscreen}
-					/>
+			<img
+				src='/website1/wp-content/plugins/wp-uwai-plugin/molecule.png'
+				className={`title-image ${titleVisible ? "" : "hidden"}`}
+			/>
+			<h1 className={`title-text ${titleVisible ? "" : "hidden"}`}>
+				{titleText.split(" ").map((word) =>
+					<span className='title-word'>
+						{word}
+					</span>
+				)}
+			</h1>
+			<div id={sliderId} className="splide">
+				<div className="splide__track">
+					<ul className="splide__list">
+						<li className="splide__slide">
+							<div className="splide__slide__container">
+								{slideList[0].link == '' ?
+									<img src="https://picsum.photos/id/1018/1000/600/" />
+								:
+									<a href={slideList[0].link} target="_blank">
+										<img src="https://picsum.photos/id/1018/1000/600/" />
+									</a>
+								}
+							</div>
+							<p className={`splide-caption ${captionSize} ${slideList[0].captionLocation} ${captionColor}`}>
+								{slideList[0].caption}
+							</p>
+						</li>
+						<li className="splide__slide">
+							<div className="splide__slide__container">
+								{slideList[1].link == '' ?
+									<img src="https://picsum.photos/id/1018/1000/600/" />
+								:
+									<a href={slideList[1].link} target="_blank">
+										<img src="https://picsum.photos/id/1018/1000/600/" />
+									</a>
+								}								</div>
+							<p className={`splide-caption ${captionSize} ${slideList[1].captionLocation} ${captionColor}`}>
+								{slideList[1].caption}
+							</p>
+						</li>
+						<li className="splide__slide">
+							<div className="splide__slide__container">
+								{slideList[2].link == '' ?
+									<img src="https://picsum.photos/id/1018/1000/600/" />
+								:
+									<a href={slideList[2].link} target="_blank">
+										<img src="https://picsum.photos/id/1018/1000/600/" />
+									</a>
+								}								</div>
+							<p className={`splide-caption ${captionSize} ${slideList[2].captionLocation} ${captionColor}`}>
+								{slideList[2].caption}
+							</p>
+						</li>
+						<li className="splide__slide">
+							<div className="splide__slide__container">
+								{slideList[3].link == '' ?
+									<img src="https://picsum.photos/id/1018/1000/600/" />
+								:
+									<a href={slideList[3].link} target="_blank">
+										<img src="https://picsum.photos/id/1018/1000/600/" />
+									</a>
+								}								</div>
+							<p className={`splide-caption ${captionSize} ${slideList[3].captionLocation} ${captionColor}`}>
+								{slideList[3].caption}
+							</p>
+						</li>
+						<li className="splide__slide">
+							<div className="splide__slide__container">
+								{slideList[4].link == '' ?
+									<img src="https://picsum.photos/id/1018/1000/600/" />
+								:
+									<a href={slideList[4].link} target="_blank">
+										<img src="https://picsum.photos/id/1018/1000/600/" />
+									</a>
+								}								</div>
+							<p className={`splide-caption ${captionSize} ${slideList[4].captionLocation} ${captionColor}`}>
+								{slideList[4].caption}
+							</p>
+						</li>
+						<li className="splide__slide">
+							<div className="splide__slide__container">
+								{slideList[5].link == '' ?
+									<img src="https://picsum.photos/id/1018/1000/600/" />
+								:
+									<a href={slideList[5].link} target="_blank">
+										<img src="https://picsum.photos/id/1018/1000/600/" />
+									</a>
+								}								</div>
+							<p className={`splide-caption ${captionSize} ${slideList[5].captionLocation} ${captionColor}`}>
+								{slideList[5].caption}
+							</p>
+						</li>
+						<li className="splide__slide">
+							<div className="splide__slide__container">
+								{slideList[6].link == '' ?
+									<img src="https://picsum.photos/id/1018/1000/600/" />
+								:
+									<a href={slideList[6].link} target="_blank">
+										<img src="https://picsum.photos/id/1018/1000/600/" />
+									</a>
+								}								</div>
+							<p className={`splide-caption ${captionSize} ${slideList[6].captionLocation} ${captionColor}`}>
+								{slideList[6].caption}
+							</p>
+						</li>
+						<li className="splide__slide">
+							<div className="splide__slide__container">
+								{slideList[7].link == '' ?
+									<img src="https://picsum.photos/id/1018/1000/600/" />
+								:
+									<a href={slideList[7].link} target="_blank">
+										<img src="https://picsum.photos/id/1018/1000/600/" />
+									</a>
+								}								</div>
+							<p className={`splide-caption ${captionSize} ${slideList[7].captionLocation} ${captionColor}`}>
+								{slideList[7].caption}
+							</p>
+						</li>
+					</ul>
 				</div>
+			</div>
+			<script type='text/javascript'>{`new Splide("#${sliderId}", {type: 'loop'}).mount();`}</script>
 		</div>
-	);
+	)
 }

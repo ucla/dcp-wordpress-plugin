@@ -22,12 +22,7 @@ new PluginUpdater(__FILE__, 'avelikanov/testpg', 'master'); */
 
 function ucla_dcp_ucla_dcp_block_init() {
 
-	wp_register_script(
-		'react-image-gallery',
-		plugins_url( '/node_modules/react-image-gallery/build/image-gallery.js' , __FILE__ ),
-		array( 'react' )
-	);
-	wp_enqueue_script( 'react-image-gallery' );
+  wp_enqueue_script('jquery');
 
 	$dir = dirname( __FILE__ );
 
@@ -77,33 +72,3 @@ function ucla_dcp_ucla_dcp_block_init() {
 
 }
 add_action( 'init', 'ucla_dcp_ucla_dcp_block_init' );
-
-// function add_react_image_gallery( $hook ) {
-
-// 	// $dir = dirname( __FILE__ );
-// 	// $script_asset_path = "$dir/node_modules/react-image-gallery/build/image-gallery.js";
-// 	// if ( ! file_exists( $script_asset_path ) ) {
-// 	// 	throw new Error(
-// 	// 		'You need to run `npm install` to add react-image-gallery.'
-// 	// 	);
-// 	// }
-// 	// $index_js     = '/node_modules/react-image-gallery/build/image-gallery.js';
-// 	// $script_asset = require( $script_asset_path );
-// 	// wp_register_script(
-// 	// 	'uwai-uwai-block-editor',
-// 	// 	plugins_url( $index_js, __FILE__ ),
-// 	// 	$script_asset['dependencies'],
-// 	// 	$script_asset['version']
-// 	// );
-
-// 	wp_register_script( 'react',
-// 		plugins_url( '/node_modules/react/index.js' , __FILE__ )
-// 	);
-// 	wp_register_script( 'react-image-gallery',
-// 		plugins_url( '/node_modules/react-image-gallery/build/image-gallery.js' , __FILE__ )
-// 	);
-// 	wp_enqueue_script( 'react' );
-// 	wp_enqueue_script( 'react-image-gallery' );
-// }
-// add_action( 'wp_enqueue_scripts', 'add_react_image_gallery' );
-
