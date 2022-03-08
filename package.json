@@ -17,6 +17,7 @@
 		"@wordpress/scripts": "^12.1.1"
 	},
 	"dependencies": {
+		"@splidejs/react-splide": "^0.6.20",
 		"@splidejs/splide": "^3.6.12",
 		"@wordpress/icons": "^2.4.0",
 		"ucla-bruin-components": "https://bitbucket.org/uclaucomm/ucla-bruin-components.git#main"

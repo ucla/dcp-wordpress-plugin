@@ -29,11 +29,11 @@
 		},
 		"autoplay": {
 			"type": "boolean",
-			"default": false
+			"default": true
 		},
 		"autoplayInterval": {
 			"type": "string",
-			"default": "5"
+			"default": "8"
 		},
 		"numSlides": {
 			"type": "string",
@@ -52,58 +52,57 @@
 			"default": [
 				{
 					"image": "https://picsum.photos/id/1018/1000/600/",
-					"alt": "mountains",
+					"alt": "powell library",
 					"captionLocation": "caption-bottom-left",
-					"caption": "Slide 1",
+					"caption": "Powell Library",
 					"link": ""
 				},
 				{
 					"image": "https://picsum.photos/id/1018/1000/600/",
-					"alt": "mountains",
+					"alt": "trees",
 					"captionLocation": "caption-bottom-left",
-					"caption": "Slide 2",
+					"caption": "Trees",
 					"link": ""
 				},
 				{
 					"image": "https://picsum.photos/id/1018/1000/600/",
-					"alt": "mountains",
+					"alt": "kerchoff",
 					"captionLocation": "caption-bottom-left",
-					"caption": "Slide 3",
+					"caption": "Kerchoff",
 					"link": ""
 				},
 				{
 					"image": "https://picsum.photos/id/1018/1000/600/",
-					"alt": "mountains",
+					"alt": "courtyard",
 					"captionLocation": "caption-bottom-left",
-					"caption": "Slide 4",
+					"caption": "Courtyard",
 					"link": ""
 				},
 				{
 					"image": "https://picsum.photos/id/1018/1000/600/",
-					"alt": "mountains",
+					"alt": "bruin walk",
 					"captionLocation": "caption-bottom-left",
-					"caption": "Slide 5",
+					"caption": "Bruin Walk",
+					"link": ""
+				},				{
+					"image": "https://picsum.photos/id/1018/1000/600/",
+					"alt": "bruin store",
+					"captionLocation": "caption-bottom-left",
+					"caption": "Bruin Store",
 					"link": ""
 				},
 				{
 					"image": "https://picsum.photos/id/1018/1000/600/",
-					"alt": "mountains",
+					"alt": "royce hall",
 					"captionLocation": "caption-bottom-left",
-					"caption": "Slide 6",
+					"caption": "Royce Hall",
 					"link": ""
 				},
 				{
 					"image": "https://picsum.photos/id/1018/1000/600/",
-					"alt": "mountains",
+					"alt": "bruin bear",
 					"captionLocation": "caption-bottom-left",
-					"caption": "Slide 7",
-					"link": ""
-				},
-				{
-					"image": "https://picsum.photos/id/1018/1000/600/",
-					"alt": "mountains",
-					"captionLocation": "caption-bottom-left",
-					"caption": "Slide 8",
+					"caption": "Bruin Bear",
 					"link": ""
 				}
 			]
