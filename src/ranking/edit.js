@@ -12,8 +12,6 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import './editor.scss';
-
 import {
 	PanelBody,
 	SelectControl,
@@ -39,7 +37,6 @@ import {
 export default function Edit({
 	attributes,
 	setAttributes,
-	isSelected,
 	className,
 }) {
 	let {
@@ -79,7 +76,7 @@ export default function Edit({
 			<InspectorControls>
 				<PanelBody title={ __( 'Ranking Style' ) }>
 					<SelectControl
-						label="Number of Segments"
+						label={__("Number of Segments")}
 						value={ segments }
 						options={ [
 							{ label: '1', value: '1' },
@@ -107,7 +104,7 @@ export default function Edit({
 									className="stat-tout__number"
 									value={rank.ranking}
 									onChange={(value) => onChangeRanking(value, rank.id)}
-									placeholder='#1'
+									placeholder={__('#1')}
 								/>
 								<div className="stat-tout__info-wrap">
 									<RichText
@@ -115,14 +112,14 @@ export default function Edit({
 										className="stat-tout__label"
 										value={rank.label}
 										onChange={(value) => onChangeLabel(value, rank.id)}
-										placeholder="Text here"
+										placeholder={__("Text here")}
 									/>
 									<RichText
 										tagName="span"
 										className="stat-tout__source"
 										value={rank.source}
 										onChange={(value) => onChangeSource(value, rank.id)}
-										placeholder='Source'
+										placeholder={__('Source')}
 									/>
 								</div>
 							</div>

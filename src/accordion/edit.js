@@ -28,14 +28,12 @@ import {
  * @param {Object} [props]           Properties passed from the editor.
  * @param {Object} [props.attributes]
  * @param {string} [props.setAttributes]
- * @param {string} [props.isSelected]
  * @param {string} [props.className] Class name generated for the block.
  * @return {WPElement} Element to render.
  */
 export default function Edit({
 	attributes,
 	setAttributes,
-	isSelected,
 	className,
 }) {
 	
@@ -62,9 +60,9 @@ export default function Edit({
 							<dt>
 								<RichText
 									tagName="span"
-									value={attributes.title}
+									value={title}
 									onChange={onChangeTitle}
-									placeholder="Title here"
+									placeholder={__("Title here")}
 								/>
 							</dt>
 						</button>

@@ -1,11 +1,4 @@
 /* eslint-disable no-unused-vars */
-/**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
- */
-import './style.scss';
-
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
 
 /**
@@ -25,7 +18,8 @@ export default function save({
 	className,
 }) {
 	return (
-			<section className={`accordion${className ? className : ''}`}>
+		<article className={className}>
+			<section className='accordion'>
 				<dl>
 					<button className="accordion__title" aria-expanded="false">
 						<dt>
@@ -35,11 +29,11 @@ export default function save({
 							/>
 						</dt>
 					</button>
-
 					<dd className="accordion__content"> 
 						<InnerBlocks.Content />
 					</dd>
 				</dl>    
 			</section>
+		</article>
 	);
 }

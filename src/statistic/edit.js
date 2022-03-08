@@ -12,8 +12,6 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import './editor.scss';
-
 import {
 	PanelBody,
 	ToggleControl,
@@ -40,7 +38,6 @@ import {
 export default function Edit({
 	attributes,
 	setAttributes,
-	isSelected,
 	className,
 }) {
 	let {
@@ -74,7 +71,7 @@ export default function Edit({
 			<InspectorControls>
 				<PanelBody title={ __( 'Statistics Style' ) }>
 					<SelectControl
-						label="Number of Segments"
+						label={__("Number of Segments")}
 						value={segments}
 						options={[
 							{label: '1', value: '1'},
@@ -103,7 +100,7 @@ export default function Edit({
 										className="stat-tout__number"
 										value={stat.number}
 										onChange={(value) => onChangeNumber(value, stat.id)}
-										placeholder='10%'
+										placeholder={__('10%')}
 									/>
 									<div className="stat-tout__info-wrap">
 										<RichText
@@ -111,7 +108,7 @@ export default function Edit({
 											className="stat-tout__label"
 											value={stat.label}
 											onChange={(value) => onChangeLabel(value, stat.id)}
-											placeholder='Text here'
+											placeholder={__('Text here')}
 										/>
 									</div>
 								</div>

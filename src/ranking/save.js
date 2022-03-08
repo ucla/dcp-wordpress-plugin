@@ -1,11 +1,4 @@
 /* eslint-disable no-unused-vars */
-/**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
- */
-import './style.scss';
-
 import { RichText } from '@wordpress/block-editor';
 
 /**

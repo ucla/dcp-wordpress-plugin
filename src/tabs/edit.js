@@ -12,7 +12,6 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import './editor.scss';
 import {
 	PanelBody,
 	SelectControl,
@@ -39,7 +38,6 @@ import { useState } from '@wordpress/element';
 export default function Edit({
 	attributes,
 	setAttributes,
-	isSelected,
 	className,
 }) {
 	
@@ -72,7 +70,7 @@ export default function Edit({
 			<InspectorControls>
 				<PanelBody title={ __( 'Statistic Style' ) }>
 					<SelectControl
-						label="Number of Tabs"
+						label={__("Number of Tabs")}
 						value={ numTabs }
 						options={ [
 							{ label: '2', value: '2' },
