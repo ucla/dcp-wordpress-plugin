@@ -4,6 +4,12 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+
+.screenreader-helper {
+	color: transparent;
+	user-select: none;
+}
+
 .wp-block-uwai-uwai {
 	background-color: var(--wp-admin-theme-color);
 	color: #fff;
