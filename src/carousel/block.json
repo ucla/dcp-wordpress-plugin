@@ -1,0 +1,103 @@
+{
+	"name": "uwai/carousel",
+	"title": "UWAI Carousel",
+	"category": "common",
+	"textdomain": "uwai",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"sliderId": {
+			"type": "string",
+			"default": "testing-my-carousel"
+		},
+		"thumbnail": {
+			"type": "boolean",
+			"default": false
+		},
+		"thumbnailPos": {
+			"type": "string",
+			"default": "bottom"
+		},
+		"titleVisible": {
+			"type": "boolean",
+			"default": false
+		},
+		"titleText": {
+			"type": "string",
+			"default": "UCLA Title"
+		},
+		"autoplay": {
+			"type": "boolean",
+			"default": true
+		},
+		"autoplayInterval": {
+			"type": "string",
+			"default": "8"
+		},
+		"numSlides": {
+			"type": "string",
+			"default": "4"
+		},
+		"captionSize": {
+			"type": "string",
+			"default": "caption-medium"
+		},
+		"captionColor": {
+			"type": "string",
+			"default": "caption-blue-on-yellow"
+		},
+		"slideList": {
+			"type": "array",
+			"default": [
+				{
+					"alt": "powell library",
+					"captionLocation": "caption-bottom-left",
+					"caption": "Powell Library",
+					"link": ""
+				},
+				{
+					"alt": "trees",
+					"captionLocation": "caption-bottom-left",
+					"caption": "Trees",
+					"link": ""
+				},
+				{
+					"alt": "kerchoff",
+					"captionLocation": "caption-bottom-left",
+					"caption": "Kerchoff",
+					"link": ""
+				},
+				{
+					"alt": "courtyard",
+					"captionLocation": "caption-bottom-left",
+					"caption": "Courtyard",
+					"link": ""
+				},
+				{
+					"alt": "bruin walk",
+					"captionLocation": "caption-bottom-left",
+					"caption": "Bruin Walk",
+					"link": ""
+				},				{
+					"alt": "bruin store",
+					"captionLocation": "caption-bottom-left",
+					"caption": "Bruin Store",
+					"link": ""
+				},
+				{
+					"alt": "royce hall",
+					"captionLocation": "caption-bottom-left",
+					"caption": "Royce Hall",
+					"link": ""
+				},
+				{
+					"alt": "bruin bear",
+					"captionLocation": "caption-bottom-left",
+					"caption": "Bruin Bear",
+					"link": ""
+				}
+			]
+		}
+	}
+}
