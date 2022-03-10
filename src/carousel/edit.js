@@ -12,16 +12,10 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import './editor.scss';
-
 import './style.scss';
 
-import { useEffect, useState } from 'react';
 import {
 	PanelBody,
-	TextareaControl,
-	ExternalLink,
-	Button,
 	ToggleControl,
 	SelectControl,
 	TextControl,
@@ -29,14 +23,22 @@ import {
 } from '@wordpress/components';
 import {
 	InspectorControls,
-	RichText,
-	InnerBlocks,
-	MediaUpload,
-	MediaUploadCheck,
 } from '@wordpress/block-editor';
-// import Splide from '@splidejs/splide';
+
+// Splide
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
+
+const defaultImages = [
+	"/website1/wp-content/plugins/wp-uwai-plugin/assets/upper_build.jpg",
+	"/website1/wp-content/plugins/wp-uwai-plugin/assets/trees.jpg",
+	"/website1/wp-content/plugins/wp-uwai-plugin/assets/kerchoff.jpg",
+	"/website1/wp-content/plugins/wp-uwai-plugin/assets/cyard_overview.jpg",
+	"/website1/wp-content/plugins/wp-uwai-plugin/assets/bwalk.jpg",
+	"/website1/wp-content/plugins/wp-uwai-plugin/assets/bruin_store.jpg",
+	"/website1/wp-content/plugins/wp-uwai-plugin/assets/big_1.jpg",
+	"/website1/wp-content/plugins/wp-uwai-plugin/assets/bear.jpg",
+]
 
 function attributesFromMedia( { attributes, setAttributes } ) {
 	return ( media ) => {
@@ -101,7 +103,6 @@ export default function Edit({
 		autoplay,
 		autoplayInterval,
 		captionColor,
-		captionLocation,
 		captionSize,
 		numSlides,
 		slideList,
@@ -195,37 +196,6 @@ export default function Edit({
 		}
 		setAttributes({autoplayInterval: num});
 	}
-
-	// const mountSplide = () => {
-	// 	new Splide(`#${sliderId}`, {
-	// 		type: 'loop',
-	// 		autoplay: autoplay,
-	// 		interval: String(Number(autoplayInterval) * 1000),
-	// 		width: '100%',
-	// 		height: '60vh',
-	// 		// fixedWidth: 100,
-	// 		// fixedHeight: 60,
-	// 		// gap        : 10,
-	// 		// rewind     : true,
-	// 		// pagination : false,
-	// 		cover: true,
-	// 	}).mount();
-	// }
-
-	// useEffect(() => {
-	// 	if (sliderId)
-	// 		mountSplide();
-	// 	else
-	// 		useEffect(mountSplide, [sliderId]);
-	// }, []);
-
-	// const [isPlay, setIsPlay] = useState(false);
-
-	// const togglePlay = () => {
-	// 	setIsPlay(!isPlay);
-	// }
-	
-	console.log(attributes);
 
 	return (
 		<>
@@ -349,17 +319,17 @@ export default function Edit({
 							</div> */}
 							<TextControl
 								label={__('Alt text')}
-								value={slideList[index].alt}
+								value={slide.alt}
 								onChange={(value) => setAlt(value, index)}
 							/>
 							<TextControl
 								label={__('Caption')}
-								value={slideList[index].caption}
+								value={slide.caption}
 								onChange={(value) => setCaption(value, index)}
 							/>
 							<SelectControl
 								label="Caption Location"
-								value={slideList[index].captionLocation}
+								value={slide.captionLocation}
 								options={
 									titleVisible ?
 										[ {label: 'Top left', value: 'caption-top-left'},
@@ -378,7 +348,7 @@ export default function Edit({
 							/>
 							<TextControl
 								label={__('Link URL')}
-								value={slideList[index].link}
+								value={slide.link}
 								onChange={(value) => setLink(value, index)}
 								help="When linking to an external site, be sure to use 'https://'"
 							/>
@@ -435,274 +405,37 @@ export default function Edit({
 						// cover: true,
 					} }
 					hasAutoplayControls
-					hasAutoplayProgress
 				>
-					<SplideSlide>
-								<div className="splide__slide__container">
-									<a href={slideList[0].link} target="_blank">
-										<img
-											src="/website1/wp-content/plugins/wp-uwai-plugin/assets/upper_build.jpg"
-											alt={slideList[0].alt}
-											className="splide-image"
-										/>
-									</a>
-								</div>
-								<p className={`splide-caption ${captionSize} ${slideList[0].captionLocation} ${captionColor}`}>
-									{slideList[0].caption}
-								</p>
-							</SplideSlide>
+					{slideList.map((slide, index) => {
+						if (index >= numSlides)
+							return null;
+						return (
 							<SplideSlide>
 								<div className="splide__slide__container">
-									<a href={slideList[1].link} target="_blank">
+									{slide.link === "" ?
 										<img
-											src="/website1/wp-content/plugins/wp-uwai-plugin/assets/trees.jpg"
-											alt={slideList[1].alt}
+											src={defaultImages[index]}
+											alt={slide.alt}
 											className="splide-image"
 										/>
-									</a>
+									:
+										<a href={slide.link} target="_blank">
+											<img
+												src={defaultImages[index]}
+												alt={slide.alt}
+												className="splide-image"
+											/>
+										</a>
+									}
 								</div>
-								<p className={`splide-caption ${captionSize} ${slideList[1].captionLocation} ${captionColor}`}>
-									{slideList[1].caption}
+								<p className={`splide-caption ${captionSize} ${slide.captionLocation} ${captionColor}`}>
+									{slide.caption}
 								</p>
 							</SplideSlide>
-							{numSlides >= 3 ?
-							<SplideSlide>
-								<div className="splide__slide__container">
-									<a href={slideList[2].link} target="_blank">
-										<img
-											src="/website1/wp-content/plugins/wp-uwai-plugin/assets/kerchoff.jpg"
-											alt={slideList[2].alt}
-											className="splide-image"
-										/>
-									</a>
-								</div>
-								<p className={`splide-caption ${captionSize} ${slideList[2].captionLocation} ${captionColor}`}>
-									{slideList[2].caption}
-								</p>
-							</SplideSlide>
-							: null}
-							{numSlides >= 4 ?
-							<SplideSlide>
-								<div className="splide__slide__container">
-									<a href={slideList[3].link} target="_blank">
-										<img
-											src="/website1/wp-content/plugins/wp-uwai-plugin/assets/cyard_overview.jpg"
-											alt={slideList[3].alt}
-											className="splide-image"
-										/>
-									</a>
-								</div>
-								<p className={`splide-caption ${captionSize} ${slideList[3].captionLocation} ${captionColor}`}>
-									{slideList[3].caption}
-								</p>
-							</SplideSlide>
-							: null}
-							{numSlides >= 5 ?
-							<SplideSlide>
-								<div className="splide__slide__container">
-									<a href={slideList[4].link} target="_blank">
-										<img
-											src="/website1/wp-content/plugins/wp-uwai-plugin/assets/bwalk.jpg"
-											alt={slideList[4].alt}
-											className="splide-image"
-										/>
-									</a>
-								</div>
-								<p className={`splide-caption ${captionSize} ${slideList[4].captionLocation} ${captionColor}`}>
-									{slideList[4].caption}
-								</p>
-							</SplideSlide>
-							: null}
-							{numSlides >= 6 ?
-							<SplideSlide>
-								<div className="splide__slide__container">
-								<a href={slideList[5].link} target="_blank">
-									<img
-										src="/website1/wp-content/plugins/wp-uwai-plugin/assets/bruin_store.jpg"
-										alt={slideList[5].alt}
-										className="splide-image"
-									/>
-								</a>
-								</div>
-								<p className={`splide-caption ${captionSize} ${slideList[5].captionLocation} ${captionColor}`}>
-									{slideList[5].caption}
-								</p>
-							</SplideSlide>
-							: null}
-							{numSlides >= 7 ?
-							<SplideSlide>
-								<div className="splide__slide__container">
-									<a href={slideList[6].link} target="_blank">
-										<img
-											src="/website1/wp-content/plugins/wp-uwai-plugin/assets/big_1.jpg"
-											alt={slideList[6].alt}
-											className="splide-image"
-										/>
-									</a>
-								</div>
-								<p className={`splide-caption ${captionSize} ${slideList[6].captionLocation} ${captionColor}`}>
-									{slideList[6].caption}
-								</p>
-							</SplideSlide>
-							: null}
-							{numSlides >= 8 ?
-							<SplideSlide>
-								<div className="splide__slide__container">
-									<a href={slideList[7].link} target="_blank">
-										<img
-											src="/website1/wp-content/plugins/wp-uwai-plugin/assets/bear.jpg"
-											alt={slideList[7].alt}
-											className="splide-image"
-										/>
-									</a>
-								</div>
-								<p className={`splide-caption ${captionSize} ${slideList[7].captionLocation} ${captionColor}`}>
-									{slideList[7].caption}
-								</p>
-							</SplideSlide>
-							: null}
-
-					{/* <div class="splide__arrows">
-						<button class="splide__arrow splide__arrow--prev">
-						</button>
-						<button class="splide__arrow splide__arrow--next">
-						</button>
-					</div> */}
-					{/* <div class="splide__autoplay">
-						<button class="splide__play">Play</button>
-						<button class="splide__pause">Pause</button>
-					</div> */}
+						);
+					})}
 				</Splide>
-				{/* <div id={sliderId} className="splide">
-					<div className="splide__track">
-						<ul className="splide__list">
-							<li className="splide__slide">
-								<div className="splide__slide__container">
-									<a href={slideList[0].link} target="_blank">
-										<img
-											src="/website1/wp-content/plugins/wp-uwai-plugin/assets/upper_build.jpg"
-											alt={slideList[0].alt}
-											className="splide-image"
-										/>
-									</a>
-								</div>
-								<p className={`splide-caption ${captionSize} ${slideList[0].captionLocation} ${captionColor}`}>
-									{slideList[0].caption}
-								</p>
-							</li>
-							<li className="splide__slide">
-								<div className="splide__slide__container">
-									<a href={slideList[1].link} target="_blank">
-										<img
-											src="/website1/wp-content/plugins/wp-uwai-plugin/assets/trees.jpg"
-											alt={slideList[1].alt}
-											className="splide-image"
-										/>
-									</a>
-								</div>
-								<p className={`splide-caption ${captionSize} ${slideList[1].captionLocation} ${captionColor}`}>
-									{slideList[1].caption}
-								</p>
-							</li>
-							{numSlides >= 3 ?
-							<li className="splide__slide">
-								<div className="splide__slide__container">
-									<a href={slideList[2].link} target="_blank">
-										<img
-											src="/website1/wp-content/plugins/wp-uwai-plugin/assets/kerchoff.jpg"
-											alt={slideList[2].alt}
-											className="splide-image"
-										/>
-									</a>
-								</div>
-								<p className={`splide-caption ${captionSize} ${slideList[2].captionLocation} ${captionColor}`}>
-									{slideList[2].caption}
-								</p>
-							</li>
-							: null}
-							{numSlides >= 4 ?
-							<li className="splide__slide">
-								<div className="splide__slide__container">
-									<a href={slideList[3].link} target="_blank">
-										<img
-											src="/website1/wp-content/plugins/wp-uwai-plugin/assets/cyard_overview.jpg"
-											alt={slideList[3].alt}
-											className="splide-image"
-										/>
-									</a>
-								</div>
-								<p className={`splide-caption ${captionSize} ${slideList[3].captionLocation} ${captionColor}`}>
-									{slideList[3].caption}
-								</p>
-							</li>
-							: null}
-							{numSlides >= 5 ?
-							<li className="splide__slide">
-								<div className="splide__slide__container">
-									<a href={slideList[4].link} target="_blank">
-										<img
-											src="/website1/wp-content/plugins/wp-uwai-plugin/assets/bwalk.jpg"
-											alt={slideList[4].alt}
-											className="splide-image"
-										/>
-									</a>
-								</div>
-								<p className={`splide-caption ${captionSize} ${slideList[4].captionLocation} ${captionColor}`}>
-									{slideList[4].caption}
-								</p>
-							</li>
-							: null}
-							{numSlides >= 6 ?
-							<li className="splide__slide">
-								<div className="splide__slide__container">
-								<a href={slideList[5].link} target="_blank">
-									<img
-										src="/website1/wp-content/plugins/wp-uwai-plugin/assets/bruin_store.jpg"
-										alt={slideList[5].alt}
-										className="splide-image"
-									/>
-								</a>
-								</div>
-								<p className={`splide-caption ${captionSize} ${slideList[5].captionLocation} ${captionColor}`}>
-									{slideList[5].caption}
-								</p>
-							</li>
-							: null}
-							{numSlides >= 7 ?
-							<li className="splide__slide">
-								<div className="splide__slide__container">
-									<a href={slideList[6].link} target="_blank">
-										<img
-											src="/website1/wp-content/plugins/wp-uwai-plugin/assets/big_1.jpg"
-											alt={slideList[6].alt}
-											className="splide-image"
-										/>
-									</a>
-								</div>
-								<p className={`splide-caption ${captionSize} ${slideList[6].captionLocation} ${captionColor}`}>
-									{slideList[6].caption}
-								</p>
-							</li>
-							: null}
-							{numSlides >= 8 ?
-							<li className="splide__slide">
-								<div className="splide__slide__container">
-									<a href={slideList[7].link} target="_blank">
-										<img
-											src="/website1/wp-content/plugins/wp-uwai-plugin/assets/bear.jpg"
-											alt={slideList[7].alt}
-											className="splide-image"
-										/>
-									</a>
-								</div>
-								<p className={`splide-caption ${captionSize} ${slideList[7].captionLocation} ${captionColor}`}>
-									{slideList[7].caption}
-								</p>
-							</li>
-							: null}
-						</ul>
-					</div>
-					<div class="splide__arrows">
+					{/* <div class="splide__arrows">
 						<button class="splide__arrow splide__arrow--prev">
 						</button>
 						<button class="splide__arrow splide__arrow--next">
@@ -711,8 +444,7 @@ export default function Edit({
 					<div class="splide__autoplay">
 						<button class="splide__play">Play</button>
 						<button class="splide__pause">Pause</button>
-					</div>
-				</div> */}
+					</div> */}
 			</article>
 		</>
 	);

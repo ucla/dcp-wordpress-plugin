@@ -51,55 +51,47 @@
 			"type": "array",
 			"default": [
 				{
-					"image": "https://picsum.photos/id/1018/1000/600/",
 					"alt": "powell library",
 					"captionLocation": "caption-bottom-left",
 					"caption": "Powell Library",
 					"link": ""
 				},
 				{
-					"image": "https://picsum.photos/id/1018/1000/600/",
 					"alt": "trees",
 					"captionLocation": "caption-bottom-left",
 					"caption": "Trees",
 					"link": ""
 				},
 				{
-					"image": "https://picsum.photos/id/1018/1000/600/",
 					"alt": "kerchoff",
 					"captionLocation": "caption-bottom-left",
 					"caption": "Kerchoff",
 					"link": ""
 				},
 				{
-					"image": "https://picsum.photos/id/1018/1000/600/",
 					"alt": "courtyard",
 					"captionLocation": "caption-bottom-left",
 					"caption": "Courtyard",
 					"link": ""
 				},
 				{
-					"image": "https://picsum.photos/id/1018/1000/600/",
 					"alt": "bruin walk",
 					"captionLocation": "caption-bottom-left",
 					"caption": "Bruin Walk",
 					"link": ""
 				},				{
-					"image": "https://picsum.photos/id/1018/1000/600/",
 					"alt": "bruin store",
 					"captionLocation": "caption-bottom-left",
 					"caption": "Bruin Store",
 					"link": ""
 				},
 				{
-					"image": "https://picsum.photos/id/1018/1000/600/",
 					"alt": "royce hall",
 					"captionLocation": "caption-bottom-left",
 					"caption": "Royce Hall",
 					"link": ""
 				},
 				{
-					"image": "https://picsum.photos/id/1018/1000/600/",
 					"alt": "bruin bear",
 					"captionLocation": "caption-bottom-left",
 					"caption": "Bruin Bear",
