@@ -12,6 +12,8 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
+import './style.scss';
+
 import {
 	PanelBody,
 	SelectControl,
@@ -21,7 +23,6 @@ import {
 	RichText,
 } from '@wordpress/block-editor';
 import { useState } from '@wordpress/element';
-
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -83,7 +84,7 @@ export default function Edit({
 					/>
 				</PanelBody>
 			</InspectorControls>
-			<div className={`tabs ${className ? className : ''}`}>
+			<div className={`tabs left-align ${className ? className : ''}`}>
 				<div role="tablist" aria-label="content-tabs">
 					{tabContent.map((tabInfo) => {
 						if ((Number(tabInfo.id) > Number(numTabs)))

@@ -30,7 +30,6 @@ import '../node_modules/ucla-bruin-components/public/css/ucla-lib.min.css';
 import * as accordion from './accordion';
 import * as button from './button';
 import * as card from './card';
-import * as carousel from './carousel';
 import * as eventCard from './event-card';
 import * as factoid from './factoid';
 import * as hero from './hero';
@@ -66,7 +65,6 @@ export const registerUwaiBlocks = () => {
 		accordion,
 		button,
 		card,
-		carousel,
 		eventCard,
 		factoid,
 		profileCard,

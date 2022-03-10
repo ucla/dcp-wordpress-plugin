@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import './style.scss';
 import { RichText } from '@wordpress/block-editor';
 
 /**
@@ -20,7 +21,7 @@ export default function save({
 }) {
 
 	return (
-		<section className={`tabs ${className ? className : ''}`}>
+		<section className={`tabs left-align ${className ? className : ''}`}>
 			<div role="tablist" aria-label="content-tabs">
 				{tabContent.map((tabInfo) => {
 					if ((Number(tabInfo.id) > Number(numTabs)))
