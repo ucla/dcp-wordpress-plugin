@@ -21,10 +21,72 @@ export default function save({
 		captionColor,
 		captionSize,
 		numSlides,
-		slideList
+		slideList,
+		imageUrl0,
+		imageAlt0,
+		imageUrl1,
+		imageAlt1,
+		imageUrl2,
+		imageAlt2,
+		imageUrl3,
+		imageAlt3,
+		imageUrl4,
+		imageAlt4,
+		imageUrl5,
+		imageAlt5,
+		imageUrl6,
+		imageAlt6,
+		imageUrl7,
+		imageAlt7,
 	},
 	className,
 }) {
+
+	const getImageUrl = (index) => {
+		switch (index) {
+			case 0: imageUrl0;
+			break;
+			case 1: imageUrl1;
+			break;
+			case 2: imageUrl2;
+			break;
+			case 3: imageUrl3;
+			break;
+			case 4: imageUrl4;
+			break;
+			case 5: imageUrl5;
+			break;
+			case 6: imageUrl6;
+			break;
+			case 7: imageUrl7;
+			break;
+			default: null;
+			break;
+		}
+	}
+
+	const getImageAlt = (index) => {
+		switch (index) {
+			case 0: imageAlt0;
+			break;
+			case 1: imageAlt1;
+			break;
+			case 2: imageAlt2;
+			break;
+			case 3: imageAlt3;
+			break;
+			case 4: imageAlt4;
+			break;
+			case 5: imageAlt5;
+			break;
+			case 6: imageAlt6;
+			break;
+			case 7: imageAlt7;
+			break;
+			default: null;
+			break;
+		}
+	}
 
 	return (
 		<div className={className}>
@@ -42,115 +104,32 @@ export default function save({
 			<div id={sliderId} className="splide">
 				<div className="splide__track">
 					<ul className="splide__list">
-						<li className="splide__slide">
-							<div className="splide__slide__container">
-								{slideList[0].link == '' ?
-									<img src="https://picsum.photos/id/1018/1000/600/" />
-								:
-									<a href={slideList[0].link} target="_blank">
-										<img src="https://picsum.photos/id/1018/1000/600/" />
-									</a>
-								}
-							</div>
-							<p className={`splide-caption ${captionSize} ${slideList[0].captionLocation} ${captionColor}`}>
-								{slideList[0].caption}
-							</p>
-						</li>
-						<li className="splide__slide">
-							<div className="splide__slide__container">
-								{slideList[1].link == '' ?
-									<img src="https://picsum.photos/id/1018/1000/600/" />
-								:
-									<a href={slideList[1].link} target="_blank">
-										<img src="https://picsum.photos/id/1018/1000/600/" />
-									</a>
-								}								</div>
-							<p className={`splide-caption ${captionSize} ${slideList[1].captionLocation} ${captionColor}`}>
-								{slideList[1].caption}
-							</p>
-						</li>
-						<li className="splide__slide">
-							<div className="splide__slide__container">
-								{slideList[2].link == '' ?
-									<img src="https://picsum.photos/id/1018/1000/600/" />
-								:
-									<a href={slideList[2].link} target="_blank">
-										<img src="https://picsum.photos/id/1018/1000/600/" />
-									</a>
-								}								</div>
-							<p className={`splide-caption ${captionSize} ${slideList[2].captionLocation} ${captionColor}`}>
-								{slideList[2].caption}
-							</p>
-						</li>
-						<li className="splide__slide">
-							<div className="splide__slide__container">
-								{slideList[3].link == '' ?
-									<img src="https://picsum.photos/id/1018/1000/600/" />
-								:
-									<a href={slideList[3].link} target="_blank">
-										<img src="https://picsum.photos/id/1018/1000/600/" />
-									</a>
-								}								</div>
-							<p className={`splide-caption ${captionSize} ${slideList[3].captionLocation} ${captionColor}`}>
-								{slideList[3].caption}
-							</p>
-						</li>
-						<li className="splide__slide">
-							<div className="splide__slide__container">
-								{slideList[4].link == '' ?
-									<img src="https://picsum.photos/id/1018/1000/600/" />
-								:
-									<a href={slideList[4].link} target="_blank">
-										<img src="https://picsum.photos/id/1018/1000/600/" />
-									</a>
-								}								</div>
-							<p className={`splide-caption ${captionSize} ${slideList[4].captionLocation} ${captionColor}`}>
-								{slideList[4].caption}
-							</p>
-						</li>
-						<li className="splide__slide">
-							<div className="splide__slide__container">
-								{slideList[5].link == '' ?
-									<img src="https://picsum.photos/id/1018/1000/600/" />
-								:
-									<a href={slideList[5].link} target="_blank">
-										<img src="https://picsum.photos/id/1018/1000/600/" />
-									</a>
-								}								</div>
-							<p className={`splide-caption ${captionSize} ${slideList[5].captionLocation} ${captionColor}`}>
-								{slideList[5].caption}
-							</p>
-						</li>
-						<li className="splide__slide">
-							<div className="splide__slide__container">
-								{slideList[6].link == '' ?
-									<img src="https://picsum.photos/id/1018/1000/600/" />
-								:
-									<a href={slideList[6].link} target="_blank">
-										<img src="https://picsum.photos/id/1018/1000/600/" />
-									</a>
-								}								</div>
-							<p className={`splide-caption ${captionSize} ${slideList[6].captionLocation} ${captionColor}`}>
-								{slideList[6].caption}
-							</p>
-						</li>
-						<li className="splide__slide">
-							<div className="splide__slide__container">
-								{slideList[7].link == '' ?
-									<img src="https://picsum.photos/id/1018/1000/600/" />
-								:
-									<a href={slideList[7].link} target="_blank">
-										<img src="https://picsum.photos/id/1018/1000/600/" />
-									</a>
-								}								</div>
-							<p className={`splide-caption ${captionSize} ${slideList[7].captionLocation} ${captionColor}`}>
-								{slideList[7].caption}
-							</p>
-						</li>
+						{slideList.map((slide, index) => {
+							if (index > numSlides)
+								return null;
+							return (
+								<li className="splide__slide">
+									<div className="splide__slide__container">
+										{slide.link == '' ?
+											<img src={getImageUrl(index)} alt={getImageAlt(index)} className={`.image-no-${index}`} />
+										:
+											<a href={slide.link} target="_blank">
+												<img src={getImageUrl(index)} alt={getImageAlt(index)} className={`.image-no-${index}`} />
+											</a>
+										}
+									</div>
+									<p className={`splide-caption ${captionSize} ${slide.captionLocation} ${captionColor}`}>
+										{slide.caption}
+									</p>
+								</li>
+							);
+						})}
 					</ul>
 				</div>
 			</div>
-			<script type='text/javascript'>{`new Splide("#${sliderId}", {type: 'loop'}).mount();`}</script>
+			<script type='text/javascript'>
+				{`new Splide("#${sliderId}", {type: 'loop'}).mount();`}
+			</script>
 		</div>
 	)
 }

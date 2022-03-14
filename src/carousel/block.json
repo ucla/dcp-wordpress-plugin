@@ -51,53 +51,166 @@
 			"type": "array",
 			"default": [
 				{
-					"alt": "powell library",
+					"mediaId": "",
+					"mediaType": "",
 					"captionLocation": "caption-bottom-left",
 					"caption": "Powell Library",
 					"link": ""
 				},
 				{
-					"alt": "trees",
+					"mediaId": "",
+					"mediaType": "",
 					"captionLocation": "caption-bottom-left",
 					"caption": "Trees",
 					"link": ""
 				},
 				{
-					"alt": "kerchoff",
+					"mediaId": "",
+					"mediaType": "",
 					"captionLocation": "caption-bottom-left",
 					"caption": "Kerchoff",
 					"link": ""
 				},
 				{
-					"alt": "courtyard",
+					"mediaId": "",
+					"mediaType": "",
 					"captionLocation": "caption-bottom-left",
 					"caption": "Courtyard",
 					"link": ""
 				},
 				{
-					"alt": "bruin walk",
+					"mediaId": "",
+					"mediaType": "",
 					"captionLocation": "caption-bottom-left",
 					"caption": "Bruin Walk",
 					"link": ""
-				},				{
-					"alt": "bruin store",
+				},
+				{
+					"mediaId": "",
+					"mediaType": "",
 					"captionLocation": "caption-bottom-left",
 					"caption": "Bruin Store",
 					"link": ""
 				},
 				{
-					"alt": "royce hall",
+					"mediaId": "",
+					"mediaType": "",
 					"captionLocation": "caption-bottom-left",
 					"caption": "Royce Hall",
 					"link": ""
 				},
 				{
-					"alt": "bruin bear",
+					"mediaId": "",
+					"mediaType": "",
 					"captionLocation": "caption-bottom-left",
 					"caption": "Bruin Bear",
 					"link": ""
 				}
 			]
+		},
+		"imageUrl0": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".image-no-0",
+			"attribute": "src"
+		},
+		"imageAlt0": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".image-no-0",
+			"attribute": "alt",
+			"default": ""
+		},
+		"imageUrl1": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".image-no-1",
+			"attribute": "src"
+		},
+		"imageAlt1": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".image-no-1",
+			"attribute": "alt",
+			"default": ""
+		},
+		"imageUrl2": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".image-no-2",
+			"attribute": "src"
+		},
+		"imageAlt2": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".image-no-2",
+			"attribute": "alt",
+			"default": ""
+		},
+		"imageUrl3": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".image-no-3",
+			"attribute": "src"
+		},
+		"imageAlt3": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".image-no-3",
+			"attribute": "alt",
+			"default": ""
+		},
+		"imageUrl4": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".image-no-4",
+			"attribute": "src"
+		},
+		"imageAlt4": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".image-no-4",
+			"attribute": "alt",
+			"default": ""
+		},
+		"imageUrl5": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".image-no-5",
+			"attribute": "src"
+		},
+		"imageAlt5": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".image-no-5",
+			"attribute": "alt",
+			"default": ""
+		},
+		"imageUrl6": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".image-no-6",
+			"attribute": "src"
+		},
+		"imageAlt6": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".image-no-6",
+			"attribute": "alt",
+			"default": ""
+		},
+		"imageUrl7": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".image-no-7",
+			"attribute": "src"
+		},
+		"imageAlt7": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".image-no-7",
+			"attribute": "alt",
+			"default": ""
 		}
 	}
 }

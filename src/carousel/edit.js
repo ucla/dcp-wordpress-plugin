@@ -20,9 +20,12 @@ import {
 	SelectControl,
 	TextControl,
 	RangeControl,
+	Button,
 } from '@wordpress/components';
 import {
 	InspectorControls,
+	MediaUpload,
+	MediaUploadCheck,
 } from '@wordpress/block-editor';
 
 // Splide
@@ -40,8 +43,9 @@ const defaultImages = [
 	"/website1/wp-content/plugins/wp-uwai-plugin/assets/bear.jpg",
 ]
 
-function attributesFromMedia( { attributes, setAttributes } ) {
-	return ( media ) => {
+function attributesFromMedia(index, {attributes, setAttributes}) {
+	return (media) => {
+		console.log("hellooooo");
 		let mediaType;
 		let src;
 		// for media selections originated from a file upload.
@@ -66,16 +70,71 @@ function attributesFromMedia( { attributes, setAttributes } ) {
 				media.media_details?.sizes?.large?.source_url;
 		}
 
-		setAttributes( {
-			mediaAlt: media.alt,
-			mediaId: media.id,
-			mediaType,
-			mediaUrl: src || media.url,
-			focalPoint: undefined,
-		} );
+		const newSlides = attributes.slideList.slice();
+		newSlides[index].mediaId = media.id;
+		newSlides[index].mediaType = mediaType;
+
+		switch (index) {
+			case 0:
+				setAttributes({
+					imageUrl0: src || media.url,
+					imageAlt0: media.alt,
+					slideList: newSlides,
+				});
+			break;
+			case 1:
+				setAttributes({
+					imageUrl1: src || media.url,
+					imageAlt1: media.alt,
+					slideList: newSlides,
+				});
+			break;
+			case 2:
+				setAttributes({
+					imageUrl2: src || media.url,
+					imageAlt2: media.alt,
+					slideList: newSlides,
+				});
+			break;
+			case 3:
+				setAttributes({
+					imageUrl3: src || media.url,
+					imageAlt3: media.alt,
+					slideList: newSlides,
+				});
+			break;
+			case 4:
+				setAttributes({
+					imageUrl4: src || media.url,
+					imageAlt4: media.alt,
+					slideList: newSlides,
+				});
+			break;
+			case 5:
+				setAttributes({
+					imageUrl5: src || media.url,
+					imageAlt5: media.alt,
+					slideList: newSlides,
+				});
+			break;
+			case 6:
+				setAttributes({
+					imageUrl6: src || media.url,
+					imageAlt6: media.alt,
+					slideList: newSlides,
+				});
+			break;
+			case 7:
+				setAttributes({
+					imageUrl7: src || media.url,
+					imageAlt7: media.alt,
+					slideList: newSlides,
+				});
+			break;
+		}
+		console.log(attributes);
 	};
 }
-
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -106,17 +165,52 @@ export default function Edit({
 		captionSize,
 		numSlides,
 		slideList,
+		imageUrl0,
+		imageAlt0,
+		imageUrl1,
+		imageAlt1,
+		imageUrl2,
+		imageAlt2,
+		imageUrl3,
+		imageAlt3,
+		imageUrl4,
+		imageAlt4,
+		imageUrl5,
+		imageAlt5,
+		imageUrl6,
+		imageAlt6,
+		imageUrl7,
+		imageAlt7,
 	} = attributes;
 
 	if (!sliderId) {
 		setAttributes({sliderId: `ucla-slider-${clientId}`});
 	}
 
-	// const onSelectMedia = attributesFromMedia( { attributes, setAttributes } );
+	const onSelectMedia = (index) => attributesFromMedia(index, {attributes, setAttributes});
 
-	// const onMediaAltChange = ( newMediaAlt ) => {
-	// 	setAttributes( { mediaAlt: newMediaAlt } );
-	// };
+	const onMediaAltChange = (index, newMediaAlt) => {
+		switch (index) {
+			case 0: setAttributes({imageAlt0: newMediaAlt});
+			break;
+			case 1: setAttributes({imageAlt1: newMediaAlt});
+			break;
+			case 2: setAttributes({imageAlt2: newMediaAlt});
+			break;
+			case 3: setAttributes({imageAlt3: newMediaAlt});
+			break;
+			case 4: setAttributes({imageAlt4: newMediaAlt});
+			break;
+			case 5: setAttributes({imageAlt5: newMediaAlt});
+			break;
+			case 6: setAttributes({imageAlt6: newMediaAlt});
+			break;
+			case 7: setAttributes({imageAlt7: newMediaAlt});
+			break;
+			default: null;
+			break;
+		}
+	};
 
 	const setNumSlides = (value) => {
 		setAttributes({numSlides: value});
@@ -146,18 +240,51 @@ export default function Edit({
 		setAttributes({slideList: newSlides});
 	}
 
-	// const setSlideMedia = (value, index) => {
-	// 	const newSlides = slideList.slice();
-	// 	newSlides[index].original = value;
-	// 	newSlides[index].thumbnail = value;
-	// 	setAttributes({slideList: newSlides});
-	// }
+	const getImageUrl = (index) => {
+		switch (index) {
+			case 0: imageUrl0;
+			break;
+			case 1: imageUrl1;
+			break;
+			case 2: imageUrl2;
+			break;
+			case 3: imageUrl3;
+			break;
+			case 4: imageUrl4;
+			break;
+			case 5: imageUrl5;
+			break;
+			case 6: imageUrl6;
+			break;
+			case 7: imageUrl7;
+			break;
+			default: null;
+			break;
+		}
+	}
 
-	// const setOriginalAlt = (value, index) => {
-	// 	const newSlides = slideList.slice();
-	// 	newSlides[index].originalAlt = value;
-	// 	setAttributes({slideList: newSlides});
-	// }
+	const getImageAlt = (index) => {
+		switch (index) {
+			case 0: imageAlt0;
+			break;
+			case 1: imageAlt1;
+			break;
+			case 2: imageAlt2;
+			break;
+			case 3: imageAlt3;
+			break;
+			case 4: imageAlt4;
+			break;
+			case 5: imageAlt5;
+			break;
+			case 6: imageAlt6;
+			break;
+			case 7: imageAlt7;
+			break;
+			default: null;
+			break;
+		}
+	}
 
 	const setTitleVisible = (value) => {
 		if (value) {
@@ -190,11 +317,7 @@ export default function Edit({
 	}
 
 	const setAutoplayInterval = (value) => {
-		var num = value;
-		if (isNaN(value) || value < 5) {
-			num = 5;
-		}
-		setAttributes({autoplayInterval: num});
+		setAttributes({autoplayInterval: value});
 	}
 
 	return (
@@ -254,74 +377,69 @@ export default function Edit({
 					if (Number(numSlides) <= index)
 						return null;
 					return (
-						<PanelBody title={__( 'Slide ' + String(index + 1))}>
-							{/* <div className="editor-post-featured-image">
+						<PanelBody title={__('Slide ' + String(index + 1))}>
+							<div className="editor-post-featured-image">
 								<MediaUploadCheck>
 									<MediaUpload
-										onSelect={ onSelectMedia }
-										value={ attributes.mediaId }
-										allowedTypes={ [ 'image' ] }
-										render={ ( { open } ) => (
+										onSelect={(media) => onSelectMedia(index, media)}
+										value={slide.mediaId}
+										allowedTypes={['image']}
+										render={({open}) => (
 											<Button
 												className={
-													! attributes.mediaId
+													! slide.mediaId
 														? 'editor-post-featured-image__toggle'
 														: 'editor-post-featured-image__preview'
 												}
-												onClick={ open }
+												onClick={open}
 											>
-												{ ! attributes.mediaId &&
-													__( 'Choose an image', 'awp' ) }
-												{ mediaUrl && (
+												{!slide.mediaId &&
+													__('Choose an image', 'awp')}
+												{getImageUrl(index) && (
 													<img
-														src={ mediaUrl }
-														alt={ mediaAlt }
+														src={getImageUrl(index)}
+														alt={getImageAlt(index)}
 													/>
-												) }
+												)}
 											</Button>
-										) }
+										)}
 									/>
 								</MediaUploadCheck>
-								{ attributes.mediaId && (
+								{slide.mediaId && (
 									<MediaUploadCheck>
 										<MediaUpload
-											title={ __( 'Replace image', 'awp' ) }
-											value={ attributes.mediaId }
-											onSelect={ onSelectMedia }
-											allowedTypes={ [ 'image' ] }
-											render={ ( { open } ) => (
-												<Button onClick={ open } isDefault>
-													{ __( 'Replace image', 'awp' ) }
+											title={__('Replace image', 'awp')}
+											value={slide.mediaId}
+											onSelect={(media) => onSelectMedia(index, media)}
+											allowedTypes={['image']}
+											render={({open}) => (
+												<Button onClick={open} isDefault>
+													{__('Replace image', 'awp')}
 												</Button>
 											) }
 										/>
 									</MediaUploadCheck>
-								) }
-								{ attributes.mediaId && (
+								)}
+								{slide.mediaId && (
 									<TextareaControl
-										label={ __( 'Alt text (alternative text)' ) }
-										value={ mediaAlt }
-										onChange={ onMediaAltChange }
+										label={__('Alt text (alternative text)')}
+										value={getImageAlt(index)}
+										onChange={(value) => onMediaAltChange(index, value)}
 										help={
 											<>
 												<ExternalLink href="https://www.w3.org/WAI/tutorials/images/decision-tree">
-													{ __(
+													{__(
 														'Describe the purpose of the image'
-													) }
+													)}
 												</ExternalLink>
-												{ __(
+												{__(
 													'Leave empty if the image is purely decorative.'
-												) }
+												)}
 											</>
 										}
 									/>
-								) }
-							</div> */}
-							<TextControl
-								label={__('Alt text')}
-								value={slide.alt}
-								onChange={(value) => setAlt(value, index)}
-							/>
+								)}
+							</div>
 							<TextControl
 								label={__('Caption')}
 								value={slide.caption}
@@ -360,6 +478,7 @@ export default function Edit({
 						label={ __( 'Autoplay active' ) }
 						onChange={setAutoplay}
 						checked={autoplay}
+						help='Will not autoplay in edit mode.'
 					/>
 					{autoplay ?
 						<TextControl
@@ -373,7 +492,7 @@ export default function Edit({
 			</InspectorControls>
 			<article className={className}>
 				<img
-					src='/website1/wp-content/plugins/wp-uwai-plugin/molecule.png'
+					src='/website1/wp-content/plugins/wp-uwai-plugin/assets/polygon.png'
 					className={`title-image ${titleVisible ? "" : "hidden"}`}
 				/>
 				<h1 className={`title-text ${titleVisible ? "" : "hidden"}`}>
@@ -393,16 +512,8 @@ export default function Edit({
 				<Splide
 				  options={ {
 						type: 'loop',
-						autoplay: autoplay,
-						interval: String(Number(autoplayInterval) * 1000),
 						width: '100%',
 						height: '80vh',
-						// fixedWidth: 100,
-						// fixedHeight: 60,
-						// gap        : 10,
-						// rewind     : true,
-						// pagination : false,
-						// cover: true,
 					} }
 					hasAutoplayControls
 				>
@@ -414,16 +525,16 @@ export default function Edit({
 								<div className="splide__slide__container">
 									{slide.link === "" ?
 										<img
-											src={defaultImages[index]}
-											alt={slide.alt}
-											className="splide-image"
+											src={getImageUrl(index) ?? defaultImages[index]}
+											alt={getImageAlt(index)}
+											className={`splide-image image-no-${index}`}
 										/>
 									:
 										<a href={slide.link} target="_blank">
 											<img
-												src={defaultImages[index]}
-												alt={slide.alt}
-												className="splide-image"
+												src={getImageUrl(index) ?? defaultImages[index]}
+												alt={getImageAlt(index)}
+												className={`splide-image image-no-${index}`}
 											/>
 										</a>
 									}
