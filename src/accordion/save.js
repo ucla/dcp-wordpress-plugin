@@ -18,8 +18,7 @@ export default function save({
 	className,
 }) {
 	return (
-		<article className={className}>
-			<section className='accordion'>
+			<section className={`accordion${className ? ' ' + className : ''}`}>
 				<dl>
 					<button className="accordion__title" aria-expanded="false">
 						<dt>
@@ -34,6 +33,5 @@ export default function save({
 					</dd>
 				</dl>    
 			</section>
-		</article>
 	);
 }

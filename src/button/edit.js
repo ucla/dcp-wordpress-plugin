@@ -219,10 +219,10 @@ export default function Edit( {
 						label="Button Style"
 						value={ style }
 						options={ [
-							{ label: 'Default', value: '' },
 							{ label: 'Primary', value: 'btn--lightbg' },
 							{ label: 'Primary Dark', value: 'btn--darkbg' },
-							{ label: 'Secondary', value: 'btn--secondary' },
+							{ label: 'Secondary', value: 'btn--secondary--lightbg' },
+							{ label: 'Secondary Dark', value: 'btn--secondary--darkbg' },
 							{ label: 'Tertiary', value: 'btn--tertiary' },
 						] }
 						onChange={ onSetStyle }

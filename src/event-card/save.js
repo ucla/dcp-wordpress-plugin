@@ -41,63 +41,61 @@ export default function save( {
 	className,
 } ) {
 	return (
-		<div className={ className }>
-			<article className={ 'event-card' }>
-				<img
-					className="event-card__image"
-					src={
-						mediaUrl ??
-						'/wp-content/plugins/wp-uwai-plugin/event-card-example-1.jpg'
-					}
-					alt={
-						mediaAlt ??
-						'Two children on their phones under the blankets'
-					}
-				></img>
-				<a className="event-card__link" href="#wee">
-					<h3 className="event-card__title">
-						<RichText.Content tagName="span" value={ title } />
-					</h3>
-				</a>
-				<div className="event-card-info">
-					<div className="event-card-info__date">
-						<span className="small-block">
-							<RichText.Content
-								tagName="span"
-								value={ day }
-								className="event-card-info__day"
-							/>
-							<RichText.Content
-								tagName="span"
-								value={ month }
-								className="event-card-info__month"
-							/>
-						</span>
+		<article className={`event-card${className ? ' ' + className : ''}`}>
+			<img
+				className="event-card__image"
+				src={
+					mediaUrl ??
+					'/wp-content/plugins/wp-uwai-plugin/event-card-example-1.jpg'
+				}
+				alt={
+					mediaAlt ??
+					'Two children on their phones under the blankets'
+				}
+			></img>
+			<a className="event-card__link" href="#wee">
+				<h3 className="event-card__title">
+					<RichText.Content tagName="span" value={ title } />
+				</h3>
+			</a>
+			<div className="event-card-info">
+				<div className="event-card-info__date">
+					<span className="small-block">
 						<RichText.Content
 							tagName="span"
-							value={ number }
-							className="event-card-info__number"
+							value={ day }
+							className="event-card-info__day"
 						/>
-					</div>
-					<div className="event-card-info__time">
-						<span className="event-card-icon__time"></span>
 						<RichText.Content
 							tagName="span"
-							value={ time }
-							className="event-card-info__time-body"
+							value={ month }
+							className="event-card-info__month"
 						/>
-					</div>
-					<div className="event-card-info__location">
-						<span className="event-card-icon__play"></span>
-						<RichText.Content
-							tagName="span"
-							value={ location }
-							className="event-card-info__location-body"
-						/>
-					</div>
-					<InnerBlocks.Content />
+					</span>
+					<RichText.Content
+						tagName="span"
+						value={ number }
+						className="event-card-info__number"
+					/>
 				</div>
-			</article>
-		</div>
+				<div className="event-card-info__time">
+					<span className="event-card-icon__time"></span>
+					<RichText.Content
+						tagName="span"
+						value={ time }
+						className="event-card-info__time-body"
+					/>
+				</div>
+				<div className="event-card-info__location">
+					<span className="event-card-icon__play"></span>
+					<RichText.Content
+						tagName="span"
+						value={ location }
+						className="event-card-info__location-body"
+					/>
+				</div>
+				<InnerBlocks.Content />
+			</div>
+		</article>
 	);
 }

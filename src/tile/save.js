@@ -24,23 +24,21 @@ import { RichText } from '@wordpress/block-editor';
  * @return {WPElement} Element to render.
  */
 export default function save( {
-	attributes: { title, url, linkTarget, greyStyle, rel },
+	// attributes: { title, url, linkTarget, greyStyle, rel },
+	attributes: { title, url, linkTarget, rel },
 	className,
 } ) {
 	return (
-		<div className={ className }>
-			<div className={ 'blade-links' + ( greyStyle ?? '' ) }>
-				<div className="blade-links__box">
-					<a
-						className="blade-links__box-link"
-						href={ url }
-						target={ linkTarget }
-						rel={ rel }
-					>
-						<RichText.Content tagName="span" value={ title } />
-					</a>
-				</div>
-			</div>
+		
+		<div className={`tile${className ? ' ' + className : ''}`}>
+			<a
+				className="tile__link"
+				href={ url }
+				target={ linkTarget }
+				rel={ rel }
+			>
+				<RichText.Content tagName="span" value={ title } />
+			</a>
 		</div>
 	);
 }

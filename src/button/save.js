@@ -30,9 +30,8 @@ export default function save( {
 	className,
 } ) {
 	return (
-		<div className={ className }>
 			<a
-				className={ `btn page ${ style } ${ play ? 'play' : '' }` }
+				className={ `btn${className ? ' ' + className : ''} ${ style ? style : '' } ${ play ? 'play' : '' }` }
 				href={ url }
 				target={ linkTarget }
 				rel={ rel }
@@ -40,6 +39,5 @@ export default function save( {
 			>
 				<RichText.Content tagName="span" value={ title } />
 			</a>
-		</div>
 	);
 }

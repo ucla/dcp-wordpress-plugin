@@ -53,25 +53,23 @@ export default function Edit({
 
 	return (
 		<>
-			<article className={className}>
-				<section className="accordion">
-					<dl>
-						<button onMouseDown={onClick} className="accordion__title" aria-expanded="false">
-							<dt>
-								<RichText
-									tagName="span"
-									value={title}
-									onChange={onChangeTitle}
-									placeholder={__("Title here")}
-								/>
-							</dt>
-						</button>
-						<dd className="accordion__content" style={{ display: `${showBody ? 'block' : 'none'}` }}> 
-							<InnerBlocks />
-						</dd>
-					</dl>    
-				</section>
-			</article>
+			<section className={`accordion${className ? ' ' + className : ''}`}>
+				<dl>
+					<button onMouseDown={onClick} className="accordion__title" aria-expanded="false">
+						<dt>
+							<RichText
+								tagName="span"
+								value={title}
+								onChange={onChangeTitle}
+								placeholder={__("Title here")}
+							/>
+						</dt>
+					</button>
+					<dd className="accordion__content" style={{ display: `${showBody ? 'block' : 'none'}` }}> 
+						<InnerBlocks />
+					</dd>
+				</dl>    
+			</section>
 		</>
 	);
 }

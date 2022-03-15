@@ -18,16 +18,14 @@ export default function save({
 	className,
 }) {
 	return (
-		<div className={className}>
-			<aside className="stat-wrapper clearfix">
-				<div className="stat-tout stat-tout--inline stat-tout__info-wrap">
-					<RichText.Content
-						tagName="span"
-						className="stat-tout__label"
-						value={body}
-					/>
-				</div>
-			</aside>
-		</div>
+		<aside className={`stat-wrapper clearfix${className ? ' ' + className : ''}`}>
+			<div className="stat-tout stat-tout--inline stat-tout__info-wrap">
+				<RichText.Content
+					tagName="span"
+					className="stat-tout__label"
+					value={body}
+				/>
+			</div>
+		</aside>
 	);
 }
