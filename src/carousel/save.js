@@ -1,5 +1,18 @@
 /* eslint-disable no-unused-vars */
 import './style.scss';
+import '@splidejs/splide';
+
+const defaultImages = [
+	"http://metamap.ucla.edu/wp-content/uploads/2021/05/METAMAP-EDITED-1024x640.png",
+	// "/website1/wp-content/plugins/wp-uwai-plugin/assets/upper_build.jpg",
+	"/website1/wp-content/plugins/wp-uwai-plugin/assets/trees.jpg",
+	"/website1/wp-content/plugins/wp-uwai-plugin/assets/kerchoff.jpg",
+	"/website1/wp-content/plugins/wp-uwai-plugin/assets/cyard_overview.jpg",
+	"/website1/wp-content/plugins/wp-uwai-plugin/assets/bwalk.jpg",
+	"/website1/wp-content/plugins/wp-uwai-plugin/assets/bruin_store.jpg",
+	"/website1/wp-content/plugins/wp-uwai-plugin/assets/big_1.jpg",
+	"/website1/wp-content/plugins/wp-uwai-plugin/assets/bear.jpg",
+]
 
 /**
  * The save function defines the way in which the different attributes should
@@ -22,71 +35,71 @@ export default function save({
 		captionSize,
 		numSlides,
 		slideList,
-		imageUrl0,
-		imageAlt0,
-		imageUrl1,
-		imageAlt1,
-		imageUrl2,
-		imageAlt2,
-		imageUrl3,
-		imageAlt3,
-		imageUrl4,
-		imageAlt4,
-		imageUrl5,
-		imageAlt5,
-		imageUrl6,
-		imageAlt6,
-		imageUrl7,
-		imageAlt7,
+		// imageUrl0,
+		// imageAlt0,
+		// imageUrl1,
+		// imageAlt1,
+		// imageUrl2,
+		// imageAlt2,
+		// imageUrl3,
+		// imageAlt3,
+		// imageUrl4,
+		// imageAlt4,
+		// imageUrl5,
+		// imageAlt5,
+		// imageUrl6,
+		// imageAlt6,
+		// imageUrl7,
+		// imageAlt7,
 	},
 	className,
 }) {
 
-	const getImageUrl = (index) => {
-		switch (index) {
-			case 0: imageUrl0;
-			break;
-			case 1: imageUrl1;
-			break;
-			case 2: imageUrl2;
-			break;
-			case 3: imageUrl3;
-			break;
-			case 4: imageUrl4;
-			break;
-			case 5: imageUrl5;
-			break;
-			case 6: imageUrl6;
-			break;
-			case 7: imageUrl7;
-			break;
-			default: null;
-			break;
-		}
-	}
+	// const getImageUrl = (index) => {
+	// 	switch (index) {
+	// 		case 0: imageUrl0;
+	// 		break;
+	// 		case 1: imageUrl1;
+	// 		break;
+	// 		case 2: imageUrl2;
+	// 		break;
+	// 		case 3: imageUrl3;
+	// 		break;
+	// 		case 4: imageUrl4;
+	// 		break;
+	// 		case 5: imageUrl5;
+	// 		break;
+	// 		case 6: imageUrl6;
+	// 		break;
+	// 		case 7: imageUrl7;
+	// 		break;
+	// 		default: null;
+	// 		break;
+	// 	}
+	// }
 
-	const getImageAlt = (index) => {
-		switch (index) {
-			case 0: imageAlt0;
-			break;
-			case 1: imageAlt1;
-			break;
-			case 2: imageAlt2;
-			break;
-			case 3: imageAlt3;
-			break;
-			case 4: imageAlt4;
-			break;
-			case 5: imageAlt5;
-			break;
-			case 6: imageAlt6;
-			break;
-			case 7: imageAlt7;
-			break;
-			default: null;
-			break;
-		}
-	}
+	// const getImageAlt = (index) => {
+	// 	switch (index) {
+	// 		case 0: imageAlt0;
+	// 		break;
+	// 		case 1: imageAlt1;
+	// 		break;
+	// 		case 2: imageAlt2;
+	// 		break;
+	// 		case 3: imageAlt3;
+	// 		break;
+	// 		case 4: imageAlt4;
+	// 		break;
+	// 		case 5: imageAlt5;
+	// 		break;
+	// 		case 6: imageAlt6;
+	// 		break;
+	// 		case 7: imageAlt7;
+	// 		break;
+	// 		default: null;
+	// 		break;
+	// 	}
+	// }
 
 	return (
 		<div className={className}>
@@ -101,7 +114,7 @@ export default function save({
 					</span>
 				)}
 			</h1>
-			<div id={sliderId} className="splide">
+			<div id={'my-splide'} className="splide">
 				<div className="splide__track">
 					<ul className="splide__list">
 						{slideList.map((slide, index) => {
@@ -110,13 +123,17 @@ export default function save({
 							return (
 								<li className="splide__slide">
 									<div className="splide__slide__container">
-										{slide.link == '' ?
-											<img src={getImageUrl(index)} alt={getImageAlt(index)} className={`.image-no-${index}`} />
-										:
+										{/* {slide.link == '' ? */}
+											<img src={defaultImages(index)}
+											// alt={getImageAlt(index)} className={`.image-no-${index}`}
+											/>
+										{/* :
 											<a href={slide.link} target="_blank">
-												<img src={getImageUrl(index)} alt={getImageAlt(index)} className={`.image-no-${index}`} />
+												<img src={defaultImages(index)}
+												// alt={getImageAlt(index)} className={`.image-no-${index}`}
+												/>
 											</a>
-										}
+										} */}
 									</div>
 									<p className={`splide-caption ${captionSize} ${slide.captionLocation} ${captionColor}`}>
 										{slide.caption}
@@ -128,7 +145,7 @@ export default function save({
 				</div>
 			</div>
 			<script type='text/javascript'>
-				{`new Splide("#${sliderId}", {type: 'loop'}).mount();`}
+				{`new Splide("#my-splide", {type: 'loop', width: '100%', height: '70vh'}).mount();`}
 			</script>
 		</div>
 	)

@@ -373,6 +373,7 @@ export default function Edit({
 						onChange={setCaptionSize}
 					/>
 				</PanelBody>
+				{console.log(slideList)}
 				{slideList.map((slide, index) => {
 					if (Number(numSlides) <= index)
 						return null;
