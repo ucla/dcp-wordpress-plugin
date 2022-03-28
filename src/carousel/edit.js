@@ -1,3 +1,13 @@
+/**
+ * WordPress things:
+ * - alternative button / pause themes
+ * - stop autoplay on focus
+ * - differing image heights (get specifics)
+ * - slow image transitions
+ * - autoplay on demo?
+ * - minimized slides
+ */
+
 /* eslint-disable no-unused-vars */
 /**
  * Retrieves the translation of text.
@@ -14,10 +24,14 @@ import { __ } from '@wordpress/i18n';
  */
 import './style.scss';
 
+import {useEffect} from 'react';
+
 import {
 	PanelBody,
 	ToggleControl,
 	SelectControl,
+	TextareaControl,
+	ExternalLink,
 	TextControl,
 	RangeControl,
 	Button,
@@ -29,8 +43,8 @@ import {
 } from '@wordpress/block-editor';
 
 // Splide
+// import Splide from '@splidejs/splide';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
-import '@splidejs/splide/dist/css/splide.min.css';
 
 const defaultImages = [
 	"/website1/wp-content/plugins/wp-uwai-plugin/assets/upper_build.jpg",
@@ -42,99 +56,6 @@ const defaultImages = [
 	"/website1/wp-content/plugins/wp-uwai-plugin/assets/big_1.jpg",
 	"/website1/wp-content/plugins/wp-uwai-plugin/assets/bear.jpg",
 ]
-
-function attributesFromMedia(index, {attributes, setAttributes}) {
-	return (media) => {
-		console.log("hellooooo");
-		let mediaType;
-		let src;
-		// for media selections originated from a file upload.
-		if ( media.media_type ) {
-			if ( media.media_type === 'image' ) {
-				mediaType = 'image';
-			} else {
-				// only images and videos are accepted so if the media_type is not an image we can assume it is a video.
-				// video contain the media type of 'file' in the object returned from the rest api.
-				mediaType = 'video';
-			}
-		} else {
-			// for media selections originated from existing files in the media library.
-			mediaType = media.type;
-		}
-
-		if ( mediaType === 'image' ) {
-			// Try the "large" size URL, falling back to the "full" size URL below.
-			src =
-				media.sizes?.large?.url ||
-				// eslint-disable-next-line camelcase
-				media.media_details?.sizes?.large?.source_url;
-		}
-
-		const newSlides = attributes.slideList.slice();
-		newSlides[index].mediaId = media.id;
-		newSlides[index].mediaType = mediaType;
-
-		switch (index) {
-			case 0:
-				setAttributes({
-					imageUrl0: src || media.url,
-					imageAlt0: media.alt,
-					slideList: newSlides,
-				});
-			break;
-			case 1:
-				setAttributes({
-					imageUrl1: src || media.url,
-					imageAlt1: media.alt,
-					slideList: newSlides,
-				});
-			break;
-			case 2:
-				setAttributes({
-					imageUrl2: src || media.url,
-					imageAlt2: media.alt,
-					slideList: newSlides,
-				});
-			break;
-			case 3:
-				setAttributes({
-					imageUrl3: src || media.url,
-					imageAlt3: media.alt,
-					slideList: newSlides,
-				});
-			break;
-			case 4:
-				setAttributes({
-					imageUrl4: src || media.url,
-					imageAlt4: media.alt,
-					slideList: newSlides,
-				});
-			break;
-			case 5:
-				setAttributes({
-					imageUrl5: src || media.url,
-					imageAlt5: media.alt,
-					slideList: newSlides,
-				});
-			break;
-			case 6:
-				setAttributes({
-					imageUrl6: src || media.url,
-					imageAlt6: media.alt,
-					slideList: newSlides,
-				});
-			break;
-			case 7:
-				setAttributes({
-					imageUrl7: src || media.url,
-					imageAlt7: media.alt,
-					slideList: newSlides,
-				});
-			break;
-		}
-		console.log(attributes);
-	};
-}
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -183,37 +104,126 @@ export default function Edit({
 		imageAlt7,
 	} = attributes;
 
-	if (!sliderId) {
-		setAttributes({sliderId: `ucla-slider-${clientId}`});
-	}
+	const onSelectMedia = (index, media) => {
+		let mediaType;
+		let src;
+		// for media selections originated from a file upload.
+		if ( media.media_type ) {
+			if ( media.media_type === 'image' ) {
+				mediaType = 'image';
+			} else {
+				// only images and videos are accepted so if the media_type is not an image we can assume it is a video.
+				// video contain the media type of 'file' in the object returned from the rest api.
+				mediaType = 'video';
+			}
+		} else {
+			// for media selections originated from existing files in the media library.
+			mediaType = media.type;
+		}
 
-	const onSelectMedia = (index) => attributesFromMedia(index, {attributes, setAttributes});
+		if ( mediaType === 'image' ) {
+			// Try the "large" size URL, falling back to the "full" size URL below.
+			src =
+				media.sizes?.large?.url ||
+				// eslint-disable-next-line camelcase
+				media.media_details?.sizes?.large?.source_url;
+		}
+
+		const newSlides = attributes.slideList.slice();
+		newSlides[index].mediaId = media.id;
+		newSlides[index].mediaType = mediaType;
+
+		switch (index) {
+			case 0:
+				setAttributes({
+					imageUrl0: src || media.url,
+					imageAlt0: media.alt,
+					slideList: newSlides,
+				});
+				break;
+			case 1:
+				setAttributes({
+					imageUrl1: src || media.url,
+					imageAlt1: media.alt,
+					slideList: newSlides,
+				});
+				break;
+			case 2:
+				setAttributes({
+					imageUrl2: src || media.url,
+					imageAlt2: media.alt,
+					slideList: newSlides,
+				});
+				break;
+			case 3:
+				setAttributes({
+					imageUrl3: src || media.url,
+					imageAlt3: media.alt,
+					slideList: newSlides,
+				});
+				break;
+			case 4:
+				setAttributes({
+					imageUrl4: src || media.url,
+					imageAlt4: media.alt,
+					slideList: newSlides,
+				});
+				break;
+			case 5:
+				setAttributes({
+					imageUrl5: src || media.url,
+					imageAlt5: media.alt,
+					slideList: newSlides,
+				});
+				break;
+			case 6:
+				setAttributes({
+					imageUrl6: src || media.url,
+					imageAlt6: media.alt,
+					slideList: newSlides,
+				});
+				break;
+			case 7:
+				setAttributes({
+					imageUrl7: src || media.url,
+					imageAlt7: media.alt,
+					slideList: newSlides,
+				});
+				break;
+		}		
+	}
 
 	const onMediaAltChange = (index, newMediaAlt) => {
 		switch (index) {
-			case 0: setAttributes({imageAlt0: newMediaAlt});
-			break;
-			case 1: setAttributes({imageAlt1: newMediaAlt});
-			break;
-			case 2: setAttributes({imageAlt2: newMediaAlt});
-			break;
-			case 3: setAttributes({imageAlt3: newMediaAlt});
-			break;
-			case 4: setAttributes({imageAlt4: newMediaAlt});
-			break;
-			case 5: setAttributes({imageAlt5: newMediaAlt});
-			break;
-			case 6: setAttributes({imageAlt6: newMediaAlt});
-			break;
-			case 7: setAttributes({imageAlt7: newMediaAlt});
-			break;
-			default: null;
-			break;
+			case 0:
+				setAttributes({imageAlt0: newMediaAlt});
+				break;
+			case 1:
+				setAttributes({imageAlt1: newMediaAlt});
+				break;
+			case 2:
+				setAttributes({imageAlt2: newMediaAlt});
+				break;
+			case 3:
+				setAttributes({imageAlt3: newMediaAlt});
+				break;
+			case 4:
+				setAttributes({imageAlt4: newMediaAlt});
+				break;
+			case 5:
+				setAttributes({imageAlt5: newMediaAlt});
+				break;
+			case 6:
+				setAttributes({imageAlt6: newMediaAlt});
+				break;
+			case 7:
+				setAttributes({imageAlt7: newMediaAlt});
+				break;
 		}
 	};
 
 	const setNumSlides = (value) => {
-		setAttributes({numSlides: value});
+		setAttributes({numSlides: String(value)});
 	}
 
 	const setLink = (value, index) => {
@@ -242,47 +252,47 @@ export default function Edit({
 
 	const getImageUrl = (index) => {
 		switch (index) {
-			case 0: imageUrl0;
-			break;
-			case 1: imageUrl1;
-			break;
-			case 2: imageUrl2;
-			break;
-			case 3: imageUrl3;
-			break;
-			case 4: imageUrl4;
-			break;
-			case 5: imageUrl5;
-			break;
-			case 6: imageUrl6;
-			break;
-			case 7: imageUrl7;
-			break;
-			default: null;
-			break;
+			case 0:
+				return imageUrl0;
+			case 1:
+				return imageUrl1;
+			case 2:
+				return imageUrl2;
+			case 3:
+				return imageUrl3;
+			case 4:
+				return imageUrl4;
+			case 5:
+				return imageUrl5;
+			case 6:
+				return imageUrl6;
+			case 7:
+				return imageUrl7;
+			default:
+				return null;
 		}
 	}
 
 	const getImageAlt = (index) => {
 		switch (index) {
-			case 0: imageAlt0;
-			break;
-			case 1: imageAlt1;
-			break;
-			case 2: imageAlt2;
-			break;
-			case 3: imageAlt3;
-			break;
-			case 4: imageAlt4;
-			break;
-			case 5: imageAlt5;
-			break;
-			case 6: imageAlt6;
-			break;
-			case 7: imageAlt7;
-			break;
-			default: null;
-			break;
+			case 0:
+				return imageAlt0;
+			case 1:
+				return imageAlt1;
+			case 2:
+				return imageAlt2;
+			case 3:
+				return imageAlt3;
+			case 4:
+				return imageAlt4;
+			case 5:
+				return imageAlt5;
+			case 6:
+				return imageAlt6;
+			case 7:
+				return imageAlt7;
+			default:
+				return null;
 		}
 	}
 
@@ -319,6 +329,24 @@ export default function Edit({
 	const setAutoplayInterval = (value) => {
 		setAttributes({autoplayInterval: value});
 	}
+
+	// Splide carousel settings
+	useEffect(() => {
+		if (!sliderId) {
+			// new Splide('#testing-carousel', {
+			// 	type: 'loop',
+			// 	width: '100%',
+			// 	height: '70vh',
+			// }).mount();
+			setAttributes({sliderId: `ucla-slider-${clientId}`});
+		} else {
+			// new Splide(`#${sliderId}`, {
+				// type: 'loop',
+				// width: '100%',
+				// height: '70vh',
+			// }).mount();
+		}
+	}, []);
 
 	return (
 		<>
@@ -373,12 +401,14 @@ export default function Edit({
 						onChange={setCaptionSize}
 					/>
 				</PanelBody>
-				{console.log(slideList)}
 				{slideList.map((slide, index) => {
 					if (Number(numSlides) <= index)
 						return null;
 					return (
-						<PanelBody title={__('Slide ' + String(index + 1))}>
+						<PanelBody
+							title={__('Slide ' + String(index + 1))}
+							initialOpen={false}
+						>
 							<div className="editor-post-featured-image">
 								<MediaUploadCheck>
 									<MediaUpload
@@ -493,7 +523,7 @@ export default function Edit({
 			</InspectorControls>
 			<article className={className}>
 				<img
-					src='/website1/wp-content/plugins/wp-uwai-plugin/assets/polygon.png'
+					src='/website1/wp-content/plugins/wp-uwai-plugin/molecule.svg'
 					className={`title-image ${titleVisible ? "" : "hidden"}`}
 				/>
 				<h1 className={`title-text ${titleVisible ? "" : "hidden"}`}>
@@ -510,43 +540,46 @@ export default function Edit({
 						onClick={togglePlay}
 					/>
 				: null}		 */}
-				<Splide
-				  options={ {
-						type: 'loop',
-						width: '100%',
-						height: '80vh',
-					} }
-					hasAutoplayControls
-				>
-					{slideList.map((slide, index) => {
-						if (index >= numSlides)
-							return null;
-						return (
-							<SplideSlide>
-								<div className="splide__slide__container">
-									{slide.link === "" ?
-										<img
-											src={getImageUrl(index) ?? defaultImages[index]}
-											alt={getImageAlt(index)}
-											className={`splide-image image-no-${index}`}
-										/>
-									:
-										<a href={slide.link} target="_blank">
+				{/* <div id={sliderId ?? "testing-carousel"} className="splide">
+					<div className="splide__track">
+						<ul className="splide__list"> */}
+						<Splide
+							options={{
+								type: 'loop',
+								width: '100%',
+								height: '70vh',
+							}}
+						>
+							{slideList.slice(0, Number(numSlides)).map((slide, index) =>
+								<SplideSlide>
+									{/* <li className="splide__slide">`
+										<div className="splide__slide__container"> */}`
+										{slide.link == '' ?
 											<img
 												src={getImageUrl(index) ?? defaultImages[index]}
-												alt={getImageAlt(index)}
-												className={`splide-image image-no-${index}`}
+												// alt={getImageAlt(index)}
+												className={`splide-image-containerimage-no-${index}`}
 											/>
-										</a>
-									}
-								</div>
-								<p className={`splide-caption ${captionSize} ${slide.captionLocation} ${captionColor}`}>
-									{slide.caption}
-								</p>
-							</SplideSlide>
-						);
-					})}
-				</Splide>
+										:
+											<a href={slide.link} target="_blank">
+												<img
+													src={getImageUrl(index) ?? defaultImages[index]}
+													// alt={getImageAlt(index)}
+													className={`image-no-${index}`}
+												/>
+											</a>
+										}
+									{/* </div> */}
+									<p className={`splide-caption ${captionSize} ${slide.captionLocation} ${captionColor}`}>
+										{slide.caption}
+									</p>
+									{/* </li> */}
+								</SplideSlide>
+							)}
+						</Splide>
+						{/* </ul>
+					</div>
+				</div> */}
 					{/* <div class="splide__arrows">
 						<button class="splide__arrow splide__arrow--prev">
 						</button>

@@ -10,9 +10,10 @@
 	padding: 2px;
 }
 
-.image-gallery-image {
+.splide-image-container {
 	object-fit: cover !important;
 	max-height: calc(100vh - 200px) !important;
+	aspect-ratio: auto 2732 / 1279;
 }
 
 .blade-links {
@@ -58,7 +59,7 @@
 	visibility: visible !important;
 }
 .splide-image {
-	width: 100vw;
+	width: auto;
 	// object-fit: cover;
 	// height: 600px;
 }
@@ -83,6 +84,15 @@
 // .splide__track {
 // 	height: 600px !important;
 // }
+
+// Autoplay button
+.play-pause-button {
+	height: 40px;
+	width: 40px;
+	cursor: pointer;
+	background-color: rgba(0, 0, 0, 0.7);
+	border-radius: 50%;
+}
 
 // Caption sizes
 .caption-small {

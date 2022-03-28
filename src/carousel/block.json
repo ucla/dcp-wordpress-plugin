@@ -8,8 +8,7 @@
 	},
 	"attributes": {
 		"sliderId": {
-			"type": "string",
-			"default": "testing-my-carousel"
+			"type": "string"
 		},
 		"thumbnail": {
 			"type": "boolean",
