@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     UCLA-WP Plugin
  * Description:     UCLA branded and ADA complaint components. Currently in beta, not reccomended for production use.
- * Version:         0.1.1
+ * Version:         0.2.1
  * Author:          Computing and Disabilities Program and Strategic Communications
  * Text Domain:     ucla-wp-plugin
  *

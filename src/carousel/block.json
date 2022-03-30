@@ -10,13 +10,9 @@
 		"sliderId": {
 			"type": "string"
 		},
-		"thumbnail": {
+		"thumbnailSlider": {
 			"type": "boolean",
 			"default": false
-		},
-		"thumbnailPos": {
-			"type": "string",
-			"default": "bottom"
 		},
 		"titleVisible": {
 			"type": "boolean",

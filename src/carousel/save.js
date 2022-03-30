@@ -3,14 +3,14 @@ import './style.scss';
 import '@splidejs/splide';
 
 const defaultImages = [
-	"/website1/wp-content/plugins/wp-uwai-plugin/assets/upper_build.jpg",
-	"/website1/wp-content/plugins/wp-uwai-plugin/assets/trees.jpg",
-	"/website1/wp-content/plugins/wp-uwai-plugin/assets/kerchoff.jpg",
-	"/website1/wp-content/plugins/wp-uwai-plugin/assets/cyard_overview.jpg",
-	"/website1/wp-content/plugins/wp-uwai-plugin/assets/bwalk.jpg",
-	"/website1/wp-content/plugins/wp-uwai-plugin/assets/bruin_store.jpg",
-	"/website1/wp-content/plugins/wp-uwai-plugin/assets/big_1.jpg",
-	"/website1/wp-content/plugins/wp-uwai-plugin/assets/bear.jpg",
+	"./wp-content/plugins/wp-uwai-plugin/assets/upper_build.jpg",
+	"./wp-content/plugins/wp-uwai-plugin/assets/trees.jpg",
+	"./wp-content/plugins/wp-uwai-plugin/assets/kerchoff.jpg",
+	"./wp-content/plugins/wp-uwai-plugin/assets/cyard_overview.jpg",
+	"./wp-content/plugins/wp-uwai-plugin/assets/bwalk.jpg",
+	"./wp-content/plugins/wp-uwai-plugin/assets/bruin_store.jpg",
+	"./wp-content/plugins/wp-uwai-plugin/assets/big_1.jpg",
+	"./wp-content/plugins/wp-uwai-plugin/assets/bear.jpg",
 ]
 
 /**
@@ -30,6 +30,7 @@ export default function save({
 		sliderId,
 		autoplay,
 		autoplayInterval,
+		thumbnailSlider,
 		titleVisible,
 		titleText,
 		captionColor,
@@ -105,7 +106,7 @@ export default function save({
 	return (
 		<div className={className}>
 			<img
-				src='/website1/wp-content/plugins/wp-uwai-plugin/molecule.svg'
+				src='./wp-content/plugins/wp-uwai-plugin/molecule.svg'
 				className={`title-image ${titleVisible ? "" : "hidden"}`}
 			/>
 			<h1 className={`title-text ${titleVisible ? "" : "hidden"}`}>
@@ -117,20 +118,22 @@ export default function save({
 			</h1>
 			<div id={sliderId ?? 'my-splide'} className="splide">
 				<div className="splide__track">
-					<ul className="splide__list">
+					<ul className="splide__list" style={{height: '550px'}}>
 						{slideList.slice(0, Number(numSlides)).map((slide, index) =>
 							<li className="splide__slide">
 								<div className="splide__slide__container">
 									{slide.link == '' ?
 										<img
 											src={getImageUrl(index) ?? defaultImages[index]}
-											// alt={getImageAlt(index)}
-											className={`splide-image-container image-no-${index}`}
+											alt={getImageAlt(index)}
+											className={`splide-image image-no-${index}`}
 										/>
 									:
 										<a href={slide.link} target="_blank">
-											<img src={defaultImages(index)}
-											// alt={getImageAlt(index)} className={`image-no-${index}`}
+											<img
+												src={getImageUrl(index) ?? defaultImages[index]}
+												alt={getImageAlt(index)}
+												className={`splide-image image-no-${index}`}
 											/>
 										</a>
 									}
@@ -145,50 +148,108 @@ export default function save({
 					  <div className="splide-autoplay-controls">
 							<img
 								className={`play-pause-button toggle-${sliderId}`}
-								src={'/website1/wp-content/plugins/wp-uwai-plugin/pause-white.svg'}
+								src={'./wp-content/plugins/wp-uwai-plugin/pause-white.svg'}
 								alt="Pause Carousel"
 							/>
 						</div>
 					: null}
 				</div>
 			</div>
+			{thumbnailSlider ?
+				<div
+					id={sliderId ? `${sliderId}-thumbnails` : 'my-splide-thumbnails'}
+					class="splide"
+				>
+					<div class="splide__track">
+						<ul class="splide__list">
+							{slideList.slice(0, Number(numSlides)).map((slide, index) =>
+								<li className="splide__slide">
+									<div className="splide__slide__container">
+										<img
+											src={getImageUrl(index) ?? defaultImages[index]}
+											alt={`Thumbnail for ${getImageAlt(index)}`}
+											className={`thumbnail-images`}
+										/>
+									</div>
+								</li>
+							)}
+						</ul>
+					</div>
+				</div>
+			: null}
 			<script type='text/javascript'>
 				{`
-					var splide = new Splide("#${sliderId ?? 'my-splide'}", {
-						type: 'loop',
-						width: '100%',
-						height: '70vh',
-						autoplay: ${autoplay ? "true" : "false"},
-						interval: ${Number(autoplayInterval) * 1000},
-						speed: 800,
-						pauseOnHover: false,
-						pauseOnFocus: false,
-					});
-
-					if (${autoplay ? "true" : "false"}) {
-						var toggleButton = splide.root.querySelector( '.toggle-${sliderId}' );
+					if (${thumbnailSlider ? "true" : "false"}) {
+						document.addEventListener( 'DOMContentLoaded', function () {
+							var main = new Splide( "#${sliderId ?? 'my-splide'}", {
+								type      : 'fade',
+								width: '100%',
+								height: '70vh',
+								cover: true,
+								autoplay: ${autoplay ? "true" : "false"},
+								interval: ${Number(autoplayInterval) * 1000},
+								speed: 800,
+								pauseOnHover: false,
+								pauseOnFocus: false,
+							} );
 						
-						splide.on( 'autoplay:play', function () {
-							toggleButton.src = '/website1/wp-content/plugins/wp-uwai-plugin/pause-white.svg';
-							toggleButton.alt = 'Pause Carousel';
-						} );
-
-						splide.on( 'autoplay:pause', function () {
-							toggleButton.src = '/website1/wp-content/plugins/wp-uwai-plugin/play-white.svg';
-							toggleButton.alt = 'Play Carousel';
-						} );
-
-						toggleButton.addEventListener( 'click', function () {
-							var Autoplay = splide.Components.Autoplay;
-							if ( toggleButton.alt == 'Play Carousel' ) {
-								Autoplay.play();
-							} else {
-								Autoplay.pause();
-							}
+							var thumbnails = new Splide( "#${sliderId ? `${sliderId}-thumbnails` : 'my-splide-thumbnails'}", {
+								fixedWidth  : 100,
+								fixedHeight : 60,
+								gap         : 10,
+								rewind      : true,
+								pagination  : false,
+								cover       : true,
+								isNavigation: true,
+								breakpoints : {
+									600: {
+										fixedWidth : 60,
+										fixedHeight: 44,
+									},
+								},
+							} );
+						
+							thumbnails.sync( main );
+							main.mount();
+							thumbnails.mount();
 						});
-					}
+					} else {
+						var splide = new Splide("#${sliderId ?? 'my-splide'}", {
+							type: 'loop',
+							width: '100%',
+							height: '70vh',
+							cover: true,
+							autoplay: ${autoplay ? "true" : "false"},
+							interval: ${Number(autoplayInterval) * 1000},
+							speed: 800,
+							pauseOnHover: false,
+							pauseOnFocus: false,
+						});
 
-					splide.mount();
+						if (${autoplay ? "true" : "false"}) {
+							var toggleButton = splide.root.querySelector( '.toggle-${sliderId}' );
+							
+							splide.on( 'autoplay:play', function () {
+								toggleButton.src = './wp-content/plugins/wp-uwai-plugin/pause-white.svg';
+								toggleButton.alt = 'Pause Carousel';
+							} );
+
+							splide.on( 'autoplay:pause', function () {
+								toggleButton.src = './wp-content/plugins/wp-uwai-plugin/play-white.svg';
+								toggleButton.alt = 'Play Carousel';
+							} );
+
+							toggleButton.addEventListener( 'click', function () {
+								var Autoplay = splide.Components.Autoplay;
+								if ( toggleButton.alt == 'Play Carousel' ) {
+									Autoplay.play();
+								} else {
+									Autoplay.pause();
+								}
+							});
+						}
+						splide.mount();
+					}
 				`}
 			</script>
 		</div>

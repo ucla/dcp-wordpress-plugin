@@ -1,6 +1,6 @@
 /**
  * WordPress things:
- * - alternative button / pause themes
+ * - alternative pointer themes
  * - stop autoplay on focus
  * - differing image heights (get specifics)
  * - slow image transitions
@@ -23,6 +23,7 @@ import { __ } from '@wordpress/i18n';
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './style.scss';
+import './editor.scss';
 
 import {useEffect} from 'react';
 
@@ -47,14 +48,14 @@ import {
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 
 const defaultImages = [
-	"/website1/wp-content/plugins/wp-uwai-plugin/assets/upper_build.jpg",
-	"/website1/wp-content/plugins/wp-uwai-plugin/assets/trees.jpg",
-	"/website1/wp-content/plugins/wp-uwai-plugin/assets/kerchoff.jpg",
-	"/website1/wp-content/plugins/wp-uwai-plugin/assets/cyard_overview.jpg",
-	"/website1/wp-content/plugins/wp-uwai-plugin/assets/bwalk.jpg",
-	"/website1/wp-content/plugins/wp-uwai-plugin/assets/bruin_store.jpg",
-	"/website1/wp-content/plugins/wp-uwai-plugin/assets/big_1.jpg",
-	"/website1/wp-content/plugins/wp-uwai-plugin/assets/bear.jpg",
+	"../wp-content/plugins/wp-uwai-plugin/assets/upper_build.jpg",
+	"../wp-content/plugins/wp-uwai-plugin/assets/trees.jpg",
+	"../wp-content/plugins/wp-uwai-plugin/assets/kerchoff.jpg",
+	"../wp-content/plugins/wp-uwai-plugin/assets/cyard_overview.jpg",
+	"../wp-content/plugins/wp-uwai-plugin/assets/bwalk.jpg",
+	"../wp-content/plugins/wp-uwai-plugin/assets/bruin_store.jpg",
+	"../wp-content/plugins/wp-uwai-plugin/assets/big_1.jpg",
+	"../wp-content/plugins/wp-uwai-plugin/assets/bear.jpg",
 ]
 
 /**
@@ -82,6 +83,7 @@ export default function Edit({
 		titleText,
 		autoplay,
 		autoplayInterval,
+		thumbnailSlider,
 		captionColor,
 		captionSize,
 		numSlides,
@@ -330,21 +332,14 @@ export default function Edit({
 		setAttributes({autoplayInterval: value});
 	}
 
+	const setThumbnailSlider = (value) => {
+		setAttributes({thumbnailSlider: value});
+	}
+
 	// Splide carousel settings
 	useEffect(() => {
 		if (!sliderId) {
-			// new Splide('#testing-carousel', {
-			// 	type: 'loop',
-			// 	width: '100%',
-			// 	height: '70vh',
-			// }).mount();
 			setAttributes({sliderId: `ucla-slider-${clientId}`});
-		} else {
-			// new Splide(`#${sliderId}`, {
-				// type: 'loop',
-				// width: '100%',
-				// height: '70vh',
-			// }).mount();
 		}
 	}, []);
 
@@ -520,10 +515,17 @@ export default function Edit({
 						/>
 					: null}
 				</PanelBody>
+				<PanelBody title={ __( 'Thumbnail Slider' ) }>
+	 				<ToggleControl
+						label={ __( 'Include a thumbnail slider' ) }
+						onChange={setThumbnailSlider}
+						checked={thumbnailSlider}
+					/>
+				</PanelBody>
 			</InspectorControls>
 			<article className={className}>
 				<img
-					src='/website1/wp-content/plugins/wp-uwai-plugin/molecule.svg'
+					src='../wp-content/plugins/wp-uwai-plugin/molecule.svg'
 					className={`title-image ${titleVisible ? "" : "hidden"}`}
 				/>
 				<h1 className={`title-text ${titleVisible ? "" : "hidden"}`}>
@@ -533,63 +535,26 @@ export default function Edit({
 						</span>
 					)}
 				</h1>
-				{/* {autoplay ?
-					<img
-						src={isPlay ? '/website1/wp-content/plugins/wp-uwai-plugin/pause_button.png' : '/website1/wp-content/plugins/wp-uwai-plugin/pause_button.png'}
-						style={{width: '30px', height: '30px', position: 'absolute', left: '30px', top: '555px', zIndex: "30", cursor: 'pointer'}}
-						onClick={togglePlay}
-					/>
-				: null}		 */}
-				{/* <div id={sliderId ?? "testing-carousel"} className="splide">
-					<div className="splide__track">
-						<ul className="splide__list"> */}
-						<Splide
-							options={{
-								type: 'loop',
-								width: '100%',
-								height: '70vh',
-							}}
-						>
-							{slideList.slice(0, Number(numSlides)).map((slide, index) =>
-								<SplideSlide>
-									{/* <li className="splide__slide">`
-										<div className="splide__slide__container"> */}`
-										{slide.link == '' ?
-											<img
-												src={getImageUrl(index) ?? defaultImages[index]}
-												// alt={getImageAlt(index)}
-												className={`splide-image-containerimage-no-${index}`}
-											/>
-										:
-											<a href={slide.link} target="_blank">
-												<img
-													src={getImageUrl(index) ?? defaultImages[index]}
-													// alt={getImageAlt(index)}
-													className={`image-no-${index}`}
-												/>
-											</a>
-										}
-									{/* </div> */}
-									<p className={`splide-caption ${captionSize} ${slide.captionLocation} ${captionColor}`}>
-										{slide.caption}
-									</p>
-									{/* </li> */}
-								</SplideSlide>
-							)}
-						</Splide>
-						{/* </ul>
-					</div>
-				</div> */}
-					{/* <div class="splide__arrows">
-						<button class="splide__arrow splide__arrow--prev">
-						</button>
-						<button class="splide__arrow splide__arrow--next">
-						</button>
-					</div>
-					<div class="splide__autoplay">
-						<button class="splide__play">Play</button>
-						<button class="splide__pause">Pause</button>
-					</div> */}
+				<Splide
+					options={{
+						type: 'loop',
+						width: '100%',
+						height: '70vh',
+					}}
+				>
+					{slideList.slice(0, Number(numSlides)).map((slide, index) =>
+						<SplideSlide>
+							<img
+								src={getImageUrl(index) ?? defaultImages[index]}
+								alt={getImageAlt(index)}
+								className={`splide-image image-no-${index}`}
+							/>
+							<p className={`splide-caption ${captionSize} ${slide.captionLocation} ${captionColor}`}>
+								{slide.caption}
+							</p>
+						</SplideSlide>
+					)}
+				</Splide>
 			</article>
 		</>
 	);
