@@ -126,14 +126,14 @@ export default function save({
 										<img
 											src={getImageUrl(index) ?? defaultImages[index]}
 											alt={getImageAlt(index)}
-											className={`splide-image image-no-${index}`}
+											className={`splide-image ${getImageUrl(index) === null ? '' : `image-no-${index}`}`}
 										/>
 									:
 										<a href={slide.link} target="_blank">
 											<img
 												src={getImageUrl(index) ?? defaultImages[index]}
 												alt={getImageAlt(index)}
-												className={`splide-image image-no-${index}`}
+												className={`splide-image ${getImageUrl(index) === null ? '' : `image-no-${index}`}`}
 											/>
 										</a>
 									}

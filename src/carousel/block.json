@@ -30,6 +30,18 @@
 			"type": "string",
 			"default": "8"
 		},
+		"arrowsLocation": {
+			"type": "string",
+			"default": "arrows-top"
+		},
+		"bulletsLocation": {
+			"type": "string",
+			"default": "bullets-below"
+		},
+		"pauseLocation": {
+			"type": "string",
+			"default": "pause-top"
+		},
 		"numSlides": {
 			"type": "string",
 			"default": "4"

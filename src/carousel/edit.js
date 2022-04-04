@@ -86,6 +86,9 @@ export default function Edit({
 		thumbnailSlider,
 		captionColor,
 		captionSize,
+		arrowsLocation,
+		bulletsLocation,
+		pauseLocation,
 		numSlides,
 		slideList,
 		imageUrl0,
@@ -232,6 +235,18 @@ export default function Edit({
 		const newSlides = slideList.slice();
 		newSlides[index].link = value;
 		setAttributes({slideList: newSlides});
+	}
+
+	const setArrowsLocation = (value) => {
+		setAttributes({arrowsLocation: value});
+	}
+
+	const setBulletsLocation = (value) => {
+		setAttributes({bulletsLocation: value});
+	}
+
+	const setPauseLocation = (value) => {
+		setAttributes({pauseLocation: value});
 	}
 
 	const setAlt = (value, index) => {
@@ -515,6 +530,37 @@ export default function Edit({
 						/>
 					: null}
 				</PanelBody>
+				<PanelBody title={ __( 'Feature Locations' ) }>
+					<SelectControl
+						label="Arrows Location"
+						value={arrowsLocation}
+						options={[
+							{label: 'Top', value: 'arrows-top'},
+							{label: 'Horizontal (internal)', value: 'arrows-internal'},
+							{label: 'Horizontal (external)', value: 'arrows-external'},
+						]}
+						onChange={setArrowsLocation}
+					/>
+					<SelectControl
+						label="Bullets location"
+						value={bulletsLocation}
+						options={[
+							{label: 'Below', value: 'bullets-below'},
+							{label: 'Inside', value: 'bullets-inside'},
+						]}
+						onChange={setBulletsLocation}
+					/>
+					<SelectControl
+						label="Pause location"
+						value={pauseLocation}
+						options={[
+							{label: 'Top', value: 'pause-top'},
+							{label: 'Inside', value: 'pause-inside'},
+							{label: 'Bottom', value: 'pause-bottom'},
+						]}
+						onChange={setPauseLocation}
+					/>
+				</PanelBody>
 				<PanelBody title={ __( 'Thumbnail Slider' ) }>
 	 				<ToggleControl
 						label={ __( 'Include a thumbnail slider' ) }
@@ -540,6 +586,14 @@ export default function Edit({
 						type: 'loop',
 						width: '100%',
 						height: '70vh',
+						classes: {
+							arrows: 'splide__arrows',
+							arrow: `splide__arrow ${arrowsLocation === 'arrows-top' ? '' : 'arrows-either-side'}`,
+							prev: 'splide__arrow--prev',
+							next: `splide__arrow--next ${arrowsLocation === 'arrows-top' ? '' : 'arrows-either-side-right'}`,
+							pagination: `splide__pagination ${bulletsLocation === 'bullets-below' ? 'pagination-below' : 'pagination-internal'}`,
+							page: 'splide__pagination__page',
+						},
 					}}
 				>
 					{slideList.slice(0, Number(numSlides)).map((slide, index) =>

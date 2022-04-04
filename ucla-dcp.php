@@ -64,10 +64,18 @@ function ucla_dcp_ucla_dcp_block_init() {
 		filemtime( "$dir/$style_css" )
 	);
 
+	wp_register_style(
+		'ucla_style',
+		plugins_url( 'node_modules\ucla-bruin-components\public\css\ucla-lib.css', __FILE__ ),
+		false
+	);
+
+
 	register_block_type( 'uwai/uwai', array(
 		'editor_script' => 'uwai-uwai-block-editor',
 		'editor_style'  => 'uwai-uwai-block-editor',
 		'style'         => 'uwai-uwai-block',
+		'ucla_style'		=> 'uwai-uwai-block',
 	) );
 
 }
