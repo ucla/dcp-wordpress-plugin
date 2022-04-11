@@ -27,14 +27,14 @@
 // Title
 .title-image {
 	position: absolute;
-	left: -50px;
-	top: 30px;
+	left: 5%;
+	top: 15%;
 	z-index: 1;
 }
 .title-text {
 	position: absolute;
-	left: 20px;
-	top: 20px;
+	left: 13%;
+	top: 20%;
 	font-size: 44px;
 	color: white;
 	z-index: 1;
@@ -60,7 +60,7 @@
 }
 .splide-image {
 	width: 100vw;
-	height: 60vh;
+	// height: 60vh;
 	object-fit: cover;
 	// height: 600px;
 }
@@ -109,13 +109,29 @@
 // }
 
 // Autoplay button
-.play-pause-button {
+.play-pause-bottom {
 	height: 40px;
 	width: 40px;
 	cursor: pointer;
 	background-color: rgba(0, 0, 0, 0.7);
 	border-radius: 50%;
-	margin-left: 20px;
+	margin-left: 2vw;
+	position: absolute;
+	margin-top: 2vh;
+	z-index: 3;
+	display: inline-block
+}
+.play-pause-top {
+	height: 30px;
+	width: 30px;
+	display: inline-block;
+	cursor: pointer;
+	background-color: #2774ae;
+	margin-left: 4px;
+	border-radius: 5%;
+	margin-top: -31px;
+	position: absolute;
+	margin-left: 65px;
 }
 
 // Caption sizes
@@ -152,17 +168,17 @@
 	display: inline-block;
 }
 .caption-bottom-left {
-	bottom: 20vh;
+	bottom: 10vh;
 	margin-left: 20px;
 	margin-right: auto;
 }
 .caption-bottom-center {
-	bottom: 20vh;
+	bottom: 10vh;
 	text-align: center;
 	margin: 0 auto;
 }
 .caption-bottom-right {
-	bottom: 20vh;
+	bottom: 10vh;
 	margin-left: auto;
 	margin-right: 20px;
 }
@@ -175,6 +191,10 @@
 	margin-top: 35vh !important;
 	margin-right: 15px !important;
 	margin-left: 15px !important;
+	border-radius: 50% !important;
+	background-color: rgb(0, 0, 0, 0.7) !important;
+	height: 35px !important;
+	width: 35px !important;
 }
 
 .arrows-either-side-right {
@@ -184,19 +204,20 @@
 
 // Pagination
 .pagination-below {
-	margin-top: 10px !important;
+	// margin-top: -10px !important;
 	position: absolute;
-	padding: 5px !important;
-	margin-left: 45vw !important;
+	padding-top: 10px !important;
+	padding-bottom: 10px !important;
+	margin-left: 40vw !important;
 	width: fit-content !important;
 }
 .pagination-internal {
-	margin-top: -40px !important;
+	margin-top: -50px !important;
 	position: absolute;
 	background-color: rgb(0, 0, 0, 0.5);
 	border-radius: 20px;
 	padding: 5px !important;
-	margin-left: 45vw !important;
+	margin-left: 40vw !important;
 	width: fit-content !important;
 }
 

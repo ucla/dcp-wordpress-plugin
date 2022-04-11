@@ -1,13 +1,3 @@
-/**
- * WordPress things:
- * - alternative pointer themes
- * - stop autoplay on focus
- * - differing image heights (get specifics)
- * - slow image transitions
- * - autoplay on demo?
- * - minimized slides
- */
-
 /* eslint-disable no-unused-vars */
 /**
  * Retrieves the translation of text.
@@ -530,14 +520,14 @@ export default function Edit({
 						/>
 					: null}
 				</PanelBody>
-				<PanelBody title={ __( 'Feature Locations' ) }>
+				<PanelBody title={ __( 'Features' ) }>
 					<SelectControl
 						label="Arrows Location"
 						value={arrowsLocation}
 						options={[
 							{label: 'Top', value: 'arrows-top'},
 							{label: 'Horizontal (internal)', value: 'arrows-internal'},
-							{label: 'Horizontal (external)', value: 'arrows-external'},
+							// {label: 'Horizontal (external)', value: 'arrows-external'},
 						]}
 						onChange={setArrowsLocation}
 					/>
@@ -556,7 +546,6 @@ export default function Edit({
 						options={[
 							{label: 'Top', value: 'pause-top'},
 							{label: 'Inside', value: 'pause-inside'},
-							{label: 'Bottom', value: 'pause-bottom'},
 						]}
 						onChange={setPauseLocation}
 					/>
@@ -588,10 +577,10 @@ export default function Edit({
 						height: '70vh',
 						classes: {
 							arrows: 'splide__arrows',
-							arrow: `splide__arrow ${arrowsLocation === 'arrows-top' ? '' : 'arrows-either-side'}`,
+							arrow: `splide__arrow ${arrowsLocation == 'arrows-top' ? '' : 'arrows-either-side'}`,
 							prev: 'splide__arrow--prev',
-							next: `splide__arrow--next ${arrowsLocation === 'arrows-top' ? '' : 'arrows-either-side-right'}`,
-							pagination: `splide__pagination ${bulletsLocation === 'bullets-below' ? 'pagination-below' : 'pagination-internal'}`,
+							next: `splide__arrow--next ${arrowsLocation == 'arrows-top' ? '' : 'arrows-either-side-right'}`,
+							pagination: `splide__pagination ${bulletsLocation == 'bullets-below' ? 'pagination-below' : 'pagination-internal'}`,
 							page: 'splide__pagination__page',
 						},
 					}}

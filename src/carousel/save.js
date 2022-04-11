@@ -31,6 +31,9 @@ export default function save({
 		autoplay,
 		autoplayInterval,
 		thumbnailSlider,
+		arrowsLocation,
+		bulletsLocation,
+		pauseLocation,
 		titleVisible,
 		titleText,
 		captionColor,
@@ -58,26 +61,43 @@ export default function save({
 }) {
 
 	const getImageUrl = (index) => {
+		var urlLink;
 		switch (index) {
 			case 0:
-				return imageUrl0;
+				urlLink = imageUrl0;
+				break;
 			case 1:
-				return imageUrl1;
+				urlLink = imageUrl1;
+				break;
 			case 2:
-				return imageUrl2;
+				urlLink = imageUrl2;
+				break;
 			case 3:
-				return imageUrl3;
+				urlLink = imageUrl3;
+				break;
 			case 4:
-				return imageUrl4;
+				urlLink = imageUrl4;
+				break;
 			case 5:
-				return imageUrl5;
+				urlLink = imageUrl5;
+				break;
 			case 6:
-				return imageUrl6;
+				urlLink = imageUrl6;
+				break;
 			case 7:
-				return imageUrl7;
+				urlLink = imageUrl7;
+				break;
 			default:
 				return null;
 		}
+	
+		for (var i = 0; i < defaultImages.length; i++) {
+			if (defaultImages[i] === urlLink) {
+				return null;
+			}
+		}
+
+		return urlLink;
 	}
 
 	const getImageAlt = (index) => {
@@ -117,6 +137,15 @@ export default function save({
 				)}
 			</h1>
 			<div id={sliderId ?? 'my-splide'} className="splide">
+				{autoplay ?
+					<div className="splide-autoplay-controls">
+						<img
+							className={`${pauseLocation == 'pause-top' ? 'play-pause-top' : 'play-pause-bottom'} toggle-${sliderId}`}
+							src={'./wp-content/plugins/wp-uwai-plugin/pause-white.svg'}
+							alt="Pause Carousel"
+						/>
+					</div>
+				: null}
 				<div className="splide__track">
 					<ul className="splide__list" style={{height: '550px'}}>
 						{slideList.slice(0, Number(numSlides)).map((slide, index) =>
@@ -126,14 +155,14 @@ export default function save({
 										<img
 											src={getImageUrl(index) ?? defaultImages[index]}
 											alt={getImageAlt(index)}
-											className={`splide-image ${getImageUrl(index) === null ? '' : `image-no-${index}`}`}
+											className={`splide-image ${getImageUrl(index) != null ? `image-no-${index}` : ''}`}
 										/>
 									:
 										<a href={slide.link} target="_blank">
 											<img
 												src={getImageUrl(index) ?? defaultImages[index]}
 												alt={getImageAlt(index)}
-												className={`splide-image ${getImageUrl(index) === null ? '' : `image-no-${index}`}`}
+												className={`splide-image ${getImageUrl(index) != null ? `image-no-${index}` : ''}`}
 											/>
 										</a>
 									}
@@ -144,15 +173,6 @@ export default function save({
 							</li>
 						)}
 					</ul>
-					{autoplay ?
-					  <div className="splide-autoplay-controls">
-							<img
-								className={`play-pause-button toggle-${sliderId}`}
-								src={'./wp-content/plugins/wp-uwai-plugin/pause-white.svg'}
-								alt="Pause Carousel"
-							/>
-						</div>
-					: null}
 				</div>
 			</div>
 			{thumbnailSlider ?
@@ -182,7 +202,7 @@ export default function save({
 					if (${thumbnailSlider ? "true" : "false"}) {
 						document.addEventListener( 'DOMContentLoaded', function () {
 							var main = new Splide( "#${sliderId ?? 'my-splide'}", {
-								type      : 'fade',
+								type: 'fade',
 								width: '100%',
 								height: '70vh',
 								cover: true,
@@ -191,6 +211,14 @@ export default function save({
 								speed: 800,
 								pauseOnHover: false,
 								pauseOnFocus: false,
+								classes: {
+									arrows: 'splide__arrows',
+									arrow: 'splide__arrow ${arrowsLocation === 'arrows-top' ? '' : 'arrows-either-side'}',
+									prev: 'splide__arrow--prev',
+									next: 'splide__arrow--next ${arrowsLocation === 'arrows-top' ? '' : 'arrows-either-side-right'}',
+									pagination: 'splide__pagination ${bulletsLocation === 'bullets-below' ? 'pagination-below' : 'pagination-internal'}',
+									page: 'splide__pagination__page',
+								},
 							} );
 						
 							var thumbnails = new Splide( "#${sliderId ? `${sliderId}-thumbnails` : 'my-splide-thumbnails'}", {
@@ -214,41 +242,51 @@ export default function save({
 							thumbnails.mount();
 						});
 					} else {
-						var splide = new Splide("#${sliderId ?? 'my-splide'}", {
-							type: 'loop',
-							width: '100%',
-							height: '70vh',
-							cover: true,
-							autoplay: ${autoplay ? "true" : "false"},
-							interval: ${Number(autoplayInterval) * 1000},
-							speed: 800,
-							pauseOnHover: false,
-							pauseOnFocus: false,
-						});
-
-						if (${autoplay ? "true" : "false"}) {
-							var toggleButton = splide.root.querySelector( '.toggle-${sliderId}' );
-							
-							splide.on( 'autoplay:play', function () {
-								toggleButton.src = './wp-content/plugins/wp-uwai-plugin/pause-white.svg';
-								toggleButton.alt = 'Pause Carousel';
-							} );
-
-							splide.on( 'autoplay:pause', function () {
-								toggleButton.src = './wp-content/plugins/wp-uwai-plugin/play-white.svg';
-								toggleButton.alt = 'Play Carousel';
-							} );
-
-							toggleButton.addEventListener( 'click', function () {
-								var Autoplay = splide.Components.Autoplay;
-								if ( toggleButton.alt == 'Play Carousel' ) {
-									Autoplay.play();
-								} else {
-									Autoplay.pause();
-								}
+						document.addEventListener( 'DOMContentLoaded', function () {
+							var main = new Splide("#${sliderId ?? 'my-splide'}", {
+								type: 'loop',
+								width: '100%',
+								height: '70vh',
+								cover: true,
+								autoplay: ${autoplay ? "true" : "false"},
+								interval: ${Number(autoplayInterval) * 1000},
+								speed: 800,
+								pauseOnHover: false,
+								pauseOnFocus: false,
+								classes: {
+									arrows: 'splide__arrows',
+									arrow: 'splide__arrow ${arrowsLocation === 'arrows-top' ? '' : 'arrows-either-side'}',
+									prev: 'splide__arrow--prev',
+									next: 'splide__arrow--next ${arrowsLocation === 'arrows-top' ? '' : 'arrows-either-side-right'}',
+									pagination: 'splide__pagination ${bulletsLocation === 'bullets-below' ? 'pagination-below' : 'pagination-internal'}',
+									page: 'splide__pagination__page',
+								},
 							});
-						}
-						splide.mount();
+
+							if (${autoplay ? "true" : "false"}) {
+								var toggleButton = main.root.querySelector( '.toggle-${sliderId}' );
+								
+								main.on( 'autoplay:play', function () {
+									toggleButton.src = './wp-content/plugins/wp-uwai-plugin/pause-white.svg';
+									toggleButton.alt = 'Pause Carousel';
+								} );
+
+								main.on( 'autoplay:pause', function () {
+									toggleButton.src = './wp-content/plugins/wp-uwai-plugin/play-white.svg';
+									toggleButton.alt = 'Play Carousel';
+								} );
+
+								toggleButton.addEventListener( 'click', function () {
+									var Autoplay = main.Components.Autoplay;
+									if ( toggleButton.alt == 'Play Carousel' ) {
+										Autoplay.play();
+									} else {
+										Autoplay.pause();
+									}
+								});
+							}
+							main.mount();
+						});
 					}
 				`}
 			</script>
