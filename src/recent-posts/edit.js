@@ -90,7 +90,7 @@
             { ! posts && 'Loading...' }
             { posts && posts.length === 0 && 'No Posts' }
             { posts && posts.length > 0 && (
-               posts.forEach(post => {
+               posts.map(post => (
                   <article className={
                   className + ' basic-card' + ( greyStyle ? '-grey' : '' )
                      }>
@@ -114,7 +114,7 @@
                         </div>
                      </div>
                   </article>
-               })
+               ))
             ) }
       </div>
       </>
