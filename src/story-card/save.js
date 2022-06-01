@@ -32,40 +32,38 @@ export default function save({
 	className,
 }) {
 	return (
-		<div className={className}>
-			<article
-				className={'story__secondary-card' + (greyStyle ? '-grey' : '')}
-			>
-				<a href={url} target={linkTarget} rel={rel}>
-					<div class="story__secondary-image-wrapper">
-						<img
-							className="story__secondary-image"
-							src={
-								mediaUrl ??
-								'/wp-content/plugins/wp-uwai-plugin/event-card-example-1.jpg'
-							}
-							alt={
-								mediaAlt ??
-								'Two children on their phones under the blankets'
-							}
-						></img>
-					</div>
-					<h3 className="story__secondary-title">
-						<RichText.Content
-							tagName="span"
-							className="story__secondary-title-text"
-							value={title}
-						/>
-					</h3>
-				</a>
-				{/* <h4 className="person-card__department">
-						<RichText.Content tagName="span" value={ department } />
-					</h4> */}
-
-				<div className="story__secondary-content">
-					<InnerBlocks.Content />
+		<article
+			className={`story__secondary-card${greyStyle ? ' has-background-lightest-grey-2' : ''}${className ? ' ' + className : ''}`}
+		>
+			<a href={url} target={linkTarget} rel={rel}>
+				<div class="story__secondary-image-wrapper">
+					<img
+						className="story__secondary-image"
+						src={
+							mediaUrl ??
+							'/wp-content/plugins/wp-uwai-plugin/event-card-example-1.jpg'
+						}
+						alt={
+							mediaAlt ??
+							'Two children on their phones under the blankets'
+						}
+					></img>
 				</div>
-			</article>
-		</div>
+				<h3 className="story__secondary-title">
+					<RichText.Content
+						tagName="span"
+						className="story__secondary-title-text"
+						value={title}
+					/>
+				</h3>
+			</a>
+			{/* <h4 className="person-card__department">
+					<RichText.Content tagName="span" value={ department } />
+				</h4> */}
+
+			<div className="story__secondary-content">
+				<InnerBlocks.Content />
+			</div>
+		</article>
 	);
 }

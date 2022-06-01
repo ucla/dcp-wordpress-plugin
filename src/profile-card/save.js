@@ -29,30 +29,28 @@ export default function save( {
 	className,
 } ) {
 	return (
-		<div className={ className }>
-			<article className={ 'person-card' + ( greyStyle ? '-grey' : '' ) }>
-				<img
-					className="person-card__image"
-					src={
-						mediaUrl ??
-						'/wp-content/plugins/wp-uwai-plugin/event-card-example-1.jpg'
-					}
-					alt={
-						mediaAlt ??
-						'Two children on their phones under the blankets'
-					}
-				></img>
-				<div className="person-card__info-wrapper">
-					<h3 className="person-card__name">
-						<RichText.Content tagName="span" value={ title } />
-					</h3>
-					<h4 className="person-card__department">
-						<RichText.Content tagName="span" value={ department } />
-					</h4>
+		<article className={`person-card${greyStyle ? '-grey' : ''}${className ? ' ' + className : ''}`}>
+			<img
+				className="person-card__image"
+				src={
+					mediaUrl ??
+					'/wp-content/plugins/wp-uwai-plugin/event-card-example-1.jpg'
+				}
+				alt={
+					mediaAlt ??
+					'Two children on their phones under the blankets'
+				}
+			></img>
+			<div className="person-card__info-wrapper">
+				<h3 className="person-card__name">
+					<RichText.Content tagName="span" value={ title } />
+				</h3>
+				<h4 className="person-card__department">
+					<RichText.Content tagName="span" value={ department } />
+				</h4>
 
-					<InnerBlocks.Content />
-				</div>
-			</article>
-		</div>
+				<InnerBlocks.Content />
+			</div>
+		</article>
 	);
 }

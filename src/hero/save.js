@@ -88,7 +88,7 @@ export default function save({
 			>
 				<div class="copy">
 					<div class="col span_3_of_12 copy__wrapper">
-						<h1 id="hero-heading" class="screenreader-only">
+						<h1 id="hero-heading"	class="screenreader-only screenreader-helper">
 							{row1 + ' ' + row2 + ' ' + row3 + ' ' + row4}
 						</h1>
 						<div class="copy__headline">
