@@ -64,6 +64,11 @@ function ucla_dcp_ucla_dcp_block_init() {
 		'editor_script' => 'uwai-uwai-block-editor',
 		'editor_style'  => 'uwai-uwai-block-editor',
 		'style'         => 'uwai-uwai-block',
+		'render_callback' => 'uwai_recentpost_render'
 	) );
 }
 add_action( 'init', 'ucla_dcp_ucla_dcp_block_init' );
+
+function uwai_recentposts_render($attr, $content) {
+
+}

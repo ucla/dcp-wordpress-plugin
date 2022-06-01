@@ -34,6 +34,7 @@ import * as eventCard from './event-card';
 import * as hero from './hero';
 import * as profileCard from './profile-card';
 import * as storyCard from './story-card';
+import * as recentPosts from './recent-posts';
 
 /**
  *
@@ -64,6 +65,7 @@ export const registerUwaiBlocks = () => {
 		profileCard,
 		hero,
 		storyCard,
+		recentPosts,
 	].forEach( registerBlock );
 };
 

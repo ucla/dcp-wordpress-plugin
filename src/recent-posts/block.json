@@ -1,0 +1,32 @@
+{
+	"name": "uwai/recent-posts",
+	"title": "UWAI Recent Posts",
+	"category": "common",
+	"textdomain": "uwai",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"postsArray": {
+			"type": "array",
+			"default": []
+		},
+		"categories": {
+			"type": "array",
+			"default": []
+		},
+		"selectedCategory" :{
+			"type": "string"
+		},
+		"numberOfPosts" :{
+			"type" : "number",
+			"default" : "2"
+		},
+		"greyStyle": {
+			"type": "boolean"
+		},
+		"myRichText": {
+			"type": "string"
+		}
+	}
+}
