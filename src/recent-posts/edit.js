@@ -92,8 +92,8 @@
             { posts && posts.length > 0 && (
                posts.map(post => (
                   <article className={
-                  className + ' basic-card' + ( greyStyle ? '-grey' : '' )
-                     }>
+                     className ? className + ' ' : '' + 'basic-card' + ( greyStyle ? '-grey' : '' )
+                  }>
                      <div className="basic-card__info-wrapper">
                         <h3 className="basic-card__title">
                         <RichText
