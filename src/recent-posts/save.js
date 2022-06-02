@@ -27,12 +27,6 @@
     attributes: { postsArray, numberOfPosts, greyStyle },
 	className
  }) {
-	 return (
-         <div className={className}>
-             {postsArray.map(post=>(
-                 <div>{post.title.rendered}</div>
-             ))}
-         </div>
-     );
+	 return null;
  }
  

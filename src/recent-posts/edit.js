@@ -20,6 +20,7 @@
 	 Button,
 	 ToggleControl,
     NumberControl,
+    RangeControl,
  } from '@wordpress/components';
  import {
 	 InspectorControls,
@@ -83,33 +84,39 @@
             />
          </PanelBody>
          <PanelBody title={__( 'Number of Posts' )}>
-
+            <RangeControl
+               value={Number(numberOfPosts)}
+               onChange={onChangePostsNumber}
+               min={1}
+               max={5}
+            />
          </PanelBody>
       </InspectorControls>
       <div>
             { ! posts && 'Loading...' }
             { posts && posts.length === 0 && 'No Posts' }
             { posts && posts.length > 0 && (
-               posts.map(post => (
+               posts.slice(0, Number(numberOfPosts)).map(post => (
                   <article className={
                      className ? className + ' ' : '' + 'basic-card' + ( greyStyle ? '-grey' : '' )
                   }>
                      <div className="basic-card__info-wrapper">
                         <h3 className="basic-card__title">
-                        <RichText
-                              tagName="span"
+                           <RichText
+                              tagName='span'
                               value={ post.title.rendered }
                            />
                         </h3>
-                        <p class="basic-card__description">
-                           <RichText
-                              tagName="span"
-                              value={ post.excerpt.rendered }
-                           />
-                        </p>
+                        <RichText
+                           tagName='p'
+                           className='basic-card__description'
+                           value={ post.excerpt.rendered.replace(/<[^>]+>/g, '') } // strips HTML tags from excerpt
+                           role='textbox'
+                           aria-multiline='true'
+                        />
                         <div class="basic-card__buttons">
                            <button class="btn btn--tertiary" href={ post.link }>
-                              Read More About {post.title.rendered}
+                              Read more about {post.title.rendered}
                            </button>
                         </div>
                      </div>
