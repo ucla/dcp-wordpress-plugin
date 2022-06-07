@@ -19,7 +19,7 @@
 	 ExternalLink,
 	 Button,
 	 ToggleControl,
-    NumberControl,
+    RangeControl,
  } from '@wordpress/components';
  import {
 	 InspectorControls,
@@ -27,6 +27,7 @@
 	 InnerBlocks,
  } from '@wordpress/block-editor';
  import { useSelect } from '@wordpress/data';
+ import { useState } from '@wordpress/element';
  
  /**
   * The edit function describes the structure of your block in the context of the
@@ -83,14 +84,21 @@
             />
          </PanelBody>
          <PanelBody title={__( 'Number of Posts' )}>
-
+         <RangeControl
+            label="Posts"
+            help="How many posts to display"
+            onChange={ onChangePostsNumber}
+            initialPosition={2}
+            min={ 1 }
+	         max={ 10 }
+         />
          </PanelBody>
       </InspectorControls>
       <div>
             { ! posts && 'Loading...' }
             { posts && posts.length === 0 && 'No Posts' }
             { posts && posts.length > 0 && (
-               posts.forEach(post => {
+               posts.map(post => (
                   <article className={
                   className + ' basic-card' + ( greyStyle ? '-grey' : '' )
                      }>
@@ -114,7 +122,7 @@
                         </div>
                      </div>
                   </article>
-               })
+               ))
             ) }
       </div>
       </>

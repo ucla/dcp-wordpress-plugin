@@ -9699,6 +9699,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -9749,8 +9750,15 @@ function Edit(_ref) {
     checked: greyStyle
   })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Number of Posts')
-  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, !posts && 'Loading...', posts && posts.length === 0 && 'No Posts', posts && posts.length > 0 && posts.forEach(function (post) {
-    Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("article", {
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["RangeControl"], {
+    label: "Posts",
+    help: "How many posts to display",
+    onChange: onChangePostsNumber,
+    initialPosition: 2,
+    min: 1,
+    max: 10
+  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, !posts && 'Loading...', posts && posts.length === 0 && 'No Posts', posts && posts.length > 0 && posts.map(function (post) {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("article", {
       className: className + ' basic-card' + (greyStyle ? '-grey' : '')
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "basic-card__info-wrapper"

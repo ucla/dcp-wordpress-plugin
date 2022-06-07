@@ -63,12 +63,9 @@ function ucla_dcp_ucla_dcp_block_init() {
 	register_block_type( 'uwai/uwai', array(
 		'editor_script' => 'uwai-uwai-block-editor',
 		'editor_style'  => 'uwai-uwai-block-editor',
-		'style'         => 'uwai-uwai-block',
-		'render_callback' => 'uwai_recentpost_render'
+		'style'         => 'uwai-uwai-block'
 	) );
 }
 add_action( 'init', 'ucla_dcp_ucla_dcp_block_init' );
 
-function uwai_recentposts_render($attr, $content) {
-
-}
+include __DIR__ . '/src/recent-posts/index.php';
