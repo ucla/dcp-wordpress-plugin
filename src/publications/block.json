@@ -1,0 +1,35 @@
+{
+	"name": "uwai/publication",
+	"title": "UWAI Publication",
+	"category": "common",
+	"textdomain": "uwai",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"title": {
+			"type": "string",
+			"source": "text",
+			"selector": "h3 span"
+		},
+		"mediaAlt": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "img",
+			"attribute": "alt",
+			"default": ""
+		},
+		"mediaId": {
+			"type": "number"
+		},
+		"mediaType": {
+			"type": "string"
+		},
+		"mediaUrl": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "img",
+			"attribute": "src"
+		}
+	}
+}

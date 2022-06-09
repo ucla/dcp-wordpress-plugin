@@ -20,10 +20,10 @@
 new PluginUpdater(__FILE__, 'avelikanov/testpg', 'master'); */
 
 
+
 function ucla_dcp_ucla_dcp_block_init() {
 
   wp_enqueue_script('jquery');
-
 	$dir = dirname( __FILE__ );
 
 	$script_asset_path = "$dir/build/index.asset.php";
@@ -72,3 +72,48 @@ function ucla_dcp_ucla_dcp_block_init() {
 
 }
 add_action( 'init', 'ucla_dcp_ucla_dcp_block_init' );
+
+function cpt_publication() {
+	$labels = array(
+		'name'                  => 'Publications',
+		'singular_name'         => 'Publication',
+		'menu_name'             => 'Publication',
+		'name_admin_bar'        => 'Publication',
+		'archives'              => 'Publication Archive',
+		'all_items'             => 'All Publications',
+		'add_new_item'          => 'Add New Publication',
+		'add_new'               => 'Add Publication',
+		'new_item'              => 'New Publication',
+		'edit_item'             => 'Edit Publication',
+		'update_item'           => 'Update Publication',
+		'search_items'          => 'Search Publications',
+		'not_found'             => 'Publication not found',
+		'not_found_in_trash'    => 'Publication not found in Trash',
+		'featured_image'        => 'Publication Image',
+		'set_featured_image'    => 'Set publication image',
+		'remove_featured_image' => 'Remove publication image',
+		'use_featured_image'    => 'Use as publication image',
+	);
+	$args = array(
+		'label'                 => 'Publication',
+		'description'           => 'Publication Post Type',
+		'labels'                => $labels,
+		'supports'              => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'show_in_rest'          => true,
+		'menu_position'         => 5,
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => true,
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
+		'capability_type'       => 'post',
+	);
+	register_post_type( 'publication', $args );
+}
+
+add_action( 'init', 'cpt_publication' );

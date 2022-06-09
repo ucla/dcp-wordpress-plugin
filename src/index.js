@@ -34,6 +34,7 @@ import * as eventCard from './event-card';
 import * as factoid from './factoid';
 import * as hero from './hero';
 import * as profileCard from './profile-card';
+import * as publications from './publications'
 import * as ranking from './ranking';
 import * as statistic from './statistic';
 import * as storyCard from './story-card';
@@ -68,6 +69,7 @@ export const registerUwaiBlocks = () => {
 		eventCard,
 		factoid,
 		profileCard,
+		publications,
 		hero,
 		ranking,
 		statistic,
