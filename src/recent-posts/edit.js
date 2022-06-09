@@ -19,6 +19,7 @@
 	 ExternalLink,
 	 Button,
 	 ToggleControl,
+    NumberControl,
     RangeControl,
  } from '@wordpress/components';
  import {
@@ -49,7 +50,8 @@
    let {
       greyStyle,
       postsArray,
-      numberOfPosts
+      numberOfPosts,
+      displayFeaturedImage
    } = attributes;
 
    const onToggleGreyStyle = ( value ) => {
@@ -66,11 +68,17 @@
       })
    }
 
+   const updatePostArray = (post) => {
+      setAttributes({
+         postsArray: post,
+      })
+      console.log(attributes);
+   }
+
    const posts = useSelect( ( select ) => {
       return select( 'core' ).getEntityRecords( 'postType', 'post', { per_page: attributes.numberOfPosts } );
-   }, [] );
+   }, [updatePostArray] );
 
-   console.log(attributes);
    console.log(posts);
 
    return (
@@ -83,41 +91,52 @@
                checked={ greyStyle }
             />
          </PanelBody>
+         <PanelBody title={__( 'Display Featured Image' )}>
+            <ToggleControl
+					label={ __( 'Display featured image') }
+					checked={ displayFeaturedImage }
+					onChange={ ( value ) =>
+						setAttributes( { displayFeaturedImage: value } )
+					}
+				/>
+         </PanelBody>
          <PanelBody title={__( 'Number of Posts' )}>
          <RangeControl
-            label="Posts"
-            help="How many posts to display"
-            onChange={ onChangePostsNumber}
-            initialPosition={2}
-            min={ 1 }
-	         max={ 10 }
-         />
+               value={Number(numberOfPosts)}
+               onChange={onChangePostsNumber}
+               min={1}
+               max={5}
+            />
          </PanelBody>
       </InspectorControls>
       <div>
             { ! posts && 'Loading...' }
             { posts && posts.length === 0 && 'No Posts' }
             { posts && posts.length > 0 && (
-               posts.map(post => (
+                posts.slice(0, Number(numberOfPosts)).map(post => ( 
                   <article className={
-                  className + ' basic-card' + ( greyStyle ? '-grey' : '' )
+                     className ? className + ' ' : '' + 'basic-card' + ( greyStyle ? '-grey' : '' )
                      }>
+                     { displayFeaturedImage && (
+                        <img class="basic-card__image" src="" alt={post.title.rendered}></img>
+                     )}
                      <div className="basic-card__info-wrapper">
                         <h3 className="basic-card__title">
                         <RichText
-                              tagName="span"
+                              tagName='span'
                               value={ post.title.rendered }
                            />
                         </h3>
-                        <p class="basic-card__description">
-                           <RichText
-                              tagName="span"
-                              value={ post.excerpt.rendered }
-                           />
-                        </p>
+                        <RichText
+                           tagName='p'
+                           className='basic-card__description'
+                           value={ post.excerpt.rendered.replace(/<[^>]+>/g, '') } // strips HTML tags from excerpt
+                           role='textbox'
+                           aria-multiline='true'
+                        />
                         <div class="basic-card__buttons">
                            <button class="btn btn--tertiary" href={ post.link }>
-                              Read More About {post.title.rendered}
+                              Read more about {post.title.rendered}
                            </button>
                         </div>
                      </div>

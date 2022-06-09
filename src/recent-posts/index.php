@@ -19,6 +19,24 @@ function register_dynamic_block() {
             'type' => 'array',
             'default' => []
         ],
+        'categories'=> [
+          'type' => 'array',
+          'default' => []
+        ],
+        'selectedCategory' => [
+          'type' => 'string'
+        ],
+        'numberOfPosts' => [
+          'type' => 'number',
+          'default' => 2
+        ],
+        'greyStyle' => [
+          'type' => 'boolean'
+        ],
+        'displayFeaturedImage' => [
+          'type' => 'boolean',
+          'default' => false
+        ]
     ]
   ));
 }
