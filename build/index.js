@@ -9935,7 +9935,12 @@ __webpack_require__.r(__webpack_exports__);
  * @return {WPElement} Element to render.
  */
 
-function save() {
+function save(_ref) {
+  var _ref$attributes = _ref.attributes,
+      postsArray = _ref$attributes.postsArray,
+      numberOfPosts = _ref$attributes.numberOfPosts,
+      greyStyle = _ref$attributes.greyStyle,
+      className = _ref.className;
   return null;
 }
 

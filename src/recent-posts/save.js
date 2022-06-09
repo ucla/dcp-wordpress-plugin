@@ -23,7 +23,10 @@
   * @param {string} props.className
   * @return {WPElement} Element to render.
   */
- export default function save() {
+ export default function save({
+    attributes: { postsArray, numberOfPosts, greyStyle },
+	className
+ }) {
 	 return null;
  }
  
