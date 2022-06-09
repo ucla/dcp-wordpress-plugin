@@ -98,7 +98,7 @@ function cpt_publication() {
 		'label'                 => 'Publication',
 		'description'           => 'Publication Post Type',
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
+		'supports'              => array( 'title', 'editor', 'thumbnail', 'excerpt', 'author' ),
 		'hierarchical'          => false,
 		'public'                => true,
 		'show_ui'               => true,
@@ -117,3 +117,26 @@ function cpt_publication() {
 }
 
 add_action( 'init', 'cpt_publication' );
+
+add_filter('template_include', 'publication_template');
+function publication_template($template) {
+	if ( is_post_type_archive('publication') ) {
+		$theme_files = array('archive-publication.php', 'ucla-wp-plugin/archive-publication.php');
+		$exists_in_theme = locate_template($theme_files, false);
+		if ($exists_in_theme != '') {
+			return $exists_in_theme;
+		} else {
+			return plugin_dir_path(__FILE__) . 'archive-publication.php';
+		}
+	}
+	if ( is_singular('publication') ) {
+		$theme_files = array('single-publication.php', 'ucla-wp-plugin/single-publication.php');
+		$exists_in_theme = locate_template($theme_files, false);
+		if ($exists_in_theme != '') {
+			return $exists_in_theme;
+		} else {
+			return plugin_dir_path(__FILE__) . 'single-publication.php';
+		}
+	}
+	return $template;
+}
