@@ -56,9 +56,4 @@ export const settings = {
 	 * @see ./edit.js
 	 */
 	edit,
-
-	/**
-	 * @see ./save.js
-	 */
-	save,
 };

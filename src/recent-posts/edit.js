@@ -25,10 +25,9 @@
  import {
 	 InspectorControls,
 	 RichText,
-	 InnerBlocks,
+    useBlockProps
  } from '@wordpress/block-editor';
  import { useSelect } from '@wordpress/data';
- import { useState } from '@wordpress/element';
  
  /**
   * The edit function describes the structure of your block in the context of the
@@ -42,17 +41,18 @@
   * @param {string} [props.className] Class name generated for the block.
   * @return {WPElement} Element to render.
   */
- export default function Edit( {
+export default function Edit({
    attributes,
-	setAttributes,
+   setAttributes,
    className
-   }) {
+}) {
+   const blockProps = useBlockProps();
+   const posts = useSelect( select => select('core').getEntityRecords( 'postType', 'post' ) );
    let {
       greyStyle,
-      postsArray,
       numberOfPosts,
       displayFeaturedImage
-   } = attributes;
+   } = attributes
 
    const onToggleGreyStyle = ( value ) => {
 		greyStyle = value;
@@ -68,18 +68,7 @@
       })
    }
 
-   const updatePostArray = (post) => {
-      setAttributes({
-         postsArray: post,
-      })
-      console.log(attributes);
-   }
-
-   const posts = useSelect( ( select ) => {
-      return select( 'core' ).getEntityRecords( 'postType', 'post', { per_page: attributes.numberOfPosts } );
-   }, [updatePostArray] );
-
-   console.log(posts);
+   // console.log(posts);
 
    return (
       <>
@@ -109,42 +98,39 @@
             />
          </PanelBody>
       </InspectorControls>
-      <div>
-            { ! posts && 'Loading...' }
-            { posts && posts.length === 0 && 'No Posts' }
-            { posts && posts.length > 0 && (
-                posts.slice(0, Number(numberOfPosts)).map(post => ( 
-                  <article className={
-                     className ? className + ' ' : '' + 'basic-card' + ( greyStyle ? '-grey' : '' )
-                     }>
-                     { displayFeaturedImage && (
-                        <img class="basic-card__image" src="" alt={post.title.rendered}></img>
-                     )}
+      <div { ...blockProps }>
+         {! posts && 'Loading...'}
+         {posts && posts.length === 0 && 'No Posts'}
+         {posts && posts.length > 0 && (
+            posts.slice(0, Number(numberOfPosts)).map( post => {
+               return (
+                  <article className={`basic-card${greyStyle ? '-grey' : ''}`}>
                      <div className="basic-card__info-wrapper">
                         <h3 className="basic-card__title">
-                        <RichText
+                           <RichText
                               tagName='span'
                               value={ post.title.rendered }
                            />
                         </h3>
                         <RichText
-                           tagName='p'
-                           className='basic-card__description'
-                           value={ post.excerpt.rendered.replace(/<[^>]+>/g, '') } // strips HTML tags from excerpt
-                           role='textbox'
-                           aria-multiline='true'
-                        />
-                        <div class="basic-card__buttons">
-                           <button class="btn btn--tertiary" href={ post.link }>
+                            tagName='p'
+                            className='basic-card__description'
+                            value={ post.excerpt.rendered.replace(/<[^>]+>/g, '') } // strips HTML tags from excerpt
+                            role='textbox'
+                            aria-multiline='true'
+                         />
+                         <div class="basic-card__buttons">
+                           <a class="btn btn--tertiary" href={post.link}>
                               Read more about {post.title.rendered}
-                           </button>
+                           </a>
                         </div>
                      </div>
                   </article>
-               ))
-            ) }
+               )
+                } )
+         )}
       </div>
       </>
    );
- }
+}
  

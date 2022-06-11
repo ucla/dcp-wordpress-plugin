@@ -15,10 +15,6 @@ function register_dynamic_block() {
   register_block_type('uwai/recent-posts', array(
     'render_callback' => __NAMESPACE__ . '\render_dynamic_block',
     'attributes' => [
-        'postsArray' => [
-            'type' => 'array',
-            'default' => []
-        ],
         'categories'=> [
           'type' => 'array',
           'default' => []
@@ -42,19 +38,33 @@ function register_dynamic_block() {
 }
 
 function render_dynamic_block($attr) {
-	$str = '<div class="span_12_of_12">';
-	if ($attr['postsArray'] > 0 ) {
-		$post = get_post($attr['postsArray']);
-		if (!$post) {
-			return $str;
-		}
-		$string .= '<article class="basic-card-grey"><div class="basic-card__info-wrapper">';
-		$string .= '<h1 class="basic-card__title"><span>' . get_the_title($post) . '</span></h1>';
-		$string .= '<p class="basic-card__description">' . get_the_excerpt($post) . '</p>';
-		$string .= '<div class="basic-card__buttons"><button class="btn btn--tertiary" href="' . get_the_permalink($post) . '" >Read More</button></div>'; 
-		$string .= '</div></article>';
-        console.log($posts);
-	}
-	$string .= '</div>';
-  	return $string;
+  $output = '';
+  $recent_posts = wp_get_recent_posts( array(
+    'numberposts' => $attr['numberOfPosts'],
+    'post_status' => 'publish'
+  ) );
+  $grey = $attr['greyStyle'] ? '-grey' : null;
+	if ( count( $recent_posts ) === 0 ) {
+    return 'No posts';
+  }
+  foreach($recent_posts as $post) {
+    $output .= sprintf(
+      '<article class="basic-card%4$s">
+        <div class="basic-card__info-wrapper">
+          <h3 class="basic-card__title">
+            <span>%2$s</span>
+          </h3>
+          <p>%3$s</p>
+          <div class="basic-card__buttons">
+            <a class="btn btn--tertiary" href="%1$s">Read more about %2$s</a>
+          </div>
+        </div>
+      </article>',
+      esc_url( get_permalink( $post['ID'] ) ),
+      esc_html( get_the_title( $post['ID'] ) ),
+      esc_html( get_the_excerpt( $post['ID'] ) ),
+      $grey
+    );
+  }
+  return $output;
 }
