@@ -47,7 +47,7 @@ export default function Edit({
    className
 }) {
    const blockProps = useBlockProps();
-   const posts = useSelect( select => select('core').getEntityRecords( 'postType', 'post' ) );
+   const posts = useSelect( select => select('core').getEntityRecords( 'postType', 'post', {_embed: true} ) );
    let {
       greyStyle,
       numberOfPosts,
@@ -68,7 +68,7 @@ export default function Edit({
       })
    }
 
-   // console.log(posts);
+   console.log(posts);
 
    return (
       <>
@@ -103,8 +103,13 @@ export default function Edit({
          {posts && posts.length === 0 && 'No Posts'}
          {posts && posts.length > 0 && (
             posts.slice(0, Number(numberOfPosts)).map( post => {
+               let imageURL = post._embedded['wp:featuredmedia'][0].source_url;
                return (
                   <article className={`basic-card${greyStyle ? '-grey' : ''}`}>
+                     
+                     {imageURL !== undefined &&
+                        <p>{imageURL}</p>
+                     }
                      <div className="basic-card__info-wrapper">
                         <h3 className="basic-card__title">
                            <RichText
