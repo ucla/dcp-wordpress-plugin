@@ -9699,7 +9699,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -9717,8 +9716,13 @@ function Edit(_ref) {
   var attributes = _ref.attributes,
       setAttributes = _ref.setAttributes,
       className = _ref.className;
+  var blockProps = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__["useBlockProps"])();
+  var posts = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_5__["useSelect"])(function (select) {
+    return select('core').getEntityRecords('postType', 'post', {
+      _embed: true
+    });
+  });
   var greyStyle = attributes.greyStyle,
-      postsArray = attributes.postsArray,
       numberOfPosts = attributes.numberOfPosts,
       displayFeaturedImage = attributes.displayFeaturedImage;
 
@@ -9736,19 +9740,8 @@ function Edit(_ref) {
     });
   };
 
-  var updatePostArray = function updatePostArray(post) {
-    setAttributes({
-      postsArray: post
-    });
-    console.log(attributes);
-  };
-
-  var posts = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_5__["useSelect"])(function (select) {
-    return select('core').getEntityRecords('postType', 'post', {
-      per_page: attributes.numberOfPosts
-    });
-  }, [updatePostArray]);
   console.log(posts);
+  console.log(attributes);
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Style')
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToggleControl"], {
@@ -9772,12 +9765,14 @@ function Edit(_ref) {
     onChange: onChangePostsNumber,
     min: 1,
     max: 5
-  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, !posts && 'Loading...', posts && posts.length === 0 && 'No Posts', posts && posts.length > 0 && posts.slice(0, Number(numberOfPosts)).map(function (post) {
+  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", blockProps, !posts && 'Loading...', posts && posts.length === 0 && 'No Posts', posts && posts.length > 0 && posts.slice(0, Number(numberOfPosts)).map(function (post) {
+    var imageURL = post._embedded['wp:featuredmedia'][0].source_url;
+    console.log(attributes.displayFeaturedImage);
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("article", {
-      className: className ? className + ' ' : '' + 'basic-card' + (greyStyle ? '-grey' : '')
-    }, displayFeaturedImage && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
+      className: "basic-card".concat(greyStyle ? '-grey' : '')
+    }, imageURL !== undefined && attributes.displayFeaturedImage == true && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
       class: "basic-card__image",
-      src: "",
+      src: imageURL,
       alt: post.title.rendered
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "basic-card__info-wrapper"
@@ -9795,7 +9790,7 @@ function Edit(_ref) {
       "aria-multiline": "true"
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       class: "basic-card__buttons"
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("button", {
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
       class: "btn btn--tertiary",
       href: post.link
     }, "Read more about ", post.title.rendered))));
@@ -9886,12 +9881,7 @@ var settings = {
   /**
    * @see ./edit.js
    */
-  edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
-
-  /**
-   * @see ./save.js
-   */
-  save: _save__WEBPACK_IMPORTED_MODULE_4__["default"]
+  edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"]
 };
 
 /***/ }),

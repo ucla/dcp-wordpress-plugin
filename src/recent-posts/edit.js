@@ -69,6 +69,7 @@ export default function Edit({
    }
 
    console.log(posts);
+   console.log(attributes);
 
    return (
       <>
@@ -104,12 +105,12 @@ export default function Edit({
          {posts && posts.length > 0 && (
             posts.slice(0, Number(numberOfPosts)).map( post => {
                let imageURL = post._embedded['wp:featuredmedia'][0].source_url;
+               console.log(attributes.displayFeaturedImage);
                return (
                   <article className={`basic-card${greyStyle ? '-grey' : ''}`}>
-                     
-                     {imageURL !== undefined &&
-                        <p>{imageURL}</p>
-                     }
+                     {imageURL !== undefined && attributes.displayFeaturedImage == true &&
+                        <img class="basic-card__image" src={imageURL} alt={post.title.rendered}/>
+                      }
                      <div className="basic-card__info-wrapper">
                         <h3 className="basic-card__title">
                            <RichText
