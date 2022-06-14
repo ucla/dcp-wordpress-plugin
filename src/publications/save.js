@@ -4,7 +4,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
- // import './style.scss';
+ import './style.scss';
 
  import { RichText, InnerBlocks } from '@wordpress/block-editor';
  

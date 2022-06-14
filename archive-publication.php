@@ -3,7 +3,7 @@
 Template Name: Archives - Publication
 */
 get_header(); ?>
-<main id="main" class="profile-archive">
+<main id="main" class="publications-archive">
     <header class="header">
         <div class="ucla campus masthead">
             <div class="col span_12_of_12">
@@ -12,10 +12,9 @@ get_header(); ?>
             </div>
         </div>
     </header>
-    <div class="ucla campus entry-content">
+    <div class="ucla campus">
 
-        <div class="col span_<?php echo (is_active_sidebar('right-widget-area') ? '9' : '12') ?>_of_12">
-            <hr />
+        <div class="col span_12_of_12">
             <?php
                 if (have_posts()) :
                     // Start the Loop
@@ -27,20 +26,20 @@ get_header(); ?>
                             $image      = $thumb_url[0];
                         }
                         ?>
-                        <div class="profile-header">
-                            <h2 class="profile-name"><a href="<?php echo get_permalink( $post->ID ); ?>"><?php the_title(); ?></a></h2>
-                            
-                        </div>
-                        <div class="profile-card">
-                            <figure class="profile-img">
+                        <article class="basic-card">
+                            <figure>
                                 <a href="<?php echo get_permalink( $post->ID ); ?>">
-                                    <img src="<?php echo (has_post_thumbnail() ? $image : 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y&s=400'); ?>" alt="">
+                                    <img class="publication-img" src="<?php echo (has_post_thumbnail() ? $image : 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y&s=400'); ?>" alt="">
                                 </a>
                             </figure>
-                            <div><?php echo get_the_excerpt() ?></div>
-                            
-                        </div>
-                        <hr />
+                            <div class="basic-card__info-wrapper">
+                                <h2 class="basic-card__title"><a href="<?php echo get_permalink( $post->ID ); ?>"><?php the_title(); ?></a></h2>
+                                <p class="basic-card__description"><?php echo get_the_excerpt() ?></p>
+                                <div class="basic-card__buttons">
+                                    <a class="btn btn--tertiary" href="<?php echo get_permalink( $post->ID ); ?>">Read more about <?php the_title(); ?></a>
+                                </div>
+                            </div>
+                        </article>
                     <?php
                     // End the Loop
                     endwhile;
@@ -57,3 +56,4 @@ get_header(); ?>
     <?php get_template_part('nav', 'below'); ?>
 </main>
 <?php get_footer(); ?>
+

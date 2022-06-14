@@ -1,0 +1,19 @@
+.publications-archive {
+    .entry-title {
+        color: #00598c;
+
+        &::before {
+            content: '';
+            margin-right: 1rem;
+            border-left: 8px solid #FFD100;
+        }
+    }
+    .basic-card {
+        margin: 32px 0.8rem 0 0;
+    }
+    .publication-img {
+        max-width: 100%;
+        height: 350px;
+        object-fit: cover;
+    }
+}
