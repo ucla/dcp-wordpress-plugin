@@ -48,23 +48,46 @@ function render_dynamic_block($attr) {
     return 'No posts';
   }
   foreach($recent_posts as $post) {
-    $output .= sprintf(
-      '<article class="basic-card%4$s">
-        <div class="basic-card__info-wrapper">
-          <h3 class="basic-card__title">
-            <span>%2$s</span>
-          </h3>
-          <p>%3$s</p>
-          <div class="basic-card__buttons">
-            <a class="btn btn--tertiary" href="%1$s">Read more about %2$s</a>
+    if ($attr['displayFeaturedImage'] === true) {
+      $output .= sprintf(
+        '<article class="basic-card%4$s">
+          <img class="basic-card__image" src="%5$s" alt="%2$s"/>
+          <div class="basic-card__info-wrapper">
+            <h3 class="basic-card__title">
+              <span>%2$s</span>
+            </h3>
+            <p>%3$s</p>
+            <div class="basic-card__buttons">
+              <a class="btn btn--tertiary" href="%1$s">Read more about %2$s</a>
+            </div>
           </div>
-        </div>
-      </article>',
-      esc_url( get_permalink( $post['ID'] ) ),
-      esc_html( get_the_title( $post['ID'] ) ),
-      esc_html( get_the_excerpt( $post['ID'] ) ),
-      $grey
-    );
+        </article>',
+        esc_url( get_permalink( $post['ID'] ) ),
+        esc_html( get_the_title( $post['ID'] ) ),
+        esc_html( get_the_excerpt( $post['ID'] ) ),
+        $grey,
+        esc_url(get_the_post_thumbnail_url($post['ID']))
+      );
+    }
+    else {
+      $output .= sprintf(
+        '<article class="basic-card%4$s">
+          <div class="basic-card__info-wrapper">
+            <h3 class="basic-card__title">
+              <span>%2$s</span>
+            </h3>
+            <p>%3$s</p>
+            <div class="basic-card__buttons">
+              <a class="btn btn--tertiary" href="%1$s">Read more about %2$s</a>
+            </div>
+          </div>
+        </article>',
+        esc_url( get_permalink( $post['ID'] ) ),
+        esc_html( get_the_title( $post['ID'] ) ),
+        esc_html( get_the_excerpt( $post['ID'] ) ),
+        $grey
+      );
+    }
   }
   return $output;
 }
