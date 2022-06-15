@@ -16,10 +16,9 @@
  import {
 	 PanelBody,
 	 TextareaControl,
-	 ExternalLink,
 	 Button,
 	 ToggleControl,
-    NumberControl,
+    SelectControl,
     RangeControl,
  } from '@wordpress/components';
  import {
@@ -28,6 +27,7 @@
     useBlockProps
  } from '@wordpress/block-editor';
  import { useSelect } from '@wordpress/data';
+ import { useState } from '@wordpress/element'
  
  /**
   * The edit function describes the structure of your block in the context of the
@@ -48,6 +48,9 @@ export default function Edit({
 }) {
    const blockProps = useBlockProps();
    const posts = useSelect( select => select('core').getEntityRecords( 'postType', 'post', {_embed: true} ) );
+   const categories = useSelect(select => select('core').getEntityRecords('taxonomy', 'category') );
+   const [categories_selected, setCategoriesSelected] = useState([]);
+
    let {
       greyStyle,
       numberOfPosts,
@@ -68,9 +71,6 @@ export default function Edit({
       })
    }
 
-   console.log(posts);
-   console.log(attributes);
-
    return (
       <>
       <InspectorControls>
@@ -80,6 +80,17 @@ export default function Edit({
                onChange={ onToggleGreyStyle }
                checked={ greyStyle }
             />
+         </PanelBody>
+         <PanelBody title={ __( 'Choose Categories' ) }>
+            <SelectControl
+               multiple 
+               label={__( 'Categories' )}  
+               options={categories.map(({id, name}) => ({label: name, value: id}))}
+               onChange={(selected) => {
+                  setCategoriesSelected(selected)
+               }}
+               value={categories_selected}
+               />
          </PanelBody>
          <PanelBody title={__( 'Display Featured Image' )}>
             <ToggleControl
@@ -105,7 +116,6 @@ export default function Edit({
          {posts && posts.length > 0 && (
             posts.slice(0, Number(numberOfPosts)).map( post => {
                let imageURL = post._embedded['wp:featuredmedia'][0].source_url;
-               console.log(attributes.displayFeaturedImage);
                return (
                   <article className={`basic-card${greyStyle ? '-grey' : ''}`}>
                      {imageURL !== undefined && attributes.displayFeaturedImage == true &&
