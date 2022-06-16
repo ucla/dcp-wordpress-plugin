@@ -53,7 +53,7 @@ function publication_template($template) {
 		if ($exists_in_theme != '') {
 			return $exists_in_theme;
 		} else {
-			return plugin_dir_path(__FILE__) . 'archive-publication.php';
+			return WP_PLUGIN_DIR . '/ucla-wp-plugin/archive-publication.php';
 		}
 	}
 	if ( is_singular('publication') ) {
@@ -62,7 +62,7 @@ function publication_template($template) {
 		if ($exists_in_theme != '') {
 			return $exists_in_theme;
 		} else {
-			return plugin_dir_path(__FILE__) . 'single-publication.php';
+			return WP_PLUGIN_DIR . '/ucla-wp-plugin/single-publication.php';
 		}
 	}
 	return $template;
