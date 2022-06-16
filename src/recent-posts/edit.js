@@ -15,8 +15,6 @@
  import './editor.scss';
  import {
 	 PanelBody,
-	 TextareaControl,
-	 Button,
 	 ToggleControl,
     SelectControl,
     RangeControl,
@@ -27,7 +25,7 @@
     useBlockProps
  } from '@wordpress/block-editor';
  import { useSelect } from '@wordpress/data';
- import { useState } from '@wordpress/element'
+ import { useState, useEffect } from '@wordpress/element'
  
  /**
   * The edit function describes the structure of your block in the context of the
@@ -48,9 +46,9 @@ export default function Edit({
 }) {
    const blockProps = useBlockProps();
    const posts = useSelect( select => select('core').getEntityRecords( 'postType', 'post', {_embed: true} ) );
-   const categories = useSelect(select => select('core').getEntityRecords('taxonomy', 'category') );
+   const fetchCategories = useSelect(select => select('core').getEntityRecords('taxonomy', 'category') );
    const [categories_selected, setCategoriesSelected] = useState([]);
-
+   
    let {
       greyStyle,
       numberOfPosts,
@@ -70,7 +68,10 @@ export default function Edit({
          numberOfPosts: value,
       })
    }
-
+   let categories = [];
+   if (fetchCategories) {
+      categories = [...fetchCategories];
+   }
    return (
       <>
       <InspectorControls>
