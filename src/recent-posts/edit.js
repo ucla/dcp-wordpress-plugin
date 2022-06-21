@@ -18,11 +18,16 @@
 	 ToggleControl,
     SelectControl,
     RangeControl,
+    Toolbar,
+    IconButton
  } from '@wordpress/components';
  import {
 	 InspectorControls,
 	 RichText,
-    useBlockProps
+    useBlockProps,
+    BlockControls, 
+    AlignmentToolbar,
+    BlockAlignmentToolbar
  } from '@wordpress/block-editor';
  import { useSelect } from '@wordpress/data';
  import { useState, useEffect } from '@wordpress/element'
@@ -82,7 +87,7 @@ export default function Edit({
                checked={ greyStyle }
             />
          </PanelBody>
-         <PanelBody title={ __( 'Choose Categories' ) }>
+         {/* <PanelBody title={ __( 'Choose Categories' ) }>
             <SelectControl
                multiple 
                label={__( 'Categories' )}  
@@ -92,7 +97,7 @@ export default function Edit({
                }}
                value={categories_selected}
                />
-         </PanelBody>
+         </PanelBody> */}
          <PanelBody title={__( 'Display Featured Image' )}>
             <ToggleControl
 					label={ __( 'Display featured image') }
@@ -111,7 +116,15 @@ export default function Edit({
             />
          </PanelBody>
       </InspectorControls>
-      <div { ...blockProps }>
+      <BlockControls>
+         <BlockAlignmentToolbar
+                  value={ attributes.align }
+                  onChange={ ( nextAlign ) => {
+                     setAttributes( { align: nextAlign } );
+                  } }
+         />
+      </BlockControls>
+      <div { ...useBlockProps ( { className: attributes.align } )  }>
          {! posts && 'Loading...'}
          {posts && posts.length === 0 && 'No Posts'}
          {posts && posts.length > 0 && (

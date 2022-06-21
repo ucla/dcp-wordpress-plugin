@@ -1355,4 +1355,24 @@ section#hero .graphics__molecule {
   font-size: 1.5rem;
 }
 
+.wp-block-uwai-recent-posts {
+  display: flex;
+  flex-direction: row;
+}
+
+.wp-block-uwai-recent-posts.left {
+  flex-direction: column;
+  float: left;
+}
+
+.wp-block-uwai-recent-posts.right {
+  flex-direction: column;
+  float: right;
+}
+
+.wp-block-uwai-recent-posts.center {
+  flex-direction: row;
+  justify-content: center;
+}
+
 /*# sourceMappingURL=index.css.map*/

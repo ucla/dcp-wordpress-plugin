@@ -32,6 +32,10 @@ function register_dynamic_block() {
         'displayFeaturedImage' => [
           'type' => 'boolean',
           'default' => false
+        ],
+        'align' => [
+          'type' => 'string',
+          'default' => 'none'
         ]
     ]
   ));
