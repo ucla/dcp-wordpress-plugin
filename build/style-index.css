@@ -648,4 +648,24 @@ section#hero .graphics__molecule {
   margin: 1em !important;
 }
 
+.uwai-recent-post {
+  display: flex;
+  flex-direction: row;
+}
+
+.uwai-recent-post.right {
+  flex-direction: column;
+  float: right;
+}
+
+.uwai-recent-post.left {
+  flex-direction: column;
+  float: left;
+}
+
+.uwai-recent-post.center {
+  flex-direction: row;
+  justify-content: center;
+}
+
 /*# sourceMappingURL=style-index.css.map*/

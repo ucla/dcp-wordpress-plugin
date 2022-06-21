@@ -42,7 +42,11 @@ function register_dynamic_block() {
 }
 
 function render_dynamic_block($attr) {
-  $output = '';
+  $alignment = $attr['align'];
+  $output = sprintf(
+    '<div class="uwai-recent-post %1$s">',
+    $alignment
+  );
   $recent_posts = wp_get_recent_posts( array(
     'numberposts' => $attr['numberOfPosts'],
     'post_status' => 'publish'
@@ -82,6 +86,7 @@ function render_dynamic_block($attr) {
     esc_html( get_the_title( $post['ID'] ) ),
     esc_html( get_the_excerpt( $post['ID'] ) ),
   );
-}
+  }
+  $output .= '</div>';
   return $output;
 }

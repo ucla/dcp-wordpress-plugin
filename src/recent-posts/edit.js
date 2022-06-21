@@ -57,7 +57,8 @@ export default function Edit({
    let {
       greyStyle,
       numberOfPosts,
-      displayFeaturedImage
+      displayFeaturedImage, 
+      align
    } = attributes
 
    const onToggleGreyStyle = ( value ) => {

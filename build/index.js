@@ -9810,7 +9810,8 @@ function Edit(_ref) {
 
   var greyStyle = attributes.greyStyle,
       numberOfPosts = attributes.numberOfPosts,
-      displayFeaturedImage = attributes.displayFeaturedImage;
+      displayFeaturedImage = attributes.displayFeaturedImage,
+      align = attributes.align;
 
   var onToggleGreyStyle = function onToggleGreyStyle(value) {
     greyStyle = value;
