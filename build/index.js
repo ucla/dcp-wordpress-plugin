@@ -9722,7 +9722,7 @@ function save(_ref) {
 /*! exports provided: name, title, category, textdomain, supports, attributes, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"name\":\"uwai/recent-posts\",\"title\":\"UWAI Recent Posts\",\"category\":\"common\",\"textdomain\":\"uwai\",\"supports\":{\"align\":true},\"attributes\":{\"postsArray\":{\"type\":\"array\",\"default\":[]},\"categories\":{\"type\":\"array\",\"default\":[]},\"selectedCategory\":{\"type\":\"string\"},\"numberOfPosts\":{\"type\":\"number\",\"default\":\"2\"},\"greyStyle\":{\"type\":\"boolean\"},\"displayFeaturedImage\":{\"type\":\"boolean\",\"default\":false},\"align\":{\"type\":\"string\",\"default\":\"none\"}}}");
+module.exports = JSON.parse("{\"name\":\"uwai/recent-posts\",\"title\":\"UWAI Recent Posts\",\"category\":\"common\",\"textdomain\":\"uwai\",\"supports\":{\"html\":false,\"align\":[\"left\",\"right\"]},\"attributes\":{\"postsArray\":{\"type\":\"array\",\"default\":[]},\"categories\":{\"type\":\"array\",\"default\":[]},\"selectedCategory\":{\"type\":\"string\"},\"numberOfPosts\":{\"type\":\"number\",\"default\":\"2\"},\"greyStyle\":{\"type\":\"boolean\"},\"displayFeaturedImage\":{\"type\":\"boolean\",\"default\":false},\"align\":{\"type\":\"string\",\"default\":\"none\"}}}");
 
 /***/ }),
 
