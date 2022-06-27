@@ -9796,7 +9796,8 @@ function Edit(_ref) {
   var blockProps = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["useBlockProps"])();
   var posts = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_7__["useSelect"])(function (select) {
     return select('core').getEntityRecords('postType', 'post', {
-      _embed: true
+      _embed: true,
+      categories: []
     });
   });
   var fetchCategories = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_7__["useSelect"])(function (select) {
@@ -9811,6 +9812,7 @@ function Edit(_ref) {
   var greyStyle = attributes.greyStyle,
       numberOfPosts = attributes.numberOfPosts,
       displayFeaturedImage = attributes.displayFeaturedImage,
+      selectedCategory = attributes.selectedCategory,
       align = attributes.align;
 
   var onToggleGreyStyle = function onToggleGreyStyle(value) {
@@ -9827,18 +9829,43 @@ function Edit(_ref) {
     });
   };
 
+  var updateCategory = function updateCategory(value) {
+    selectedCategory = value;
+    setAttributes({
+      selectedCategory: value
+    });
+  };
+
   var categories = [];
 
   if (fetchCategories) {
     categories = _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(fetchCategories);
   }
 
+  console.log(posts);
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["PanelBody"], {
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Style')
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["ToggleControl"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Switch to the "Grey" style of tile'),
     onChange: onToggleGreyStyle,
     checked: greyStyle
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["PanelBody"], {
+    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Choose Categories')
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["SelectControl"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Categories'),
+    options: categories.map(function (_ref2) {
+      var id = _ref2.id,
+          name = _ref2.name;
+      return {
+        label: name,
+        value: id
+      };
+    }),
+    onChange: function onChange(selected) {
+      setCategoriesSelected(selected);
+      updateCategory(selected);
+    },
+    value: categories_selected
   })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["PanelBody"], {
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Display Featured Image')
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["ToggleControl"], {
@@ -9866,7 +9893,15 @@ function Edit(_ref) {
   })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["useBlockProps"])({
     className: attributes.align
   }), !posts && 'Loading...', posts && posts.length === 0 && 'No Posts', posts && posts.length > 0 && posts.slice(0, Number(numberOfPosts)).map(function (post) {
-    var imageURL = post._embedded['wp:featuredmedia'][0].source_url;
+    var imageURL;
+
+    if (post.featured_media == 0) {
+      imageURL = undefined;
+      console.log("no pic");
+    } else {
+      imageURL = post._embedded['wp:featuredmedia'][0].source_url;
+    }
+
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("article", {
       className: "basic-card".concat(greyStyle ? '-grey' : '')
     }, imageURL !== undefined && attributes.displayFeaturedImage == true && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("img", {

@@ -18,15 +18,12 @@
 	 ToggleControl,
     SelectControl,
     RangeControl,
-    Toolbar,
-    IconButton
  } from '@wordpress/components';
  import {
 	 InspectorControls,
 	 RichText,
     useBlockProps,
     BlockControls, 
-    AlignmentToolbar,
     BlockAlignmentToolbar
  } from '@wordpress/block-editor';
  import { useSelect } from '@wordpress/data';
@@ -50,7 +47,7 @@ export default function Edit({
    className
 }) {
    const blockProps = useBlockProps();
-   const posts = useSelect( select => select('core').getEntityRecords( 'postType', 'post', {_embed: true} ) );
+   const posts = useSelect( select => select('core').getEntityRecords( 'postType', 'post', {_embed: true, categories: []} ) );
    const fetchCategories = useSelect(select => select('core').getEntityRecords('taxonomy', 'category') );
    const [categories_selected, setCategoriesSelected] = useState([]);
    
@@ -58,6 +55,7 @@ export default function Edit({
       greyStyle,
       numberOfPosts,
       displayFeaturedImage, 
+      selectedCategory,
       align
    } = attributes
 
@@ -74,10 +72,21 @@ export default function Edit({
          numberOfPosts: value,
       })
    }
+
+   const updateCategory = (value) => {
+      selectedCategory = value;
+      setAttributes( {
+         selectedCategory: value,
+      })
+   }
+
    let categories = [];
    if (fetchCategories) {
       categories = [...fetchCategories];
    }
+
+   console.log(posts);
+
    return (
       <>
       <InspectorControls>
@@ -88,17 +97,17 @@ export default function Edit({
                checked={ greyStyle }
             />
          </PanelBody>
-         {/* <PanelBody title={ __( 'Choose Categories' ) }>
+         <PanelBody title={ __( 'Choose Categories' ) }>
             <SelectControl
-               multiple 
                label={__( 'Categories' )}  
                options={categories.map(({id, name}) => ({label: name, value: id}))}
                onChange={(selected) => {
-                  setCategoriesSelected(selected)
+                  setCategoriesSelected(selected);
+                  updateCategory(selected);
                }}
                value={categories_selected}
                />
-         </PanelBody> */}
+         </PanelBody>
          <PanelBody title={__( 'Display Featured Image' )}>
             <ToggleControl
 					label={ __( 'Display featured image') }
@@ -130,7 +139,16 @@ export default function Edit({
          {posts && posts.length === 0 && 'No Posts'}
          {posts && posts.length > 0 && (
             posts.slice(0, Number(numberOfPosts)).map( post => {
-               let imageURL = post._embedded['wp:featuredmedia'][0].source_url;
+               let imageURL;
+
+               if(post.featured_media == 0) {
+                  imageURL = undefined;
+                  console.log("no pic")
+               }
+               else {
+                  imageURL = post._embedded['wp:featuredmedia'][0].source_url;
+               }
+
                return (
                   <article className={`basic-card${greyStyle ? '-grey' : ''}`}>
                      {imageURL !== undefined && attributes.displayFeaturedImage == true &&

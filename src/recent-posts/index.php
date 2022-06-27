@@ -43,13 +43,15 @@ function register_dynamic_block() {
 
 function render_dynamic_block($attr) {
   $alignment = $attr['align'];
+  $hasImage;
   $output = sprintf(
     '<div class="uwai-recent-post %1$s">',
     $alignment
   );
   $recent_posts = wp_get_recent_posts( array(
     'numberposts' => $attr['numberOfPosts'],
-    'post_status' => 'publish'
+    'post_status' => 'publish',
+    'category' => $attr['selectedCategory']
   ) );
   $grey = $attr['greyStyle'] ? '-grey' : null;
 	if ( count( $recent_posts ) === 0 ) {
@@ -61,7 +63,12 @@ function render_dynamic_block($attr) {
       $grey
     );
     
-    if ($attr['displayFeaturedImage'] === true) {
+    if (strlen(get_the_post_thumbnail_url($post['ID'])) > 0 ) {
+      $hasImage = true;
+    }
+    else {$hasImage = false;}
+    
+    if ($attr['displayFeaturedImage'] === true && $hasImage === true) {
       $output .= sprintf(
         '<img class="basic-card__image" src="%2$s" alt="%1$s"/>',
         esc_html( get_the_title( $post['ID'] ) ),
