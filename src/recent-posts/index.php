@@ -27,7 +27,8 @@ function register_dynamic_block() {
           'default' => 2
         ],
         'greyStyle' => [
-          'type' => 'boolean'
+          'type' => 'boolean',
+          'default' => false
         ],
         'displayFeaturedImage' => [
           'type' => 'boolean',
@@ -42,8 +43,9 @@ function register_dynamic_block() {
 }
 
 function render_dynamic_block($attr) {
+  // var_dump($attr);
   $alignment = $attr['align'];
-  $hasImage;
+  $hasImage = false;
   $output = sprintf(
     '<div class="uwai-recent-post %1$s">',
     $alignment

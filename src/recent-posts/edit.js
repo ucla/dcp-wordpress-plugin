@@ -85,8 +85,7 @@ export default function Edit({
       categories = [...fetchCategories];
    }
 
-   console.log(posts);
-
+   console.log('posts', posts);
    return (
       <>
       <InspectorControls>
@@ -137,8 +136,10 @@ export default function Edit({
       <div { ...useBlockProps ( { className: attributes.align } )  }>
          {! posts && 'Loading...'}
          {posts && posts.length === 0 && 'No Posts'}
-         {posts && posts.length > 0 && (
-            posts.slice(0, Number(numberOfPosts)).map( post => {
+         {posts && posts.length > 0
+         ?
+            categories_selected && categories_selected.length == 0 ? (
+               posts.slice(0, Number(numberOfPosts)).map( post => {
                let imageURL;
 
                if(post.featured_media == 0) {
@@ -177,7 +178,49 @@ export default function Edit({
                   </article>
                )
                 } )
-         )}
+            ) : (
+               posts.slice(0, Number(numberOfPosts)).filter(category => category.categories.includes(Number(categories_selected))).map( post => {
+               let imageURL;
+
+               if(post.featured_media == 0) {
+                  imageURL = undefined;
+                  console.log("no pic")
+               }
+               else {
+                  imageURL = post._embedded['wp:featuredmedia'][0].source_url;
+               }
+
+               return (
+                  <article className={`basic-card${greyStyle ? '-grey' : ''}`}>
+                     {imageURL !== undefined && attributes.displayFeaturedImage == true &&
+                        <img class="basic-card__image" src={imageURL} alt={post.title.rendered}/>
+                      }
+                     <div className="basic-card__info-wrapper">
+                        <h3 className="basic-card__title">
+                           <RichText
+                              tagName='span'
+                              value={ post.title.rendered }
+                           />
+                        </h3>
+                        <RichText
+                            tagName='p'
+                            className='basic-card__description'
+                            value={ post.excerpt.rendered.replace(/<[^>]+>/g, '') } // strips HTML tags from excerpt
+                            role='textbox'
+                            aria-multiline='true'
+                         />
+                         <div class="basic-card__buttons">
+                           <a class="btn btn--tertiary" href={post.link}>
+                              Read more about {post.title.rendered}
+                           </a>
+                        </div>
+                     </div>
+                  </article>
+               )
+                } )
+            )
+         : null
+         }
       </div>
       </>
    );
