@@ -104,7 +104,7 @@ export default function Edit({
                onChange={(selected) => {
                   setCategoriesSelected(selected);
                   updateCategory(selected);
-                  console.log(categories_selected);
+                  console.log(selected);
                }}
                value={categories_selected}
                />
