@@ -9840,9 +9840,13 @@ function Edit(_ref) {
 
   if (fetchCategories) {
     categories = _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(fetchCategories);
+    var allCats = {
+      name: "All Categories",
+      id: 'ALL'
+    };
+    categories.push(allCats);
   }
 
-  console.log(posts);
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["PanelBody"], {
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Style')
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["ToggleControl"], {
@@ -9864,6 +9868,7 @@ function Edit(_ref) {
     onChange: function onChange(selected) {
       setCategoriesSelected(selected);
       updateCategory(selected);
+      console.log(categories_selected);
     },
     value: categories_selected
   })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["PanelBody"], {
@@ -9892,12 +9897,11 @@ function Edit(_ref) {
     }
   })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["useBlockProps"])({
     className: attributes.align
-  }), !posts && 'Loading...', posts && posts.length === 0 && 'No Posts', posts && posts.length > 0 && posts.slice(0, Number(numberOfPosts)).map(function (post) {
+  }), !posts && 'Loading...', posts && posts.length === 0 && 'No Posts', posts && posts.length > 0 ? categories_selected && categories_selected.length == 0 || categories_selected === 'ALL' ? posts.slice(0, Number(numberOfPosts)).map(function (post) {
     var imageURL;
 
     if (post.featured_media == 0) {
       imageURL = undefined;
-      console.log("no pic");
     } else {
       imageURL = post._embedded['wp:featuredmedia'][0].source_url;
     }
@@ -9928,7 +9932,44 @@ function Edit(_ref) {
       class: "btn btn--tertiary",
       href: post.link
     }, "Read more about ", post.title.rendered))));
-  })));
+  }) : posts.slice(0, Number(numberOfPosts)).filter(function (category) {
+    return category.categories.includes(Number(categories_selected));
+  }).map(function (post) {
+    var imageURL;
+
+    if (post.featured_media == 0) {
+      imageURL = undefined;
+    } else {
+      imageURL = post._embedded['wp:featuredmedia'][0].source_url;
+    }
+
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("article", {
+      className: "basic-card".concat(greyStyle ? '-grey' : '')
+    }, imageURL !== undefined && attributes.displayFeaturedImage == true && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("img", {
+      class: "basic-card__image",
+      src: imageURL,
+      alt: post.title.rendered
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
+      className: "basic-card__info-wrapper"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("h3", {
+      className: "basic-card__title"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["RichText"], {
+      tagName: "span",
+      value: post.title.rendered
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["RichText"], {
+      tagName: "p",
+      className: "basic-card__description",
+      value: post.excerpt.rendered.replace(/<[^>]+>/g, '') // strips HTML tags from excerpt
+      ,
+      role: "textbox",
+      "aria-multiline": "true"
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
+      class: "basic-card__buttons"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("a", {
+      class: "btn btn--tertiary",
+      href: post.link
+    }, "Read more about ", post.title.rendered))));
+  }) : null));
 }
 
 /***/ }),

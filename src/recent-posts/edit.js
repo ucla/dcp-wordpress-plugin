@@ -80,12 +80,13 @@ export default function Edit({
       })
    }
 
-   let categories = [];
+   let categories = []
    if (fetchCategories) {
       categories = [...fetchCategories];
+      var allCats = {name:"All Categories", id: 'ALL' }
+      categories.push(allCats);
    }
 
-   console.log('posts', posts);
    return (
       <>
       <InspectorControls>
@@ -103,6 +104,7 @@ export default function Edit({
                onChange={(selected) => {
                   setCategoriesSelected(selected);
                   updateCategory(selected);
+                  console.log(categories_selected);
                }}
                value={categories_selected}
                />
@@ -138,13 +140,12 @@ export default function Edit({
          {posts && posts.length === 0 && 'No Posts'}
          {posts && posts.length > 0
          ?
-            categories_selected && categories_selected.length == 0 ? (
+            categories_selected && categories_selected.length == 0 || categories_selected === 'ALL' ? (
                posts.slice(0, Number(numberOfPosts)).map( post => {
                let imageURL;
 
                if(post.featured_media == 0) {
                   imageURL = undefined;
-                  console.log("no pic")
                }
                else {
                   imageURL = post._embedded['wp:featuredmedia'][0].source_url;
@@ -184,7 +185,6 @@ export default function Edit({
 
                if(post.featured_media == 0) {
                   imageURL = undefined;
-                  console.log("no pic")
                }
                else {
                   imageURL = post._embedded['wp:featuredmedia'][0].source_url;
