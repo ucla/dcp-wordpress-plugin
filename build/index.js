@@ -9868,7 +9868,6 @@ function Edit(_ref) {
     onChange: function onChange(selected) {
       setCategoriesSelected(selected);
       updateCategory(selected);
-      console.log(posts);
     },
     value: categories_selected
   })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["PanelBody"], {
@@ -9932,9 +9931,9 @@ function Edit(_ref) {
       class: "btn btn--tertiary",
       href: post.link
     }, "Read more about ", post.title.rendered))));
-  }) : posts.slice(0, Number(numberOfPosts)).filter(function (category) {
+  }) : posts.filter(function (category) {
     return category.categories.includes(Number(categories_selected));
-  }).map(function (post) {
+  }).slice(0, Number(numberOfPosts)).map(function (post) {
     var imageURL;
 
     if (post.featured_media == 0) {

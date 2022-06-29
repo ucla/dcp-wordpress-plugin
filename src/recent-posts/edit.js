@@ -86,9 +86,6 @@ export default function Edit({
       let allCats = {name:"All Categories", id: 'ALL' }
       categories.push(allCats);
    }
-   if (posts) {
-   console.log('slice', posts.slice(0, Number(numberOfPosts)))
-   }
    return (
       <>
       <InspectorControls>
@@ -106,7 +103,6 @@ export default function Edit({
                onChange={(selected) => {
                   setCategoriesSelected(selected);
                   updateCategory(selected);
-                  console.log(posts);
                }}
                value={categories_selected}
                />
