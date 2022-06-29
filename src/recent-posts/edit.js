@@ -83,10 +83,12 @@ export default function Edit({
    let categories = []
    if (fetchCategories) {
       categories = [...fetchCategories];
-      var allCats = {name:"All Categories", id: 'ALL' }
+      let allCats = {name:"All Categories", id: 'ALL' }
       categories.push(allCats);
    }
-
+   if (posts) {
+   console.log('slice', posts.slice(0, Number(numberOfPosts)))
+   }
    return (
       <>
       <InspectorControls>
@@ -180,7 +182,7 @@ export default function Edit({
                )
                 } )
             ) : (
-               posts.slice(0, Number(numberOfPosts)).filter(category => category.categories.includes(Number(categories_selected))).map( post => {
+               posts.filter(category => category.categories.includes(Number(categories_selected))).slice(0, Number(numberOfPosts)).map( post => {
                let imageURL;
 
                if(post.featured_media == 0) {
