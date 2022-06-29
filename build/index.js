@@ -9868,7 +9868,7 @@ function Edit(_ref) {
     onChange: function onChange(selected) {
       setCategoriesSelected(selected);
       updateCategory(selected);
-      console.log(selected);
+      console.log(posts);
     },
     value: categories_selected
   })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["PanelBody"], {
