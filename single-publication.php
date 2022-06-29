@@ -24,7 +24,7 @@
                 <img style="max-width: 100%; height: auto" src="<?php echo (has_post_thumbnail() ? $image : 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y&s=400'); ?>" class="profile-img" alt="">
                     <figcaption>
                         <h1 class="profile-name"><?php the_title(); ?></h1>
-
+                        <p><?php echo get_post_meta($post->ID,'publication-author', true) ?></p>
                     </figcaption>
                 </figure>
             </div>

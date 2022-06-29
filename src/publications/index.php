@@ -75,10 +75,15 @@ class PublicationMetaBox {
 
 	private $meta_fields = array(
 		array(
-			'label' => 'Author',
+			'label' => 'Author (if multiple, separate by comma)',
 			'id' => 'publication-author',
 			'type' => 'text',
 		),
+		array(
+			'label' => 'ISBN',
+			'id' => 'publication-isbn',
+			'type' => 'text'
+		)
 	);
 
 	public function __construct() {
