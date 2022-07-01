@@ -24,13 +24,17 @@
                 <img style="max-width: 100%; height: auto" src="<?php echo (has_post_thumbnail() ? $image : 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y&s=400'); ?>" class="profile-img" alt="">
                     <figcaption>
                         <h1 class="profile-name"><?php the_title(); ?></h1>
-                        <p><?php echo get_post_meta($post->ID,'publication-author', true) ?></p>
+                        <p><?php echo get_post_meta($post->ID,'publication_author', true) ?></p>
                     </figcaption>
                 </figure>
             </div>
             <div class="col span_1_of_12" style="min-height: 1px"></div>
             <div class="col span_8_of_12">
                 <?php the_content(); ?>
+                <p class="mb-0"><strong>ISBN:</strong> <?= get_post_meta($post->ID,'publication_isbn', true) ?>
+                <?php if (get_post_meta($post->ID,'publication_isbn_paper', true)) { ?>
+                    <p class="mb-0"><strong>ISBN (Paperback):</strong> <?= get_post_meta($post->ID,'publication_isbn_paper', true) ?></p>
+                <?php } ?>
                 <?php edit_post_link(); ?>
             </div>
         </div>

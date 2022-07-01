@@ -17,3 +17,26 @@
         object-fit: cover;
     }
 }
+
+.publication-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2%;
+
+    .basic-card {
+        margin: 0;
+
+        & > .basic-card__info-wrapper {
+            padding: 1rem 0;
+
+            .basic-card__title span a {
+                text-decoration: none;
+                color: #00598c;
+
+                &:hover {
+                    color: #fff;
+                }
+            }
+        }
+    }
+}

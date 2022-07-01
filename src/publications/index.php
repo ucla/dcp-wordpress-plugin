@@ -76,12 +76,22 @@ class PublicationMetaBox {
 	private $meta_fields = array(
 		array(
 			'label' => 'Author (if multiple, separate by comma)',
-			'id' => 'publication-author',
+			'id' => 'publication_author',
 			'type' => 'text',
 		),
 		array(
 			'label' => 'ISBN',
-			'id' => 'publication-isbn',
+			'id' => 'publication_isbn',
+			'type' => 'text'
+		),
+		array(
+			'label' => 'ISBN (Paperback)',
+			'id' => 'publication_isbn_paper',
+			'type' => 'text'
+		),
+		array(
+			'label' => 'ISBN (Hardcover)',
+			'id' => 'publication_isbn_hardcover',
 			'type' => 'text'
 		)
 	);
@@ -194,3 +204,91 @@ class PublicationMetaBox {
 if (class_exists('PublicationMetaBox')) {
 	new PublicationMetaBox;
 };
+
+// Add to API
+function register_rest_fields() {
+	register_rest_field('publication', 'publication_author',
+		array(
+			'get_callback' => 'get_post_meta_callback',
+			'update_callback' => 'update_post_meta_callback',
+			'schema' => null
+		)
+		);
+}
+function get_post_meta_callback($object, $field_name, $request) {
+	$publication_author = get_post_meta($object['id'], $field_name, true);
+	$output['rendered'] = $publication_author;
+	return $output;
+}
+
+function update_post_meta_callback($value, $object, $field_name) {
+	if ( ! $value || ! is_string( $value ) ) {
+        return;
+    }
+    return update_post_meta( $object->ID, $field_name, $value );
+}
+add_action('rest_api_init', 'register_rest_fields');
+
+/**
+ * Renders the `publication` block on server.
+ *
+ * @param array $attributes The block attributes.
+ *
+ * @return string Returns the post content with latest posts added.
+ */
+function render_block_core_publication( $attributes ) {
+	global $post;
+
+	$args = array(
+		'post_type'			=> 'publication',
+		'post_per_page'		=> $attributes['numberOfPosts'],
+		'post_status'		=> 'publish',
+		'order'               => 'DESC',
+		'orderby'             => 'date',
+		'ignore_sticky_posts' => true,
+		'no_found_rows'       => true,
+	);
+
+	$query        = new WP_Query;
+	$recent_posts = $query->query($args);
+	update_post_thumbnail_cache( $query );
+
+	$publication_markup = '<div class="publication-container">';
+
+	foreach ( $recent_posts as $post ) {
+		$post_link = esc_url( get_permalink( $post ) );
+		$title     = get_the_title( $post );
+		$featured_image = get_the_post_thumbnail($post,'large',array('class'=>'basic-card__image'));
+		$publication_author = get_post_meta($post->ID,'publication_author', true);
+		$publication_markup .= '<article class="basic-card">';
+		$publication_markup .= sprintf(
+			'<a href="%1$s">%2$s</a>',
+			esc_url( $post_link ),
+			$featured_image
+		);
+		$publication_markup .= '<div class="basic-card__info-wrapper"><h3 class="basic-card__title mb-0"><span>';
+		$publication_markup .= sprintf(
+			'<a href="%1$s">%2$s</a>',
+			esc_url( $post_link ),
+			$title
+		);
+		$publication_markup .= '</span></h3>';
+		$publication_markup .= sprintf(
+			'<p class="basic-card__description">%1s</p>',
+			$publication_author
+		);
+		$publication_markup .= '</div></article>';
+	}
+	$publication_markup .= "</div>";
+	return $publication_markup;
+}
+
+function register_block_core_publication() {
+	register_block_type_from_metadata(
+		__DIR__,
+		array(
+			'render_callback' => 'render_block_core_publication'
+		)
+		);
+}
+add_action('init', 'register_block_core_publication');
