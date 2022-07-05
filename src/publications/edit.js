@@ -8,7 +8,8 @@
 
  import {
 	PanelBody,
-	RangeControl
+	RangeControl,
+	ToggleControl
 } from '@wordpress/components';
 import {
 	useBlockProps,
@@ -25,7 +26,7 @@ export default function Edit({
 }) {
 	const blockProps = useBlockProps();
 	const publications = useSelect(select => select('core').getEntityRecords('postType', 'publication', {_embed: true}));
-	let {numberOfPosts} = attributes;
+	let {numberOfPosts, displayAuthor} = attributes;
 
 	const onChangePostsNumber = (value) => {
 		numberOfPosts = value; 
@@ -46,6 +47,13 @@ export default function Edit({
 						onChange={onChangePostsNumber}
 						min={1}
 						max={6}
+					/>
+				</PanelBody>
+				<PanelBody title={ __( 'Display Author' ) }>
+					<ToggleControl
+						label={ __( 'Display Author' ) }
+						checked={ displayAuthor }
+						onChange={ value => setAttributes( {displayAuthor: value} ) }
 					/>
 				</PanelBody>
 			</InspectorControls>
@@ -69,11 +77,13 @@ export default function Edit({
 											value={ publication.title.rendered }
 										/>
 										</h3>
-										<RichText
-											tagName='p'
-											className='basic-card__description'
-											value={ publication?.publication_author.rendered }
-										/>
+										{attributes.displayAuthor === true &&
+											<RichText
+												tagName='p'
+												className='basic-card__description'
+												value={ publication?.publication_author.rendered }
+											/>
+										}
 									</div>
 								</article>
 							)

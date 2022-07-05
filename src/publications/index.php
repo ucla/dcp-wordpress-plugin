@@ -273,10 +273,12 @@ function render_block_core_publication( $attributes ) {
 			$title
 		);
 		$publication_markup .= '</span></h3>';
-		$publication_markup .= sprintf(
-			'<p class="basic-card__description">%1s</p>',
-			$publication_author
-		);
+		if ($attributes['displayAuthor'] == true) {
+			$publication_markup .= sprintf(
+				'<p class="basic-card__description">%1s</p>',
+				$publication_author
+			);
+		}
 		$publication_markup .= '</div></article>';
 	}
 	$publication_markup .= "</div>";
