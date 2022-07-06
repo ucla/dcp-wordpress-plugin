@@ -93,6 +93,11 @@ class PublicationMetaBox {
 			'label' => 'ISBN (Hardcover)',
 			'id' => 'publication_isbn_hardcover',
 			'type' => 'text'
+		),
+		array(
+			'label' => 'ISBN (E-book)',
+			'id' => 'publication_isbn_ebook',
+			'type' => 'text'
 		)
 	);
 
@@ -238,10 +243,9 @@ add_action('rest_api_init', 'register_rest_fields');
  */
 function render_block_core_publication( $attributes ) {
 	global $post;
-
 	$args = array(
 		'post_type'			=> 'publication',
-		'post_per_page'		=> $attributes['numberOfPosts'],
+		'posts_per_page'		=> strval($attributes['numberOfPosts']),
 		'post_status'		=> 'publish',
 		'order'               => 'DESC',
 		'orderby'             => 'date',
@@ -252,7 +256,6 @@ function render_block_core_publication( $attributes ) {
 	$query        = new WP_Query;
 	$recent_posts = $query->query($args);
 	update_post_thumbnail_cache( $query );
-
 	$publication_markup = '<div class="publication-container">';
 
 	foreach ( $recent_posts as $post ) {

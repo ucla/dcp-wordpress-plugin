@@ -31,9 +31,17 @@
             <div class="col span_1_of_12" style="min-height: 1px"></div>
             <div class="col span_8_of_12">
                 <?php the_content(); ?>
-                <p class="mb-0"><strong>ISBN:</strong> <?= get_post_meta($post->ID,'publication_isbn', true) ?>
+                <?php if (get_post_meta($post->ID,'publication_isbn', true)) { ?>
+                    <p class="mb-0"><strong>ISBN:</strong> <?= get_post_meta($post->ID,'publication_isbn', true) ?>
+                <?php } ?>
                 <?php if (get_post_meta($post->ID,'publication_isbn_paper', true)) { ?>
                     <p class="mb-0"><strong>ISBN (Paperback):</strong> <?= get_post_meta($post->ID,'publication_isbn_paper', true) ?></p>
+                <?php } ?>
+                <?php if (get_post_meta($post->ID,'publication_isbn_hardcover', true)) { ?>
+                    <p class="mb-0"><strong>ISBN (Hardcover):</strong> <?= get_post_meta($post->ID,'publication_isbn_hardcover', true) ?></p>
+                <?php } ?>
+                <?php if (get_post_meta($post->ID,'publication_isbn_ebook', true)) { ?>
+                    <p class="mb-0"><strong>ISBN (Ebook):</strong> <?= get_post_meta($post->ID,'publication_isbn_ebook', true) ?></p>
                 <?php } ?>
                 <?php edit_post_link(); ?>
             </div>
