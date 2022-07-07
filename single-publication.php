@@ -31,6 +31,9 @@
             <div class="col span_1_of_12" style="min-height: 1px"></div>
             <div class="col span_8_of_12">
                 <?php the_content(); ?>
+                <!-- Start APA Citation -->
+                <p><?= get_post_meta($post->ID,'publication_author', true); ?><?= get_post_meta($post->ID,'publication_year', true) ? ' (' . get_post_meta($post->ID,'publication_year', true) . ')' : '' ?>. <?= the_title(); ?>.<?= get_post_meta($post->ID,'publication_publisher', true) ? ' <em>' . get_post_meta($post->ID,'publication_publisher', true) . '</em>,' : '' ?> <?= get_post_meta($post->ID,'publication_page', true) ? get_post_meta($post->ID,'publication_page', true) . '.' : '' ?></p>
+                <!-- End APA Citation -->
                 <?php if (get_post_meta($post->ID,'publication_isbn', true)) { ?>
                     <p class="mb-0"><strong>ISBN:</strong> <?= get_post_meta($post->ID,'publication_isbn', true) ?>
                 <?php } ?>

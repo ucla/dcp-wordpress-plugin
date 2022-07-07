@@ -80,6 +80,21 @@ class PublicationMetaBox {
 			'type' => 'text',
 		),
 		array(
+			'label' => 'Publisher',
+			'id' => 'publication_publisher',
+			'type' => 'text'
+		),
+		array(
+			'label' => 'Publication Year',
+			'id' => 'publication_year',
+			'type' => 'text'
+		),
+		array(
+			'label' => 'Page Number',
+			'id' => 'publication_page',
+			'type' => 'text'
+		),
+		array(
 			'label' => 'ISBN',
 			'id' => 'publication_isbn',
 			'type' => 'text'
