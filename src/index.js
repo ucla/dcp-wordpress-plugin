@@ -38,6 +38,7 @@ import * as publications from './publications'
 import * as ranking from './ranking';
 import * as statistic from './statistic';
 import * as storyCard from './story-card';
+import * as recentPosts from './recent-posts';
 import * as tabs from './tabs';
 import * as tile from './tile';
 
@@ -74,6 +75,7 @@ export const registerUwaiBlocks = () => {
 		ranking,
 		statistic,
 		storyCard,
+		recentPosts,
 		tabs,
 		tile,
 	].forEach( registerBlock );
