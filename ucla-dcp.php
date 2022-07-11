@@ -72,3 +72,7 @@ function ucla_dcp_ucla_dcp_block_init() {
 
 }
 add_action( 'init', 'ucla_dcp_ucla_dcp_block_init' );
+
+
+
+include __DIR__ . '/src/event-card/index.php';

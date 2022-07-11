@@ -18,7 +18,6 @@ import {
 	TextareaControl,
 	ExternalLink,
 	Button,
-	ToggleControl,
 } from '@wordpress/components';
 import {
 	InspectorControls,
