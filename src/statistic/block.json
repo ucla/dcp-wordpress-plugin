@@ -1,0 +1,27 @@
+{
+	"name": "uwai/statistic",
+	"title": "UWAI Statistic",
+	"category": "common",
+	"textdomain": "uwai",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"segments": {
+			"type": "string",
+			"default": "1"
+		},
+		"inline": {
+			"type": "boolean",
+			"default": false
+		},
+		"statistics": {
+			"type": "array",
+			"default": [
+				{"id": "1", "number": "10%", "label": "Text here"},
+				{"id": "2", "number": "20%", "label": "Text here"},
+				{"id": "3", "number": "30%", "label": "Text here"}
+			]
+		}
+	}
+}

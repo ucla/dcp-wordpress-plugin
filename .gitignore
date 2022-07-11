@@ -26,4 +26,5 @@ node_modules/
 # dotenv environment variables file
 .env
 
-/build
+# Visual Studio Code settings
+.vscode/

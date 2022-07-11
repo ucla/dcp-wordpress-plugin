@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:     UCLA-WP Plugin
- * Description:     UCLA branded and ADA complaint components. CUrrently in beta, not reccomended for production use.
+ * Description:     UCLA branded and ADA complaint components. Currently in beta, not reccomended for production use.
  * Version:         0.1.1
  * Author:          Computing and Disabilities Program and Strategic Communications
  * Text Domain:     ucla-wp-plugin
@@ -19,7 +19,11 @@
 /* require 'libs/ucla-updater/updater.php';
 new PluginUpdater(__FILE__, 'avelikanov/testpg', 'master'); */
 
+
+
 function ucla_dcp_ucla_dcp_block_init() {
+
+  wp_enqueue_script('jquery');
 	$dir = dirname( __FILE__ );
 
 	$script_asset_path = "$dir/build/index.asset.php";
@@ -65,7 +69,9 @@ function ucla_dcp_ucla_dcp_block_init() {
 		'editor_style'  => 'uwai-uwai-block-editor',
 		'style'         => 'uwai-uwai-block'
 	) );
+
 }
 add_action( 'init', 'ucla_dcp_ucla_dcp_block_init' );
 
 include __DIR__ . '/src/recent-posts/index.php';
+include __DIR__ . '/src/publications/index.php';

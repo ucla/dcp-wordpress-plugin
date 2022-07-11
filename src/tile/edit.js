@@ -134,7 +134,8 @@ function URLPicker( {
  * @return {WPElement} Element to render.
  */
 export default function Edit( {
-	attributes: { title, url, linkTarget, greyStyle, rel },
+	// attributes: { title, url, linkTarget, greyStyle, rel },
+	attributes: { title, url, linkTarget, rel },
 	setAttributes,
 	isSelected,
 	className,
@@ -166,21 +167,21 @@ export default function Edit( {
 		},
 		[ rel, setAttributes ]
 	);
-	const onToggleGreyStyle = useCallback(
-		( value ) => {
-			greyStyle = value ? ' grey' : null;
+	// const onToggleGreyStyle = useCallback(
+	// 	( value ) => {
+	// 		greyStyle = value ? ' grey' : null;
 
-			setAttributes( {
-				greyStyle,
-			} );
-		},
-		[ setAttributes ]
-	);
+	// 		setAttributes( {
+	// 			greyStyle,
+	// 		} );
+	// 	},
+	// 	[ setAttributes ]
+	// );
 	return (
-		<div className={ className }>
-			<div className={ 'blade-links' + ( greyStyle ?? '' ) }>
-				<div className="blade-links__box">
-					<span className="blade-links__box-link">
+		<>
+			<div className={`tile${className ? ' ' + className : ''}`}>
+				<div className="tile__link">
+					<span className="tile-link__box-link">
 						<RichText
 							withoutInteractiveFormatting
 							tagName="span"
@@ -215,14 +216,14 @@ export default function Edit( {
 						onChange={ onSetLinkRel }
 					/>
 				</PanelBody>
-				<PanelBody title={ __( 'Style' ) }>
+				{/* <PanelBody title={ __( 'Style' ) }>
 					<ToggleControl
 						label={ __( 'Switch to the "Grey" style of tile' ) }
 						onChange={ onToggleGreyStyle }
 						checked={ greyStyle === ' grey' }
 					/>
-				</PanelBody>
+				</PanelBody> */}
 			</InspectorControls>
-		</div>
+		</>
 	);
 }
