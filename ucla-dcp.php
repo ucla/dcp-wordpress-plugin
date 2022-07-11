@@ -20,10 +20,10 @@
 new PluginUpdater(__FILE__, 'avelikanov/testpg', 'master'); */
 
 
+
 function ucla_dcp_ucla_dcp_block_init() {
 
   wp_enqueue_script('jquery');
-
 	$dir = dirname( __FILE__ );
 
 	$script_asset_path = "$dir/build/index.asset.php";
@@ -72,3 +72,4 @@ function ucla_dcp_ucla_dcp_block_init() {
 
 }
 add_action( 'init', 'ucla_dcp_ucla_dcp_block_init' );
+include __DIR__ . '/src/publications/index.php';

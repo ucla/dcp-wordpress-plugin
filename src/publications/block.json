@@ -1,0 +1,19 @@
+{
+	"name": "uwai/publication",
+	"title": "UWAI Publication",
+	"category": "common",
+	"textdomain": "uwai",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"numberOfPosts": {
+			"type" : "number",
+			"default" : "2"
+		},
+		"displayAuthor": {
+			"type": "boolean",
+			"default": false 
+		}
+	}
+}
