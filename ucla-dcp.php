@@ -20,10 +20,10 @@
 new PluginUpdater(__FILE__, 'avelikanov/testpg', 'master'); */
 
 
+
 function ucla_dcp_ucla_dcp_block_init() {
 
   wp_enqueue_script('jquery');
-
 	$dir = dirname( __FILE__ );
 
 	$script_asset_path = "$dir/build/index.asset.php";
@@ -67,12 +67,12 @@ function ucla_dcp_ucla_dcp_block_init() {
 	register_block_type( 'uwai/uwai', array(
 		'editor_script' => 'uwai-uwai-block-editor',
 		'editor_style'  => 'uwai-uwai-block-editor',
-		'style'         => 'uwai-uwai-block',
+		'style'         => 'uwai-uwai-block'
 	) );
 
 }
 add_action( 'init', 'ucla_dcp_ucla_dcp_block_init' );
 
-
-
 include __DIR__ . '/src/event-card/index.php';
+include __DIR__ . '/src/recent-posts/index.php';
+include __DIR__ . '/src/publications/index.php';
