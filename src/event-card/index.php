@@ -48,12 +48,17 @@ class EventsMetaBox {
         array(
             'label' => 'Event Start Date',
             'id'    => 'event_start_date',
-            'type'  => 'datetime-local'
+            'type'  => 'date'
         ),
         array(
             'label' => 'Event End Date',
             'id'    => 'event_end_date',
-            'type'  => 'datetime-local'
+            'type'  => 'date'
+        ),
+		array(
+            'label' => 'Event Time',
+            'id'    => 'event_time',
+            'type'  => 'time'
         ),
 		array(
 			'label' => 'Location',
@@ -143,3 +148,26 @@ class EventsMetaBox {
 if (class_exists('EventsMetaBox')) {
 	new EventsMetaBox;
 };
+
+add_filter('template_include', 'events_template');
+function events_template($template) {
+	if ( is_post_type_archive('events') ) {
+		$theme_files = array('archive-events.php', 'ucla-wp-plugin/src/event-card/archive-events.php');
+		$exists_in_theme = locate_template($theme_files, false);
+		if ($exists_in_theme != '') {
+			return $exists_in_theme;
+		} else {
+			return WP_PLUGIN_DIR . '/ucla-wp-plugin/src/event-card/archive-events.php';
+		}
+	}
+	// if ( is_singular('publication') ) {
+	// 	$theme_files = array('single-publication.php', 'ucla-wp-plugin/src/publications/single-publication.php');
+	// 	$exists_in_theme = locate_template($theme_files, false);
+	// 	if ($exists_in_theme != '') {
+	// 		return $exists_in_theme;
+	// 	} else {
+	// 		return WP_PLUGIN_DIR . '/ucla-wp-plugin/src/publications/single-publication.php';
+	// 	}
+	// }
+	return $template;
+}
