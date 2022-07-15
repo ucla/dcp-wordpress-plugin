@@ -19,7 +19,7 @@ function cpt_events() {
     $args = array(
         'labels'        => $labels,
         'description'   => 'Events Post Type',
-        'supports'      => array( 'title', 'editor', 'thumbnail' ),
+        'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
         'heirarchical'  => false,
         'public'                => true,
 		'show_ui'               => true,
@@ -160,14 +160,14 @@ function events_template($template) {
 			return WP_PLUGIN_DIR . '/ucla-wp-plugin/src/event-card/archive-events.php';
 		}
 	}
-	// if ( is_singular('publication') ) {
-	// 	$theme_files = array('single-publication.php', 'ucla-wp-plugin/src/publications/single-publication.php');
-	// 	$exists_in_theme = locate_template($theme_files, false);
-	// 	if ($exists_in_theme != '') {
-	// 		return $exists_in_theme;
-	// 	} else {
-	// 		return WP_PLUGIN_DIR . '/ucla-wp-plugin/src/publications/single-publication.php';
-	// 	}
-	// }
+	if ( is_singular('events') ) {
+		$theme_files = array('single-events.php', 'ucla-wp-plugin/src/event-card/single-events.php');
+		$exists_in_theme = locate_template($theme_files, false);
+		if ($exists_in_theme != '') {
+			return $exists_in_theme;
+		} else {
+			return WP_PLUGIN_DIR . '/ucla-wp-plugin/src/event-card/single-events.php';
+		}
+	}
 	return $template;
 }
