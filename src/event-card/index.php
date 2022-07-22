@@ -171,3 +171,49 @@ function events_template($template) {
 	}
 	return $template;
 }
+
+// function register_event_rest_fields() {
+// 	register_rest_field('events', 'event_start_date',
+// 		array(
+// 			'get_callback' => 'get_post_meta_callback',
+// 			'update_callback' => 'update_post_meta_callback',
+// 			'schema'          => array(
+// 				'type'        => 'string',
+// 				'arg_options' => array(
+// 					'sanitize_callback' => function ( $value ) {
+// 						// Make the value safe for storage.
+// 						return sanitize_text_field( $value );
+// 					}
+// 				),
+// 			),
+// 		)
+// 	);
+// 	register_rest_field('events', 'event_end_date',
+// 		array(
+// 			'get_callback' => 'get_post_meta_callback',
+// 			'update_callback' => 'update_post_meta_callback',
+// 			'schema'          => array(
+// 				'type'        => 'string',
+// 				'arg_options' => array(
+// 					'sanitize_callback' => function ( $value ) {
+// 						// Make the value safe for storage.
+// 						return sanitize_text_field( $value );
+// 					}
+// 				),
+// 			),
+// 		)
+// 	);
+// }
+// function update_post_meta_callback($value, $object, $field_name) {
+// 	if ( ! $value || ! is_string( $value ) ) {
+//         return;
+//     }
+//     return update_post_meta( $object->ID, $field_name, $value );
+// }
+// function get_post_meta_callback($object, $field_name, $request) {
+// 	$event_info = get_post_meta($object['id'], $field_name, true);
+// 	$output['rendered'] = $event_info;
+// 	return $output;
+// }
+
+// add_action('rest_api_init', 'register_event_rest_fields');
