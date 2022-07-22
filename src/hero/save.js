@@ -83,7 +83,7 @@ export default function save({
 		<div className={className}>
 			<section
 				id="hero"
-				class="section group full-width"
+				class="section group"
 				aria-labelledby="hero-heading"
 			>
 				<div class="copy">
@@ -129,13 +129,6 @@ export default function save({
 								')',
 						}}
 					></div>
-					<p>
-						<img
-							class="graphics__molecule"
-							src={js_data.path + '/assets/polygon.png'}
-							alt=""
-						></img>
-					</p>
 				</div>
 			</section>
 		</div>
