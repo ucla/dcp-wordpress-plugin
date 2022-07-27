@@ -193,7 +193,7 @@ export default function Edit({
 			</InspectorControls>
 			<section
 				id="hero"
-				class="section group full-width"
+				class="section group"
 				aria-labelledby="hero-heading"
 			>
 				<div class="copy">
@@ -267,13 +267,6 @@ export default function Edit({
 								')',
 						}}
 					></div>
-					<p>
-						<img
-							class="graphics__molecule"
-							src={js_data.path + '/assets/polygon.png'}
-							alt=""
-						></img>
-					</p>
 				</div>
 			</section>
 		</>
