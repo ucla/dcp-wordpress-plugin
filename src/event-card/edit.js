@@ -6,6 +6,14 @@
  */
 import { __ } from '@wordpress/i18n';
 
+/**
+ * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
+ * Those files can contain any CSS code that gets applied to the editor.
+ *
+ * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
+ */
+import './editor.scss';
+
 import {
 	PanelBody,
 	SelectControl,
@@ -39,7 +47,9 @@ export default function Edit( {
 } ) {
 	const [eventSelection, setEventSelection] = useState('upcoming');
 
-    const blockProps = useBlockProps();
+    const blockProps = useBlockProps({
+		className: 'event-cards'
+	});
 	const events = useSelect(select => select('core').getEntityRecords('postType', 'events', {_embed: true}));
 
 	const updateEventSelection = (value) => {
@@ -86,8 +96,8 @@ export default function Edit( {
 						<span className="event-card-info__number">{`${dayNum}`}</span>
 					</div>
 					<div className="event-card-info__time">
-					<object className="event-card-icon__time" tabindex="-1" data="/icons/denotive/time--grey60.svg" type="image/svg+xml">
-						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style={{enableBackground:'new 0 0 24 24'}} xmlnsXlink="http://www.w3.org/1999/xlink">
+					<object className="event-card-icon__time" tabindex="-1" type="image/svg">
+						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" style={{enableBackground:'new 0 0 24 24'}} xmlnsXlink="http://www.w3.org/1999/xlink">
 							<title>time</title>
 							<g>
 									<path fill="#666666" className="time--grey" d="M12,2c5.5,0,10,4.5,10,10s-4.5,10-10,10C6.5,22,2,17.5,2,12S6.5,2,12,2z M12,4
@@ -99,26 +109,8 @@ export default function Edit( {
 					</div>
 					<div className="event-card-info__location">
 					<object className="event-card-icon__location" tabindex="-1" type="image/svg">
-						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 13" x="0" y="0" style={{enableBackground:'new 0 0 8 13'}} xmlnsXlink="http://www.w3.org/1999/xlink">
-							<g id="Homepage">
-								<g id="covid-homepage-mobile-1" transform="translate(-28.000000, -1806.000000)">
-									<g id="Updates" transform="translate(0.000000, 586.000000)">
-										<g id="Upcoming-Townhalls" transform="translate(24.000000, 1053.000000)">
-											<g id="Minifeed" transform="translate(0.000000, 45.000000)">
-												<g id="Date-Time-Location" transform="translate(0.000000, 82.000000)">
-													<g id="Location-_x28_optional_x29_" transform="translate(0.000000, 36.000000)">
-														<g id="Location-Icon-_x28_required_x29_" transform="translate(4.000000, 4.000000)">
-															<path id="Shape" fill="#666666" d="M4,0.7c-2.2,0-4,1.8-4,4c0,3,4,7.4,4,7.4s4-4.4,4-7.4C8,2.5,6.2,0.7,4,0.7z M4,6.1
-																c-0.8,0-1.4-0.6-1.4-1.4S3.2,3.2,4,3.2s1.4,0.6,1.4,1.4S4.8,6.1,4,6.1z"/>
-														</g>
-													</g>
-												</g>
-											</g>
-										</g>
-									</g>
-								</g>
-							</g>
-						</svg>
+						<svg xmlnsXlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+						style={{enableBackground:'new 0 0 24 24'}} ><title>Location</title><path class="location--grey" style={{fill: '#666'}} d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5s1.1-2.5 2.5-2.5 2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5z"/></svg>
 						</object>
 						{`${location}`}
 					</div>
