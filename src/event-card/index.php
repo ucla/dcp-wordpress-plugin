@@ -64,6 +64,11 @@ class EventsMetaBox {
 			'label' => 'Location',
 			'id'	=> 'event_location',
 			'type'	=> 'text'
+		),
+		array(
+			'label'	=> 'RSVP Link',
+			'id'	=> 'event_rsvp',
+			'type'	=> 'text'
 		)
     );
 

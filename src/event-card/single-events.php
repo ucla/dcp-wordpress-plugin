@@ -71,12 +71,20 @@
                                 <?= get_post_meta($post->ID,'event_location', true) ? get_post_meta($post->ID,'event_location', true) : 'TBD' ?>
                             </div>
                         </div>
+            
+            <?php
+                if (get_post_meta($post->ID,'event_rsvp', true)) {
+            ?>
+            <a class="btn btn--sm btn--lightbg icon--link" href="<?=get_post_meta($post->ID,'event_rsvp', true)?>" target="_blank">RSVP</a>
+            <?php
+                }
+            ?>
         </div>
         <div class="col span_1_of_12" style="min-height:1px;"></div>
 
         <div class="col span_4_of_12">
             <figure>
-                <img src="<?= $image ?>" />
+                <img class="event-featured-img" src="<?= $image ?>" />
             </figure>
         </div>
     </div>
