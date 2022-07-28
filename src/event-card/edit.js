@@ -45,7 +45,7 @@ export default function Edit( {
 	isSelected,
 	className,
 } ) {
-	const [eventSelection, setEventSelection] = useState('upcoming');
+	const [eventSelection, setEventSelection] = useState(attributes['eventSelection']);
 
     const blockProps = useBlockProps({
 		className: 'event-cards'
@@ -56,6 +56,7 @@ export default function Edit( {
 		setAttributes( {
 			eventSelection: value,
 		})
+		console.log(value)
 	 }
 
 	const compareEventDateWithToday = (startDate) => {

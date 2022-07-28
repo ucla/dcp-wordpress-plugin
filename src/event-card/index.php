@@ -225,20 +225,89 @@ function events_template($template) {
 
 function render_block_core_events( $attributes ) {
 	global $post;
-	$args = array(
-		'post_type'			=> 'events',
-		// 'posts_per_page'		=> strval($attributes['numberOfPosts']),
-		'post_status'		=> 'publish',
-		'order'               => 'DESC',
-		'orderby'             => 'date',
-		'ignore_sticky_posts' => true,
-		'no_found_rows'       => true,
-	);
-	// var_dump($attributes);
+	$today = date('Y-m-d');
+	switch ($attributes['eventSelection']) {
+		case 'upcoming':
+			$args = array(
+				'post_type'			=> 'events',
+				// 'posts_per_page'		=> strval($attributes['numberOfPosts']),
+				'post_status'		=> 'publish',
+				'order'               => 'DESC',
+				'orderby'             => 'date',
+				'ignore_sticky_posts' => true,
+				'no_found_rows'       => true,
+				'meta_query'		=> array(
+					array(
+						'key' => 'event_start_date',
+						'value' => $today,
+						'compare' => '>=',
+						'type' => 'DATE'
+					)
+				)	
+			);
+			break;
+		case 'past':
+			$args = array(
+				'post_type'			=> 'events',
+				// 'posts_per_page'		=> strval($attributes['numberOfPosts']),
+				'post_status'		=> 'publish',
+				'order'               => 'DESC',
+				'orderby'             => 'date',
+				'ignore_sticky_posts' => true,
+				'no_found_rows'       => true,
+				'meta_query' => array(
+					array(
+						'key' => 'event_start_date',
+						'value' => $today,
+						'compare' => '<',
+						'type' => 'DATE'
+					)
+				)
+				
+			);
+			break;
+		case 'both':
+			$args = array(
+				'post_type'			=> 'events',
+				// 'posts_per_page'		=> strval($attributes['numberOfPosts']),
+				'post_status'		=> 'publish',
+				'order'               => 'DESC',
+				'orderby'             => 'meta_value',
+				'meta_key'		      => 'event_start_date',
+				'ignore_sticky_posts' => true,
+				'no_found_rows'       => true,
+				'meta_query' => array(
+					array(
+						'key' => 'event_start_date',
+						'type' => 'DATE'
+					)
+				)
+			);
+			break;
+		default:
+			$args = array(
+				'post_type'			=> 'events',
+				// 'posts_per_page'		=> strval($attributes['numberOfPosts']),
+				'post_status'		=> 'publish',
+				'order'               => 'DESC',
+				'orderby'             => 'meta_value',
+				'meta_key'		      => 'event_start_date',
+				'ignore_sticky_posts' => true,
+				'no_found_rows'       => true,
+				'meta_query' => array(
+					array(
+						'key' => 'event_start_date',
+						'type' => 'DATE'
+					)
+				)
+			);
+			break;
+	}
+
 	$query        = new WP_Query;
 	$recent_posts = $query->query($args);
 	update_post_thumbnail_cache( $query );
-	$events_markup = '<div class="events-container">';
+	$events_markup = '<div class="events-container ' . $attributes['eventSelection'] . '">';
 
 	foreach ( $recent_posts as $post ) {
 		// Get date
@@ -248,7 +317,7 @@ function render_block_core_events( $attributes ) {
 		$title     = get_the_title( $post );
 		$featured_image = get_the_post_thumbnail($post,'large',array('class'=>'event-card__image'));
 		// $publication_author = get_post_meta($post->ID,'publication_author', true);
-		$events_markup .= '<article class="event-card">';
+		$events_markup .= '<article class="'. date('Y-m-d') .' event-card '. get_post_meta($post->ID,'event_start_date', true) .'">';
 		$events_markup .= sprintf(
 			'<a class="event-card__link" href="%1$s">%2$s<h3 class="event-card__title">%3$s</h3></a>',
 			esc_url( $post_link ),
@@ -266,7 +335,7 @@ function render_block_core_events( $attributes ) {
 			$start_date -> format('M')
 		);
 		$events_markup .= sprintf(
-			'</span><span class="event-card-info__number">19</span>',
+			'</span><span class="event-card-info__number">%1$s</span>',
 			$start_date -> format('d')
 		);
 		$events_markup .= '

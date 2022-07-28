@@ -58,7 +58,6 @@
 		},
 		"eventSelection": {
 			"type": "string",
-			"source": "text",
 			"default": "both"
 		}
 
