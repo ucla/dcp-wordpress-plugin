@@ -234,7 +234,7 @@ function render_block_core_events( $attributes ) {
 		'ignore_sticky_posts' => true,
 		'no_found_rows'       => true,
 	);
-	var_dump($attributes);
+	// var_dump($attributes);
 	$query        = new WP_Query;
 	$recent_posts = $query->query($args);
 	update_post_thumbnail_cache( $query );
