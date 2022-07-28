@@ -222,3 +222,92 @@ function events_template($template) {
 // }
 
 // add_action('rest_api_init', 'register_event_rest_fields');
+
+function render_block_core_events( $attributes ) {
+	global $post;
+	$args = array(
+		'post_type'			=> 'events',
+		// 'posts_per_page'		=> strval($attributes['numberOfPosts']),
+		'post_status'		=> 'publish',
+		'order'               => 'DESC',
+		'orderby'             => 'date',
+		'ignore_sticky_posts' => true,
+		'no_found_rows'       => true,
+	);
+	var_dump($attributes);
+	$query        = new WP_Query;
+	$recent_posts = $query->query($args);
+	update_post_thumbnail_cache( $query );
+	$events_markup = '<div class="events-container">';
+
+	foreach ( $recent_posts as $post ) {
+		// Get date
+		$start_date = new DateTime(get_post_meta($post->ID,'event_start_date', true));
+		$start_time = new DateTime(get_post_meta($post->ID,'event_time', true));
+		$post_link = esc_url( get_permalink( $post ) );
+		$title     = get_the_title( $post );
+		$featured_image = get_the_post_thumbnail($post,'large',array('class'=>'event-card__image'));
+		// $publication_author = get_post_meta($post->ID,'publication_author', true);
+		$events_markup .= '<article class="event-card">';
+		$events_markup .= sprintf(
+			'<a class="event-card__link" href="%1$s">%2$s<h3 class="event-card__title">%3$s</h3></a>',
+			esc_url( $post_link ),
+			$featured_image,
+			$title
+		);
+		$events_markup .= '
+			<div class="event-card-info">
+				<div class="event-card-info__date">
+					<span class="small-block">
+		';
+		$events_markup .= sprintf(
+			'<span class="event-card-info__day">%1$s</span><span class="event-card-info__month">%2$s</span>',
+			$start_date -> format('D'),
+			$start_date -> format('M')
+		);
+		$events_markup .= sprintf(
+			'</span><span class="event-card-info__number">19</span>',
+			$start_date -> format('d')
+		);
+		$events_markup .= '
+			</div>
+		';
+		$events_markup .= sprintf('
+			<div class="event-card-info__time">
+				<object class="event-card-icon__time" tabindex="-1" type="image/svg">
+					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" style="enable-background: new 0 0 24 24">
+							<title>time</title>
+							<g>
+									<path fill="#666666" className="time--grey" d="M12,2c5.5,0,10,4.5,10,10s-4.5,10-10,10C6.5,22,2,17.5,2,12S6.5,2,12,2z M12,4
+											c-4.4,0-8,3.6-8,8s3.6,8,8,8s8-3.6,8-8S16.4,4,12,4z M12.5,7v5.2l4.5,2.7l-0.8,1.2L11,13V7H12.5z" />
+							</g>
+						</svg>
+				</object>%1$s
+			</div>
+		', $start_time -> format('g:i A'));
+		$events_markup .= sprintf('
+			<div class="event-card-info__location">
+				<object class="event-card-icon__location" tabindex="-1" type="image/svg">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+				style="enable-background: new 0 0 24 24"><title>Location</title><path class="location--grey" style="fill: #666" d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5s1.1-2.5 2.5-2.5 2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5z"/></svg>
+				</object>%1$s
+			</div>
+		', get_post_meta($post->ID,'event_location', true));
+		$events_markup .= sprintf('
+			<div class="event-card-info__description">%1$s</div>
+		', get_the_excerpt($post));
+		$events_markup .= '</div></article>';
+	}
+	$events_markup .= "</div>";
+	return $events_markup;
+}
+
+function register_block_core_events() {
+	register_block_type_from_metadata(
+		__DIR__,
+		array(
+			'render_callback' => 'render_block_core_events'
+		)
+		);
+}
+add_action('init', 'register_block_core_events');

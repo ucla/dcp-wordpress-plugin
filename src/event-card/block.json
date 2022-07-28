@@ -55,6 +55,11 @@
 			"type": "string",
 			"source": "text",
 			"selector": ".event-card-info__location-body"
+		},
+		"eventSelection": {
+			"type": "string",
+			"source": "text",
+			"default": "both"
 		}
 
 	}

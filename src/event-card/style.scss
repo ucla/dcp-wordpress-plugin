@@ -125,3 +125,11 @@
 		height: auto;
 	}
 }
+
+// Display on page
+
+.events-container {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
