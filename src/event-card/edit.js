@@ -17,6 +17,7 @@ import './editor.scss';
 import {
 	PanelBody,
 	SelectControl,
+	RangeControl,
 } from '@wordpress/components';
 
 import {
@@ -50,13 +51,22 @@ export default function Edit( {
     const blockProps = useBlockProps({
 		className: 'event-cards'
 	});
+
+	let {numberOfEvents} = attributes;
+
 	const events = useSelect(select => select('core').getEntityRecords('postType', 'events', {_embed: true}));
+
+	const onChangeEventsNumber = (value) => {
+		numberOfEvents = value; 
+		setAttributes( {
+		   numberOfEvents: value,
+		})
+	 }
 
 	const updateEventSelection = (value) => {
 		setAttributes( {
 			eventSelection: value,
 		})
-		console.log(value)
 	 }
 
 	const compareEventDateWithToday = (startDate) => {
@@ -124,17 +134,17 @@ export default function Edit( {
 		switch (param) {
 			case 'upcoming':
 				
-				return events.filter(convention => compareEventDateWithToday(convention.event_start_date.rendered) === false).sort((a,b) => new Date(b.event_start_date.rendered) - new Date(a.event_start_date.rendered)).map(convention => eventHtml(convention.title.raw, convention.link, convention?._embedded['wp:featuredmedia'][0]?.source_url, convention.event_start_date.rendered, convention.event_time.rendered, convention.event_location.rendered,convention.excerpt.raw))
+				return events.filter(convention => compareEventDateWithToday(convention.event_start_date.rendered) === false).slice(0, Number(numberOfEvents)).sort((a,b) => new Date(b.event_start_date.rendered) - new Date(a.event_start_date.rendered)).map(convention => eventHtml(convention.title.raw, convention.link, convention?._embedded['wp:featuredmedia'][0]?.source_url, convention.event_start_date.rendered, convention.event_time.rendered, convention.event_location.rendered,convention.excerpt.raw))
 				
 				break;
 			case 'past':
 				
-				return events.filter(convention => compareEventDateWithToday(convention.event_start_date.rendered) === true).sort((a,b) => new Date(b.event_start_date.rendered) - new Date(a.event_start_date.rendered)).map(convention => eventHtml(convention.title.raw, convention.link, convention?._embedded['wp:featuredmedia'][0]?.source_url, convention.event_start_date.rendered, convention.event_time.rendered, convention.event_location.rendered,convention.excerpt.raw))
+				return events.filter(convention => compareEventDateWithToday(convention.event_start_date.rendered) === true).slice(0, Number(numberOfEvents)).sort((a,b) => new Date(b.event_start_date.rendered) - new Date(a.event_start_date.rendered)).map(convention => eventHtml(convention.title.raw, convention.link, convention?._embedded['wp:featuredmedia'][0]?.source_url, convention.event_start_date.rendered, convention.event_time.rendered, convention.event_location.rendered,convention.excerpt.raw))
 				
 				break;
 			default:
 				
-				return events.sort((a,b) => new Date(b.event_start_date.rendered) - new Date(a.event_start_date.rendered)).map(convention => eventHtml(convention.title.raw, convention.link, convention?._embedded['wp:featuredmedia'][0]?.source_url, convention.event_start_date.rendered, convention.event_time.rendered, convention.event_location.rendered,convention.excerpt.raw))
+				return events.sort((a,b) => new Date(b.event_start_date.rendered) - new Date(a.event_start_date.rendered)).slice(0, Number(numberOfEvents)).map(convention => eventHtml(convention.title.raw, convention.link, convention?._embedded['wp:featuredmedia'][0]?.source_url, convention.event_start_date.rendered, convention.event_time.rendered, convention.event_location.rendered,convention.excerpt.raw))
 				
 				break;
 		}
@@ -145,7 +155,7 @@ export default function Edit( {
 	// 		console.log(compareEventDateWithToday(convention.event_start_date.rendered))
 	// 	})
 	// }
-    console.log('events', events)
+    // console.log('events', events)
 	// console.log(new Date().getMonth())
     return (
 		<>
@@ -165,6 +175,14 @@ export default function Edit( {
 					 }}
 					__nextHasNoMarginBottom
 				/></PanelBody>
+				<PanelBody title={ __( 'Number of Events' ) }>
+					<RangeControl
+						value={Number(numberOfEvents)}
+						onChange={onChangeEventsNumber}
+						min={1}
+						max={6}
+					/>
+				</PanelBody>
 			</InspectorControls>
         	<div {...blockProps}>
 			{!events && 'Loading...'}

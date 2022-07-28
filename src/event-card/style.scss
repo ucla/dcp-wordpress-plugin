@@ -132,4 +132,10 @@
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
+
+	.event-card-info {
+		.event-card-info__time, .event-card-info__location {
+			display: block;
+		}
+	}
 }

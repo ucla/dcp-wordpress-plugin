@@ -59,7 +59,10 @@
 		"eventSelection": {
 			"type": "string",
 			"default": "both"
+		},
+		"numberOfEvents": {
+			"type" : "number",
+			"default" : "3"
 		}
-
 	}
 }

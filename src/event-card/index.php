@@ -317,7 +317,7 @@ function render_block_core_events( $attributes ) {
 		$title     = get_the_title( $post );
 		$featured_image = get_the_post_thumbnail($post,'large',array('class'=>'event-card__image'));
 		// $publication_author = get_post_meta($post->ID,'publication_author', true);
-		$events_markup .= '<article class="'. date('Y-m-d') .' event-card '. get_post_meta($post->ID,'event_start_date', true) .'">';
+		$events_markup .= '<article class="event-card">';
 		$events_markup .= sprintf(
 			'<a class="event-card__link" href="%1$s">%2$s<h3 class="event-card__title">%3$s</h3></a>',
 			esc_url( $post_link ),
