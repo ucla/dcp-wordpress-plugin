@@ -91,7 +91,7 @@ export default function Edit( {
 		
 		let month = d.toLocaleDateString('en-US', {month: 'short'});
 		let day = d.toLocaleDateString('en-US', {weekday: 'short'});
-		let dayNum = d.getDate();
+		let dayNum = d.toLocaleString('en-US', {day: '2-digit'});
 		let formatTime = d.toLocaleTimeString([], {hour: 'numeric' ,minute: '2-digit', hour12: true});
 		return <article className="event-card">
 				<a className="event-card__link" href={`${link}`}>

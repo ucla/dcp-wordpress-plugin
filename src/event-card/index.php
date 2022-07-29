@@ -230,7 +230,7 @@ function render_block_core_events( $attributes ) {
 		case 'upcoming':
 			$args = array(
 				'post_type'			=> 'events',
-				// 'posts_per_page'		=> strval($attributes['numberOfPosts']),
+				'posts_per_page'		=> strval($attributes['numberOfEvents']),
 				'post_status'		=> 'publish',
 				'order'               => 'DESC',
 				'orderby'             => 'date',
@@ -249,7 +249,7 @@ function render_block_core_events( $attributes ) {
 		case 'past':
 			$args = array(
 				'post_type'			=> 'events',
-				// 'posts_per_page'		=> strval($attributes['numberOfPosts']),
+				'posts_per_page'		=> strval($attributes['numberOfEvents']),
 				'post_status'		=> 'publish',
 				'order'               => 'DESC',
 				'orderby'             => 'date',
@@ -269,7 +269,7 @@ function render_block_core_events( $attributes ) {
 		case 'both':
 			$args = array(
 				'post_type'			=> 'events',
-				// 'posts_per_page'		=> strval($attributes['numberOfPosts']),
+				'posts_per_page'		=> strval($attributes['numberOfEvents']),
 				'post_status'		=> 'publish',
 				'order'               => 'DESC',
 				'orderby'             => 'meta_value',
@@ -287,7 +287,7 @@ function render_block_core_events( $attributes ) {
 		default:
 			$args = array(
 				'post_type'			=> 'events',
-				// 'posts_per_page'		=> strval($attributes['numberOfPosts']),
+				'posts_per_page'		=> strval($attributes['numberOfEvents']),
 				'post_status'		=> 'publish',
 				'order'               => 'DESC',
 				'orderby'             => 'meta_value',
