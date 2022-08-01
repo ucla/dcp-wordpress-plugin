@@ -48,21 +48,21 @@ add_action( 'init', 'cpt_publication' );
 add_filter('template_include', 'publication_template');
 function publication_template($template) {
 	if ( is_post_type_archive('publication') ) {
-		$theme_files = array('archive-publication.php', 'ucla-wp-plugin/archive-publication.php');
+		$theme_files = array('archive-publication.php', 'ucla-wp-plugin/src/publications/archive-publication.php');
 		$exists_in_theme = locate_template($theme_files, false);
 		if ($exists_in_theme != '') {
 			return $exists_in_theme;
 		} else {
-			return WP_PLUGIN_DIR . '/ucla-wp-plugin/archive-publication.php';
+			return WP_PLUGIN_DIR . '/ucla-wp-plugin/src/publications/archive-publication.php';
 		}
 	}
 	if ( is_singular('publication') ) {
-		$theme_files = array('single-publication.php', 'ucla-wp-plugin/single-publication.php');
+		$theme_files = array('single-publication.php', 'ucla-wp-plugin/src/publications/single-publication.php');
 		$exists_in_theme = locate_template($theme_files, false);
 		if ($exists_in_theme != '') {
 			return $exists_in_theme;
 		} else {
-			return WP_PLUGIN_DIR . '/ucla-wp-plugin/single-publication.php';
+			return WP_PLUGIN_DIR . '/ucla-wp-plugin/src/publications/single-publication.php';
 		}
 	}
 	return $template;
@@ -226,28 +226,28 @@ if (class_exists('PublicationMetaBox')) {
 };
 
 // Add to API
-function register_rest_fields() {
-	register_rest_field('publication', 'publication_author',
-		array(
-			'get_callback' => 'get_post_meta_callback',
-			'update_callback' => 'update_post_meta_callback',
-			'schema' => null
-		)
-		);
-}
-function get_post_meta_callback($object, $field_name, $request) {
-	$publication_author = get_post_meta($object['id'], $field_name, true);
-	$output['rendered'] = $publication_author;
-	return $output;
-}
+// function register_rest_fields() {
+// 	register_rest_field('publication', 'publication_author',
+// 		array(
+// 			'get_callback' => 'get_post_meta_callback',
+// 			'update_callback' => 'update_post_meta_callback',
+// 			'schema' => null
+// 		)
+// 		);
+// }
+// function get_post_meta_callback($object, $field_name, $request) {
+// 	$publication_author = get_post_meta($object['id'], $field_name, true);
+// 	$output['rendered'] = $publication_author;
+// 	return $output;
+// }
 
-function update_post_meta_callback($value, $object, $field_name) {
-	if ( ! $value || ! is_string( $value ) ) {
-        return;
-    }
-    return update_post_meta( $object->ID, $field_name, $value );
-}
-add_action('rest_api_init', 'register_rest_fields');
+// function update_post_meta_callback($value, $object, $field_name) {
+// 	if ( ! $value || ! is_string( $value ) ) {
+//         return;
+//     }
+//     return update_post_meta( $object->ID, $field_name, $value );
+// }
+// add_action('rest_api_init', 'register_rest_fields');
 
 /**
  * Renders the `publication` block on server.
