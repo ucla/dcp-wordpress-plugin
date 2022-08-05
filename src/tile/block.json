@@ -24,9 +24,6 @@
 			"selector": "a",
 			"attribute": "target"
 		},
-		"greyStyle": {
-			"type": "string"
-		},
 		"rel": {
 			"type": "string",
 			"source": "attribute",

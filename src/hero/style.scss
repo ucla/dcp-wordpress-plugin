@@ -4,6 +4,12 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+
+ .screenreader-helper {
+	color: transparent;
+	user-select: none;
+}
+
 .wp-block-uwai-uwai {
 	background-color: var(--wp-admin-theme-color);
 	color: #fff;
@@ -277,7 +283,7 @@
 	  padding-left: 0;
 	}
   }
-  
+
   section#hero .copy__headline {
 	margin-bottom: 26px;
 	font-size: 2rem;
@@ -529,4 +535,17 @@
 	}
   }
   
-  
+  section#hero #hero-heading{
+	overflow: visible; 
+	&:before{
+		content: "";
+		width: 135px;
+		height: 135px;
+		display: block;
+		margin: -60px 0 0 -60px;
+		position: absolute;
+		z-index: -1;
+		background-image:url(../../assets/molecule.svg);
+		background-size: cover;
+	}
+}

@@ -1,0 +1,14 @@
+{
+	"name": "uwai/factoid",
+	"title": "UWAI Factoid",
+	"category": "common",
+	"textdomain": "uwai",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"body": {
+			"type": "string"
+		}
+	}
+}
