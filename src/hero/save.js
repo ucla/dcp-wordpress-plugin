@@ -35,6 +35,7 @@ export default function save({
 		row2,
 		row3,
 		row4,
+		cardStyle
 	},
 	className,
 }) {
@@ -79,58 +80,68 @@ export default function save({
 			<br />
 		</>
 	) : null;
-	return (
-		<div className={className}>
-			<section
-				id="hero"
-				class="section group"
-				aria-labelledby="hero-heading"
-			>
-				<div class="copy">
-					<div class="col span_3_of_12 copy__wrapper">
-						<h1 id="hero-heading"	class="screenreader-only screenreader-helper">
-							{row1 + ' ' + row2 + ' ' + row3 + ' ' + row4}
-						</h1>
-						<div class="copy__headline">
-							{row1J}
-							{row2J}
-							{row3J}
-							{row4J}
+	if (cardStyle === 'story') {
+		return (
+			<div className={`hero-story${className ? ' ' + className : ''}`}>
+				<section
+					id="hero"
+					class="section group"
+					aria-labelledby="hero-heading"
+				>
+					<div class="copy">
+						<div class="col span_3_of_12 copy__wrapper">
+							<h1 id="hero-heading"	class="screenreader-only screenreader-helper">
+								{row1 + ' ' + row2 + ' ' + row3 + ' ' + row4}
+							</h1>
+							<div class="copy__headline">
+								{row1J}
+								{row2J}
+								{row3J}
+								{row4J}
+							</div>
+							<RichText.Content
+								tagName="p"
+								className="copy__supporting-text"
+								value={body}
+							/>
+							<p>
+								<span
+									class="copy__cta"
+									data-width="1128"
+									data-height="634"
+								>
+									<InnerBlocks.Content />
+								</span>
+							</p>
 						</div>
-						<RichText.Content
-							tagName="p"
-							className="copy__supporting-text"
-							value={body}
-						/>
-						<p>
-							<span
-								class="copy__cta"
-								data-width="1128"
-								data-height="634"
-							>
-								<InnerBlocks.Content />
-							</span>
-						</p>
 					</div>
-				</div>
-				<div class="col span_9_of_12 graphics">
-					<div
-						class="graphics__image"
-						role="img"
-						aria-label={
-							mediaAlt ??
-							'Jonathan Kao Director’s New Innovator Award'
-						}
-						style={{
-							backgroundImage:
-								'url(' +
-								(mediaUrl ??
-									'https://picsum.photos/id/1005/500/700') +
-								')',
-						}}
-					></div>
+					<div class="col span_9_of_12 graphics">
+						<div
+							class="graphics__image"
+							role="img"
+							aria-label={
+								mediaAlt ??
+								'Jonathan Kao Director’s New Innovator Award'
+							}
+							style={{
+								backgroundImage:
+									'url(' +
+									(mediaUrl ??
+										'https://picsum.photos/id/1005/500/700') +
+									')',
+							}}
+						></div>
+					</div>
+				</section>
+			</div>
+		);
+	} else {
+		return (
+			<section className={`hero-banner-container${className ? ' ' + className : ''}`} style={{'backgroundImage': `url(${mediaUrl ?? 'https://picsum.photos/id/1005/500/700'})`}}>
+				<div className="hero-banner__content">
+					<p>banner</p>
 				</div>
 			</section>
-		</div>
-	);
+		);
+	}
 }
