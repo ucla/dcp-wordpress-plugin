@@ -1,4 +1,5 @@
 {
+	"apiVersion": 2,
 	"name": "uwai/hero-banner",
 	"title": "UWAI Hero",
 	"category": "common",
@@ -35,6 +36,14 @@
 		},
 		"mediaUrl": {
 			"type": "string"
+		},
+		"cardType": {
+			"type": "string",
+			"default": "story"
+		},
+		"bannerContainer": {
+			"type": "string",
+			"default": "container"
 		}
 	}
 }
