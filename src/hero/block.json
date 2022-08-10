@@ -40,6 +40,10 @@
 		"cardType": {
 			"type": "string",
 			"default": "story"
+		},
+		"bannerContainer": {
+			"type": "string",
+			"default": "container"
 		}
 	}
 }

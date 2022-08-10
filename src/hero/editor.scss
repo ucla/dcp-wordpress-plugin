@@ -610,8 +610,11 @@
 // .block-editor-block-list__layout {
 // 	overflow-x: hidden;
 // }
-.editor-styles-wrapper .block-editor-block-list__layout.is-root-container .block-editor-block-list__block.hero-banner {
+.editor-styles-wrapper .block-editor-block-list__layout.is-root-container .block-editor-block-list__block.hero-banner.full-width {
 	max-width: 100%;
+}
+
+.editor-styles-wrapper .block-editor-block-list__layout.is-root-container .block-editor-block-list__block.hero-banner {
 
 	.banner {
 		background-position: center center;
@@ -632,10 +635,6 @@
 .block-editor-block-list__block {
   .story__featured {
 	float: none;
-  }
-  .story__featured-image {
-	max-height: 517px;
-	object-fit: cover;
   }
   
   

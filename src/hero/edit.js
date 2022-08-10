@@ -18,7 +18,7 @@
      TextareaControl,
      ExternalLink,
      Button,
-     SelectControl,
+     SelectControl
  } from '@wordpress/components';
  import {
 	 useBlockProps,
@@ -94,11 +94,13 @@
          row2,
          row3,
          row4,
-         cardType
+         cardType,
+         bannerContainer
      } = attributes;
      const [type, setType] = useState(cardType);
+     const [width, setWidth] = useState(bannerContainer);
 	 const blockProps = useBlockProps({
-        className: type === 'story' ? 'hero-story' : 'hero-banner'
+        className: type === 'story' ? 'hero-story' : `hero-banner${width === 'fluid' ? ' full-width' : ''}`
      });
      const onChangeBody = (value) => {
          setAttributes({ body: value });
@@ -130,12 +132,16 @@
         setType(value)
         setAttributes({cardType: value})
      }
- 
+
+     const onBannerContainerChange = value => {
+        setWidth(value)
+        setAttributes({bannerContainer: value})
+     }
      return (
          <div {...blockProps}>
              <InspectorControls>
                 <PanelBody
-                     title={__('Select card type', 'awp')}
+                     title={__('Select card type')}
                      initialOpen={true}
                  >
                     <SelectControl
@@ -151,8 +157,24 @@
                         __nextHasNoMarginBottom
                     />
                  </PanelBody>
+                 {cardType === 'full' &&
+                 <PanelBody>
+                    <SelectControl
+                        label={__('Width')}
+                        value={width}
+                        options={[
+                            {label: 'Full Width', value: 'fluid'},
+                            {label: 'Contained', value: 'container'}
+                        ]}
+                        onChange={selected=> {
+                            onBannerContainerChange(selected)
+                        }}
+                        __nextHasNoMarginBottom
+                    />
+                 </PanelBody>
+                 } 
                  <PanelBody
-                     title={__('Select card image', 'awp')}
+                     title={__('Select card image')}
                      initialOpen={true}
                  >
                     
@@ -219,6 +241,7 @@
                          )}
                      </div>
                  </PanelBody>
+                
              </InspectorControls>
             {attributes.cardType === 'story' &&
                 <section className="story">
@@ -242,12 +265,12 @@
             {attributes.cardType === 'full' && 
                 <section className="banner" style={{'backgroundImage': `url(${mediaUrl ?? 'https://picsum.photos/id/1005/500/700'})`}}>
                     <div className="banner__content">
-                    <InnerBlocks
-                                    template={[
-                                        ['core/heading', { placeholder: 'Heading' }],
-                                        ['core/paragraph', { placeholder: "Hall of Famer Bill Walton '74 recently talked about his approach to life, what he's learned and his love for his alma mater." }]
-                                    ]}
-                                />
+                        <InnerBlocks
+                            template={[
+                                ['core/heading', { placeholder: 'Heading' }],
+                                ['core/paragraph', { placeholder: "Hall of Famer Bill Walton '74 recently talked about his approach to life, what he's learned and his love for his alma mater." }]
+                            ]}
+                        />
                     </div>
                 </section>
             }
