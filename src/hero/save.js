@@ -40,8 +40,7 @@ export default function save({
 	},
 	className,
 }) {
-	console.log(cardType)
-	let row1J, row2J, row3J, row4J, cardTypeClass;
+	let row1J, row2J, row3J, row4J;
 	row1J = row1 ? (
 		<>
 			<RichText.Content
