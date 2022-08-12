@@ -7,13 +7,12 @@
 		"html": false
 	},
 	"attributes": {
-		"content": {
-			"type": "string",
-			"source": "text"
+		"ribbonContent": {
+			"type": "string"
 		},
         "highlight": {
-            "type": "boolean",
-            "default": false
+            "type": "string",
+            "default": "brand"
         }
 	}
 }

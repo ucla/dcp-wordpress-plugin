@@ -9,13 +9,14 @@ import { __ } from '@wordpress/i18n';
 import './editor.scss';
 import {
     PanelBody,
-	ToggleControl,
+	SelectControl,
 } from '@wordpress/components';
 import {
     InspectorControls,
     useBlockProps,
 	RichText
 } from '@wordpress/block-editor';
+import { useState } from '@wordpress/element'
 
  /**
  * The edit function describes the structure of your block in the context of the
@@ -33,37 +34,48 @@ export default function Edit({
 	setAttributes,
 	className,
 }) {
-    let {molecule} = attributes; 
-
-    const blockProps = useBlockProps({
-        // className: molecule && 'has-molecule'
-    });
+    let {ribbonContent, highlight} = attributes; 
+    
+    const blockProps = useBlockProps();
+    const [ribbonType, setRibbonType] = useState(highlight);
     // const onMoleculeChange = (value) => {
     //     molecule = value
     //     setAttributes({molecule: value});
     // }
+    const onRibbonChange = value => {
+        ribbonContent = value;
+        setAttributes({ribbonContent: value})
+    }
+    const onTypeChange = value => {
+        
+        setAttributes({highlight: value});
+    }
     return (
         <div {...blockProps}>
-            {/* <InspectorControls>
+            <InspectorControls>
                 <PanelBody>
-                    <ToggleControl
-                        label={ __('Molecule') }
-                        checked={molecule}
-                        onChange={onMoleculeChange}
-                    />
+                    <SelectControl
+                        label={__( 'Ribbon Type' )}
+                        value={ ribbonType }
+                        options={[
+                            {label: 'Brand', value: 'brand'},
+                            {label: 'Highlight', value: 'highlight'},
+                        ]}
+                        onChange={selected => {
+                            setRibbonType(selected);
+                            onTypeChange(selected);
+                        }}
+                        __nextHasNoMarginBottom
+				    />
                 </PanelBody>
             </InspectorControls>
-            {molecule &&
-                    
-                    <img class="has-molecule" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='135' height='135'%3E%3Cpath d='M63.967.093l48.7 17.245 22.24 46.63-17.245 48.698-46.63 22.241-48.698-17.245L.093 71.032l17.245-48.698z' fill='%23FFD100' fill-rule='evenodd' opacity='.5'/%3E%3C/svg%3E" />
-                
-            } */}
-            <div className={`ribbon${className ? ' ' + className : ''}`}>
+            
+            <div className={`ribbon${className ? ' ' + className : ''}${ribbonType === 'highlight' ? ' ribbon--highlight' : ''}`}>
                 
                 <RichText
-                    tagName='h2'
-                    value={ attributes.content }
-                    onChange={ content => setAttributes({content}) }
+                    tagName={ribbonType === 'highlight' ? 'h3' : 'h2'}
+                    value={ ribbonContent }
+                    onChange={ onRibbonChange }
                     placeholder={__('15 of the 20 largest fires in Californian history have occurred since 2000.')}
                     preserveWhiteSpace={false}
                 />
