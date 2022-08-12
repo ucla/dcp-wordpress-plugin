@@ -1,0 +1,19 @@
+{
+	"name": "uwai/ribbon",
+	"title": "UWAI Ribbon",
+	"category": "common",
+	"textdomain": "uwai",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"content": {
+			"type": "string",
+			"source": "text"
+		},
+        "highlight": {
+            "type": "boolean",
+            "default": false
+        }
+	}
+}
