@@ -4,6 +4,20 @@
     }
     h1,h2,h3,h4,h5,h6 {
         line-height: 1.4;
+        position: relative;
+        z-index: 1;
+    }
+
+    &::after {
+        content: '';
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='135' height='135'%3E%3Cpath d='M63.967.093l48.7 17.245 22.24 46.63-17.245 48.698-46.63 22.241-48.698-17.245L.093 71.032l17.245-48.698z' fill='%23FFD100' fill-rule='evenodd' opacity='.5'/%3E%3C/svg%3E");
+        width: 135px;
+        height: 135px;
+        display: block;
+        z-index: 0;
+        position: absolute;
+        top: -40px;
+        left: -70px;
     }
 
     &.ribbon--highlight {
@@ -15,10 +29,3 @@
         }
     }
 }
-
-    // &.has-molecule::before {
-    //     content: '';
-    //     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='135' height='135'%3E%3Cpath d='M63.967.093l48.7 17.245 22.24 46.63-17.245 48.698-46.63 22.241-48.698-17.245L.093 71.032l17.245-48.698z' fill='%23FFD100' fill-rule='evenodd' opacity='.5'/%3E%3C/svg%3E");
-    //     width: 135px;
-    //     height: 135px;
-    // }
