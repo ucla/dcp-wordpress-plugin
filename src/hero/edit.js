@@ -15,7 +15,7 @@
  import './editor.scss';
  import {
      PanelBody,
-     PanelColorSettings,
+     ColorPalette,
      TextareaControl,
      ExternalLink,
      Button,
@@ -102,25 +102,25 @@
 	 const blockProps = useBlockProps({
         className: type === 'story' ? `hero-story${width === 'fluid' ? ' full-width' : ''}` : `hero-banner${width === 'fluid' ? ' full-width' : ''}`
      });
-     const onChangeBody = (value) => {
-         setAttributes({ body: value });
-     };
+    //  const onChangeBody = (value) => {
+    //      setAttributes({ body: value });
+    //  };
  
-     const onChangeRow1 = (value) => {
-         setAttributes({ row1: value });
-     };
+    //  const onChangeRow1 = (value) => {
+    //      setAttributes({ row1: value });
+    //  };
  
-     const onChangeRow2 = (value) => {
-         setAttributes({ row2: value });
-     };
+    //  const onChangeRow2 = (value) => {
+    //      setAttributes({ row2: value });
+    //  };
  
-     const onChangeRow3 = (value) => {
-         setAttributes({ row3: value });
-     };
+    //  const onChangeRow3 = (value) => {
+    //      setAttributes({ row3: value });
+    //  };
  
-     const onChangeRow4 = (value) => {
-         setAttributes({ row4: value });
-     };
+    //  const onChangeRow4 = (value) => {
+    //      setAttributes({ row4: value });
+    //  };
  
      const onSelectMedia = attributesFromMedia({ attributes, setAttributes });
  
@@ -171,10 +171,12 @@
                         __nextHasNoMarginBottom
                     />
                  </PanelBody>
-                 {cardType === 'story ' &&
-                    <PanelColorSettings
-                        
-                    />
+                 {cardType === 'story' &&
+                    <PanelBody>
+                        <ColorPalette
+                            colors={storyColors}
+                        />
+                    </PanelBody>
                     
                  } 
                  <PanelBody
