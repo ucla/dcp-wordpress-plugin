@@ -4,7 +4,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
-
+import './style.scss';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
 
 /**
@@ -21,11 +21,11 @@ import { RichText, InnerBlocks } from '@wordpress/block-editor';
  * @return {WPElement} Element to render.
  */
 export default function save({
-    attributes: { ribbonContent, highlight },
+    attributes: { ribbonContent, highlight, molecule },
 	className,
 }) {
     return (
-        <div className={`ribbon${highlight === 'highlight' ? ' ribbon--highlight' : ''}`}>
+        <div className={`ribbon${className ? ' ' + className : ''}${highlight === 'highlight' ? ' ribbon--highlight' : molecule === true ? ' has-molecule' : ''}`}>
             <RichText.Content
                 tagName={highlight === 'highlight' ? 'h3' : 'h2'}
                 value={ ribbonContent }

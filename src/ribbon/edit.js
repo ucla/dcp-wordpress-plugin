@@ -9,6 +9,7 @@ import { __ } from '@wordpress/i18n';
 import './editor.scss';
 import {
     PanelBody,
+    ToggleControl,
 	SelectControl,
 } from '@wordpress/components';
 import {
@@ -34,14 +35,11 @@ export default function Edit({
 	setAttributes,
 	className,
 }) {
-    let {ribbonContent, highlight} = attributes; 
+    let {ribbonContent, highlight, molecule} = attributes; 
     
     const blockProps = useBlockProps();
     const [ribbonType, setRibbonType] = useState(highlight);
-    // const onMoleculeChange = (value) => {
-    //     molecule = value
-    //     setAttributes({molecule: value});
-    // }
+    const [hasMolecule, setHasMolecule] = useState(molecule);
     const onRibbonChange = value => {
         ribbonContent = value;
         setAttributes({ribbonContent: value})
@@ -67,10 +65,21 @@ export default function Edit({
                         }}
                         __nextHasNoMarginBottom
 				    />
+                    {ribbonType === 'brand' &&
+                        <ToggleControl
+                            label={ __( 'Display Molecule') }
+                            checked={ hasMolecule }
+                            onChange={ ( value ) => {
+                                    setHasMolecule(value);
+                                    setAttributes( { molecule: value } )
+                                }
+                            }
+                        />
+                    }
                 </PanelBody>
             </InspectorControls>
             
-            <div className={`ribbon${className ? ' ' + className : ''}${ribbonType === 'highlight' ? ' ribbon--highlight' : ''}`}>
+            <div className={`ribbon${className ? ' ' + className : ''}${ribbonType === 'highlight' ? ' ribbon--highlight' : hasMolecule === true ? ' has-molecule' : ''}`}>
                 
                 <RichText
                     tagName={ribbonType === 'highlight' ? 'h3' : 'h2'}
