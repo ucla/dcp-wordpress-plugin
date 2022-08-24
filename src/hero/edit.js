@@ -15,6 +15,7 @@
  import './editor.scss';
  import {
      PanelBody,
+     PanelColorSettings,
      TextareaControl,
      ExternalLink,
      Button,
@@ -86,21 +87,20 @@
  }) {
      let {
          mediaAlt,
-         mediaType,
          mediaUrl,
-         body,
-         mediaId,
-         row1,
-         row2,
-         row3,
-         row4,
          cardType,
-         bannerContainer
+         bannerContainer,
+         storyBg
      } = attributes;
      const [type, setType] = useState(cardType);
      const [width, setWidth] = useState(bannerContainer);
+     const [storyBackground, setStoryBackground] = useState(storyBg);
+     const storyColors = [
+        { name: 'White', color: '#fff' },
+        { name: 'UCLA Blue', color: '#2774AE' }
+     ]
 	 const blockProps = useBlockProps({
-        className: type === 'story' ? 'hero-story' : `hero-banner${width === 'fluid' ? ' full-width' : ''}`
+        className: type === 'story' ? `hero-story${width === 'fluid' ? ' full-width' : ''}` : `hero-banner${width === 'fluid' ? ' full-width' : ''}`
      });
      const onChangeBody = (value) => {
          setAttributes({ body: value });
@@ -157,7 +157,6 @@
                         __nextHasNoMarginBottom
                     />
                  </PanelBody>
-                 {cardType === 'full' &&
                  <PanelBody>
                     <SelectControl
                         label={__('Width')}
@@ -172,6 +171,11 @@
                         __nextHasNoMarginBottom
                     />
                  </PanelBody>
+                 {cardType === 'story ' &&
+                    <PanelColorSettings
+                        
+                    />
+                    
                  } 
                  <PanelBody
                      title={__('Select card image')}
@@ -250,7 +254,7 @@
                             <a href="#" tabindex="-1">
                                 <img class="story__featured-image" src={mediaUrl ?? 'https://picsum.photos/id/1005/500/700'} alt="" />
                             </a>
-                            <div class="story__featured-content">
+                            <div class="story__featured-content" style={{backgroundColor: storyBackground}}>
                                 <InnerBlocks
                                     template={[
                                         ['core/heading', { placeholder: 'Featured Story', className: 'story__featured-title' }],
