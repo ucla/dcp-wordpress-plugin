@@ -612,6 +612,10 @@
 // }
 .editor-styles-wrapper .block-editor-block-list__layout.is-root-container .block-editor-block-list__block.full-width {
 	max-width: 100%;
+
+	.story {
+		max-width: 100%;
+	}
 }
 
 .editor-styles-wrapper .block-editor-block-list__layout.is-root-container .block-editor-block-list__block.hero-banner {
@@ -635,7 +639,12 @@
 .block-editor-block-list__block {
   .story__featured {
 	float: none;
+
+	&-content {
+		h1, h2, h3, h4, h5, h6 {
+			margin-top: 0;
+		}
+	}
   }
-  
   
 }

@@ -175,6 +175,7 @@
                     <PanelBody>
                         <ColorPalette
                             colors={storyColors}
+                            onChange={value=>{setAttributes({storyBg:value});setStoryBackground(value)}}
                         />
                     </PanelBody>
                     
@@ -253,9 +254,7 @@
                 <section className="story">
                     <div className="story__featured">
                         <article className="story__featured-card">
-                            <a href="#" tabindex="-1">
                                 <img class="story__featured-image" src={mediaUrl ?? 'https://picsum.photos/id/1005/500/700'} alt="" />
-                            </a>
                             <div class="story__featured-content" style={{backgroundColor: storyBackground}}>
                                 <InnerBlocks
                                     template={[

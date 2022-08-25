@@ -23,8 +23,16 @@
 	// }
 }
 
-.story > .story__featured {
-	float: none;
+.story {
+	&.full-width .story__featured-image {
+		@media (min-width: 1024px) {
+			position: absolute;
+			left: 50%;
+		}
+	}
+	&> .story__featured {
+		float: none;
+	}
 }
 
 @media (min-width: 1024px) {

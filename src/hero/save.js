@@ -31,123 +31,26 @@ export default function save({
 		mediaAlt,
 		greyStyle,
 		department,
-		row1,
-		row2,
-		row3,
-		row4,
 		cardType,
-		bannerContainer
+		bannerContainer,
+		storyBg
 	},
 	className,
 }) {
-	let row1J, row2J, row3J, row4J;
-	row1J = row1 ? (
-		<>
-			<RichText.Content
-				tagName="span"
-				className="copy__headline-ribbon"
-				value={row1}
-			/>
-			<br />
-		</>
-	) : null;
-	row2J = row2 ? (
-		<>
-			<RichText.Content
-				tagName="span"
-				className="copy__headline-ribbon"
-				value={row2}
-			/>
-			<br />
-		</>
-	) : null;
-	row3J = row3 ? (
-		<>
-			<RichText.Content
-				tagName="span"
-				className="copy__headline-ribbon"
-				value={row3}
-			/>
-			<br />
-		</>
-	) : null;
-	row4J = row4 ? (
-		<>
-			<RichText.Content
-				tagName="span"
-				className="copy__headline-ribbon"
-				value={row4}
-			/>
-			<br />
-		</>
-	) : null;
+	
 	switch (cardType) {
 		case 'story':
 			return (
-				<section className={`story${className ? ' ' + className : ''}`}>
+				<section className={`story${className ? ' ' + className : ''}${bannerContainer === 'fluid' ? ' full-width' : ''}`}>
 					<div className="story__featured">
 						<article className="story__featured-card">
-							<a href="#" tabIndex={-1}>
-								<img className="story__featured-image" src={mediaUrl ?? 'https://picsum.photos/id/1005/500/700'} />
-							</a>
-							<div className="story__featured-content">
+							<img className="story__featured-image" src={mediaUrl ?? 'https://picsum.photos/id/1005/500/700'} />
+							<div className="story__featured-content" style={{backgroundColor: storyBg}}>
 								<InnerBlocks.Content />
 							</div>
 						</article>
 					</div>
 				</section>
-				// <div className={`hero-story${className ? ' ' + className : ''}`}>
-				// 	<section
-				// 		id="hero"
-				// 		class="section group"
-				// 		aria-labelledby="hero-heading"
-				// 	>
-				// 		<div class="copy">
-				// 			<div class="col span_3_of_12 copy__wrapper">
-				// 				<h1 id="hero-heading"	class="screenreader-only screenreader-helper">
-				// 					{row1 + ' ' + row2 + ' ' + row3 + ' ' + row4}
-				// 				</h1>
-				// 				<div class="copy__headline">
-				// 					{row1J}
-				// 					{row2J}
-				// 					{row3J}
-				// 					{row4J}
-				// 				</div>
-				// 				<RichText.Content
-				// 					tagName="p"
-				// 					className="copy__supporting-text"
-				// 					value={body}
-				// 				/>
-				// 				<p>
-				// 					<span
-				// 						class="copy__cta"
-				// 						data-width="1128"
-				// 						data-height="634"
-				// 					>
-				// 						<InnerBlocks.Content />
-				// 					</span>
-				// 				</p>
-				// 			</div>
-				// 		</div>
-				// 		<div class="col span_9_of_12 graphics">
-				// 			<div
-				// 				class="graphics__image"
-				// 				role="img"
-				// 				aria-label={
-				// 					mediaAlt ??
-				// 					'Jonathan Kao Director’s New Innovator Award'
-				// 				}
-				// 				style={{
-				// 					backgroundImage:
-				// 						'url(' +
-				// 						(mediaUrl ??
-				// 							'https://picsum.photos/id/1005/500/700') +
-				// 						')',
-				// 				}}
-				// 			></div>
-				// 		</div>
-				// 	</section>
-				// </div>
 			);
 		break;
 		case 'full':
