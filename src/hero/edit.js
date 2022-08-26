@@ -172,9 +172,10 @@
                     />
                  </PanelBody>
                  {cardType === 'story' &&
-                    <PanelBody>
+                    <PanelBody title="Story Content Background Color">
                         <ColorPalette
                             colors={storyColors}
+                            disableCustomColors={true}
                             onChange={value=>{setAttributes({storyBg:value});setStoryBackground(value)}}
                         />
                     </PanelBody>
