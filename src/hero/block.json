@@ -44,6 +44,10 @@
 		"bannerContainer": {
 			"type": "string",
 			"default": "container"
+		},
+		"storyBg": {
+			"type": "string",
+			"default": "#fff"
 		}
 	}
 }
