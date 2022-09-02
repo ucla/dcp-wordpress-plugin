@@ -1,12 +1,441 @@
-.screenreader-only{display:block;overflow:hidden;height:0;position:absolute}
-.wp-block-uwai-uwai{background-color:var(--wp-admin-theme-color);color:#fff;padding:2px}.blade-links{margin:1em !important}a.btn.play::before{display:inline-block;content:"";width:15px;height:15px;background:url(/wp-content/themes/ucla-sc/images/icons/play-white.svg);background-size:contain;margin-right:5px}a.btn--secondary.play:hover::before{background:url(/wp-content/themes/ucla-sc/images/icons/play-white.svg);background-size:contain}a.btn--secondary.play::before{background:url(/wp-content/themes/ucla-sc/images/icons/play-defaultblue.svg);background-size:contain}a.btn--tertiary.play:hover::before{background:url(/wp-content/themes/ucla-sc/images/icons/play-white.svg);background-size:contain}a.btn--tertiary.play::before{background:url(/wp-content/themes/ucla-sc/images/icons/play-defaultblue.svg);background-size:contain}.blade-links .blade-links__box-link{color:#fff !important}.btn--lightbg{background:#00598c;color:#fff !important}
-.wp-block-uwai-uwai{background-color:var(--wp-admin-theme-color);color:#fff;padding:2px}.blade-links{margin:1em !important}
-.events-archive .event{border-top:1px solid #e5e5e5;padding:1rem;display:flex;flex-wrap:wrap}@media(min-width: 768px){.events-archive .event{flex-wrap:nowrap}}.events-archive .event .event-content{width:100%}.events-archive .event .event-img-wrapper{width:100%}@media(min-width: 768px){.events-archive .event .event-img-wrapper{width:32.26%;margin-right:1.6%}}.events-archive .event .event-img-wrapper .event-featured-img{max-width:100%;height:auto}.events-archive .event .event-img-wrapper .event-placeholder-wrapper{background-color:#00598c}.events-archive .event .event-img-wrapper .event-placeholder-wrapper .event-placeholder{opacity:.2;max-width:100%;height:auto}.events-archive .event .event-title{margin-bottom:0}.events-archive .event .event-title a{color:#00598c;text-decoration:none}.events-archive .event .event-title a:active,.events-archive .event .event-title a:visited{color:#00598c}.events-archive .event .event-title a:hover{color:#fff}.events-archive .event:last-of-type{border-bottom:1px solid #e5e5e5}.events-archive .event .event-info{margin-bottom:1rem;color:#666;font-size:.75rem;font-weight:bold;justify-content:space-between}@media(min-width: 576px){.events-archive .event .event-info{justify-content:flex-start}}.events-archive .event .event-info>div{margin-right:0}@media(min-width: 768px){.events-archive .event .event-info>div{margin-right:1rem}}.events-archive .event .event-info,.events-archive .event .event-start-date,.events-archive .event .event-time,.events-archive .event .event-location{display:flex;align-items:center}.events-archive .event .event-start-date svg,.events-archive .event .event-time svg,.events-archive .event .event-location svg{width:1rem;height:1rem;margin-right:6px}.event-page .event-info{margin-bottom:1rem;color:#666;font-size:.75rem;font-weight:bold;justify-content:space-between}@media(min-width: 576px){.event-page .event-info{justify-content:flex-start}}.event-page .event-info>div{margin-right:0}@media(min-width: 768px){.event-page .event-info>div{margin-right:1rem}}.event-page .event-info,.event-page .event-start-date,.event-page .event-time,.event-page .event-location{display:flex;align-items:center}.event-page .event-start-date svg,.event-page .event-time svg,.event-page .event-location svg{width:1rem;height:1rem;margin-right:6px}.event-page .event-featured-img{max-width:100%;height:auto}.event-page .event-placeholder-wrapper{background-color:#00598c}.event-page .event-placeholder-wrapper .event-placeholder{opacity:.2;width:100%;height:auto}.events-container{display:flex;justify-content:space-between;flex-wrap:wrap}.events-container .event-card-info .event-card-info__date{line-height:1;height:35px}.events-container .event-card-info .event-card-info__date .small-block{margin-top:0;line-height:1.3}.events-container .event-card-info .event-card-info__date .small-block .event-card-info__month{padding-top:0}.events-container .event-card-info .event-card-info__date .event-card-info__number{margin-left:.3rem}.events-container .event-card-info .event-card-info__time,.events-container .event-card-info .event-card-info__location{display:block}
-.hero-banner-container{background-position:center center;background-repeat:no-repeat;background-size:cover;height:436px}.hero-banner-container.full-width{padding:0 100vw;margin:0 -100vw}@media(min-width: 992px){.hero-banner-container.full-width{padding:0 50vw;margin:0 -50vw}}.story>.story__featured{float:none}@media(min-width: 1024px){.story__featured{float:left}.story__featured .story__featured-image{width:75%;height:auto;max-height:540px;-o-object-fit:cover;object-fit:cover}.story__featured .story__featured-content{width:50%;max-width:576px;top:50%;transform:none}}@media(min-width: 1280px){.col[class*=span] .story{padding:0}}
-.wp-block-uwai-uwai{background-color:var(--wp-admin-theme-color);color:#fff;padding:2px}.blade-links{margin:1em !important}
-.publications-archive .entry-title{color:#00598c}.publications-archive .entry-title::before{content:"";margin-right:1rem;border-left:8px solid #ffd100}.publications-archive .basic-card{margin:32px .8rem 0 0}.publications-archive .publication-img{max-width:100%;height:350px;-o-object-fit:cover;object-fit:cover}.publication-container{display:flex;justify-content:space-between;gap:2%}.publication-container .basic-card{margin:0}.publication-container .basic-card>.basic-card__info-wrapper{padding:1rem 0}.publication-container .basic-card>.basic-card__info-wrapper .basic-card__title span a{text-decoration:none;color:#00598c}.publication-container .basic-card>.basic-card__info-wrapper .basic-card__title span a:hover{color:#fff}
-.wp-block-uwai-uwai{background-color:var(--wp-admin-theme-color);color:#fff;padding:2px}.blade-links{margin:1em !important}
-.wp-block-uwai-uwai{background-color:var(--wp-admin-theme-color);color:#fff;padding:2px}.blade-links{margin:1em !important}.uwai-recent-post{display:flex;flex-direction:column}@media(min-width: 768px){.uwai-recent-post{flex-direction:row}.uwai-recent-post.right{flex-direction:column;align-items:flex-end}.uwai-recent-post.left{flex-direction:column;align-items:flex-start}.uwai-recent-post.center{flex-direction:row;justify-content:center}.uwai-recent-post.wide{flex-direction:row;justify-content:space-between}.uwai-recent-post.full{flex-direction:row;justify-content:space-around}}
-.wp-block-uwai-ribbon.ribbon h1,.wp-block-uwai-ribbon.ribbon h2,.wp-block-uwai-ribbon.ribbon h3,.wp-block-uwai-ribbon.ribbon h4,.wp-block-uwai-ribbon.ribbon h5,.wp-block-uwai-ribbon.ribbon h6{line-height:1.4}.wp-block-uwai-ribbon.ribbon.has-molecule h1,.wp-block-uwai-ribbon.ribbon.has-molecule h2,.wp-block-uwai-ribbon.ribbon.has-molecule h3,.wp-block-uwai-ribbon.ribbon.has-molecule h4,.wp-block-uwai-ribbon.ribbon.has-molecule h5,.wp-block-uwai-ribbon.ribbon.has-molecule h6{position:relative;z-index:1}.wp-block-uwai-ribbon.ribbon.has-molecule h1::before,.wp-block-uwai-ribbon.ribbon.has-molecule h2::before,.wp-block-uwai-ribbon.ribbon.has-molecule h3::before,.wp-block-uwai-ribbon.ribbon.has-molecule h4::before,.wp-block-uwai-ribbon.ribbon.has-molecule h5::before,.wp-block-uwai-ribbon.ribbon.has-molecule h6::before{content:"";background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='135' height='135'%3E%3Cpath d='M63.967.093l48.7 17.245 22.24 46.63-17.245 48.698-46.63 22.241-48.698-17.245L.093 71.032l17.245-48.698z' fill='%23FFD100' fill-rule='evenodd' opacity='.5'/%3E%3C/svg%3E");width:135px;height:135px;display:block;z-index:-1;position:absolute;top:-40px;left:-50px}
-.left-align{margin:0 !important}
-.wp-block-uwai-uwai{background-color:var(--wp-admin-theme-color);color:#fff;padding:2px}.blade-links{margin:1em !important}.blade-links .blade-links__box-link{color:#fff !important}
+.screenreader-only {
+  display: block;
+  overflow: hidden;
+  height: 0;
+  position: absolute;
+}
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-uwai-uwai {
+  background-color: var(--wp-admin-theme-color);
+  color: #fff;
+  padding: 2px;
+}
+
+.blade-links {
+  margin: 1em !important;
+}
+
+a.btn.play::before {
+  display: inline-block;
+  content: "";
+  width: 15px;
+  height: 15px;
+  background: url(/wp-content/themes/ucla-sc/images/icons/play-white.svg);
+  background-size: contain;
+  margin-right: 5px;
+}
+
+a.btn--secondary.play:hover::before {
+  background: url(/wp-content/themes/ucla-sc/images/icons/play-white.svg);
+  background-size: contain;
+}
+
+a.btn--secondary.play::before {
+  background: url(/wp-content/themes/ucla-sc/images/icons/play-defaultblue.svg);
+  background-size: contain;
+}
+
+a.btn--tertiary.play:hover::before {
+  background: url(/wp-content/themes/ucla-sc/images/icons/play-white.svg);
+  background-size: contain;
+}
+
+a.btn--tertiary.play::before {
+  background: url(/wp-content/themes/ucla-sc/images/icons/play-defaultblue.svg);
+  background-size: contain;
+}
+
+.blade-links .blade-links__box-link {
+  color: #fff !important;
+}
+
+.btn--lightbg {
+  background: #00598c;
+  color: #fff !important;
+}
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-uwai-uwai {
+  background-color: var(--wp-admin-theme-color);
+  color: #fff;
+  padding: 2px;
+}
+
+.blade-links {
+  margin: 1em !important;
+}
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.events-archive .event {
+  border-top: 1px solid #e5e5e5;
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+@media (min-width: 768px) {
+  .events-archive .event {
+    flex-wrap: nowrap;
+  }
+}
+.events-archive .event .event-content {
+  width: 100%;
+}
+.events-archive .event .event-img-wrapper {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .events-archive .event .event-img-wrapper {
+    width: 32.26%;
+    margin-right: 1.6%;
+  }
+}
+.events-archive .event .event-img-wrapper .event-featured-img {
+  max-width: 100%;
+  height: auto;
+}
+.events-archive .event .event-img-wrapper .event-placeholder-wrapper {
+  background-color: #00598c;
+}
+.events-archive .event .event-img-wrapper .event-placeholder-wrapper .event-placeholder {
+  opacity: 0.2;
+  max-width: 100%;
+  height: auto;
+}
+.events-archive .event .event-title {
+  margin-bottom: 0;
+}
+.events-archive .event .event-title a {
+  color: #00598C;
+  text-decoration: none;
+}
+.events-archive .event .event-title a:active, .events-archive .event .event-title a:visited {
+  color: #00598C;
+}
+.events-archive .event .event-title a:hover {
+  color: white;
+}
+.events-archive .event:last-of-type {
+  border-bottom: 1px solid #e5e5e5;
+}
+.events-archive .event .event-info {
+  margin-bottom: 1rem;
+  color: #666;
+  font-size: 0.75rem;
+  font-weight: bold;
+  justify-content: space-between;
+}
+@media (min-width: 576px) {
+  .events-archive .event .event-info {
+    justify-content: flex-start;
+  }
+}
+.events-archive .event .event-info > div {
+  margin-right: 0;
+}
+@media (min-width: 768px) {
+  .events-archive .event .event-info > div {
+    margin-right: 1rem;
+  }
+}
+.events-archive .event .event-info, .events-archive .event .event-start-date, .events-archive .event .event-time, .events-archive .event .event-location {
+  display: flex;
+  align-items: center;
+}
+.events-archive .event .event-start-date svg, .events-archive .event .event-time svg, .events-archive .event .event-location svg {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 6px;
+}
+
+.event-page .event-info {
+  margin-bottom: 1rem;
+  color: #666;
+  font-size: 0.75rem;
+  font-weight: bold;
+  justify-content: space-between;
+}
+@media (min-width: 576px) {
+  .event-page .event-info {
+    justify-content: flex-start;
+  }
+}
+.event-page .event-info > div {
+  margin-right: 0;
+}
+@media (min-width: 768px) {
+  .event-page .event-info > div {
+    margin-right: 1rem;
+  }
+}
+.event-page .event-info, .event-page .event-start-date, .event-page .event-time, .event-page .event-location {
+  display: flex;
+  align-items: center;
+}
+.event-page .event-start-date svg, .event-page .event-time svg, .event-page .event-location svg {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 6px;
+}
+.event-page .event-featured-img {
+  max-width: 100%;
+  height: auto;
+}
+.event-page .event-placeholder-wrapper {
+  background-color: #00598c;
+}
+.event-page .event-placeholder-wrapper .event-placeholder {
+  opacity: 0.2;
+  width: 100%;
+  height: auto;
+}
+
+.events-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.events-container .event-card-info .event-card-info__date {
+  line-height: 1;
+  height: 35px;
+}
+.events-container .event-card-info .event-card-info__date .small-block {
+  margin-top: 0;
+  line-height: 1.3;
+}
+.events-container .event-card-info .event-card-info__date .small-block .event-card-info__month {
+  padding-top: 0;
+}
+.events-container .event-card-info .event-card-info__date .event-card-info__number {
+  margin-left: 0.3rem;
+}
+.events-container .event-card-info .event-card-info__time, .events-container .event-card-info .event-card-info__location {
+  display: block;
+}
+.hero-banner-container {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 436px;
+}
+.hero-banner-container.full-width {
+  padding: 0 100vw;
+  margin: 0 -100vw;
+}
+@media (min-width: 992px) {
+  .hero-banner-container.full-width {
+    padding: 0 50vw;
+    margin: 0 -50vw;
+  }
+}
+
+@media (min-width: 1024px) {
+  .story.full-width .story__featured-image {
+    position: absolute;
+    left: 50%;
+    width: 100vw;
+  }
+}
+.story > .story__featured {
+  float: none;
+}
+
+@media (min-width: 1024px) {
+  .story__featured {
+    float: left;
+  }
+  .story__featured .story__featured-image {
+    width: 75%;
+    height: auto;
+    max-height: 540px;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .story__featured .story__featured-content {
+    width: 50%;
+    max-width: 576px;
+    top: 50%;
+    transform: none;
+  }
+}
+@media (min-width: 1280px) {
+  .col[class*=span] .story {
+    padding: 0;
+  }
+}
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-uwai-uwai {
+  background-color: var(--wp-admin-theme-color);
+  color: #fff;
+  padding: 2px;
+}
+
+.blade-links {
+  margin: 1em !important;
+}
+.publications-archive .entry-title {
+  color: #00598c;
+}
+.publications-archive .entry-title::before {
+  content: "";
+  margin-right: 1rem;
+  border-left: 8px solid #FFD100;
+}
+.publications-archive .basic-card {
+  margin: 32px 0.8rem 0 0;
+}
+.publications-archive .publication-img {
+  max-width: 100%;
+  height: 350px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.publication-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2%;
+}
+.publication-container .basic-card {
+  margin: 0;
+}
+.publication-container .basic-card > .basic-card__info-wrapper {
+  padding: 1rem 0;
+}
+.publication-container .basic-card > .basic-card__info-wrapper .basic-card__title span a {
+  text-decoration: none;
+  color: #00598c;
+}
+.publication-container .basic-card > .basic-card__info-wrapper .basic-card__title span a:hover {
+  color: #fff;
+}
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-uwai-uwai {
+  background-color: var(--wp-admin-theme-color);
+  color: #fff;
+  padding: 2px;
+}
+
+.blade-links {
+  margin: 1em !important;
+}
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-uwai-uwai {
+  background-color: var(--wp-admin-theme-color);
+  color: #fff;
+  padding: 2px;
+}
+
+.blade-links {
+  margin: 1em !important;
+}
+
+.uwai-recent-post {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .uwai-recent-post {
+    flex-direction: row;
+  }
+
+  .uwai-recent-post.right {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .uwai-recent-post.left {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .uwai-recent-post.center {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .uwai-recent-post.wide {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .uwai-recent-post.full {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+.wp-block-uwai-ribbon.ribbon h1, .wp-block-uwai-ribbon.ribbon h2, .wp-block-uwai-ribbon.ribbon h3, .wp-block-uwai-ribbon.ribbon h4, .wp-block-uwai-ribbon.ribbon h5, .wp-block-uwai-ribbon.ribbon h6 {
+  line-height: 1.4;
+}
+.wp-block-uwai-ribbon.ribbon.has-molecule h1, .wp-block-uwai-ribbon.ribbon.has-molecule h2, .wp-block-uwai-ribbon.ribbon.has-molecule h3, .wp-block-uwai-ribbon.ribbon.has-molecule h4, .wp-block-uwai-ribbon.ribbon.has-molecule h5, .wp-block-uwai-ribbon.ribbon.has-molecule h6 {
+  position: relative;
+  z-index: 1;
+}
+.wp-block-uwai-ribbon.ribbon.has-molecule h1::before, .wp-block-uwai-ribbon.ribbon.has-molecule h2::before, .wp-block-uwai-ribbon.ribbon.has-molecule h3::before, .wp-block-uwai-ribbon.ribbon.has-molecule h4::before, .wp-block-uwai-ribbon.ribbon.has-molecule h5::before, .wp-block-uwai-ribbon.ribbon.has-molecule h6::before {
+  content: "";
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='135' height='135'%3E%3Cpath d='M63.967.093l48.7 17.245 22.24 46.63-17.245 48.698-46.63 22.241-48.698-17.245L.093 71.032l17.245-48.698z' fill='%23FFD100' fill-rule='evenodd' opacity='.5'/%3E%3C/svg%3E");
+  width: 135px;
+  height: 135px;
+  display: block;
+  z-index: -1;
+  position: absolute;
+  top: -40px;
+  left: -50px;
+}
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.left-align {
+  margin: 0 !important;
+}
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-uwai-uwai {
+  background-color: var(--wp-admin-theme-color);
+  color: #fff;
+  padding: 2px;
+}
+
+.blade-links {
+  margin: 1em !important;
+}
+.blade-links .blade-links__box-link {
+  color: #ffffff !important;
+}
+
+/*# sourceMappingURL=style-index.css.map*/

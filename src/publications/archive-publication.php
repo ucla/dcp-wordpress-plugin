@@ -1,7 +1,5 @@
 <?php
-/*
-Template Name: Archives - Publication
-*/
+
 get_header(); ?>
 <main id="main" class="publications-archive">
     <header class="header">

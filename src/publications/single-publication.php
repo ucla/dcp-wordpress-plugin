@@ -1,5 +1,5 @@
 <?php
-    /* Template Name: Publication Template */
+
     global $id;
 
     $thumb_id = get_post_thumbnail_id( $id );

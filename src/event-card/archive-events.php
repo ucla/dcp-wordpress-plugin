@@ -1,8 +1,4 @@
 <?php
-/*
-Template Name: Archives - Events
-*/
-
 date_default_timezone_set('America/Los_Angeles');
 $today = date('Ymd');
 $time = date("G:i:s", strtotime("-30 minutes"));
