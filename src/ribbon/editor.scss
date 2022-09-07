@@ -1,0 +1,19 @@
+.block-editor-block-list__block.wp-block .ribbon {
+    & * {
+        white-space: normal;
+    }
+    h1,h2,h3,h4,h5,h6 {
+        line-height: 1.4;
+        position: relative;
+        z-index: 1;
+    }
+
+    &.ribbon--highlight {
+
+        h1,h2,h3,h4,h5,h6 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 2;
+        }
+    }
+}

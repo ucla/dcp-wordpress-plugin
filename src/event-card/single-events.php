@@ -1,12 +1,13 @@
 <?php
-    /* Template Name: Events Template */
+
     global $id;
 
     $thumb_id = get_post_thumbnail_id( $id );
-
+    
     if ( '' != $thumb_id ) {
         $thumb_url  = wp_get_attachment_image_src( $thumb_id, 'full', true );
         $image      = $thumb_url[0];
+        $image_alt_text =  get_post_meta($thumb_id, '_wp_attachment_image_alt', true);
     }
     get_header();
 ?>
@@ -83,9 +84,20 @@
         <div class="col span_1_of_12" style="min-height:1px;"></div>
 
         <div class="col span_4_of_12">
-            <figure>
-                <img class="event-featured-img" src="<?= $image ?>" />
-            </figure>
+            <?php
+                if (has_post_thumbnail()) {
+            ?>
+                <figure>
+                    <img class="event-featured-img" src="<?= $image ?>" alt="<?= $image_alt_text ?>" />
+                </figure>
+            <?php
+                } else {
+                    $plugin_url = plugin_dir_url(__FILE__);
+            ?>
+                <figure class="event-placeholder-wrapper">
+                    <img class="event-placeholder" src="<?=$plugin_url ?>ucla-image-placeholder.jpg" alt="<?php the_title(); ?>" />
+                </figure>
+            <?php } ?>
         </div>
     </div>
     <hr />

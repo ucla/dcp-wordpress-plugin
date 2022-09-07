@@ -32,6 +32,15 @@
 				max-width: 100%;
 				height: auto;
 			}
+			.event-placeholder-wrapper {
+				background-color:#00598c;
+
+				.event-placeholder {
+					opacity: .2;
+					max-width: 100%;
+					height: auto;
+				}
+			}
 		}
 
 		.event-title {
@@ -123,6 +132,15 @@
 	.event-featured-img {
 		max-width: 100%;
 		height: auto;
+	}
+	.event-placeholder-wrapper {
+		background-color:#00598c;
+
+		.event-placeholder {
+			opacity: 0.2;
+			width: 100%;
+			height: auto;
+		}
 	}
 }
 

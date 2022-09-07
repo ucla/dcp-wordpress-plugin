@@ -1,8 +1,4 @@
 <?php
-/*
-Template Name: Archives - Events
-*/
-
 date_default_timezone_set('America/Los_Angeles');
 $today = date('Ymd');
 $time = date("G:i:s", strtotime("-30 minutes"));
@@ -67,10 +63,19 @@ get_header(); ?>
                     <div class="event-img-wrapper">
                         <?php
                         // Get thumbnail URL only to avoid inline image sizing
-                        $thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium', false ); ?>
-                        <figure>
-                            <img src="<?php echo $thumbnail[0]; ?>" class="event-featured-img" alt="">
-                        </figure>
+                        $thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium', false ); 
+                        if (has_post_thumbnail()) {
+                        ?>
+                            <figure>
+                                <img src="<?php echo $thumbnail[0]; ?>" class="event-featured-img" alt="<?= the_title() ?>">
+                            </figure>
+                        <?php } else { 
+                            $plugin_url = plugin_dir_url(__FILE__);
+                        ?>
+                            <figure class="event-placeholder-wrapper">
+                                <img class="event-placeholder" src="<?=$plugin_url ?>ucla-image-placeholder.jpg" alt="<?php the_title(); ?>" />
+                            </figure>
+                        <?php } ?>
                     </div>
                     <div class="event-content">
                         <h3 class="event-title"><a href="<?php echo get_permalink( $post->ID ); ?>"><?=the_title(); ?></a></h3>
@@ -186,10 +191,18 @@ get_header(); ?>
                     <div class="event-img-wrapper">
                         <?php
                         // Get thumbnail URL only to avoid inline image sizing
-                        $thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium', false ); ?>
-                        <figure>
-                            <img src="<?php echo $thumbnail[0]; ?>" class="event-featured-img" alt="">
-                        </figure>
+                        $thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium', false ); if (has_post_thumbnail()) {
+                            ?>
+                                <figure>
+                                    <img src="<?php echo $thumbnail[0]; ?>" class="event-featured-img" alt="<?= the_title() ?>">
+                                </figure>
+                            <?php } else { 
+                                $plugin_url = plugin_dir_url(__FILE__);
+                            ?>
+                                <figure class="event-placeholder-wrapper">
+                                    <img class="event-placeholder" src="<?=$plugin_url ?>ucla-image-placeholder.jpg" alt="<?php the_title(); ?>" />
+                                </figure>
+                            <?php } ?>
                     </div>
                     <div class="event-content">
                         <h3 class="event-title"><a href="<?php echo get_permalink( $post->ID ); ?>"><?=the_title(); ?></a></h3>

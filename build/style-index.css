@@ -79,517 +79,216 @@ a.btn--tertiary.play::before {
  *
  * Replace them with your own styles or remove the file completely.
  */
-.wp-block-uwai-uwai {
-  background-color: var(--wp-admin-theme-color);
-  color: #fff;
-  padding: 2px;
+.events-archive .event {
+  border-top: 1px solid #e5e5e5;
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+@media (min-width: 768px) {
+  .events-archive .event {
+    flex-wrap: nowrap;
+  }
+}
+.events-archive .event .event-content {
+  width: 100%;
+}
+.events-archive .event .event-img-wrapper {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .events-archive .event .event-img-wrapper {
+    width: 32.26%;
+    margin-right: 1.6%;
+  }
+}
+.events-archive .event .event-img-wrapper .event-featured-img {
+  max-width: 100%;
+  height: auto;
+}
+.events-archive .event .event-img-wrapper .event-placeholder-wrapper {
+  background-color: #00598c;
+}
+.events-archive .event .event-img-wrapper .event-placeholder-wrapper .event-placeholder {
+  opacity: 0.2;
+  max-width: 100%;
+  height: auto;
+}
+.events-archive .event .event-title {
+  margin-bottom: 0;
+}
+.events-archive .event .event-title a {
+  color: #00598C;
+  text-decoration: none;
+}
+.events-archive .event .event-title a:active, .events-archive .event .event-title a:visited {
+  color: #00598C;
+}
+.events-archive .event .event-title a:hover {
+  color: white;
+}
+.events-archive .event:last-of-type {
+  border-bottom: 1px solid #e5e5e5;
+}
+.events-archive .event .event-info {
+  margin-bottom: 1rem;
+  color: #666;
+  font-size: 0.75rem;
+  font-weight: bold;
+  justify-content: space-between;
+}
+@media (min-width: 576px) {
+  .events-archive .event .event-info {
+    justify-content: flex-start;
+  }
+}
+.events-archive .event .event-info > div {
+  margin-right: 0;
+}
+@media (min-width: 768px) {
+  .events-archive .event .event-info > div {
+    margin-right: 1rem;
+  }
+}
+.events-archive .event .event-info, .events-archive .event .event-start-date, .events-archive .event .event-time, .events-archive .event .event-location {
+  display: flex;
+  align-items: center;
+}
+.events-archive .event .event-start-date svg, .events-archive .event .event-time svg, .events-archive .event .event-location svg {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 6px;
 }
 
-.blade-links {
-  margin: 1em !important;
+.event-page .event-info {
+  margin-bottom: 1rem;
+  color: #666;
+  font-size: 0.75rem;
+  font-weight: bold;
+  justify-content: space-between;
 }
-/**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
- */
-.screenreader-helper {
-  color: transparent;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+@media (min-width: 576px) {
+  .event-page .event-info {
+    justify-content: flex-start;
+  }
 }
-
-.wp-block-uwai-uwai {
-  background-color: var(--wp-admin-theme-color);
-  color: #fff;
-  padding: 2px;
+.event-page .event-info > div {
+  margin-right: 0;
 }
-
-.blade-links {
-  margin: 1em !important;
+@media (min-width: 768px) {
+  .event-page .event-info > div {
+    margin-right: 1rem;
+  }
 }
-
-.full-width {
-  width: 100vw !important;
-  position: relative !important;
-  left: 50% !important;
-  right: 50% !important;
-  margin-left: -50vw !important;
-  margin-right: -50vw !important;
+.event-page .event-info, .event-page .event-start-date, .event-page .event-time, .event-page .event-location {
+  display: flex;
+  align-items: center;
 }
-
-.full-width-notice {
-  position: relative;
-  /* for the child pseudo-elements */
+.event-page .event-start-date svg, .event-page .event-time svg, .event-page .event-location svg {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 6px;
 }
-
-.full-width-notice:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: -9999px;
-  right: 0;
-  border-left: 9999px solid #2774ae;
-  box-shadow: 9999px 0 0 #2774ae;
+.event-page .event-featured-img {
+  max-width: 100%;
+  height: auto;
+}
+.event-page .event-placeholder-wrapper {
+  background-color: #00598c;
+}
+.event-page .event-placeholder-wrapper .event-placeholder {
+  opacity: 0.2;
+  width: 100%;
+  height: auto;
 }
 
-.featured-image > img {
-  height: 50vh;
-  width: auto;
-  margin: auto;
+.events-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.events-container .event-card-info .event-card-info__date {
+  line-height: 1;
+  height: 35px;
+}
+.events-container .event-card-info .event-card-info__date .small-block {
+  margin-top: 0;
+  line-height: 1.3;
+}
+.events-container .event-card-info .event-card-info__date .small-block .event-card-info__month {
+  padding-top: 0;
+}
+.events-container .event-card-info .event-card-info__date .event-card-info__number {
+  margin-left: 0.3rem;
+}
+.events-container .event-card-info .event-card-info__time, .events-container .event-card-info .event-card-info__location {
   display: block;
 }
-
-.post-time {
-  margin-top: 10px;
-  margin-bottom: 40px;
-  font-size: 1rem;
-  font-weight: 700;
-}
-
-@media (min-width: 1024px) {
-  .post-header {
-    margin-bottom: 30px !important;
-  }
-}
-body, html {
-  overflow-x: hidden;
-}
-
-h2.fancy::before {
-  margin-right: 18px;
-  border-left: 8px solid #FFD100;
-  content: "";
-}
-
-h2.fancy {
-  color: white !important;
-  font-size: 2.25rem !important;
-  font-weight: bold !important;
-}
-
-.custom_events_manager_list td {
-  padding: 10px;
-}
-
-.custom_events_manager_list th {
-  font-weight: bold;
-  font-size: 2rem;
-}
-
-.custom_events_manager_list thead tr:first-child th {
-  width: 200px !important;
-}
-
-.custom_events_manager_list {
-  margin-bottom: 30px;
-}
-
-/*******
-
- Hero
-
- The HTML structure consists of:
-
- I. Section Tag - This section tag is used to style the size of
- the section across mobile, tablet and desktop platforms. It also
- wraps the two child classes in section II and III below
-
- <section id="hero" class="section group" aria-labelledby="hero-heading">
-CONTENT IN FROM II and III BETWEEEN
- </section>
-
- II. Copy Div
-
-  The top level 'copy' div includes a copy wrapper that wraps the:
-
-  a. Screen-reader - Only shown to screen readers. The text should
-  be the same as the headline in section II-b.
-	<h1 id="hero-heading" class="screenreader-only"> SCREEN READER TEXT
-
-  b. Headline - Main header of this section. The text is wrapped in
-  the with spans(ribbon).
-  PLEASE_NOTE: As the hero's content is changed, each span's margin
-  and/or padding will need to be adjusted to adjust spacing between
-  words. This includes specific breakpoints across devices
-
-  <div class="copy__headline">
-	<span class="copy__headline-ribbon">HEADLINE</span>
-	<span class="copy__headline-ribbon">TEXT</span>
-
-  c. Supporting Text -  Short excerpt text supporting main headline
-	<p class="copy__supporting-text">SUPPORTING TEXT
-
-  d. Button - CTA button
-
-	(1) no video link
-	<a class="copy__cta" href="LINK" data-width="1128" data-height="634">
-	  <button class="copy__cta-button btn primary-blue">
-		<span class="copy__cta-button-text">TEXT IN BUTTON
-
-	(2) with video link
-	<a class="copy__cta fancybox" href="VIDEO LINK" data-width="1128" data-height="634">
-	  <button class="copy__cta-button btn primary-blue">
-		<img class="copy__cta-button-play" src="/img/play-button.svg" alt="">
-		<span class="copy__cta-button-text">TEXT IN BUTTON
-
- III. Graphics Div - Graphics div wraps:
-
-  a. Main section's image - Image's link is included within the stylsheet
-	<div class="graphics__image" role="img" aria-label="DESCRIPTION OF IMAGE">
-
-  b. Yellow molecule graphic
-	<img class="graphics__molecule" src="/img/polygon.png" alt="">
-
- Example:
-
- I. Main section
- <section id="hero" class="section group" aria-labelledby="hero-heading">
-
-II. Copy Div
-<div class="copy">
-  <div class="col span_3_of_12 copy__wrapper">
-	// a. Screen-reader
-	<h1 id="hero-heading" class="screenreader-only">U.S. High Schools Grapple with Political Incivility</h1>
-	// b. Headline/ribbon
-	  <div class="copy__headline">
-	  <span class="copy__headline-ribbon">U.S. HIGH</span>
-	  <span class="copy__headline-ribbon">SCHOOLS</span>
-	  <span class="copy__headline-ribbon">GRAPPLE WITH</span>
-	  <span class="copy__headline-ribbon">POLITICAL</span>
-	  <span class="copy__headline-ribbon">INCIVILITY</span>
-	</div>
-	// c. Supporting text
-	<p class="copy__supporting-text">A UCLA report reveals rising hate in schools across the country, and highlights efforts to address the behavior.</p>
-	// d. CTA button
-	<a class="copy__cta" href="https://centerx.gseis.ucla.edu/ucla-idea-survey-finds-schools-challenged-by-political-incivility-racial-tensions/" data-width="1128" data-height="634">
-	  <button class="copy__cta-button btn primary-blue">
-		<span class="copy__cta-button-text">Read the Article</span>
-	  </button>
-	</a>
-  </div>
-</div>
-
-III. Graphics Div
-<div class="col span_9_of_12 graphics">
-  // a. Section's Image
-  <div class="graphics__image" role="img" aria-label="Girl in distress against locker"></div>
-  // b. Molecule Graphic
-  <img class="graphics__molecule" src="/img/polygon.png" alt="">
-</div>
-
- </section>
-  *******/
-section#hero {
-  position: relative;
-  width: 100%;
-  height: 600px;
-  clear: both;
-}
-
-@media only screen and (min-width: 600px) {
-  section#hero {
-    height: 680px;
-  }
-}
-@media (min-width: 768px) {
-  section#hero {
-    height: 800px;
-  }
-}
-@media only screen and (min-width: 900px) {
-  section#hero {
-    height: 480px;
-  }
-}
-@media (min-width: 1024px) {
-  section#hero {
-    height: 650px;
-    padding-top: 48px;
-  }
-}
-@media only screen and (min-width: 1200px) {
-  section#hero .copy {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-}
-section#hero .copy__wrapper {
-  position: absolute;
-  max-width: 460px;
-  margin-top: 205px;
-  padding-left: 24px;
-  z-index: 1;
-}
-
-@media only screen and (min-width: 480px) {
-  section#hero .copy__wrapper {
-    width: 100% !important;
-  }
-}
-@media (min-width: 480px) {
-  section#hero .copy__wrapper {
-    margin-top: 275px;
-  }
-}
-@media (min-width: 600px) {
-  section#hero .copy__wrapper {
-    max-width: 100%;
-    margin-top: 350px;
-  }
-}
-@media (min-width: 768px) {
-  section#hero .copy__wrapper {
-    margin-top: 500px;
-  }
-}
-@media only screen and (min-width: 900px) {
-  section#hero .copy__wrapper {
-    position: relative;
-    max-width: 580px;
-    margin-top: 48px;
-  }
-}
-@media (min-width: 1280px) {
-  section#hero .copy__wrapper {
-    padding-left: 0;
-  }
-}
-section#hero .copy__headline {
-  margin-bottom: 26px;
-  font-size: 2rem;
-  font-weight: bold;
-  line-height: 2rem;
-  text-transform: uppercase;
-  color: #FFFFFF;
-}
-
-@media only screen and (max-width: 320px) {
-  section#hero .copy__headline {
-    font-size: 1.75rem;
-    line-height: 1.75rem;
-  }
-}
-@media only screen and (min-width: 900px) {
-  section#hero .copy__headline {
-    font-size: 3rem;
-    line-height: 3rem;
-  }
-}
-section#hero .copy__headline-ribbon {
-  display: inline-block;
-  padding: 6px 12px;
-  margin-bottom: 2px;
-  background: #2774AE;
-}
-
-section#hero .copy__headline-ribbon:nth-child(4),
-section#hero .copy__headline-ribbon:nth-child(5) {
-  margin-left: 0;
-  padding-left: 6px;
-}
-
-@media only screen and (min-width: 394px) {
-  section#hero .copy__headline-ribbon:nth-child(2) {
-    margin-left: -10px;
-    padding-left: 0;
-  }
-}
-@media only screen and (min-width: 401px) {
-  section#hero .copy__headline-ribbon:nth-child(5) {
-    margin-left: -10px;
-    padding-left: 0;
-  }
-}
-@media (min-width: 600px) {
-  section#hero .copy__headline-ribbon {
-    padding: 6px 8px;
-  }
-
-  section#hero .copy__headline-ribbon:nth-child(4) {
-    margin-left: -10px;
-    padding-left: 0;
-  }
-
-  section#hero .copy__headline-ribbon:nth-child(5) {
-    margin-left: 0;
-    padding-left: 6px;
-  }
-}
-@media only screen and (min-width: 619px) {
-  section#hero .copy__headline-ribbon:nth-child(3),
-section#hero .copy__headline-ribbon:nth-child(5) {
-    margin-left: -10px;
-    padding-left: 0;
-  }
-
-  section#hero .copy__headline-ribbon:nth-child(4) {
-    margin-left: 0;
-    padding-left: 6px;
-  }
-}
-@media only screen and (min-width: 787px) {
-  section#hero .copy__headline-ribbon:nth-child(3),
-section#hero .copy__headline-ribbon:nth-child(4) {
-    margin-left: -10px;
-    padding-left: 0;
-  }
-
-  section#hero .copy__headline-ribbon:nth-child(5) {
-    margin-left: 0;
-    padding-left: 6px;
-  }
-}
-@media only screen and (min-width: 900px) {
-  section#hero .copy__headline-ribbon {
-    padding: 6px 12px;
-  }
-
-  section#hero .copy__headline-ribbon:nth-child(2) {
-    margin-left: -14px;
-    padding-left: 0;
-  }
-
-  section#hero .copy__headline-ribbon:nth-child(3) {
-    margin-left: 0;
-    padding-left: 6px;
-  }
-
-  section#hero .copy__headline-ribbon:nth-child(4) {
-    margin-left: 0;
-    padding-left: 6px;
-  }
-
-  /*   section#hero .copy__headline-ribbon:nth-child(5) {
-    margin-left: -15px;
-    padding-left: 6px;
-  } */
-}
-section#hero .copy__supporting-text {
-  width: 90%;
-  max-width: 480px;
-  margin-bottom: 12px;
-  background: white;
-}
-
-@media (min-width: 600px) {
-  section#hero .copy__supporting-text {
-    width: 65%;
-    margin-bottom: 24px;
-    padding: 24px 24px 24px 0;
-  }
-}
-@media only screen and (min-width: 900px) {
-  section#hero .copy__supporting-text {
-    width: 65%;
-    margin-bottom: 24px;
-  }
-}
-@media (min-width: 1280px) {
-  section#hero .copy__supporting-text {
-    padding: 24px 24px 24px 0;
-  }
-}
-section#hero .copy .copy__cta-button {
-  padding: 12px 16px 8px;
-  background-color: #00598C;
-  border: none;
-  border-radius: 2px;
-  color: #FFFFFF;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-section#hero .copy .copy__cta-button:hover {
-  background-color: #0079BF;
-}
-
-section#hero .copy .copy__cta-button:active {
-  background-color: #003B5C;
-}
-
-section#hero .copy .copy__cta-button:focus {
-  box-shadow: none;
-  outline: 1px dotted #FFFFFF;
-  outline-offset: -3px;
-}
-
-section#hero .copy .copy__cta-button:visited {
-  background-color: #5223B0;
-}
-
-section#hero .copy .copy__cta-button-play {
-  vertical-align: bottom;
-}
-
-section#hero .copy .copy__cta-button-text {
-  position: relative;
-  bottom: 5px;
-  margin-left: 4px;
-}
-
-section#hero .graphics {
-  position: relative;
-  margin: 0;
-}
-
-@media only screen and (min-width: 480px) {
-  section#hero .graphics {
-    width: 100% !important;
-    margin-bottom: 0;
-  }
-}
-@media only screen and (min-width: 900px) {
-  section#hero .graphics {
-    position: absolute;
-    max-width: 55%;
-    right: 0;
-  }
-}
-@media (min-width: 1024px) {
-  section#hero .graphics {
-    max-width: 63%;
-  }
-}
-section#hero .graphics__image {
-  overflow: hidden;
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 379px;
+.hero-banner-container {
   background-position: center center;
-  background-image: url(/wp-content/themes/ucla-sc-child/img/hero-image.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 436px;
+}
+.hero-banner-container.full-width {
+  padding: 0 100vw;
+  margin: 0 -100vw;
+}
+@media (min-width: 992px) {
+  .hero-banner-container.full-width {
+    padding: 0 50vw;
+    margin: 0 -50vw;
+  }
+}
+.hero-banner-container .hero-banner__content h1, .hero-banner-container .hero-banner__content h2, .hero-banner-container .hero-banner__content h3, .hero-banner-container .hero-banner__content h4, .hero-banner-container .hero-banner__content h5, .hero-banner-container .hero-banner__content h6, .hero-banner-container .hero-banner__content p {
+  padding: 0;
 }
 
-@media (min-width: 768px) {
-  section#hero .graphics__image {
-    height: 475px;
-    background-image: url(/wp-content/themes/ucla-sc-child/img/hero-image.jpg);
+@media (max-width: 1023px) {
+  .story.full-width {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 0;
   }
 }
 @media (min-width: 1024px) {
-  section#hero .graphics__image {
-    height: 588px;
-    background-image: url(/wp-content/themes/ucla-sc-child/img/hero-image.jpg);
+  .story.full-width .story__featured-image {
+    position: absolute;
+    left: 50%;
   }
 }
-section#hero .graphics__molecule {
-  position: absolute;
-  width: auto;
-  height: 60px;
-  bottom: -18px;
-  right: 0;
-  opacity: 0.8;
+.story > .story__featured {
+  float: none;
+}
+.story > .story__featured h1, .story > .story__featured h2, .story > .story__featured h3, .story > .story__featured h4, .story > .story__featured h5, .story > .story__featured h6, .story > .story__featured p {
+  padding: 0;
 }
 
-@media (min-width: 600px) {
-  section#hero .graphics__molecule {
-    height: 160px;
-    bottom: -50px;
+@media (min-width: 1024px) {
+  .story__featured {
+    float: left;
+  }
+  .story__featured .story__featured-image {
+    width: 75%;
+    height: auto;
+    min-height: 540px;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .story__featured .story__featured-content {
+    width: 50%;
+    max-width: 576px;
+    top: 35%;
+    transform: none;
+  }
+}
+@media (min-width: 1280px) {
+  .col[class*=span] .story {
+    padding: 0;
   }
 }
 /**
@@ -708,6 +407,24 @@ section#hero .graphics__molecule {
     flex-direction: row;
     justify-content: space-around;
   }
+}
+.wp-block-uwai-ribbon.ribbon h1, .wp-block-uwai-ribbon.ribbon h2, .wp-block-uwai-ribbon.ribbon h3, .wp-block-uwai-ribbon.ribbon h4, .wp-block-uwai-ribbon.ribbon h5, .wp-block-uwai-ribbon.ribbon h6 {
+  line-height: 1.4;
+}
+.wp-block-uwai-ribbon.ribbon.has-molecule h1, .wp-block-uwai-ribbon.ribbon.has-molecule h2, .wp-block-uwai-ribbon.ribbon.has-molecule h3, .wp-block-uwai-ribbon.ribbon.has-molecule h4, .wp-block-uwai-ribbon.ribbon.has-molecule h5, .wp-block-uwai-ribbon.ribbon.has-molecule h6 {
+  position: relative;
+  z-index: 1;
+}
+.wp-block-uwai-ribbon.ribbon.has-molecule h1::before, .wp-block-uwai-ribbon.ribbon.has-molecule h2::before, .wp-block-uwai-ribbon.ribbon.has-molecule h3::before, .wp-block-uwai-ribbon.ribbon.has-molecule h4::before, .wp-block-uwai-ribbon.ribbon.has-molecule h5::before, .wp-block-uwai-ribbon.ribbon.has-molecule h6::before {
+  content: "";
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='135' height='135'%3E%3Cpath d='M63.967.093l48.7 17.245 22.24 46.63-17.245 48.698-46.63 22.241-48.698-17.245L.093 71.032l17.245-48.698z' fill='%23FFD100' fill-rule='evenodd' opacity='.5'/%3E%3C/svg%3E");
+  width: 135px;
+  height: 135px;
+  display: block;
+  z-index: -1;
+  position: absolute;
+  top: -40px;
+  left: -50px;
 }
 /**
  * The following styles get applied both on the front of your site
