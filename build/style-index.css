@@ -275,14 +275,14 @@ a.btn--tertiary.play::before {
   .story__featured .story__featured-image {
     width: 75%;
     height: auto;
-    max-height: 540px;
+    min-height: 540px;
     -o-object-fit: cover;
        object-fit: cover;
   }
   .story__featured .story__featured-content {
     width: 50%;
     max-width: 576px;
-    top: 50%;
+    top: 35%;
     transform: none;
   }
 }

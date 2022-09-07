@@ -62,14 +62,14 @@
 		.story__featured-image {
 			width: 75%;
 			height: auto;
-			max-height: 540px;
+			min-height: 540px;
 			object-fit: cover;
 		}
 
 		.story__featured-content {
 			width: 50%;
 			max-width: 576px;
-			top: 50%;
+			top: 35%;
 			transform: none;
 		}
 	}
