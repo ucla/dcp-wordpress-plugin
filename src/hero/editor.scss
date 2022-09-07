@@ -634,6 +634,10 @@
 		max-width: 1176px;
 		margin: 0 auto;
 		height: inherit;
+
+		h1,h2,h3,h4,h5,h6, p {
+			padding: 0;
+		}
 	}
 }
 .block-editor-block-list__block {
