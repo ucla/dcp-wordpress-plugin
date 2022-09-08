@@ -1,0 +1,19 @@
+{
+	"name": "uwai/gallery",
+	"title": "UWAI Gallery",
+	"category": "common",
+	"textdomain": "uwai",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"numberOfPosts": {
+			"type" : "number",
+			"default" : "2"
+		},
+		"displayExcerpt": {
+			"type": "boolean",
+			"default": false 
+		}
+	}
+}

@@ -21,6 +21,7 @@ new PluginUpdater(__FILE__, 'avelikanov/testpg', 'master'); */
 
 include __DIR__ . '/src/event-card/index.php';
 include __DIR__ . '/src/recent-posts/index.php';
+include __DIR__ . '/src/gallery-block/index.php';
 include __DIR__ . '/src/publications/index.php';
 
 function ucla_dcp_ucla_dcp_block_init() {
