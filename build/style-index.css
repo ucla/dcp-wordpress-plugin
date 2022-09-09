@@ -457,6 +457,11 @@ a.btn--tertiary.play::before {
 .gallery-container .basic-card__title a {
   text-decoration: none;
 }
+@media (max-width: 768px) {
+  .gallery-container .basic-card {
+    margin: 32px auto 0;
+  }
+}
 
 @media (min-width: 768px) {
   .gallery-container {

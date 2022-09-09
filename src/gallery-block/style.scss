@@ -9,6 +9,13 @@
             } 
         }
     }
+
+    @media (max-width: 768px){
+        .basic-card {
+            margin: 32px auto 0;
+        }
+    }     
+
 }
 
 @media (min-width: 768px) {
