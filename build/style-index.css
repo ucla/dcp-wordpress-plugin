@@ -447,6 +447,21 @@ a.btn--tertiary.play::before {
 .blade-links .blade-links__box-link {
   color: #ffffff !important;
 }
+.gallery-container {
+  display: flex;
+  flex-direction: column;
+}
+.gallery-container .basic-card__title {
+  margin: 0 0 1rem;
+}
+.gallery-container .basic-card__title a {
+  text-decoration: none;
+}
 
+@media (min-width: 768px) {
+  .gallery-container {
+    flex-direction: row;
+  }
+}
 
 /*# sourceMappingURL=style-index.css.map*/

@@ -65,7 +65,7 @@ function render_block_core_gallery_block( $attributes ) {
 			esc_url( $post_link ),
 			$featured_image
 		);
-		$gallery_markup .= '<div class="basic-card__info-wrapper"><h3 class="basic-card__title mb-0"><span>';
+		$gallery_markup .= '<div class="basic-card__info-wrapper"><h3 class="basic-card__title"><span>';
 		$gallery_markup .= sprintf(
 			'<a href="%1$s">%2$s</a>',
 			esc_url( $post_link ),

@@ -1,0 +1,18 @@
+.gallery-container {
+    display: flex;
+    flex-direction: column;
+    .basic-card {
+        &__title{
+            margin: 0 0 1rem;
+            a {
+                text-decoration: none;
+            } 
+        }
+    }
+}
+
+@media (min-width: 768px) {
+	.gallery-container {
+		flex-direction: row;
+	}
+}
