@@ -6,7 +6,37 @@
  *
  * @return string Returns the post content with latest posts added.
  */
-function render_block_core_gallery( $attributes ) {
+
+
+
+// namespace UCLAWPPLUGIN\Src\GalleryBlock;
+
+// add_action('plugins_loaded', __NAMESPACE__ . '\register_dynamic_block');
+
+// function register_dynamic_block() {
+//   // Only load if Gutenberg is available.
+//   if (!function_exists('register_block_type')) {
+//     return;
+//   }
+
+//   // Hook server side rendering into render callback
+//   // Make sure name matches registerBlockType in ./index.js
+//   register_block_type('uwai/gallery', array(
+//     'render_callback' => __NAMESPACE__ . '\render_block_core_gallery',
+//     'attributes' => [
+//         'numberOfPosts' => [
+//           'type' => 'number',
+//           'default' => 2
+//         ],
+//         'displayExcerpt' => [
+//           'type' => 'boolean',
+//           'default' => false
+//         ]
+//     ]
+//   ));
+// }
+
+function render_block_core_gallery_block( $attributes ) {
 	global $post;
 	$args = array(
 		'post_type'			=> 'gallery',
@@ -23,6 +53,7 @@ function render_block_core_gallery( $attributes ) {
 	update_post_thumbnail_cache( $query );
 	$gallery_markup = '<div class="gallery-container">';
 
+	// var_dump($recent_posts);
 	foreach ( $recent_posts as $post ) {
 		$post_link = esc_url( get_permalink( $post ) );
 		$title     = get_the_title( $post );
@@ -53,29 +84,15 @@ function render_block_core_gallery( $attributes ) {
 	return $gallery_markup;
 }
 
-namespace UCLAWPPLUGIN\Src\GalleryBlock;
+add_action('init', 'register_block_core_gallery_block');
 
-add_action('plugins_loaded', __NAMESPACE__ . '\register_dynamic_block');
 
-function register_dynamic_block() {
-  // Only load if Gutenberg is available.
-  if (!function_exists('register_block_type')) {
-    return;
-  }
-
-  // Hook server side rendering into render callback
-  // Make sure name matches registerBlockType in ./index.js
-  register_block_type('uwai/gallery', array(
-    'render_callback' => __NAMESPACE__ . '\render_block_core_gallery',
-    'attributes' => [
-        'numberOfPosts' => [
-          'type' => 'number',
-          'default' => 2
-        ],
-        'displayExcerpt' => [
-          'type' => 'boolean',
-          'default' => false
-        ]
-    ]
-  ));
+function register_block_core_gallery_block() {
+	register_block_type_from_metadata(
+		__DIR__,
+		array(
+			'render_callback' => 'render_block_core_gallery_block'
+		)
+		);
 }
+add_action('init', 'register_block_core_gallery_block');
