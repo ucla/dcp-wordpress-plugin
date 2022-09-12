@@ -66,7 +66,9 @@ export default function Edit({
 								imageURL : imageURL = gallery._embedded['wp:featuredmedia'][0].source_url;
 							return (
 								<article className="basic-card">
-									<img class="basic-card__image" src={imageURL} alt={gallery.title.rendered} />
+									{imageURL != null && 
+										<img class="basic-card__image" src={imageURL} alt={gallery.title.rendered} />
+									}
 									
 									<div className="basic-card__info-wrapper">
 										<h3 className="basic-card__title">

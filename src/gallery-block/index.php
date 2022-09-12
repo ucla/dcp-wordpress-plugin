@@ -57,7 +57,7 @@ function render_block_core_gallery_block( $attributes ) {
 	foreach ( $recent_posts as $post ) {
 		$post_link = esc_url( get_permalink( $post ) );
 		$title     = get_the_title( $post );
-		$featured_image = get_the_post_thumbnail($post,'large',array('class'=>'basic-card__image'));
+		$featured_image = get_the_post_thumbnail($post,'large',array('class'=>'basic-card__image', 'alt' =>$title));
     	$gallery_excerpt = get_the_excerpt($post);
 		$gallery_markup .= '<article class="basic-card">';
 		$gallery_markup .= sprintf(
