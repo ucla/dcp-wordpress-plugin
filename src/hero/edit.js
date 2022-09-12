@@ -98,7 +98,8 @@
      const storyColors = [
         { name: 'White', color: '#fff' },
         { name: 'UCLA Blue', color: '#2774AE' }
-     ]
+     ];
+     const innerAllowed = [ 'core/paragraph', 'core/heading', 'core/button', 'uwai/button', 'uwai/ribbon' ];
 	 const blockProps = useBlockProps({
         className: type === 'story' ? `hero-story${width === 'fluid' ? ' full-width' : ''}` : `hero-banner${width === 'fluid' ? ' full-width' : ''}`
      });
@@ -213,6 +214,7 @@
                                  )}
                              />
                          </MediaUploadCheck>
+                         {width === 'fluid' && <p><small>Hi-resolution image is recommended for Full Width</small></p>}
                          {attributes.mediaId && (
                              <MediaUploadCheck>
                                  <MediaUpload
@@ -258,6 +260,7 @@
                                 <img class="story__featured-image" src={mediaUrl ?? 'https://picsum.photos/id/1005/500/700'} alt="" />
                             <div class="story__featured-content" style={{backgroundColor: storyBackground}}>
                                 <InnerBlocks
+                                    allowedBlocks={ innerAllowed }
                                     template={[
                                         ['core/heading', { placeholder: 'Featured Story', className: 'story__featured-title' }],
                                         ['core/paragraph', { placeholder: "Hall of Famer Bill Walton '74 recently talked about his approach to life, what he's learned and his love for his alma mater.", className: 'story__featured-blurb' }]
@@ -272,6 +275,7 @@
                 <section className="banner" style={{'backgroundImage': `url(${mediaUrl ?? 'https://picsum.photos/id/1005/500/700'})`}}>
                     <div className="banner__content">
                         <InnerBlocks
+                            allowedBlocks={ innerAllowed }
                             template={[
                                 ['core/heading', { placeholder: 'Heading' }],
                                 ['core/paragraph', { placeholder: "Hall of Famer Bill Walton '74 recently talked about his approach to life, what he's learned and his love for his alma mater." }]

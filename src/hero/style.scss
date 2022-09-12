@@ -17,10 +17,11 @@
 	// padding: 0 100%;
 	// margin: 0 -50vw;
 
-	// .hero-banner__content {
-	// 	max-width: 1176px;
-	// 	margin: 0 auto;
-	// }
+	.hero-banner__content {
+		h1,h2,h3,h4,h5,h6, p {
+			padding: 0;
+		}
+	}
 }
 
 .story {
@@ -47,6 +48,10 @@
 	}
 	&> .story__featured {
 		float: none;
+
+		h1,h2,h3,h4,h5,h6, p {
+			padding: 0;
+		}
 	}
 }
 
@@ -57,14 +62,14 @@
 		.story__featured-image {
 			width: 75%;
 			height: auto;
-			max-height: 540px;
+			min-height: 540px;
 			object-fit: cover;
 		}
 
 		.story__featured-content {
 			width: 50%;
 			max-width: 576px;
-			top: 50%;
+			top: 35%;
 			transform: none;
 		}
 	}
