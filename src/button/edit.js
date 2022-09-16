@@ -137,7 +137,7 @@ function URLPicker( {
  * @return {WPElement} Element to render.
  */
 export default function Edit( {
-	attributes: { title, url, linkTarget, rel, style, disabled, play },
+	attributes: { title, url, linkTarget, rel, style, disabled, play, size },
 	setAttributes,
 	isSelected,
 	className,
@@ -172,6 +172,9 @@ export default function Edit( {
 	const onSetStyle = ( newStyle ) => {
 		setAttributes( { style: newStyle } );
 	};
+	const onSetSize = ( newSize ) => {
+		setAttributes( { size: newSize } );
+	}
 	const toggleAttribute = ( attribute ) => {
 		return ( newValue ) => {
 
@@ -224,8 +227,19 @@ export default function Edit( {
 							{ label: 'Secondary', value: 'btn--secondary--lightbg' },
 							{ label: 'Secondary Dark', value: 'btn--secondary--darkbg' },
 							{ label: 'Tertiary', value: 'btn--tertiary' },
+							{ label: 'Tertiary Dark', value: 'btn--tertiary--darkbg' }
 						] }
 						onChange={ onSetStyle }
+					/>
+					<SelectControl
+						label="Button Size"
+						value={ size }
+						options={ [
+							{ label: 'Regular', value: '' },
+							{ label: 'Small', value: 'btn--sm'},
+							{ label: 'X-small', value: 'btn--xs'}
+						]}
+						onChange={ onSetSize }
 					/>
 					{ /* <ToggleControl
 						label="Disabled"

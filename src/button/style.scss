@@ -4,17 +4,6 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
-
-.wp-block-uwai-uwai {
-	background-color: var(--wp-admin-theme-color);
-	color: #fff;
-	padding: 2px;
-}
-
-.blade-links {
-	margin: 1em !important;
-}
-
 a.btn.play::before {
 	display: inline-block;
 	content: '';
@@ -52,4 +41,18 @@ a.btn--tertiary.play::before {
 .btn--lightbg {
 	background: #00598c;
 	color: #fff !important;
+}
+// Visited Override
+.btn[class*="secondary--darkbg"] {
+	color: #fff !important;
+
+	&:hover,&:focus {
+		color: #000 !important;
+		background-color: #ffe500;
+	}
+	&:focus {
+		outline: 1px solid #fff;
+		outline-offset: 2px;
+		border-color: transparent;
+	}
 }
