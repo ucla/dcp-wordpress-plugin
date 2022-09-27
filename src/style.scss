@@ -5,3 +5,14 @@
     position: absolute;
   }
   
+.ucla-list--bulleted {
+  ul {
+    margin-top: 16px;
+    padding-left: 20px;
+    li {
+      &:before {
+        content: "▫";
+      }
+    }
+  }
+}
