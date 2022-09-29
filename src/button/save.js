@@ -22,22 +22,23 @@ import { RichText } from '@wordpress/block-editor';
  * @param {string} props.attributes.style
  * @param {boolean} props.attributes.play
  * @param {boolean} props.attributes.disabled
+ * @param {string} props.attributes.size
  * @param {string} props.className
  * @return {WPElement} Element to render.
  */
 export default function save( {
-	attributes: { title, url, linkTarget, rel, style, play, disabled },
+	attributes: { title, url, linkTarget, rel, style, play, disabled, size },
 	className,
 } ) {
 	return (
 			<a
-				className={ `btn${className ? ' ' + className : ''} ${ style ? style : '' } ${ play ? 'play' : '' }` }
+				className={ `btn${className ? ' ' + className : ''}${ style ? ' ' + style : '' }${ play ? ' play' : '' } ${size ? ' ' + size : ''}` }
 				href={ url }
 				target={ linkTarget }
 				rel={ rel }
 				disabled={ disabled }
 			>
-				<RichText.Content tagName="span" value={ title } />
+				{ title }
 			</a>
 	);
 }
