@@ -39,10 +39,12 @@
 			"type": "string"
 		},
 		"play": {
-			"type": "boolean"
+			"type": "boolean",
+			"default": false
 		},
 		"disabled": {
-			"type": "boolean"
+			"type": "boolean",
+			"default": false
 		}
 	}
 }

@@ -8339,7 +8339,7 @@ function save(_ref) {
 /*! exports provided: name, title, category, textdomain, supports, attributes, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"name\":\"uwai/button\",\"title\":\"UWAI Button\",\"category\":\"common\",\"textdomain\":\"uwai\",\"supports\":{\"html\":false},\"attributes\":{\"title\":{\"type\":\"string\",\"source\":\"text\",\"selector\":\"span\",\"default\":\"A cool button\"},\"url\":{\"type\":\"string\",\"source\":\"attribute\",\"selector\":\"a\",\"attribute\":\"href\"},\"linkTarget\":{\"type\":\"string\",\"source\":\"attribute\",\"selector\":\"a\",\"attribute\":\"target\"},\"rel\":{\"type\":\"string\",\"source\":\"attribute\",\"selector\":\"a\",\"attribute\":\"rel\"},\"style\":{\"type\":\"string\",\"default\":\"btn--lightbg\"},\"size\":{\"type\":\"string\"},\"play\":{\"type\":\"boolean\"},\"disabled\":{\"type\":\"boolean\"}}}");
+module.exports = JSON.parse("{\"name\":\"uwai/button\",\"title\":\"UWAI Button\",\"category\":\"common\",\"textdomain\":\"uwai\",\"supports\":{\"html\":false},\"attributes\":{\"title\":{\"type\":\"string\",\"source\":\"text\",\"selector\":\"span\",\"default\":\"A cool button\"},\"url\":{\"type\":\"string\",\"source\":\"attribute\",\"selector\":\"a\",\"attribute\":\"href\"},\"linkTarget\":{\"type\":\"string\",\"source\":\"attribute\",\"selector\":\"a\",\"attribute\":\"target\"},\"rel\":{\"type\":\"string\",\"source\":\"attribute\",\"selector\":\"a\",\"attribute\":\"rel\"},\"style\":{\"type\":\"string\",\"default\":\"btn--lightbg\"},\"size\":{\"type\":\"string\"},\"play\":{\"type\":\"boolean\",\"default\":false},\"disabled\":{\"type\":\"boolean\",\"default\":false}}}");
 
 /***/ }),
 
