@@ -1,12 +1,26 @@
 .wp-block > .wp-block-uwai-button {
     pointer-events: none;
-    
+
+    &> .btn.btn--lightbg {
+        color: #fff;
+    }
+
+    &> .btn.btn--secondary--lightbg {
+        color: #00598c;
+    }
+
     &> .btn.btn--secondary--darkbg {
         border-color: #eee;
         color: #eee;
     }
+
+    &> .btn.btn--tertiary {
+        color: #00598c;
+    }
+    
     &> .btn.btn--tertiary--darkbg {
         color: #333;
         background-color: buttonface;
     }
+
 }

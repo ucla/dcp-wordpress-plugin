@@ -11,9 +11,18 @@
 .wp-block > .wp-block-uwai-button {
   pointer-events: none;
 }
+.wp-block > .wp-block-uwai-button > .btn.btn--lightbg {
+  color: #fff;
+}
+.wp-block > .wp-block-uwai-button > .btn.btn--secondary--lightbg {
+  color: #00598c;
+}
 .wp-block > .wp-block-uwai-button > .btn.btn--secondary--darkbg {
   border-color: #eee;
   color: #eee;
+}
+.wp-block > .wp-block-uwai-button > .btn.btn--tertiary {
+  color: #00598c;
 }
 .wp-block > .wp-block-uwai-button > .btn.btn--tertiary--darkbg {
   color: #333;
