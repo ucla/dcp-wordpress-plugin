@@ -32,7 +32,7 @@ export default function save( {
 } ) {
 	return (
 			<a
-				className={ `btn${className ? ' ' + className : ''}${ style ? ' ' + style : '' }${ play ? ' play' : '' } ${size ? ' ' + size : ''}` }
+				className={ `btn${className ? ' ' + className : ''}${ style ? ' ' + style : '' }${ play ? ' icon--play' : '' } ${size ? ' ' + size : ''}` }
 				href={ url }
 				target={ linkTarget }
 				rel={ rel }

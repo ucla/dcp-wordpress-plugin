@@ -186,7 +186,7 @@ export default function Edit( {
 	return (
 		<div className={ className }>
 			<span
-				className={ `btn ${ style } ${ play ? 'play' : '' }` }
+				className={ `btn ${ style } ${ play ? 'icon--play' : '' }` }
 				disabled={ disabled }
 			>
 				<RichText

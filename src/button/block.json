@@ -31,7 +31,8 @@
 			"attribute": "rel"
 		},
 		"style": {
-			"type": "string"
+			"type": "string",
+			"default": "btn--lightbg"
 		},
 		"size": {
 			"type": "string"

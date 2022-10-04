@@ -4,55 +4,55 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
-a.btn.play::before {
-	display: inline-block;
-	content: '';
-	width: 15px;
-	height: 15px;
-	background: url(/wp-content/themes/ucla-sc/images/icons/play-white.svg);
-	background-size: contain;
-	margin-right: 5px;
-}
+.wp-block-uwai-button.btn{
+	&--lightbg {
+		color: #fff;
 
-a.btn--secondary.play:hover::before {
-	background: url(/wp-content/themes/ucla-sc/images/icons/play-white.svg);
-	background-size: contain;
-}
-
-a.btn--secondary.play::before {
-	background: url(/wp-content/themes/ucla-sc/images/icons/play-defaultblue.svg);
-	background-size: contain;
-}
-
-a.btn--tertiary.play:hover::before {
-	background: url(/wp-content/themes/ucla-sc/images/icons/play-white.svg);
-	background-size: contain;
-}
-
-a.btn--tertiary.play::before {
-	background: url(/wp-content/themes/ucla-sc/images/icons/play-defaultblue.svg);
-	background-size: contain;
-}
-
-.blade-links .blade-links__box-link {
-	color: #fff !important;
-}
-
-.btn--lightbg {
-	background: #00598c;
-	color: #fff !important;
-}
-// Visited Override
-.btn[class*="secondary--darkbg"] {
-	color: #fff !important;
-
-	&:hover,&:focus {
-		color: #000 !important;
-		background-color: #ffe500;
+		&:focus {
+			background: #0079bf;
+			outline: 1px solid #0079bf;
+			outline-offset: 2px;
+		}
 	}
-	&:focus {
-		outline: 1px solid #fff;
-		outline-offset: 2px;
-		border-color: transparent;
+	&--darkbg {
+		color: #333;
+
+		&:hover, &:focus {
+			background-color: #ffe500;
+			color: #333;
+		}
+		&:focus {
+			outline: 1px solid #fff;
+			outline-offset: 2px;
+		}
+	}
+	&.btn--secondary {
+		&--lightbg:focus {
+			border-color: transparent;
+    		outline: 1px solid #0079bf;
+		}
+		&--darkbg {
+			color: #fff;
+			&:hover, &:focus {
+				color: #333;
+				background-color: #ffe500;
+			}
+			&:hover {
+				background-color: #ffe500;
+				border-color: #ffe500;
+				color: #333;
+			}
+
+			&:focus {
+				outline: 1px solid #fff;
+				outline-offset: 2px;
+			}
+		}
+	}
+
+	&.btn--tertiary--darkbg {
+		color: #333;
+		background-color: buttonface;
 	}
 }
+
