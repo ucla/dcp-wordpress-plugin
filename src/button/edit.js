@@ -185,9 +185,10 @@ export default function Edit( {
 
 	return (
 		<div className={ className }>
-			<span
+			<a
 				className={ `btn ${ style } ${ play ? 'icon--play' : '' }` }
 				disabled={ disabled }
+				href={ url }
 			>
 				<RichText
 					withoutInteractiveFormatting
@@ -196,7 +197,7 @@ export default function Edit( {
 					value={ title }
 					onChange={ onChangeTitle }
 				/>
-			</span>
+			</a>
 			<URLPicker
 				url={ url }
 				setAttributes={ setAttributes }

@@ -8,6 +8,9 @@
 .accordion__content {
   display: block;
 }
+.wp-block > .wp-block-uwai-button {
+  pointer-events: none;
+}
 .wp-block > .wp-block-uwai-button > .btn.btn--secondary--darkbg {
   border-color: #eee;
   color: #eee;

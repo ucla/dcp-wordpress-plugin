@@ -1,4 +1,6 @@
 .wp-block > .wp-block-uwai-button {
+    pointer-events: none;
+    
     &> .btn.btn--secondary--darkbg {
         border-color: #eee;
         color: #eee;

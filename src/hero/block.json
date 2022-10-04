@@ -48,6 +48,10 @@
 		"storyBg": {
 			"type": "string",
 			"default": "#fff"
+		},
+		"bannerContent": {
+			"type": "number",
+            "default": 0
 		}
 	}
 }

@@ -29,7 +29,8 @@
      MediaUpload,
      MediaUploadCheck,
  } from '@wordpress/block-editor';
- import { useState } from '@wordpress/element'
+ import { useSelect } from '@wordpress/data'
+ import { useState, useEffect } from '@wordpress/element'
  
  function attributesFromMedia({ attributes, setAttributes }) {
      return (media) => {
@@ -84,6 +85,7 @@
      setAttributes,
      isSelected,
      className,
+     clientId
  }) {
      let {
          mediaAlt,
@@ -92,6 +94,9 @@
          bannerContainer,
          storyBg
      } = attributes;
+     const { bannerContent } = useSelect(select => ({
+        bannerContent: select("core/block-editor").getBlockCount(clientId)
+    }));
      const [type, setType] = useState(cardType);
      const [width, setWidth] = useState(bannerContainer);
      const [storyBackground, setStoryBackground] = useState(storyBg);
@@ -138,6 +143,9 @@
         setWidth(value)
         setAttributes({bannerContainer: value})
      }
+     useEffect(() => {
+        setAttributes({ bannerContent });
+    }, [bannerContent]);
      return (
          <div {...blockProps}>
              <InspectorControls>

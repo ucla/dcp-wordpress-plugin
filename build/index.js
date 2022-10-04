@@ -8339,7 +8339,7 @@ function save(_ref) {
 /*! exports provided: name, title, category, textdomain, supports, attributes, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"name\":\"uwai/button\",\"title\":\"UWAI Button\",\"category\":\"common\",\"textdomain\":\"uwai\",\"supports\":{\"html\":false},\"attributes\":{\"title\":{\"type\":\"string\",\"source\":\"text\",\"selector\":\"span\"},\"url\":{\"type\":\"string\",\"source\":\"attribute\",\"selector\":\"a\",\"attribute\":\"href\"},\"linkTarget\":{\"type\":\"string\",\"source\":\"attribute\",\"selector\":\"a\",\"attribute\":\"target\"},\"rel\":{\"type\":\"string\",\"source\":\"attribute\",\"selector\":\"a\",\"attribute\":\"rel\"},\"style\":{\"type\":\"string\",\"default\":\"btn--lightbg\"},\"size\":{\"type\":\"string\"},\"play\":{\"type\":\"boolean\"},\"disabled\":{\"type\":\"boolean\"}}}");
+module.exports = JSON.parse("{\"name\":\"uwai/button\",\"title\":\"UWAI Button\",\"category\":\"common\",\"textdomain\":\"uwai\",\"supports\":{\"html\":false},\"attributes\":{\"title\":{\"type\":\"string\",\"source\":\"text\",\"selector\":\"span\",\"default\":\"A cool button\"},\"url\":{\"type\":\"string\",\"source\":\"attribute\",\"selector\":\"a\",\"attribute\":\"href\"},\"linkTarget\":{\"type\":\"string\",\"source\":\"attribute\",\"selector\":\"a\",\"attribute\":\"target\"},\"rel\":{\"type\":\"string\",\"source\":\"attribute\",\"selector\":\"a\",\"attribute\":\"rel\"},\"style\":{\"type\":\"string\",\"default\":\"btn--lightbg\"},\"size\":{\"type\":\"string\"},\"play\":{\"type\":\"boolean\"},\"disabled\":{\"type\":\"boolean\"}}}");
 
 /***/ }),
 
@@ -8551,9 +8551,10 @@ function Edit(_ref4) {
 
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
     className: className
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("span", {
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("a", {
     className: "btn ".concat(style, " ").concat(play ? 'icon--play' : ''),
-    disabled: disabled
+    disabled: disabled,
+    href: url
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["RichText"], {
     withoutInteractiveFormatting: true,
     tagName: "span",
@@ -9990,7 +9991,7 @@ var save = function save() {
 /*! exports provided: apiVersion, name, title, category, textdomain, supports, attributes, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"apiVersion\":2,\"name\":\"uwai/hero-banner\",\"title\":\"UWAI Hero\",\"category\":\"common\",\"textdomain\":\"uwai\",\"supports\":{\"html\":false},\"attributes\":{\"body\":{\"type\":\"string\",\"source\":\"text\",\"selector\":\".copy__supporting-text\"},\"row1\":{\"type\":\"string\"},\"row2\":{\"type\":\"string\"},\"row3\":{\"type\":\"string\"},\"row4\":{\"type\":\"string\"},\"mediaAlt\":{\"type\":\"string\"},\"mediaId\":{\"type\":\"number\"},\"mediaType\":{\"type\":\"string\"},\"mediaUrl\":{\"type\":\"string\"},\"cardType\":{\"type\":\"string\",\"default\":\"story\"},\"bannerContainer\":{\"type\":\"string\",\"default\":\"container\"},\"storyBg\":{\"type\":\"string\",\"default\":\"#fff\"}}}");
+module.exports = JSON.parse("{\"apiVersion\":2,\"name\":\"uwai/hero-banner\",\"title\":\"UWAI Hero\",\"category\":\"common\",\"textdomain\":\"uwai\",\"supports\":{\"html\":false},\"attributes\":{\"body\":{\"type\":\"string\",\"source\":\"text\",\"selector\":\".copy__supporting-text\"},\"row1\":{\"type\":\"string\"},\"row2\":{\"type\":\"string\"},\"row3\":{\"type\":\"string\"},\"row4\":{\"type\":\"string\"},\"mediaAlt\":{\"type\":\"string\"},\"mediaId\":{\"type\":\"number\"},\"mediaType\":{\"type\":\"string\"},\"mediaUrl\":{\"type\":\"string\"},\"cardType\":{\"type\":\"string\",\"default\":\"story\"},\"bannerContainer\":{\"type\":\"string\",\"default\":\"container\"},\"storyBg\":{\"type\":\"string\",\"default\":\"#fff\"},\"bannerContent\":{\"type\":\"number\",\"default\":0}}}");
 
 /***/ }),
 
@@ -10016,6 +10017,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_6__);
 
 
 
@@ -10033,6 +10036,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
+
 
 
 
@@ -10094,12 +10098,20 @@ function Edit(_ref2) {
   var attributes = _ref2.attributes,
       setAttributes = _ref2.setAttributes,
       isSelected = _ref2.isSelected,
-      className = _ref2.className;
+      className = _ref2.className,
+      clientId = _ref2.clientId;
   var mediaAlt = attributes.mediaAlt,
       mediaUrl = attributes.mediaUrl,
       cardType = attributes.cardType,
       bannerContainer = attributes.bannerContainer,
       storyBg = attributes.storyBg;
+
+  var _useSelect = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_6__["useSelect"])(function (select) {
+    return {
+      bannerContent: select("core/block-editor").getBlockCount(clientId)
+    };
+  }),
+      bannerContent = _useSelect.bannerContent;
 
   var _useState = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useState"])(cardType),
       _useState2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_useState, 2),
@@ -10167,6 +10179,11 @@ function Edit(_ref2) {
     });
   };
 
+  Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    setAttributes({
+      bannerContent: bannerContent
+    });
+  }, [bannerContent]);
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", blockProps, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["PanelBody"], {
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Select card type'),
     initialOpen: true
@@ -10434,6 +10451,7 @@ function save(_ref) {
       cardType = _ref$attributes.cardType,
       bannerContainer = _ref$attributes.bannerContainer,
       storyBg = _ref$attributes.storyBg,
+      bannerContent = _ref$attributes.bannerContent,
       className = _ref.className;
 
   switch (cardType) {
@@ -10461,7 +10479,7 @@ function save(_ref) {
         style: {
           'backgroundImage': "url(".concat(mediaUrl !== null && mediaUrl !== void 0 ? mediaUrl : 'https://picsum.photos/id/1005/500/700', ")")
         }
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      }, bannerContent > 0 && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
         className: "hero-banner__content"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InnerBlocks"].Content, null)));
       break;
