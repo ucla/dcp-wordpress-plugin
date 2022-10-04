@@ -8339,7 +8339,7 @@ function save(_ref) {
 /*! exports provided: name, title, category, textdomain, supports, attributes, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"name\":\"uwai/button\",\"title\":\"UWAI Button\",\"category\":\"common\",\"textdomain\":\"uwai\",\"supports\":{\"html\":false},\"attributes\":{\"title\":{\"type\":\"string\",\"source\":\"text\",\"selector\":\"span\",\"default\":\"A cool button\"},\"url\":{\"type\":\"string\",\"source\":\"attribute\",\"selector\":\"a\",\"attribute\":\"href\"},\"linkTarget\":{\"type\":\"string\",\"source\":\"attribute\",\"selector\":\"a\",\"attribute\":\"target\"},\"rel\":{\"type\":\"string\",\"source\":\"attribute\",\"selector\":\"a\",\"attribute\":\"rel\"},\"style\":{\"type\":\"string\",\"default\":\"btn--lightbg\"},\"size\":{\"type\":\"string\"},\"play\":{\"type\":\"boolean\",\"default\":false},\"disabled\":{\"type\":\"boolean\",\"default\":false}}}");
+module.exports = JSON.parse("{\"name\":\"uwai/button\",\"title\":\"UWAI Button\",\"category\":\"common\",\"textdomain\":\"uwai\",\"supports\":{\"html\":false},\"attributes\":{\"body\":{\"type\":\"string\",\"source\":\"text\"},\"url\":{\"type\":\"string\",\"source\":\"attribute\",\"selector\":\"a\",\"attribute\":\"href\"},\"linkTarget\":{\"type\":\"string\",\"source\":\"attribute\",\"selector\":\"a\",\"attribute\":\"target\"},\"rel\":{\"type\":\"string\",\"source\":\"attribute\",\"selector\":\"a\",\"attribute\":\"rel\"},\"style\":{\"type\":\"string\",\"default\":\"btn--lightbg\"},\"size\":{\"type\":\"string\"},\"play\":{\"type\":\"boolean\",\"default\":false},\"disabled\":{\"type\":\"boolean\",\"default\":false}}}");
 
 /***/ }),
 
@@ -8491,7 +8491,7 @@ function URLPicker(_ref) {
 
 function Edit(_ref4) {
   var _ref4$attributes = _ref4.attributes,
-      title = _ref4$attributes.title,
+      body = _ref4$attributes.body,
       url = _ref4$attributes.url,
       linkTarget = _ref4$attributes.linkTarget,
       rel = _ref4$attributes.rel,
@@ -8505,7 +8505,7 @@ function Edit(_ref4) {
 
   var onChangeTitle = function onChangeTitle(value) {
     setAttributes({
-      title: value
+      body: value
     });
   };
 
@@ -8557,9 +8557,8 @@ function Edit(_ref4) {
     href: url
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["RichText"], {
     withoutInteractiveFormatting: true,
-    tagName: "span",
     placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('A cool button…', 'gutenberg-examples'),
-    value: title,
+    value: body,
     onChange: onChangeTitle
   })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(URLPicker, {
     url: url,
@@ -8771,7 +8770,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function save(_ref) {
   var _ref$attributes = _ref.attributes,
-      title = _ref$attributes.title,
+      body = _ref$attributes.body,
       url = _ref$attributes.url,
       linkTarget = _ref$attributes.linkTarget,
       rel = _ref$attributes.rel,
@@ -8786,7 +8785,7 @@ function save(_ref) {
     target: linkTarget,
     rel: rel,
     disabled: disabled
-  }, title);
+  }, body);
 }
 
 /***/ }),

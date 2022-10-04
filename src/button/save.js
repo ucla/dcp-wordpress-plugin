@@ -27,7 +27,7 @@ import { RichText } from '@wordpress/block-editor';
  * @return {WPElement} Element to render.
  */
 export default function save( {
-	attributes: { title, url, linkTarget, rel, style, play, disabled, size },
+	attributes: { body, url, linkTarget, rel, style, play, disabled, size },
 	className,
 } ) {
 	return (
@@ -38,7 +38,7 @@ export default function save( {
 				rel={ rel }
 				disabled={ disabled }
 			>
-				{ title }
+				{ body }
 			</a>
 	);
 }

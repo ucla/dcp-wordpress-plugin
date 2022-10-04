@@ -137,13 +137,13 @@ function URLPicker( {
  * @return {WPElement} Element to render.
  */
 export default function Edit( {
-	attributes: { title, url, linkTarget, rel, style, disabled, play, size },
+	attributes: { body, url, linkTarget, rel, style, disabled, play, size },
 	setAttributes,
 	isSelected,
 	className,
 } ) {
 	const onChangeTitle = ( value ) => {
-		setAttributes( { title: value } );
+		setAttributes( { body: value } );
 	};
 	const onSetLinkRel = useCallback(
 		( value ) => {
@@ -192,9 +192,8 @@ export default function Edit( {
 			>
 				<RichText
 					withoutInteractiveFormatting
-					tagName="span"
 					placeholder={ __( 'A cool button…', 'gutenberg-examples' ) }
-					value={ title }
+					value={ body }
 					onChange={ onChangeTitle }
 				/>
 			</a>

@@ -7,11 +7,9 @@
 		"html": false
 	},
 	"attributes": {
-		"title": {
+		"body": {
 			"type": "string",
-			"source": "text",
-			"selector": "span",
-			"default": "A cool button"
+			"source": "text"
 		},
 		"url": {
 			"type": "string",
