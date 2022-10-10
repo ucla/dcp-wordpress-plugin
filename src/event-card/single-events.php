@@ -44,7 +44,7 @@
             <?php } ?>
             <div class="event-card-info__time">
                 <object class="event-card-icon__time" tabindex="-1" data="https://cdn.webcomponents.ucla.edu/1.0.0/icons/denotive/time--grey60.svg" type="image/svg+xml"></object>
-                <?= get_post_meta($post->ID,'event_time', true) ? date('g:i a', strtotime(get_post_meta($post->ID,'event_time', true))) : 'TBD' ?><?= get_post_meta($post->ID,'event_end_time', true) ? ' to ' . date('g:i a', strtotime(get_post_meta($post->ID,'event_time', true))) : '' ?>
+                <?= get_post_meta($post->ID,'event_time', true) ? date('g:i a', strtotime(get_post_meta($post->ID,'event_time', true))) : 'TBD' ?><?= get_post_meta($post->ID,'event_end_time', true) ? ' to ' . date('g:i a', strtotime(get_post_meta($post->ID,'event_end_time', true))) : '' ?>
             </div>
             <div class="event-card-info__location">
                 <object class="event-card-icon__location" tabindex="-1" data="https://cdn.webcomponents.ucla.edu/1.0.0/icons/denotive/location--grey60.svg" type="image/svg+xml">
