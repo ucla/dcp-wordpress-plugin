@@ -4,12 +4,13 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 	height: 436px;
-	display: flex;
-	flex-direction: column;
+	// display: flex;
+	// flex-direction: column;
 
-	@media (max-width: 1279px) {
-		position: relative;
-	}
+	// @media (max-width: 1279px) {
+	// 	position: relative;
+	// }
+	position: relative;
 
 	&.full-width {
 		padding: 0 100vw;
@@ -44,9 +45,11 @@
 
 		@media (min-width: 1280px) {
 			width: auto;
-			// left: 100vw;
-			position: initial;
-			align-self: flex-end;
+			left: auto;
+
+  			right: calc(-1 * (100vw - 100%) / 2);
+			position: absolute;
+			// align-self: flex-end;
 			padding-left: 2rem;
 			padding-right: 2rem;
 		}
