@@ -34,11 +34,11 @@ export default function save({
 		cardType,
 		bannerContainer,
 		storyBg,
-		bannerContent
+		bannerContent,
+		imgCredit
 	},
 	className,
 }) {
-	
 	switch (cardType) {
 		case 'story':
 			return (
@@ -62,6 +62,9 @@ export default function save({
 						<InnerBlocks.Content />
 					</div>
 					)}
+					{mediaAlt &&
+						<span className="banner__image-credit">Photo Credit: {mediaAlt}</span>
+					}
 				</section>
 			);
 		break;

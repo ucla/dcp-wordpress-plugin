@@ -4,6 +4,12 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 	height: 436px;
+	display: flex;
+	flex-direction: column;
+
+	@media (max-width: 1279px) {
+		position: relative;
+	}
 
 	&.full-width {
 		padding: 0 100vw;
@@ -20,6 +26,29 @@
 	.hero-banner__content {
 		h1,h2,h3,h4,h5,h6, p {
 			padding: 0;
+		}
+	}
+
+	.banner__image-credit {
+		padding-top: 10px;
+		padding-bottom: 10px;
+		background-color: #00598C;
+		color: white;
+		font-style: italic;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		text-align: center;
+		margin-top: auto;
+
+		@media (min-width: 1280px) {
+			width: auto;
+			// left: 100vw;
+			position: initial;
+			align-self: flex-end;
+			padding-left: 2rem;
+			padding-right: 2rem;
 		}
 	}
 }

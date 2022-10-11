@@ -55,7 +55,7 @@ get_header(); ?>
                             <a class="event-card__link" href="<?php echo get_permalink( $post->ID ); ?>" title="<?= the_title() ?>">
                                 <?php
                                     // Get thumbnail URL only to avoid inline image sizing
-                                    $thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium', false ); 
+                                    $thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full', false ); 
                                     if (has_post_thumbnail()) {
                                 ?>
                                         <img class="event-card__image" src="<?php echo $thumbnail[0]; ?>" alt="<?= the_title() ?>">
@@ -153,7 +153,7 @@ get_header(); ?>
                             <a class="event-card__link" href="<?php echo get_permalink( $post->ID ); ?>" title="<?= the_title() ?>">
                                 <?php
                                     // Get thumbnail URL only to avoid inline image sizing
-                                    $thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium', false ); 
+                                    $thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full', false ); 
                                     if (has_post_thumbnail()) {
                                 ?>
                                         <img class="event-card__image" src="<?php echo $thumbnail[0]; ?>" alt="<?= the_title() ?>">
