@@ -10486,9 +10486,9 @@ function save(_ref) {
         }
       }, bannerContent > 0 && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
         className: "hero-banner__content"
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InnerBlocks"].Content, null)), mediaAlt && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", {
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InnerBlocks"].Content, null)), imgCredit && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", {
         className: "banner__image-credit"
-      }, "Photo Credit: ", mediaAlt));
+      }, "Photo Credit: ", imgCredit));
       break;
 
     default:

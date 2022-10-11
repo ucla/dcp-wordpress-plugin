@@ -62,8 +62,8 @@ export default function save({
 						<InnerBlocks.Content />
 					</div>
 					)}
-					{mediaAlt &&
-						<span className="banner__image-credit">Photo Credit: {mediaAlt}</span>
+					{imgCredit &&
+						<span className="banner__image-credit">Photo Credit: {imgCredit}</span>
 					}
 				</section>
 			);
