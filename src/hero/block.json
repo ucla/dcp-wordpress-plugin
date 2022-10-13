@@ -40,9 +40,6 @@
 		"bannerContent": {
 			"type": "number",
             "default": 0
-		},
-		"imgCredit": {
-			"type": "string"
 		}
 	}
 }

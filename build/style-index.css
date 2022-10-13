@@ -189,7 +189,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   height: 436px;
-  position: relative;
 }
 .hero-banner-container.full-width {
   padding: 0 100vw;
@@ -203,29 +202,6 @@
 }
 .hero-banner-container .hero-banner__content h1, .hero-banner-container .hero-banner__content h2, .hero-banner-container .hero-banner__content h3, .hero-banner-container .hero-banner__content h4, .hero-banner-container .hero-banner__content h5, .hero-banner-container .hero-banner__content h6, .hero-banner-container .hero-banner__content p {
   padding: 0;
-}
-.hero-banner-container .banner__image-credit {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: #00598C;
-  color: white;
-  font-style: italic;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  margin-top: auto;
-}
-@media (min-width: 1280px) {
-  .hero-banner-container .banner__image-credit {
-    width: auto;
-    left: auto;
-    right: calc(-1 * (100vw - 100%) / 2);
-    position: absolute;
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
 }
 
 @media (max-width: 1023px) {

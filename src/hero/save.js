@@ -62,9 +62,6 @@ export default function save({
 						<InnerBlocks.Content />
 					</div>
 					)}
-					{imgCredit &&
-						<span className="banner__image-credit">Photo Credit: {imgCredit}</span>
-					}
 				</section>
 			);
 		break;

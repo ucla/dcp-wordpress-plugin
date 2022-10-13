@@ -9990,7 +9990,7 @@ var save = function save() {
 /*! exports provided: apiVersion, name, title, category, textdomain, supports, attributes, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"apiVersion\":2,\"name\":\"uwai/hero-banner\",\"title\":\"UWAI Hero\",\"category\":\"common\",\"textdomain\":\"uwai\",\"supports\":{\"html\":false},\"attributes\":{\"body\":{\"type\":\"string\",\"source\":\"text\",\"selector\":\".copy__supporting-text\"},\"mediaAlt\":{\"type\":\"string\"},\"mediaId\":{\"type\":\"number\"},\"mediaType\":{\"type\":\"string\"},\"mediaUrl\":{\"type\":\"string\"},\"cardType\":{\"type\":\"string\",\"default\":\"story\"},\"bannerContainer\":{\"type\":\"string\",\"default\":\"container\"},\"storyBg\":{\"type\":\"string\",\"default\":\"#fff\"},\"bannerContent\":{\"type\":\"number\",\"default\":0},\"imgCredit\":{\"type\":\"string\"}}}");
+module.exports = JSON.parse("{\"apiVersion\":2,\"name\":\"uwai/hero-banner\",\"title\":\"UWAI Hero\",\"category\":\"common\",\"textdomain\":\"uwai\",\"supports\":{\"html\":false},\"attributes\":{\"body\":{\"type\":\"string\",\"source\":\"text\",\"selector\":\".copy__supporting-text\"},\"mediaAlt\":{\"type\":\"string\"},\"mediaId\":{\"type\":\"number\"},\"mediaType\":{\"type\":\"string\"},\"mediaUrl\":{\"type\":\"string\"},\"cardType\":{\"type\":\"string\",\"default\":\"story\"},\"bannerContainer\":{\"type\":\"string\",\"default\":\"container\"},\"storyBg\":{\"type\":\"string\",\"default\":\"#fff\"},\"bannerContent\":{\"type\":\"number\",\"default\":0}}}");
 
 /***/ }),
 
@@ -10103,8 +10103,7 @@ function Edit(_ref2) {
       mediaUrl = attributes.mediaUrl,
       cardType = attributes.cardType,
       bannerContainer = attributes.bannerContainer,
-      storyBg = attributes.storyBg,
-      imgCredit = attributes.imgCredit;
+      storyBg = attributes.storyBg;
 
   var _useSelect = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_6__["useSelect"])(function (select) {
     var bannerBlock = select("core/block-editor").getBlock(clientId);
@@ -10262,10 +10261,12 @@ function Edit(_ref2) {
       }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Replace image', 'awp'));
     }
   })), attributes.mediaId && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["TextareaControl"], {
-    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Photo Credit (optional)'),
-    value: imgCredit,
-    onChange: onImgCreditChange,
-    help: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('If credit isn\'t necessary, leave blank'))
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Alt text (alternative text)'),
+    value: mediaAlt,
+    onChange: onMediaAltChange,
+    help: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ExternalLink"], {
+      href: "https://www.w3.org/WAI/tutorials/images/decision-tree"
+    }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Describe the purpose of the image')), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Leave empty if the image is purely decorative.'))
   })))), attributes.cardType === 'story' && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("section", {
     className: "story"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
@@ -10304,9 +10305,7 @@ function Edit(_ref2) {
     }], ['core/paragraph', {
       placeholder: "Hall of Famer Bill Walton '74 recently talked about his approach to life, what he's learned and his love for his alma mater."
     }]]
-  }), imgCredit && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("span", {
-    className: "banner__image-credit"
-  }, "Photo Credit: ", imgCredit))));
+  }))));
 }
 
 /***/ }),
@@ -10486,9 +10485,7 @@ function save(_ref) {
         }
       }, bannerContent > 0 && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
         className: "hero-banner__content"
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InnerBlocks"].Content, null)), imgCredit && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", {
-        className: "banner__image-credit"
-      }, "Photo Credit: ", imgCredit));
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InnerBlocks"].Content, null)));
       break;
 
     default:

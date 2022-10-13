@@ -92,8 +92,7 @@
          mediaUrl,
          cardType,
          bannerContainer,
-         storyBg,
-         imgCredit
+         storyBg
      } = attributes;
      const { bannerContent } = useSelect(select => {
         let bannerBlock = select("core/block-editor").getBlock(clientId);
@@ -239,17 +238,22 @@
                          )}
                          {attributes.mediaId && (
                              <TextareaControl
-                                 label={__('Photo Credit (optional)')}
-                                 value={imgCredit}
-                                 onChange={onImgCreditChange}
-                                 help={
-                                     <>
+                             label={__('Alt text (alternative text)')}
+                             value={mediaAlt}
+                             onChange={onMediaAltChange}
+                             help={
+                                 <>
+                                     <ExternalLink href="https://www.w3.org/WAI/tutorials/images/decision-tree">
                                          {__(
-                                             'If credit isn\'t necessary, leave blank'
+                                             'Describe the purpose of the image'
                                          )}
-                                     </>
-                                 }
-                             />
+                                     </ExternalLink>
+                                     {__(
+                                         'Leave empty if the image is purely decorative.'
+                                     )}
+                                 </>
+                             }
+                         />
                          )}
                      </div>
                  </PanelBody>
@@ -283,9 +287,6 @@
                                 ['core/paragraph', { placeholder: "Hall of Famer Bill Walton '74 recently talked about his approach to life, what he's learned and his love for his alma mater." }]
                             ]}
                         />
-                        {imgCredit &&
-                            <span className="banner__image-credit">Photo Credit: {imgCredit}</span>
-                        }
                     </div>
                 </section>
             }

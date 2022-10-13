@@ -639,27 +639,6 @@
 			padding: 0;
 		}
 	}
-
-	.banner__image-credit {
-		bottom: 0;
-		left: 0;
-		padding-top: 10px;
-		padding-bottom: 10px;
-		position: absolute;
-		background-color: #00598C;
-		color: white;
-		width: 100%;
-		text-align: center;
-		font-style: italic;
-
-		@media (min-width: 1024px) {
-			left: auto;
-			right: 0;
-			padding-left: 2rem;
-			padding-right: 2rem;
-			width: auto;
-		}
-	}
 }
 .block-editor-block-list__block {
   .story {
