@@ -42,6 +42,7 @@ import * as recentPosts from './recent-posts';
 import * as ribbon from './ribbon';
 import * as tabs from './tabs';
 import * as tile from './tile';
+import * as galleryBlock from './gallery-block';
 
 /**
  *
@@ -80,6 +81,7 @@ export const registerUwaiBlocks = () => {
 		ribbon,
 		tabs,
 		tile,
+		galleryBlock,
 	].forEach( registerBlock );
 };
 

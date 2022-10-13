@@ -26,7 +26,7 @@ import {
 } from '@wordpress/block-editor';
 
 import { useSelect } from '@wordpress/data';
-import { useState } from '@wordpress/element'
+import { useState } from '@wordpress/element';
 
  /**
  * The edit function describes the structure of your block in the context of the
@@ -89,62 +89,102 @@ export default function Edit( {
 	let eventHtml = (title, link, image, date, time, location, description) => {
 		const d = new Date(`${date} ${time}:00`);
 		
-		let month = d.toLocaleDateString('en-US', {month: 'short'});
-		let day = d.toLocaleDateString('en-US', {weekday: 'short'});
+		let month = d.toLocaleDateString('en-US', {month: 'long'});
+		let monthAttr = d.toLocaleDateString('en-US', {month: '2-digit'});
+		let day = d.toLocaleDateString('en-US', {weekday: 'long'});
 		let dayNum = d.toLocaleString('en-US', {day: '2-digit'});
+		let year = d.toLocaleDateString('en-US', {year: 'numeric'});
 		let formatTime = d.toLocaleTimeString([], {hour: 'numeric' ,minute: '2-digit', hour12: true});
-		return <article className="event-card">
-				<a className="event-card__link" href={`${link}`}>
-					<img className="event-card__image" src={`${image ? image : ''}`} alt="Two children on their phones under the blankets" />
-					<h1 className="event-card__title"><span>{`${title}`}</span></h1>
+		let isPastEvent = compareEventDateWithToday(date);
+		return (
+			<article className={`event-card${isPastEvent ? ' past-event' : ' upcoming-event'}`}>
+				<div className="event-card__date">
+					<div className="event-card__date-info">
+						<time dateTime={`${year}-${monthAttr}-${dayNum}`}>{`${day}, ${month} ${dayNum}, ${year}`}</time>
+					</div>
+				</div>
+				<a class="event-card__link" href={link} title={title}>
+				{image &&
+					<img className="event-card__image" src={image} alt={title} />
+				}
+				<h3 className="event-card__title"><span>{title}</span></h3>
 				</a>
 				<div className="event-card-info">
-					<div className="event-card-info__date">
-						<span className="small-block">
-							<span className="event-card-info__day">{`${day}`}</span>
-							<span className="event-card-info__month">{`${month}`}</span>
-						</span>
-						<span className="event-card-info__number">{`${dayNum}`}</span>
-					</div>
-					<div className="event-card-info__time">
-					<object className="event-card-icon__time" tabindex="-1" type="image/svg">
-						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" style={{enableBackground:'new 0 0 24 24'}} xmlnsXlink="http://www.w3.org/1999/xlink">
-							<title>time</title>
-							<g>
-									<path fill="#666666" className="time--grey" d="M12,2c5.5,0,10,4.5,10,10s-4.5,10-10,10C6.5,22,2,17.5,2,12S6.5,2,12,2z M12,4
-											c-4.4,0-8,3.6-8,8s3.6,8,8,8s8-3.6,8-8S16.4,4,12,4z M12.5,7v5.2l4.5,2.7l-0.8,1.2L11,13V7H12.5z" />
-							</g>
-						</svg>
-						</object>
-						{`${formatTime}`}
+					<div class="event-card-info__time">
+						<object className="event-card-icon__time" tabIndex={-1} data="https://cdn.webcomponents.ucla.edu/1.0.0/icons/denotive/time--grey60.svg" type="image/svg+xml" />
+						{formatTime}
 					</div>
 					<div className="event-card-info__location">
-					<object className="event-card-icon__location" tabindex="-1" type="image/svg">
-						<svg xmlnsXlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-						style={{enableBackground:'new 0 0 24 24'}} ><title>Location</title><path class="location--grey" style={{fill: '#666'}} d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5s1.1-2.5 2.5-2.5 2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5z"/></svg>
-						</object>
-						{`${location}`}
+						<object className="event-card-icon__location" tabIndex={-1} data="https://cdn.webcomponents.ucla.edu/1.0.0/icons/denotive/location--grey60.svg" type="image/svg+xml" />
+						{location}
 					</div>
-					<div className="event-card-info__description">{`${description}`}</div>
+					<div className="event-card-info__description">
+						{description}
+					</div>
 				</div>
-			</article>;
+			</article>
+		);
+		// return <article className="event-card">
+		// 		<a className="event-card__link" href={`${link}`}>
+		// 			<img className="event-card__image" src={`${image ? image : ''}`} alt="Two children on their phones under the blankets" />
+		// 			<h1 className="event-card__title"><span>{`${title}`}</span></h1>
+		// 		</a>
+		// 		<div className="event-card-info">
+		// 			<div className="event-card-info__date">
+		// 				<span className="small-block">
+		// 					<span className="event-card-info__day">{`${day}`}</span>
+		// 					<span className="event-card-info__month">{`${month}`}</span>
+		// 				</span>
+		// 				<span className="event-card-info__number">{`${dayNum}`}</span>
+		// 			</div>
+		// 			<div className="event-card-info__time">
+		// 			<object className="event-card-icon__time" tabindex="-1" type="image/svg">
+		// 				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" style={{enableBackground:'new 0 0 24 24'}} xmlnsXlink="http://www.w3.org/1999/xlink">
+		// 					<title>time</title>
+		// 					<g>
+		// 							<path fill="#666666" className="time--grey" d="M12,2c5.5,0,10,4.5,10,10s-4.5,10-10,10C6.5,22,2,17.5,2,12S6.5,2,12,2z M12,4
+		// 									c-4.4,0-8,3.6-8,8s3.6,8,8,8s8-3.6,8-8S16.4,4,12,4z M12.5,7v5.2l4.5,2.7l-0.8,1.2L11,13V7H12.5z" />
+		// 					</g>
+		// 				</svg>
+		// 				</object>
+		// 				{`${formatTime}`}
+		// 			</div>
+		// 			<div className="event-card-info__location">
+		// 			<object className="event-card-icon__location" tabindex="-1" type="image/svg">
+		// 				<svg xmlnsXlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+		// 				style={{enableBackground:'new 0 0 24 24'}} ><title>Location</title><path class="location--grey" style={{fill: '#666'}} d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5s1.1-2.5 2.5-2.5 2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5z"/></svg>
+		// 				</object>
+		// 				{`${location}`}
+		// 			</div>
+		// 			<div className="event-card-info__description">{`${description}`}</div>
+		// 		</div>
+		// 	</article>;
 	};
 
 	const renderSwitch = param => {
 		switch (param) {
 			case 'upcoming':
 				
-				return events.filter(convention => compareEventDateWithToday(convention.event_start_date.rendered) === false).slice(0, Number(numberOfEvents)).sort((a,b) => new Date(b.event_start_date.rendered) - new Date(a.event_start_date.rendered)).map(convention => eventHtml(convention.title.raw, convention.link, convention?._embedded['wp:featuredmedia'][0]?.source_url, convention.event_start_date.rendered, convention.event_time.rendered, convention.event_location.rendered,convention.excerpt.raw))
+				return events.filter(convention => compareEventDateWithToday(convention.event_start_date.rendered) === false).slice(0, Number(numberOfEvents)).sort((a,b) => new Date(b.event_start_date.rendered) - new Date(a.event_start_date.rendered)).map(convention => {
+					let featImage = convention._embedded ? convention._embedded['wp:featuredmedia'][0].source_url : false;
+					return eventHtml(convention.title.raw, convention.link, featImage, convention.event_start_date.rendered, convention.event_time.rendered, convention.event_location.rendered,convention.excerpt.raw)
+				})
 				
 				break;
 			case 'past':
 				
-				return events.filter(convention => compareEventDateWithToday(convention.event_start_date.rendered) === true).slice(0, Number(numberOfEvents)).sort((a,b) => new Date(b.event_start_date.rendered) - new Date(a.event_start_date.rendered)).map(convention => eventHtml(convention.title.raw, convention.link, convention?._embedded['wp:featuredmedia'][0]?.source_url, convention.event_start_date.rendered, convention.event_time.rendered, convention.event_location.rendered,convention.excerpt.raw))
+				return events.filter(convention => compareEventDateWithToday(convention.event_start_date.rendered) === true).slice(0, Number(numberOfEvents)).sort((a,b) => new Date(b.event_start_date.rendered) - new Date(a.event_start_date.rendered)).map(convention => {
+					let featImage = convention._embedded ? convention._embedded['wp:featuredmedia'][0].source_url : false;
+					return eventHtml(convention.title.raw, convention.link, featImage, convention.event_start_date.rendered, convention.event_time.rendered, convention.event_location.rendered,convention.excerpt.raw)
+				})
 				
 				break;
 			default:
 				
-				return events.sort((a,b) => new Date(b.event_start_date.rendered) - new Date(a.event_start_date.rendered)).slice(0, Number(numberOfEvents)).map(convention => eventHtml(convention.title.raw, convention.link, convention?._embedded['wp:featuredmedia'][0]?.source_url, convention.event_start_date.rendered, convention.event_time.rendered, convention.event_location.rendered,convention.excerpt.raw))
+				return events.sort((a,b) => new Date(b.event_start_date.rendered) - new Date(a.event_start_date.rendered)).slice(0, Number(numberOfEvents)).map(convention => {
+					let featImage = convention._embedded ? convention._embedded['wp:featuredmedia'][0].source_url : false;
+					return eventHtml(convention.title.raw, convention.link, featImage, convention.event_start_date.rendered, convention.event_time.rendered, convention.event_location.rendered,convention.excerpt.raw)
+				})
 				
 				break;
 		}

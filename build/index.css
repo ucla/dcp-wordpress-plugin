@@ -8,191 +8,25 @@
 .accordion__content {
   display: block;
 }
-.btn {
-  padding: 12px 16px 8px;
-  font-size: 16px;
-  font-weight: 700;
-  border-radius: 2px;
-  border: 2px solid transparent;
-  line-height: 1.25;
-  cursor: pointer;
+.wp-block > .wp-block-uwai-button {
+  pointer-events: none;
 }
-
-.btn:focus {
-  outline: 0;
-}
-
-.btn:disabled {
-  cursor: not-allowed;
-}
-
-.btn.play::before {
-  display: inline-block;
-  content: "";
-  width: 15px;
-  height: 15px;
-  background: url(/img/icons/play-white.svg);
-  background-size: contain;
-}
-
-.btn--lightbg {
-  background: #00598c;
+.wp-block > .wp-block-uwai-button > .btn.btn--lightbg {
   color: #fff;
 }
-
-.btn--lightbg:hover {
-  background: #0079bf;
-}
-
-.btn--lightbg:focus {
-  background: #0079bf;
-  outline: 1px dotted #fff;
-  outline-offset: -3px;
-}
-
-.btn--lightbg:active {
-  background: #003b5c;
-  outline: 0;
-}
-
-.btn--lightbg:disabled {
-  background: #757575;
-  color: #fff;
-}
-
-.btn--darkbg {
-  color: #000;
-  background: #ffd100;
-}
-
-.btn--darkbg:hover {
-  background: #ffe500;
-}
-
-.btn--darkbg:focus {
-  background: #ffe500;
-  outline: 1px dotted #fff;
-  outline-offset: -3px;
-}
-
-.btn--darkbg:active {
-  background: #ffbf0f;
-  outline: 0;
-}
-
-.btn--darkbg:disabled {
-  background: #e5e5e5;
-}
-
-.btn--secondary {
-  background: #fff;
-  color: #00598c;
-  border: 2px solid #00598c;
-}
-
-.btn--secondary:hover {
-  background: #0079bf;
-  border-color: #0079bf;
-  color: #fff;
-}
-
-.btn--secondary:focus {
-  background: #0079bf;
-  outline: 1px dotted #fff;
-  outline-offset: -3px;
-  color: #fff;
-}
-
-.btn--secondary:active {
-  background: #003b5c;
-  color: #fff;
-  outline: 0;
-}
-
-.btn--secondary:disabled {
-  border-color: #757575;
-  color: #757575;
-  background: #fff;
-}
-
-.btn--secondary.play:hover::before {
-  background: url(/img/icons/play-white.svg);
-  background-size: contain;
-}
-
-.btn--secondary.play::before {
-  background: url(/img/icons/play-defaultblue.svg);
-  background-size: contain;
-}
-
-.btn--tertiary {
-  background: 0 0;
+.wp-block > .wp-block-uwai-button > .btn.btn--secondary--lightbg {
   color: #00598c;
 }
-
-.btn--tertiary:hover {
-  background: #0079bf;
-  color: #fff;
+.wp-block > .wp-block-uwai-button > .btn.btn--secondary--darkbg {
+  border-color: #eee;
+  color: #eee;
 }
-
-.btn--tertiary:focus {
-  background: #0079bf;
-  outline: 1px dotted #fff;
-  outline-offset: -3px;
-  color: #fff;
-}
-
-.btn--tertiary:active {
-  background: #003b5c;
-  color: #fff;
-  outline: 0;
-}
-
-.btn--tertiary:disabled {
-  color: #757575;
-  background: 0 0;
-}
-
-.btn--tertiary.play:hover::before {
-  background: url(/img/icons/play-white.svg);
-  background-size: contain;
-}
-
-.btn--tertiary.play::before {
-  background: url(/img/icons/play-defaultblue.svg);
-  background-size: contain;
-}
-
-.btn--group-center, .btn--group-left, .btn--group-right {
-  background: #fff;
+.wp-block > .wp-block-uwai-button > .btn.btn--tertiary {
   color: #00598c;
-  border: 2px solid #00598c;
 }
-
-.btn--group-center:hover, .btn--group-left:hover, .btn--group-right:hover {
-  color: #fff;
-  border-color: #0079bf;
-  background: #0079bf;
-}
-
-.btn--group-center:focus, .btn--group-left:focus, .btn--group-right:focus {
-  color: #fff;
-  background: #0079bf;
-  outline: 1px dotted #fff;
-  outline-offset: -3px;
-}
-
-.btn--group-center:active, .btn--group-left:active, .btn--group-right:active {
-  color: #fff;
-  background: #003b5c;
-  border-color: #003b5c;
-  outline: 0;
-}
-
-.btn--group-center:disabled, .btn--group-left:disabled, .btn--group-right:disabled {
-  background: #757575;
-  border-color: #757575;
-  color: #fff;
+.wp-block > .wp-block-uwai-button > .btn.btn--tertiary--darkbg {
+  color: #333;
+  background-color: buttonface;
 }
 /**
  * The following styles get applied inside the editor only.
@@ -317,35 +151,26 @@
  */
 .block-editor-block-list__block.event-cards {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
 }
 .block-editor-block-list__block.event-cards a {
   pointer-events: none;
 }
-.block-editor-block-list__block.event-cards .event-card-info > .event-card-info__date {
-  line-height: 1;
-  height: 35px;
-}
-.block-editor-block-list__block.event-cards .event-card-info > .event-card-info__date .small-block {
-  margin-top: 0;
-  line-height: 1.3;
-}
-.block-editor-block-list__block.event-cards .event-card-info > .event-card-info__date .small-block > .event-card-info__month {
-  padding-top: 0;
-}
-.block-editor-block-list__block.event-cards .event-card-info > .event-card-info__date .event-card-info__number {
-  margin-left: 0.3rem;
-}
 .block-editor-block-list__block.event-cards .event-card-info .event-card-info__time, .block-editor-block-list__block.event-cards .event-card-info .event-card-info__location {
-  display: block;
-}
-.block-editor-block-list__block.event-cards .event-card-info .event-card-icon__time, .block-editor-block-list__block.event-cards .event-card-info .event-card-icon__location {
-  display: inline-block;
-  vertical-align: baseline;
+  display: flex;
+  align-items: center;
 }
 .block-editor-block-list__block.event-cards .event-card__title {
   font-size: 1.25rem;
+}
+.block-editor-block-list__block.event-cards .event-card .event-card__date {
+  padding: 16px 24px 16px;
+}
+.block-editor-block-list__block.event-cards .event-card.upcoming-event .event-card__date-info {
+  background-color: #FFD100;
+}
+.block-editor-block-list__block.event-cards .event-card.past-event .event-card__date-info {
+  background-color: #D9D9D9;
 }
 /**
  * The following styles get applied inside the editor only.
@@ -894,5 +719,6 @@ III. Graphics Div
   outline: 1px dotted #0079BF;
   outline-offset: -8px;
 }
+
 
 /*# sourceMappingURL=index.css.map*/

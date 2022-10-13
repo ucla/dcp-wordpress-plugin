@@ -29,7 +29,8 @@
      MediaUpload,
      MediaUploadCheck,
  } from '@wordpress/block-editor';
- import { useState } from '@wordpress/element'
+ import { useSelect } from '@wordpress/data'
+ import { useState, useEffect } from '@wordpress/element'
  
  function attributesFromMedia({ attributes, setAttributes }) {
      return (media) => {
@@ -84,6 +85,7 @@
      setAttributes,
      isSelected,
      className,
+     clientId,
  }) {
      let {
          mediaAlt,
@@ -92,6 +94,22 @@
          bannerContainer,
          storyBg
      } = attributes;
+     const { bannerContent } = useSelect(select => {
+        let bannerBlock = select("core/block-editor").getBlock(clientId);
+        let hasContent = false;
+        if ( bannerBlock.innerBlocks.length > 0 ) {
+            bannerBlock.innerBlocks.map(block=> {
+                if (block.attributes.content === '') {
+                    return;
+                } else {
+                    hasContent = true
+                }
+            })
+        }
+        return {
+            bannerContent: hasContent === true ? select("core/block-editor").getBlockCount(clientId) : 0
+        }
+     });
      const [type, setType] = useState(cardType);
      const [width, setWidth] = useState(bannerContainer);
      const [storyBackground, setStoryBackground] = useState(storyBg);
@@ -103,31 +121,16 @@
 	 const blockProps = useBlockProps({
         className: type === 'story' ? `hero-story${width === 'fluid' ? ' full-width' : ''}` : `hero-banner${width === 'fluid' ? ' full-width' : ''}`
      });
-    //  const onChangeBody = (value) => {
-    //      setAttributes({ body: value });
-    //  };
- 
-    //  const onChangeRow1 = (value) => {
-    //      setAttributes({ row1: value });
-    //  };
- 
-    //  const onChangeRow2 = (value) => {
-    //      setAttributes({ row2: value });
-    //  };
- 
-    //  const onChangeRow3 = (value) => {
-    //      setAttributes({ row3: value });
-    //  };
- 
-    //  const onChangeRow4 = (value) => {
-    //      setAttributes({ row4: value });
-    //  };
  
      const onSelectMedia = attributesFromMedia({ attributes, setAttributes });
  
      const onMediaAltChange = (newMediaAlt) => {
          setAttributes({ mediaAlt: newMediaAlt });
      };
+
+     const onImgCreditChange = value => {
+        setAttributes({imgCredit: value})
+     }
 
      const onCardTypeChange = value => {
         setType(value)
@@ -138,6 +141,9 @@
         setWidth(value)
         setAttributes({bannerContainer: value})
      }
+     useEffect(() => {
+        setAttributes({ bannerContent });
+    }, [bannerContent]);
      return (
          <div {...blockProps}>
              <InspectorControls>
@@ -223,7 +229,7 @@
                                      onSelect={onSelectMedia}
                                      allowedTypes={['image']}
                                      render={({ open }) => (
-                                         <Button onClick={open} isDefault>
+                                         <Button onClick={open} variant="secondary">
                                              {__('Replace image', 'awp')}
                                          </Button>
                                      )}
@@ -232,22 +238,22 @@
                          )}
                          {attributes.mediaId && (
                              <TextareaControl
-                                 label={__('Alt text (alternative text)')}
-                                 value={mediaAlt}
-                                 onChange={onMediaAltChange}
-                                 help={
-                                     <>
-                                         <ExternalLink href="https://www.w3.org/WAI/tutorials/images/decision-tree">
-                                             {__(
-                                                 'Describe the purpose of the image'
-                                             )}
-                                         </ExternalLink>
+                             label={__('Alt text (alternative text)')}
+                             value={mediaAlt}
+                             onChange={onMediaAltChange}
+                             help={
+                                 <>
+                                     <ExternalLink href="https://www.w3.org/WAI/tutorials/images/decision-tree">
                                          {__(
-                                             'Leave empty if the image is purely decorative.'
+                                             'Describe the purpose of the image'
                                          )}
-                                     </>
-                                 }
-                             />
+                                     </ExternalLink>
+                                     {__(
+                                         'Leave empty if the image is purely decorative.'
+                                     )}
+                                 </>
+                             }
+                         />
                          )}
                      </div>
                  </PanelBody>

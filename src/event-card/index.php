@@ -56,10 +56,15 @@ class EventsMetaBox {
             'type'  => 'date'
         ),
 		array(
-            'label' => 'Event Time',
+            'label' => 'Event Start Time',
             'id'    => 'event_time',
             'type'  => 'time'
         ),
+		array(
+			'label' => 'Event End Time',
+			'id'	=> 'event_end_time',
+			'type'	=> 'time'
+		),
 		array(
 			'label' => 'Location',
 			'id'	=> 'event_location',
@@ -157,71 +162,25 @@ if (class_exists('EventsMetaBox')) {
 add_filter('template_include', 'events_template');
 function events_template($template) {
 	if ( is_post_type_archive('events') ) {
-		$theme_files = array('archive-events.php', 'ucla-wp-plugin/src/event-card/archive-events.php');
+		$theme_files = array('archive-events.php', 'dcp-wordpress-plugin/src/event-card/archive-events.php');
 		$exists_in_theme = locate_template($theme_files, false);
 		if ($exists_in_theme != '') {
 			return $exists_in_theme;
 		} else {
-			return WP_PLUGIN_DIR . '/ucla-wp-plugin/src/event-card/archive-events.php';
+			return WP_PLUGIN_DIR . '/dcp-wordpress-plugin/src/event-card/archive-events.php';
 		}
 	}
 	if ( is_singular('events') ) {
-		$theme_files = array('single-events.php', 'ucla-wp-plugin/src/event-card/single-events.php');
+		$theme_files = array('single-events.php', 'dcp-wordpress-plugin/src/event-card/single-events.php');
 		$exists_in_theme = locate_template($theme_files, false);
 		if ($exists_in_theme != '') {
 			return $exists_in_theme;
 		} else {
-			return WP_PLUGIN_DIR . '/ucla-wp-plugin/src/event-card/single-events.php';
+			return WP_PLUGIN_DIR . '/dcp-wordpress-plugin/src/event-card/single-events.php';
 		}
 	}
 	return $template;
 }
-
-// function register_event_rest_fields() {
-// 	register_rest_field('events', 'event_start_date',
-// 		array(
-// 			'get_callback' => 'get_post_meta_callback',
-// 			'update_callback' => 'update_post_meta_callback',
-// 			'schema'          => array(
-// 				'type'        => 'string',
-// 				'arg_options' => array(
-// 					'sanitize_callback' => function ( $value ) {
-// 						// Make the value safe for storage.
-// 						return sanitize_text_field( $value );
-// 					}
-// 				),
-// 			),
-// 		)
-// 	);
-// 	register_rest_field('events', 'event_end_date',
-// 		array(
-// 			'get_callback' => 'get_post_meta_callback',
-// 			'update_callback' => 'update_post_meta_callback',
-// 			'schema'          => array(
-// 				'type'        => 'string',
-// 				'arg_options' => array(
-// 					'sanitize_callback' => function ( $value ) {
-// 						// Make the value safe for storage.
-// 						return sanitize_text_field( $value );
-// 					}
-// 				),
-// 			),
-// 		)
-// 	);
-// }
-// function update_post_meta_callback($value, $object, $field_name) {
-// 	if ( ! $value || ! is_string( $value ) ) {
-//         return;
-//     }
-//     return update_post_meta( $object->ID, $field_name, $value );
-// }
-// function get_post_meta_callback($object, $field_name, $request) {
-// 	$event_info = get_post_meta($object['id'], $field_name, true);
-// 	$output['rendered'] = $event_info;
-// 	return $output;
-// }
-
-// add_action('rest_api_init', 'register_event_rest_fields');
 
 function render_block_core_events( $attributes ) {
 	global $post;
@@ -313,59 +272,74 @@ function render_block_core_events( $attributes ) {
 		// Get date
 		$start_date = new DateTime(get_post_meta($post->ID,'event_start_date', true));
 		$start_time = new DateTime(get_post_meta($post->ID,'event_time', true));
+		if (get_post_meta($post->ID,'event_end_time', true)) {
+			$end_time = new DateTime(get_post_meta($post->ID, 'event_end_time', true));
+		}
 		$post_link = esc_url( get_permalink( $post ) );
 		$title     = get_the_title( $post );
 		$featured_image = get_the_post_thumbnail($post,'large',array('class'=>'event-card__image'));
-		// $publication_author = get_post_meta($post->ID,'publication_author', true);
-		$events_markup .= '<article class="event-card">';
+		// $events_markup .= '<article class="event-card">';
 		$events_markup .= sprintf(
-			'<a class="event-card__link" href="%1$s">%2$s<h3 class="event-card__title">%3$s</h3></a>',
+			'<article class="event-card %1$s">',
+			$start_date -> format('Y-m-d') > $today ? 'upcoming-events' : 'past-events'
+		);
+		$events_markup .= sprintf(
+			'<div class="event-card__date">
+				<div class="event-card__date-info">
+					<time datetime="%2$s">%1$s</time>
+				</div>
+			</div>',
+			$start_date -> format('l, F j, o'),
+			$start_date -> format('o-m-d'),
+		);
+		$events_markup .= sprintf(
+			'<a class="event-card__link" href="%1$s" title="%2$s">
+				%3$s
+				<h3 class="event-card__title"><span>%2$s</span></h3>
+			</a>',
 			esc_url( $post_link ),
-			$featured_image,
-			$title
-		);
-		$events_markup .= '
-			<div class="event-card-info">
-				<div class="event-card-info__date">
-					<span class="small-block">
-		';
-		$events_markup .= sprintf(
-			'<span class="event-card-info__day">%1$s</span><span class="event-card-info__month">%2$s</span>',
-			$start_date -> format('D'),
-			$start_date -> format('M')
+			$title,
+			$featured_image
 		);
 		$events_markup .= sprintf(
-			'</span><span class="event-card-info__number">%1$s</span>',
-			$start_date -> format('d')
+			'<div class="event-card-info">
+				<div class="event-card-info__time">
+					<object class="event-card-icon__time" tabindex="-1" data="https://cdn.webcomponents.ucla.edu/1.0.0/icons/denotive/time--grey60.svg" type="image/svg+xml"></object>%1$s
+			',
+			$start_time -> format('g:i A')
 		);
-		$events_markup .= '
-			</div>
-		';
+		if (get_post_meta($post->ID,'event_end_time', true)) {
+			$events_markup .= sprintf(' to %1$s', $end_time -> format('g:i A'));
+		}
 		$events_markup .= sprintf('
-			<div class="event-card-info__time">
-				<object class="event-card-icon__time" tabindex="-1" type="image/svg">
-					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" style="enable-background: new 0 0 24 24">
-							<title>time</title>
-							<g>
-									<path fill="#666666" className="time--grey" d="M12,2c5.5,0,10,4.5,10,10s-4.5,10-10,10C6.5,22,2,17.5,2,12S6.5,2,12,2z M12,4
-											c-4.4,0-8,3.6-8,8s3.6,8,8,8s8-3.6,8-8S16.4,4,12,4z M12.5,7v5.2l4.5,2.7l-0.8,1.2L11,13V7H12.5z" />
-							</g>
-						</svg>
-				</object>%1$s
 			</div>
-		', $start_time -> format('g:i A'));
-		$events_markup .= sprintf('
-			<div class="event-card-info__location">
-				<object class="event-card-icon__location" tabindex="-1" type="image/svg">
-				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-				style="enable-background: new 0 0 24 24"><title>Location</title><path class="location--grey" style="fill: #666" d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5s1.1-2.5 2.5-2.5 2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5z"/></svg>
-				</object>%1$s
-			</div>
-		', get_post_meta($post->ID,'event_location', true));
-		$events_markup .= sprintf('
-			<div class="event-card-info__description">%1$s</div>
-		', get_the_excerpt($post));
-		$events_markup .= '</div></article>';
+				<div class="event-card-info__location">
+					<object class="event-card-icon__location" tabindex="-1" data="https://cdn.webcomponents.ucla.edu/1.0.0/icons/denotive/location--grey60.svg" type="image/svg+xml"></object>
+					%1$s
+				</div>
+				<div class="event-card-info__description">%2$s</div>
+			</div>',
+			get_post_meta($post->ID,'event_location', true),
+			get_the_excerpt($post->ID)
+		);
+		// $events_markup .= sprintf(
+		// 	'<div class="event-card-info">
+		// 		<div class="event-card-info__time">
+		// 			<object class="event-card-icon__time" tabindex="-1" data="https://cdn.webcomponents.ucla.edu/1.0.0/icons/denotive/time--grey60.svg" type="image/svg+xml"></object>
+		// 			%1$s to %4$s
+		// 		</div>
+		// 		<div class="event-card-info__location">
+		// 			<object class="event-card-icon__location" tabindex="-1" data="https://cdn.webcomponents.ucla.edu/1.0.0/icons/denotive/location--grey60.svg" type="image/svg+xml"></object>
+		// 			%2$s
+		// 		</div>
+		// 		<div class="event-card-info__description">%3$s</div>
+		// 	</div>',
+		// 	$start_time -> format('g:i A'),
+		// 	get_post_meta($post->ID,'event_location', true),
+		// 	get_the_excerpt($post->ID),
+		// 	$end_time -> format('g:i A')
+		// );
+		$events_markup .= '</article>';
 	}
 	$events_markup .= "</div>";
 	return $events_markup;

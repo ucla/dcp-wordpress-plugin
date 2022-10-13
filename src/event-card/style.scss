@@ -4,174 +4,142 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+
+.event-card__date-info {
+	display: inline-block;
+	padding: 4px 8px;
+	font-size: 0.8rem;
+	font-weight: bold;
+}
+.upcoming-events .event-card__date-info {
+	background-color: #FFD100;
+}
+
+.past-events .event-card__date-info {
+	background-color: #D9D9D9;
+}
  
 .events-archive {
-	.event {
-		border-top: 1px solid #e5e5e5;
-		padding: 1rem;
+	.event-cards {
 		display: flex;
+		flex-direction: column;
 		flex-wrap: wrap;
 
-		@media (min-width: 768px) {
-			flex-wrap: nowrap;
-		}
-
-		.event-content {
-			width: 100%;
-		}
-
-		.event-img-wrapper {
-			width: 100%;
-
-			@media (min-width: 768px) {
-				width: 32.26%;
-				margin-right: 1.6%;
-			}
-
-			.event-featured-img {
-				max-width: 100%;
-				height: auto;
-			}
-			.event-placeholder-wrapper {
-				background-color:#00598c;
-
-				.event-placeholder {
-					opacity: .2;
-					max-width: 100%;
-					height: auto;
-				}
-			}
-		}
-
-		.event-title {
-			margin-bottom:0;
-
-			a {
-				color: #00598C;
-				text-decoration: none;
-
-				&:active, &:visited {
-					color: #00598C;
-				}
-				&:hover {
-					color: white;
-				}
-			}
-		}
-
-		&:last-of-type {
-			border-bottom: 1px solid #e5e5e5;
-		}
-		.event-info {
+		.event-card {
+			margin-top: 0;
 			margin-bottom: 1rem;
-			color: #666;
-			font-size: 0.75rem;
-			font-weight: bold;
-			justify-content: space-between;
 
-			@media (min-width: 576px) {
-				justify-content: flex-start;
+			.event-card__date {
+				padding: 16px 24px 16px;
 			}
+			
 
-			&> div {
-				margin-right: 0;
-
-				@media (min-width: 768px) {
-					margin-right: 1rem;
+			.event-card-info {
+				.event-card-info__time, .event-card-info__location {
+					display: flex;
+					align-items: center;
 				}
 			}
-		}
-		.event-info, .event-start-date, .event-time, .event-location {
-			display: flex;
-			align-items: center;
-		}
 
-		.event-start-date, .event-time, .event-location {
-			svg {
-				width: 1rem;
-				height: 1rem;
-				margin-right: 6px;
+			// Comp Lib override
+			.event-card__link:hover{
+				img {
+					opacity: 1;
+				}
+				&::before {
+					background: transparent;
+				}
+			}
+			@media (min-width: 600px) {
+				margin-right: 1.1rem;
 			}
 		}
+
+		@media (min-width: 576px) {
+			flex-direction: row;
+		}
+	}
+
+	.upcoming-events {
+		background-color: #F2F2F2;
+		margin-bottom: 3.3rem;
+
+		.event-card__date-info {
+			background-color: #FFD100;
+		}
+	}
+	.past-events .event-card__date-info {
+		background-color: #D9D9D9;
 	}
 }
 
 .event-page {
-	.event-info {
+
+	.ucla.campus.masthead h1.entry-title {
 		margin-bottom: 1rem;
-		color: #666;
-		font-size: 0.75rem;
-		font-weight: bold;
-		justify-content: space-between;
-
-		@media (min-width: 576px) {
-			justify-content: flex-start;
-		}
-
-		&> div {
-			margin-right: 0;
-
-			@media (min-width: 768px) {
-				margin-right: 1rem;
-			}
-		}
-	}
-	.event-info, .event-start-date, .event-time, .event-location {
-		display: flex;
-		align-items: center;
-	}
-
-	.event-start-date, .event-time, .event-location {
-		svg {
-			width: 1rem;
-			height: 1rem;
-			margin-right: 6px;
-		}
 	}
 
 	.event-featured-img {
 		max-width: 100%;
 		height: auto;
+		margin-bottom: 1rem;
 	}
-	.event-placeholder-wrapper {
-		background-color:#00598c;
 
-		.event-placeholder {
-			opacity: 0.2;
-			width: 100%;
-			height: auto;
-		}
+	.event-card-info__time, .event-card-info__location {
+		display: flex;
+		align-items: center;
 	}
 }
 
 // Display on page
 
-.events-container {
+.events-container.both,.events-container.upcoming,.events-container.past {
 	display: flex;
-	justify-content: space-between;
 	flex-wrap: wrap;
 
-	.event-card-info {
-		.event-card-info__date {
-			line-height: 1;
-			height: 35px;
+	.event-card {
+		margin-top: 0;
+		margin-bottom: 1rem;
 
-			.small-block {
-				margin-top: 0;
-				line-height: 1.3;
+		.event-card__date {
+			padding: 16px 24px 16px;
+		}
+		
 
-				.event-card-info__month {
-					padding-top: 0;
+		.event-card-info {
+			.event-card-info__time, .event-card-info__location {
+				display: flex;
+				align-items: center;
+			}
+		}
+
+		// Comp Lib override
+		.event-card__link{
+			.event-card__image {
+				object-fit: cover;
+			}
+			&:hover{
+				img {
+					opacity: 1;
+				}
+				&::before {
+					background: transparent;
 				}
 			}
-
-			.event-card-info__number {
-				margin-left: 0.3rem;
-			}
 		}
-
-		.event-card-info__time, .event-card-info__location {
-			display: block;
+		@media (min-width: 600px) {
+			margin-right: 1.1rem;
 		}
+	}
+
+	.upcoming-events {
+		margin-bottom: 3.3rem;
+
+		.event-card__date-info {
+			background-color: #FFD100;
+		}
+	}
+	.past-events .event-card__date-info {
+		background-color: #D9D9D9;
 	}
 }

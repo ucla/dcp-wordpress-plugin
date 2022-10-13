@@ -7,10 +7,9 @@
 		"html": false
 	},
 	"attributes": {
-		"title": {
+		"body": {
 			"type": "string",
-			"source": "text",
-			"selector": "span"
+			"source": "text"
 		},
 		"url": {
 			"type": "string",
@@ -31,13 +30,19 @@
 			"attribute": "rel"
 		},
 		"style": {
+			"type": "string",
+			"default": "btn--lightbg"
+		},
+		"size": {
 			"type": "string"
 		},
 		"play": {
-			"type": "boolean"
+			"type": "boolean",
+			"default": false
 		},
 		"disabled": {
-			"type": "boolean"
+			"type": "boolean",
+			"default": false
 		}
 	}
 }

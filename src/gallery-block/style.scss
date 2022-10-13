@@ -1,0 +1,25 @@
+.gallery-container {
+    display: flex;
+    flex-direction: column;
+    .basic-card {
+        &__title{
+            margin: 0 0 1rem;
+            a {
+                text-decoration: none;
+            } 
+        }
+    }
+
+    @media (max-width: 768px){
+        .basic-card {
+            margin: 32px auto 0;
+        }
+    }     
+
+}
+
+@media (min-width: 768px) {
+	.gallery-container {
+		flex-direction: row;
+	}
+}

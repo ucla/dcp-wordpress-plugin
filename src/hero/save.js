@@ -33,11 +33,12 @@ export default function save({
 		department,
 		cardType,
 		bannerContainer,
-		storyBg
+		storyBg,
+		bannerContent,
+		imgCredit
 	},
 	className,
 }) {
-	
 	switch (cardType) {
 		case 'story':
 			return (
@@ -56,9 +57,11 @@ export default function save({
 		case 'full':
 			return (
 				<section className={`hero-banner-container${className ? ' ' + className : ''}${bannerContainer === 'fluid' ? ' full-width' : ''}`} style={{'backgroundImage': `url(${mediaUrl ?? 'https://picsum.photos/id/1005/500/700'})`}}>
+					{bannerContent > 0 && (
 					<div className="hero-banner__content">
 						<InnerBlocks.Content />
 					</div>
+					)}
 				</section>
 			);
 		break;
