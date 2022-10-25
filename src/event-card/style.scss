@@ -10,6 +10,7 @@
 	padding: 4px 8px;
 	font-size: 0.8rem;
 	font-weight: bold;
+	white-space: nowrap;
 }
 .upcoming-events .event-card__date-info {
 	background-color: #FFD100;
@@ -95,12 +96,10 @@
 
 .events-container.both,.events-container.upcoming,.events-container.past {
 	display: flex;
-	flex-wrap: wrap;
 
 	.event-card {
 		margin-top: 0;
-		margin-bottom: 1rem;
-
+		// margin-bottom: 1rem;
 		.event-card__date {
 			padding: 16px 24px 16px;
 		}
@@ -127,9 +126,9 @@
 				}
 			}
 		}
-		@media (min-width: 600px) {
-			margin-right: 1.1rem;
-		}
+		// @media (min-width: 600px) {
+		// 	margin-right: 1.1rem;
+		// }
 	}
 
 	.upcoming-events {
