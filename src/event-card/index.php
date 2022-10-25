@@ -266,9 +266,11 @@ function render_block_core_events( $attributes ) {
 	$query        = new WP_Query;
 	$recent_posts = $query->query($args);
 	update_post_thumbnail_cache( $query );
-	$events_markup = '<div class="events-container ' . $attributes['eventSelection'] . '">';
+	$events_markup = '<div class="splide" id="' . $attributes['blockId'] . '"><div class="splide__track">';
+	$events_markup .= '<ul class="splide__list events-container ' . $attributes['eventSelection'] . '">';
 
 	foreach ( $recent_posts as $post ) {
+		$events_markup .= '<li class="splide__slide">';
 		// Get date
 		$start_date = new DateTime(get_post_meta($post->ID,'event_start_date', true));
 		$start_time = new DateTime(get_post_meta($post->ID,'event_time', true));
@@ -278,7 +280,7 @@ function render_block_core_events( $attributes ) {
 		$post_link = esc_url( get_permalink( $post ) );
 		$title     = get_the_title( $post );
 		$featured_image = get_the_post_thumbnail($post,'large',array('class'=>'event-card__image'));
-		// $events_markup .= '<article class="event-card">';
+		//$events_markup .= '<div class="splide__slide__container">';
 		$events_markup .= sprintf(
 			'<article class="event-card %1$s">',
 			$start_date -> format('Y-m-d') > $today ? 'upcoming-events' : 'past-events'
@@ -322,26 +324,14 @@ function render_block_core_events( $attributes ) {
 			get_post_meta($post->ID,'event_location', true),
 			get_the_excerpt($post->ID)
 		);
-		// $events_markup .= sprintf(
-		// 	'<div class="event-card-info">
-		// 		<div class="event-card-info__time">
-		// 			<object class="event-card-icon__time" tabindex="-1" data="https://cdn.webcomponents.ucla.edu/1.0.0/icons/denotive/time--grey60.svg" type="image/svg+xml"></object>
-		// 			%1$s to %4$s
-		// 		</div>
-		// 		<div class="event-card-info__location">
-		// 			<object class="event-card-icon__location" tabindex="-1" data="https://cdn.webcomponents.ucla.edu/1.0.0/icons/denotive/location--grey60.svg" type="image/svg+xml"></object>
-		// 			%2$s
-		// 		</div>
-		// 		<div class="event-card-info__description">%3$s</div>
-		// 	</div>',
-		// 	$start_time -> format('g:i A'),
-		// 	get_post_meta($post->ID,'event_location', true),
-		// 	get_the_excerpt($post->ID),
-		// 	$end_time -> format('g:i A')
-		// );
 		$events_markup .= '</article>';
+		$events_markup .= '</li>';
 	}
-	$events_markup .= "</div>";
+	$events_markup .= "</ul>";
+	$events_markup .= "</div></div>";
+	add_action('wp_footer', function() use ($attributes) {
+		slider_init($attributes['blockId']);
+	}, 21);
 	return $events_markup;
 }
 
@@ -354,3 +344,38 @@ function register_block_core_events() {
 		);
 }
 add_action('init', 'register_block_core_events');
+
+function slider_init($id) {
+	echo '
+		<script type="text/javascript">
+		jQuery(document).ready(function(){
+			new Splide("#'.$id.'", {
+				arrows: false,
+				easing: "ease",
+				fixedWidth: false,
+				gap: 24,
+				pagination: false,
+				perPage: 4,
+				rewind: true,
+				breakpoints: {
+					414: {
+					fixedWidth: 276,
+					pagination: false,
+					perPage: 1,
+					},
+					991: {
+					fixedWidth: 276,
+					pagination: false,
+					perPage: 1,
+					},
+					1023: {
+					fixedWidth: false,
+					pagination: false,
+					perPage: 4,
+					}
+				}
+			}).mount();
+		});
+		</script>
+	';
+}

@@ -43,17 +43,17 @@ import { useState } from '@wordpress/element';
 export default function Edit( {
 	attributes,
 	setAttributes,
-	isSelected,
+	clientId,
 	className,
 } ) {
 	const [eventSelection, setEventSelection] = useState(attributes['eventSelection']);
 
     const blockProps = useBlockProps({
-		className: 'event-cards'
+		className: className + ' event-cards'
 	});
 
-	let {numberOfEvents} = attributes;
-
+	let {numberOfEvents, blockId} = attributes;
+	setAttributes({blockId: `card-${clientId}`})
 	const events = useSelect(select => select('core').getEntityRecords('postType', 'events', {_embed: true}));
 
 	const onChangeEventsNumber = (value) => {
@@ -124,41 +124,6 @@ export default function Edit( {
 				</div>
 			</article>
 		);
-		// return <article className="event-card">
-		// 		<a className="event-card__link" href={`${link}`}>
-		// 			<img className="event-card__image" src={`${image ? image : ''}`} alt="Two children on their phones under the blankets" />
-		// 			<h1 className="event-card__title"><span>{`${title}`}</span></h1>
-		// 		</a>
-		// 		<div className="event-card-info">
-		// 			<div className="event-card-info__date">
-		// 				<span className="small-block">
-		// 					<span className="event-card-info__day">{`${day}`}</span>
-		// 					<span className="event-card-info__month">{`${month}`}</span>
-		// 				</span>
-		// 				<span className="event-card-info__number">{`${dayNum}`}</span>
-		// 			</div>
-		// 			<div className="event-card-info__time">
-		// 			<object className="event-card-icon__time" tabindex="-1" type="image/svg">
-		// 				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" style={{enableBackground:'new 0 0 24 24'}} xmlnsXlink="http://www.w3.org/1999/xlink">
-		// 					<title>time</title>
-		// 					<g>
-		// 							<path fill="#666666" className="time--grey" d="M12,2c5.5,0,10,4.5,10,10s-4.5,10-10,10C6.5,22,2,17.5,2,12S6.5,2,12,2z M12,4
-		// 									c-4.4,0-8,3.6-8,8s3.6,8,8,8s8-3.6,8-8S16.4,4,12,4z M12.5,7v5.2l4.5,2.7l-0.8,1.2L11,13V7H12.5z" />
-		// 					</g>
-		// 				</svg>
-		// 				</object>
-		// 				{`${formatTime}`}
-		// 			</div>
-		// 			<div className="event-card-info__location">
-		// 			<object className="event-card-icon__location" tabindex="-1" type="image/svg">
-		// 				<svg xmlnsXlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-		// 				style={{enableBackground:'new 0 0 24 24'}} ><title>Location</title><path class="location--grey" style={{fill: '#666'}} d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5s1.1-2.5 2.5-2.5 2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5z"/></svg>
-		// 				</object>
-		// 				{`${location}`}
-		// 			</div>
-		// 			<div className="event-card-info__description">{`${description}`}</div>
-		// 		</div>
-		// 	</article>;
 	};
 
 	const renderSwitch = param => {
