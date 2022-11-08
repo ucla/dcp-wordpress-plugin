@@ -34,7 +34,7 @@ get_header(); ?>
                                 <h2 class="basic-card__title"><a href="<?php echo get_permalink( $post->ID ); ?>"><?php the_title(); ?></a></h2>
                                 <p class="basic-card__description"><?php echo get_the_excerpt() ?></p>
                                 <div class="basic-card__buttons">
-                                    <a class="btn btn--tertiary" href="<?php echo get_permalink( $post->ID ); ?>">Read more about <?php the_title(); ?></a>
+                                    <a class="btn btn--tertiary" href="<?php echo get_permalink( $post->ID ); ?>"><?=__('Read more about', 'ucla-dcp-plugin')?> <?php the_title(); ?></a>
                                 </div>
                             </div>
                         </article>
@@ -43,7 +43,7 @@ get_header(); ?>
                     endwhile;
                 else :
                     // If no posts match this query, output this text.
-                    _e('Sorry, no results match your criteria.', 'textdomain');
+                    _e('Sorry, no results match your criteria.', 'ucla-dcp-plugin');
                 endif;
                 wp_reset_postdata();
             ?>

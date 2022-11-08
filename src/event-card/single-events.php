@@ -54,7 +54,7 @@
             <?php
                 if (get_post_meta($post->ID,'event_rsvp', true)) {
             ?>
-            <a class="btn btn--secondary--lightbg" href="<?=get_post_meta($post->ID,'event_rsvp', true)?>" target="_blank">RSVP</a>
+            <a class="btn btn--secondary--lightbg" href="<?=get_post_meta($post->ID,'event_rsvp', true)?>" target="_blank"><?=__('RSVP', 'ucla-dcp-plugin'); ?></a>
             <?php
                 }
             ?>

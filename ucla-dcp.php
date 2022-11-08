@@ -4,7 +4,8 @@
  * Description:     UCLA branded and ADA complaint components. Currently in beta, not reccomended for production use.
  * Version:         0.1.1
  * Author:          Computing and Disabilities Program and Strategic Communications
- * Text Domain:     ucla-wp-plugin
+ * Text Domain:     ucla-dcp-plugin
+ * Domain Path:		/languages
  *
  * @package         uwai
  */

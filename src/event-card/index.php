@@ -2,19 +2,23 @@
 
 function cpt_events() {
     $labels = array(
-        'name'          =>  'Events',
-        'singular_name' =>  'Event',
-        'menu_name'     =>  'Events',
-        'archives'      =>  'Past Events',
-        'all_items'     =>  'All Events',
-        'add_new_item'  =>  'Add New Event',
-        'add_new'       =>  'Add Event',
-        'new_item'      =>  'New Event',
-        'edit_item'     =>  'Edit Event',
-        'update_item'   =>  'Update Event',
-        'search_items'  =>  'Search Events',
-        'not_found'     =>  'Event not found',
-        'not_found_in_trash'    =>  'Event not found in Trash'
+        'name'          	=>  'Events',
+        'singular_name' 	=>  __('Event', 'ucla-dcp-plugin'),
+        'menu_name'     	=>  __('Events', 'ucla-dcp-plugin'),
+        'archives'      	=>  __('Past Events', 'ucla-dcp-plugin'),
+        'all_items'     	=>  __('All Events', 'ucla-dcp-plugin'),
+		'featured_image'	=>	__('Event Image', 'ucla-dcp-plugin'),
+		'set_featured_image'    => __('Set event image', 'ucla-dcp-plugin'),
+		'remove_featured_image' => __('Remove event image', 'ucla-dcp-plugin'),
+		'use_featured_image'    => __('Use as event image', 'ucla-dcp-plugin'),
+        'add_new_item'  	=>  __('Add New Event', 'ucla-dcp-plugin'),
+        'add_new'       =>  __('Add Event', 'ucla-dcp-plugin'),
+        'new_item'      =>  __('New Event', 'ucla-dcp-plugin'),
+        'edit_item'     =>  __('Edit Event', 'ucla-dcp-plugin'),
+        'update_item'   =>  __('Update Event', 'ucla-dcp-plugin'),
+        'search_items'  =>  __('Search Events', 'ucla-dcp-plugin'),
+        'not_found'     =>  __('Event not found', 'ucla-dcp-plugin'),
+        'not_found_in_trash'    =>  __('Event not found in Trash', 'ucla-dcp-plugin')
     );
     $args = array(
         'labels'        => $labels,
@@ -87,7 +91,7 @@ class EventsMetaBox {
 		foreach ( $this->screen as $single_screen ) {
 			add_meta_box(
 				'Event Information',
-				__( 'Event Information', '' ),
+				__( 'Event Information', 'ucla-dcp-plugin' ),
 				array( $this, 'meta_box_callback' ),
 				$single_screen,
 				'normal',

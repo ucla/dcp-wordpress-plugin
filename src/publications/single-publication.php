@@ -15,7 +15,7 @@
             <div class="col span_4_of_12" style="min-height: 1px"></div>
             <div class="col span_8_of_12">
 
-            <a href="/publication" class="btn btn--sm btn--lightbg" style="display:inline-block;color:#fff;">View All</a>
+            <a href="/publication" class="btn btn--sm btn--lightbg" style="display:inline-block;color:#fff;"><?php _e('View All', 'ucla-dcp-plugin'); ?></a>
             </div>
         </div>
         <div class="ucla campus entry-content">
@@ -38,13 +38,13 @@
                     <p class="mb-0"><strong>ISBN:</strong> <?= get_post_meta($post->ID,'publication_isbn', true) ?>
                 <?php } ?>
                 <?php if (get_post_meta($post->ID,'publication_isbn_paper', true)) { ?>
-                    <p class="mb-0"><strong>ISBN (Paperback):</strong> <?= get_post_meta($post->ID,'publication_isbn_paper', true) ?></p>
+                    <p class="mb-0"><strong>ISBN (<?php _e('Paperback', 'ucla-dcp-plugin'); ?>):</strong> <?= get_post_meta($post->ID,'publication_isbn_paper', true) ?></p>
                 <?php } ?>
                 <?php if (get_post_meta($post->ID,'publication_isbn_hardcover', true)) { ?>
-                    <p class="mb-0"><strong>ISBN (Hardcover):</strong> <?= get_post_meta($post->ID,'publication_isbn_hardcover', true) ?></p>
+                    <p class="mb-0"><strong>ISBN (<?php _e('Hardcover', 'ucla-dcp-plugin'); ?>):</strong> <?= get_post_meta($post->ID,'publication_isbn_hardcover', true) ?></p>
                 <?php } ?>
                 <?php if (get_post_meta($post->ID,'publication_isbn_ebook', true)) { ?>
-                    <p class="mb-0"><strong>ISBN (Ebook):</strong> <?= get_post_meta($post->ID,'publication_isbn_ebook', true) ?></p>
+                    <p class="mb-0"><strong>ISBN (<?php _e('Ebook', 'ucla-dcp-plugin'); ?>):</strong> <?= get_post_meta($post->ID,'publication_isbn_ebook', true) ?></p>
                 <?php } ?>
                 <?php edit_post_link(); ?>
             </div>

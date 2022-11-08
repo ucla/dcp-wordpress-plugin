@@ -85,7 +85,7 @@ get_header(); ?>
                     <?php } ?>
                 </div>
                     <?php } else if(empty($posts)) {
-                        _e( 'Information on upcoming events will be posted here as it becomes available.', 'textdomain' );
+                        _e( 'Information on upcoming events will be posted here as it becomes available.', 'ucla-dcp-plugin' );
                     }
                     wp_reset_postdata();
                 ?>
@@ -95,8 +95,8 @@ get_header(); ?>
     <div class="past-events">
         <div class="ucla campus">
             <div class="col span_12_of_12">
-            <h2>Past Events</h2>
-            <p>To view past recordings and access resources related to previous events, please click on an event below.</p>
+            <h2><?php _e('Past Events', 'ucla-dcp-plugin') ?></h2>
+            <p><?php _e('To view past recordings and access resources related to previous events, please click on an event below.', 'ucla-dcp-plugin') ?></p>
             <?php
                 $pastposts = get_posts(
                     array(
@@ -184,7 +184,7 @@ get_header(); ?>
                 <?php    } ?>
                                     </div>
                 <?php } else if(empty($pastposts)) {
-                    _e( 'Information on past events will be posted here as it becomes available.', 'textdomain' );
+                    _e( 'Information on past events will be posted here as it becomes available.', 'ucla-dcp-plugin' );
                 }
                 wp_reset_postdata();
             ?>
