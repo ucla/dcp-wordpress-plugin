@@ -25,6 +25,10 @@ include __DIR__ . '/src/recent-posts/index.php';
 include __DIR__ . '/src/gallery-block/index.php';
 include __DIR__ . '/src/publications/index.php';
 
+function load_text_domain() {
+	load_plugin_textdomain('ucla-dcp-plugin', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+}
+add_action('plugins_loaded', 'load_text_domain');
 function ucla_dcp_ucla_dcp_block_init() {
 
   wp_enqueue_script('jquery');
