@@ -3,7 +3,7 @@
 	"name": "uwai/hero-banner",
 	"title": "UWAI Hero",
 	"category": "common",
-	"textdomain": "uwai",
+	"textdomain": "ucla-dcp-plugin",
 	"supports": {
 		"html": false
 	},

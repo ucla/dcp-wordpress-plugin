@@ -20,13 +20,13 @@ export const settings = {
 	 * This is the display title for your block, which can be translated with `i18n` functions.
 	 * The block inserter will show this name.
 	 */
-	title: __( 'UWAI Accordion', 'uwai' ),
+	title: __( 'UWAI Accordion', 'ucla-dcp-plugin' ),
 
 	/**
 	 * This is a short description for your block, can be translated with `i18n` functions.
 	 * It will be shown in the Block Tab in the Settings Sidebar.
 	 */
-	description: __( 'UCLA styled accordion for displaying content in a compact manner.', 'uwai' ),
+	description: __( 'UCLA styled accordion for displaying content in a compact manner.', 'ucla-dcp-plugin' ),
 
 	/**
 	 * Blocks are grouped into categories to help users browse and discover them.

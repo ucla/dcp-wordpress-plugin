@@ -85,7 +85,7 @@ function URLPicker( {
 						<ToolbarButton
 							name="link"
 							icon={ link }
-							title={ __( 'Link' ) }
+							title={ __( 'Link', 'ucla-dcp-plugin' ) }
 							shortcut={ displayShortcut.primary( 'k' ) }
 							onClick={ openLinkControl }
 						/>
@@ -94,7 +94,7 @@ function URLPicker( {
 						<ToolbarButton
 							name="link"
 							icon={ linkOff }
-							title={ __( 'Unlink' ) }
+							title={ __( 'Unlink', 'ucla-dcp-plugin' ) }
 							shortcut={ displayShortcut.primaryShift( 'k' ) }
 							onClick={ unlinkButton }
 							isActive={ true }
@@ -187,7 +187,7 @@ export default function Edit( {
 							tagName="span"
 							placeholder={ __(
 								'Write Recipe title…',
-								'gutenberg-examples'
+								'ucla-dcp-plugin'
 							) }
 							value={ title }
 							onChange={ onChangeTitle }
@@ -204,14 +204,14 @@ export default function Edit( {
 			/>
 
 			<InspectorControls>
-				<PanelBody title={ __( 'Link settings' ) }>
+				<PanelBody title={ __( 'Link settings', 'ucla-dcp-plugin' ) }>
 					<ToggleControl
-						label={ __( 'Open in new tab' ) }
+						label={ __( 'Open in new tab', 'ucla-dcp-plugin' ) }
 						onChange={ onToggleOpenInNewTab }
 						checked={ linkTarget === '_blank' }
 					/>
 					<TextControl
-						label={ __( 'Link rel' ) }
+						label={ __( 'Link rel', 'ucla-dcp-plugin' ) }
 						value={ rel || '' }
 						onChange={ onSetLinkRel }
 					/>

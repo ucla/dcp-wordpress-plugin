@@ -48,7 +48,7 @@ export default function Edit({
 							className="stat-tout__label"
 							value={body}
 							onChange={onChangeBody}
-							placeholder={__('Some text')}
+							placeholder={__('Some text', 'ucla-dcp-plugin')}
 						/>
 					</div>
 				</aside>

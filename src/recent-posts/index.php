@@ -87,13 +87,14 @@ function render_dynamic_block($attr) {
         </h3>
         <p>%3$s</p>
         <div class="basic-card__buttons">
-          <a class="btn btn--tertiary" href="%1$s">Read more about %2$s</a>
+          <a class="btn btn--tertiary" href="%1$s">%4$s %2$s</a>
         </div>
       </div>
       </article>',
     esc_url( get_permalink( $post['ID'] ) ),
     esc_html( get_the_title( $post['ID'] ) ),
     esc_html( get_the_excerpt( $post['ID'] ) ),
+    __('Read more about', 'ucla-dcp-plugin')
   );
   }
   $output .= '</div>';

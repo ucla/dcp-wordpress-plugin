@@ -2,7 +2,7 @@
 	"name": "uwai/tabs",
 	"title": "UWAI Tabs",
 	"category": "common",
-	"textdomain": "uwai",
+	"textdomain": "ucla-dcp-plugin",
 	"supports": {
 		"html": false
 	},

@@ -2,7 +2,7 @@
 	"name": "uwai/card",
 	"title": "UWAI Card",
 	"category": "common",
-	"textdomain": "uwai",
+	"textdomain": "ucla-dcp-plugin",
 	"supports": {
 		"html": false
 	},

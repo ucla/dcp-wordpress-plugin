@@ -2,7 +2,7 @@
 	"name": "uwai/statistic",
 	"title": "UWAI Statistic",
 	"category": "common",
-	"textdomain": "uwai",
+	"textdomain": "ucla-dcp-plugin",
 	"supports": {
 		"html": false
 	},

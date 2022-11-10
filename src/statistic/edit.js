@@ -69,9 +69,9 @@ export default function Edit({
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Statistics Style' ) }>
+				<PanelBody title={ __( 'Statistics Style', 'ucla-dcp-plugin' ) }>
 					<SelectControl
-						label={__("Number of Segments")}
+						label={__("Number of Segments", 'ucla-dcp-plugin')}
 						value={segments}
 						options={[
 							{label: '1', value: '1'},
@@ -81,7 +81,7 @@ export default function Edit({
 						onChange={onChangeSegments}
 					/>
 					<ToggleControl
-						label={__('Label Inline')}
+						label={__('Label Inline', 'ucla-dcp-plugin')}
 						onChange={onToggleInline}
 						checked={inline}
 					/>
@@ -108,7 +108,7 @@ export default function Edit({
 											className="stat-tout__label"
 											value={stat.label}
 											onChange={(value) => onChangeLabel(value, stat.id)}
-											placeholder={__('Text here')}
+											placeholder={__('Text here', 'ucla-dcp-plugin')}
 										/>
 									</div>
 								</div>

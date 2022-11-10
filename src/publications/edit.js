@@ -41,7 +41,7 @@ export default function Edit({
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Number of Publications' ) }>
+				<PanelBody title={ __( 'Number of Publications', 'ucla-dcp-plugin' ) }>
 					<RangeControl
 						value={Number(numberOfPosts)}
 						onChange={onChangePostsNumber}
@@ -49,17 +49,17 @@ export default function Edit({
 						max={6}
 					/>
 				</PanelBody>
-				<PanelBody title={ __( 'Display Author' ) }>
+				<PanelBody title={ __( 'Display Author', 'ucla-dcp-plugin'  ) }>
 					<ToggleControl
-						label={ __( 'Display Author' ) }
+						label={ __( 'Display Author', 'ucla-dcp-plugin'  ) }
 						checked={ displayAuthor }
 						onChange={ value => setAttributes( {displayAuthor: value} ) }
 					/>
 				</PanelBody>
 			</InspectorControls>
 			<div {...blockProps}>
-				{!publications && 'Loading...'}
-				{publications && publications.length === 0 && 'No Publications'}
+				{!publications && __( 'Loading...', 'ucla-dcp-plugin' )}
+				{publications && publications.length === 0 && __('No Publications', 'ucla-dcp-plugin' )}
 				{publications && publications.length > 0 &&
 					
 						publications.slice(0, Number(numberOfPosts)).map(publication => {

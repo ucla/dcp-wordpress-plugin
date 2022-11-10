@@ -114,8 +114,8 @@
      const [width, setWidth] = useState(bannerContainer);
      const [storyBackground, setStoryBackground] = useState(storyBg);
      const storyColors = [
-        { name: 'White', color: '#fff' },
-        { name: 'UCLA Blue', color: '#2774AE' }
+        { name: __('White', 'ucla-dcp-plugin'), color: '#fff' },
+        { name: __('UCLA Blue', 'ucla-dcp-plugin'), color: '#2774AE' }
      ];
      const innerAllowed = [ 'core/paragraph', 'core/heading', 'core/button', 'uwai/button', 'uwai/ribbon' ];
 	 const blockProps = useBlockProps({
@@ -148,15 +148,15 @@
          <div {...blockProps}>
              <InspectorControls>
                 <PanelBody
-                     title={__('Select card type')}
+                     title={__('Select card type', 'ucla-dcp-plugin')}
                      initialOpen={true}
                  >
                     <SelectControl
-                        label={__( 'Hero Type' )}
+                        label={__( 'Hero Type', 'ucla-dcp-plugin' )}
                         value={ type }
                         options={[
-                            {label: 'Full Banner', value: 'full'},
-                            {label: 'Story', value: 'story'},
+                            {label: __('Full Banner', 'ucla-dcp-plugin'), value: 'full'},
+                            {label: __('Story', 'ucla-dcp-plugin'), value: 'story'},
                         ]}
                         onChange={(selected) => {
                             onCardTypeChange(selected)
@@ -166,11 +166,11 @@
                  </PanelBody>
                  <PanelBody>
                     <SelectControl
-                        label={__('Width')}
+                        label={__('Width', 'ucla-dcp-plugin')}
                         value={width}
                         options={[
-                            {label: 'Full Width', value: 'fluid'},
-                            {label: 'Contained', value: 'container'}
+                            {label: __('Full Width', 'ucla-dcp-plugin'), value: 'fluid'},
+                            {label: __('Contained', 'ucla-dcp-plugin'), value: 'container'}
                         ]}
                         onChange={selected=> {
                             onBannerContainerChange(selected)
@@ -179,7 +179,7 @@
                     />
                  </PanelBody>
                  {cardType === 'story' &&
-                    <PanelBody title="Story Content Background Color">
+                    <PanelBody title={__('Story Content Background Color', 'ucla-dcp-plugin')}>
                         <ColorPalette
                             colors={storyColors}
                             disableCustomColors={true}
@@ -189,7 +189,7 @@
                     
                  } 
                  <PanelBody
-                     title={__('Select card image')}
+                     title={__('Select card image', 'ucla-dcp-plugin')}
                      initialOpen={true}
                  >
                     
@@ -209,7 +209,7 @@
                                          onClick={open}
                                      >
                                          {!attributes.mediaId &&
-                                             __('Choose an image', 'awp')}
+                                             __('Choose an image', 'ucla-dcp-plugin')}
                                          {mediaUrl && (
                                              <img
                                                  src={mediaUrl}
@@ -224,13 +224,13 @@
                          {attributes.mediaId && (
                              <MediaUploadCheck>
                                  <MediaUpload
-                                     title={__('Replace image', 'awp')}
+                                     title={__('Replace image', 'ucla-dcp-plugin')}
                                      value={attributes.mediaId}
                                      onSelect={onSelectMedia}
                                      allowedTypes={['image']}
                                      render={({ open }) => (
                                          <Button onClick={open} variant="secondary">
-                                             {__('Replace image', 'awp')}
+                                             {__('Replace image', 'ucla-dcp-plugin')}
                                          </Button>
                                      )}
                                  />
@@ -238,18 +238,20 @@
                          )}
                          {attributes.mediaId && (
                              <TextareaControl
-                             label={__('Alt text (alternative text)')}
+                             label={__('Alt text (alternative text)', 'ucla-dcp-plugin')}
                              value={mediaAlt}
                              onChange={onMediaAltChange}
                              help={
                                  <>
                                      <ExternalLink href="https://www.w3.org/WAI/tutorials/images/decision-tree">
                                          {__(
-                                             'Describe the purpose of the image'
+                                             'Describe the purpose of the image',
+                                             'ucla-dcp-plugin'
                                          )}
                                      </ExternalLink>
                                      {__(
-                                         'Leave empty if the image is purely decorative.'
+                                         'Leave empty if the image is purely decorative.',
+                                         'ucla-dcp-plugin'
                                      )}
                                  </>
                              }
@@ -268,8 +270,8 @@
                                 <InnerBlocks
                                     allowedBlocks={ innerAllowed }
                                     template={[
-                                        ['core/heading', { placeholder: 'Featured Story', className: 'story__featured-title' }],
-                                        ['core/paragraph', { placeholder: "Hall of Famer Bill Walton '74 recently talked about his approach to life, what he's learned and his love for his alma mater.", className: 'story__featured-blurb' }]
+                                        ['core/heading', { placeholder: __('Featured Story', 'ucla-dcp-plugin'), className: 'story__featured-title' }],
+                                        ['core/paragraph', { placeholder: __("Hall of Famer Bill Walton '74 recently talked about his approach to life, what he's learned and his love for his alma mater.", 'ucla-dcp-plugin'), className: 'story__featured-blurb' }]
                                     ]}
                                 />
                             </div>
@@ -283,8 +285,8 @@
                         <InnerBlocks
                             allowedBlocks={ innerAllowed }
                             template={[
-                                ['core/heading', { placeholder: 'Heading' }],
-                                ['core/paragraph', { placeholder: "Hall of Famer Bill Walton '74 recently talked about his approach to life, what he's learned and his love for his alma mater." }]
+                                ['core/heading', { placeholder: __('Heading', 'ucla-dcp-plugin') }],
+                                ['core/paragraph', { placeholder: __("Hall of Famer Bill Walton '74 recently talked about his approach to life, what he's learned and his love for his alma mater.", 'ucla-dcp-plugin') }]
                             ]}
                         />
                     </div>

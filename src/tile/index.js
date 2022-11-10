@@ -20,13 +20,13 @@ export const settings = {
 	 * This is the display title for your block, which can be translated with `i18n` functions.
 	 * The block inserter will show this name.
 	 */
-	title: __( 'UWAI Link Tile', 'uwai' ),
+	title: __( 'UWAI Link Tile', 'ucla-dcp-plugin' ),
 
 	/**
 	 * This is a short description for your block, can be translated with `i18n` functions.
 	 * It will be shown in the Block Tab in the Settings Sidebar.
 	 */
-	description: __( 'UCLA styled tile for linking to other content.', 'uwai' ),
+	description: __( 'UCLA styled tile for linking to other content.', 'ucla-dcp-plugin' ),
 
 	/**
 	 * Blocks are grouped into categories to help users browse and discover them.

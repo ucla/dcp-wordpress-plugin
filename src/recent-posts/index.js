@@ -21,7 +21,7 @@ export const settings = {
 	 * This is the display title for your block, which can be translated with `i18n` functions.
 	 * The block inserter will show this name.
 	 */
-	title: __( 'UWAI Recent Posts', 'uwai' ),
+	title: __( 'UWAI Recent Posts', 'ucla-dcp-plugin' ),
 
 	/**
 	 * This is a short description for your block, can be translated with `i18n` functions.
@@ -29,7 +29,7 @@ export const settings = {
 	 */
 	description: __(
 		'UCLA styled card for displaying recent posts and information.',
-		'uwai'
+		'ucla-dcp-plugin'
 	),
 
 	/**

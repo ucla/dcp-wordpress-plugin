@@ -39,7 +39,7 @@ export default function Edit({
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Number of Posts' ) }>
+				<PanelBody title={ __( 'Number of Posts', 'ucla-dcp-plugin' ) }>
 					<RangeControl
 						value={Number(numberOfPosts)}
 						onChange={onChangePostsNumber}
@@ -47,17 +47,17 @@ export default function Edit({
 						max={6}
 					/>
 				</PanelBody>
-				<PanelBody title={ __( 'Display Excerpt' ) }>
+				<PanelBody title={ __( 'Display Excerpt', 'ucla-dcp-plugin' ) }>
 					<ToggleControl
-						label={ __( 'Display Excerpt' ) }
+						label={ __( 'Display Excerpt', 'ucla-dcp-plugin' ) }
 						checked={ displayExcerpt }
 						onChange={ value => setAttributes( {displayExcerpt: value} ) }
 					/>
 				</PanelBody>
 			</InspectorControls>
 			<div {...blockProps}>
-				{!galleries && 'Loading...'}
-				{galleries && galleries.length === 0 && 'No Galleries'}
+				{!galleries && __('Loading...', 'ucla-dcp-plugin')}
+				{galleries && galleries.length === 0 && __('No Galleries', 'ucla-dcp-plugin')}
 				{galleries && galleries.length > 0 &&
 					
 						galleries.slice(0, Number(numberOfPosts)).map(gallery => {

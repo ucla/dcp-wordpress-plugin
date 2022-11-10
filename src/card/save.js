@@ -4,6 +4,8 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
+import { __ } from '@wordpress/i18n';
+
 import './style.scss';
 
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
@@ -37,7 +39,7 @@ export default function save( {
 				}
 				alt={
 					mediaAlt ??
-					'Two children on their phones under the blankets'
+					__('Two children on their phones under the blankets', 'ucla-dcp-plugin')
 				}
 			></img>
 			<div className="basic-card__info-wrapper">

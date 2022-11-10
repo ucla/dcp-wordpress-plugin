@@ -48,41 +48,43 @@ class EventsMetaBox {
         'events'
     );
 
-    private $meta_fields = array(
-        array(
-            'label' => 'Event Start Date',
-            'id'    => 'event_start_date',
-            'type'  => 'date'
-        ),
-        array(
-            'label' => 'Event End Date',
-            'id'    => 'event_end_date',
-            'type'  => 'date'
-        ),
-		array(
-            'label' => 'Event Start Time',
-            'id'    => 'event_time',
-            'type'  => 'time'
-        ),
-		array(
-			'label' => 'Event End Time',
-			'id'	=> 'event_end_time',
-			'type'	=> 'time'
-		),
-		array(
-			'label' => 'Location',
-			'id'	=> 'event_location',
-			'type'	=> 'text'
-		),
-		array(
-			'label'	=> 'RSVP Link',
-			'id'	=> 'event_rsvp',
-			'type'	=> 'text'
-		)
-    );
+    private $meta_fields;
+	
 
     public function __construct()
     {
+		$this->meta_fields = array(
+			array(
+				'label' => __('Event Start Date', 'ucla-dcp-plugin'),
+				'id'    => 'event_start_date',
+				'type'  => 'date'
+			),
+			array(
+				'label' => __('Event End Date', 'ucla-dcp-plugin'),
+				'id'    => 'event_end_date',
+				'type'  => 'date'
+			),
+			array(
+				'label' => __('Event Start Time', 'ucla-dcp-plugin'),
+				'id'    => 'event_time',
+				'type'  => 'time'
+			),
+			array(
+				'label' => __('Event End Time', 'ucla-dcp-plugin'),
+				'id'	=> 'event_end_time',
+				'type'	=> 'time'
+			),
+			array(
+				'label' => __('Location', 'ucla-dcp-plugin'),
+				'id'	=> 'event_location',
+				'type'	=> 'text'
+			),
+			array(
+				'label'	=> __('RSVP Link', 'ucla-dcp-plugin'),
+				'id'	=> 'event_rsvp',
+				'type'	=> 'text'
+			)
+		);
         add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
 		add_action( 'save_post', array( $this, 'save_fields' ) );
     }

@@ -2,7 +2,7 @@
 	"name": "uwai/event-card",
 	"title": "UWAI Event Card",
 	"category": "common",
-	"textdomain": "uwai",
+	"textdomain": "ucla-dcp-plugin",
 	"supports": {
 		"html": false
 	},

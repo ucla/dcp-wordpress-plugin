@@ -73,50 +73,51 @@ class PublicationMetaBox {
 		'publication',        
 	);
 
-	private $meta_fields = array(
-		array(
-			'label' => 'Author (if multiple, separate by comma)',
-			'id' => 'publication_author',
-			'type' => 'text',
-		),
-		array(
-			'label' => 'Publisher',
-			'id' => 'publication_publisher',
-			'type' => 'text'
-		),
-		array(
-			'label' => 'Publication Year',
-			'id' => 'publication_year',
-			'type' => 'text'
-		),
-		array(
-			'label' => 'Page Number',
-			'id' => 'publication_page',
-			'type' => 'text'
-		),
-		array(
-			'label' => 'ISBN',
-			'id' => 'publication_isbn',
-			'type' => 'text'
-		),
-		array(
-			'label' => 'ISBN (Paperback)',
-			'id' => 'publication_isbn_paper',
-			'type' => 'text'
-		),
-		array(
-			'label' => 'ISBN (Hardcover)',
-			'id' => 'publication_isbn_hardcover',
-			'type' => 'text'
-		),
-		array(
-			'label' => 'ISBN (E-book)',
-			'id' => 'publication_isbn_ebook',
-			'type' => 'text'
-		)
-	);
+	private $meta_fields;
 
 	public function __construct() {
+		$this->meta_fields = array(
+			array(
+				'label' => __('Author (if multiple, separate by comma)', 'ucla-dcp-plugin'),
+				'id' => 'publication_author',
+				'type' => 'text',
+			),
+			array(
+				'label' => __('Publisher', 'ucla-dcp-plugin'),
+				'id' => 'publication_publisher',
+				'type' => 'text'
+			),
+			array(
+				'label' => __('Publication Year', 'ucla-dcp-plugin'),
+				'id' => 'publication_year',
+				'type' => 'text'
+			),
+			array(
+				'label' => __('Page Number', 'ucla-dcp-plugin'),
+				'id' => 'publication_page',
+				'type' => 'text'
+			),
+			array(
+				'label' => __('ISBN', 'ucla-dcp-plugin'),
+				'id' => 'publication_isbn',
+				'type' => 'text'
+			),
+			array(
+				'label' => __('ISBN (Paperback)', 'ucla-dcp-plugin'),
+				'id' => 'publication_isbn_paper',
+				'type' => 'text'
+			),
+			array(
+				'label' => __('ISBN (Hardcover)', 'ucla-dcp-plugin'),
+				'id' => 'publication_isbn_hardcover',
+				'type' => 'text'
+			),
+			array(
+				'label' => __('ISBN (E-book)', 'ucla-dcp-plugin'),
+				'id' => 'publication_isbn_ebook',
+				'type' => 'text'
+			)
+		);
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
 		add_action( 'save_post', array( $this, 'save_fields' ) );
 	}
@@ -125,7 +126,7 @@ class PublicationMetaBox {
 		foreach ( $this->screen as $single_screen ) {
 			add_meta_box(
 				'Publication Information',
-				__( 'Publication Information', '' ),
+				__( 'Publication Information', 'ucla-dcp-plugin' ),
 				array( $this, 'meta_box_callback' ),
 				$single_screen,
 				'normal',

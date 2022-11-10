@@ -61,7 +61,7 @@ export default function Edit({
 								tagName="span"
 								value={title}
 								onChange={onChangeTitle}
-								placeholder={__("Title here")}
+								placeholder={__("Title here", 'ucla-dcp-plugin')}
 							/>
 						</dt>
 					</button>

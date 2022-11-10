@@ -53,11 +53,11 @@ export default function Edit({
             <InspectorControls>
                 <PanelBody>
                     <SelectControl
-                        label={__( 'Ribbon Type' )}
+                        label={__( 'Ribbon Type', 'ucla-dcp-plugin' )}
                         value={ ribbonType }
                         options={[
-                            {label: 'Brand', value: 'brand'},
-                            {label: 'Highlight', value: 'highlight'},
+                            {label: __('Brand', 'ucla-dcp-plugin'), value: 'brand'},
+                            {label: __('Highlight', 'ucla-dcp-plugin'), value: 'highlight'},
                         ]}
                         onChange={selected => {
                             setRibbonType(selected);
@@ -67,7 +67,7 @@ export default function Edit({
 				    />
                     {ribbonType === 'brand' &&
                         <ToggleControl
-                            label={ __( 'Display Molecule') }
+                            label={ __( 'Display Molecule', 'ucla-dcp-plugin' ) }
                             checked={ hasMolecule }
                             onChange={ ( value ) => {
                                     setHasMolecule(value);
@@ -85,7 +85,7 @@ export default function Edit({
                     tagName={ribbonType === 'highlight' ? 'h3' : 'h2'}
                     value={ ribbonContent }
                     onChange={ onRibbonChange }
-                    placeholder={__('15 of the 20 largest fires in Californian history have occurred since 2000.')}
+                    placeholder={__('15 of the 20 largest fires in Californian history have occurred since 2000.', 'ucla-dcp-plugin')}
                     preserveWhiteSpace={false}
                 />
             </div>

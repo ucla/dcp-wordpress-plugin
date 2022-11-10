@@ -6,7 +6,7 @@
  */
 import './style.scss';
 
-import { RichText, InnerBlocks } from '@wordpress/block-editor';
+import { InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -26,16 +26,11 @@ import { RichText, InnerBlocks } from '@wordpress/block-editor';
  */
 export default function save({
 	attributes: {
-		body,
 		mediaUrl,
-		mediaAlt,
-		greyStyle,
-		department,
 		cardType,
 		bannerContainer,
 		storyBg,
 		bannerContent,
-		imgCredit
 	},
 	className,
 }) {

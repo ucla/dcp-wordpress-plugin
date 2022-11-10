@@ -74,9 +74,9 @@ export default function Edit({
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Ranking Style' ) }>
+				<PanelBody title={ __( 'Ranking Style', 'ucla-dcp-plugin' ) }>
 					<SelectControl
-						label={__("Number of Segments")}
+						label={__("Number of Segments", 'ucla-dcp-plugin')}
 						value={ segments }
 						options={ [
 							{ label: '1', value: '1' },
@@ -86,7 +86,7 @@ export default function Edit({
 						onChange={ onChangeSegments }
 					/>
 					<ToggleControl
-						label={__('Label Inline')}
+						label={__('Label Inline', 'ucla-dcp-plugin')}
 						onChange={onToggleInline}
 						checked={inline}
 					/>
@@ -112,14 +112,14 @@ export default function Edit({
 										className="stat-tout__label"
 										value={rank.label}
 										onChange={(value) => onChangeLabel(value, rank.id)}
-										placeholder={__("Text here")}
+										placeholder={__("Text here", 'ucla-dcp-plugin')}
 									/>
 									<RichText
 										tagName="span"
 										className="stat-tout__source"
 										value={rank.source}
 										onChange={(value) => onChangeSource(value, rank.id)}
-										placeholder={__('Source')}
+										placeholder={__('Source', 'ucla-dcp-plugin')}
 									/>
 								</div>
 							</div>

@@ -69,9 +69,9 @@ export default function Edit({
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Statistic Style' ) }>
+				<PanelBody title={ __( 'Statistic Style', 'ucla-dcp-plugin' ) }>
 					<SelectControl
-						label={__("Number of Tabs")}
+						label={__("Number of Tabs", 'ucla-dcp-plugin')}
 						value={ numTabs }
 						options={ [
 							{ label: '2', value: '2' },

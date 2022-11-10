@@ -2,7 +2,7 @@
 	"name": "uwai/ranking",
 	"title": "UWAI Ranking",
 	"category": "common",
-	"textdomain": "uwai",
+	"textdomain": "ucla-dcp-plugin",
 	"supports": {
 		"html": false
 	},

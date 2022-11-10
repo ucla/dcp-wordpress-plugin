@@ -4,7 +4,7 @@
 	"category": "common",
 	"icon": "welcome-learn-more",
 	"description": "UWAI's Block for wordpress.",
-	"textdomain": "uwai",
+	"textdomain": "ucla-dcp-plugin",
 	"supports": {
 		"html": false
 	},

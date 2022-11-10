@@ -28,7 +28,7 @@
       */
      description: __(
          'UCLA styled heading for displaying titles or short snippets.',
-         'uwai'
+         'ucla-dcp-plugin'
      ),
  
      /**

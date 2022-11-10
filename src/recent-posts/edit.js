@@ -89,16 +89,16 @@ export default function Edit({
    return (
       <>
       <InspectorControls>
-         <PanelBody title={ __( 'Style' ) }>
+         <PanelBody title={ __( 'Style', 'ucla-dcp-plugin' ) }>
             <ToggleControl
-               label={ __( 'Switch to the "Grey" style of tile' ) }
+               label={ __( 'Switch to the "Grey" style of tile', 'ucla-dcp-plugin' ) }
                onChange={ onToggleGreyStyle }
                checked={ greyStyle }
             />
          </PanelBody>
-         <PanelBody title={ __( 'Choose Categories' ) }>
+         <PanelBody title={ __( 'Choose Categories', 'ucla-dcp-plugin' ) }>
             <SelectControl
-               label={__( 'Categories' )}  
+               label={__( 'Categories', 'ucla-dcp-plugin' )}  
                options={categories.map(({id, name}) => ({label: name, value: id}))}
                onChange={(selected) => {
                   setCategoriesSelected(selected);
@@ -107,16 +107,16 @@ export default function Edit({
                value={categories_selected}
                />
          </PanelBody>
-         <PanelBody title={__( 'Display Featured Image' )}>
+         <PanelBody title={__( 'Display Featured Image', 'ucla-dcp-plugin' )}>
             <ToggleControl
-					label={ __( 'Display featured image') }
+					label={ __( 'Display featured image', 'ucla-dcp-plugin') }
 					checked={ displayFeaturedImage }
 					onChange={ ( value ) =>
 						setAttributes( { displayFeaturedImage: value } )
 					}
 				/>
          </PanelBody>
-         <PanelBody title={__( 'Number of Posts' )}>
+         <PanelBody title={__( 'Number of Posts', 'ucla-dcp-plugin' )}>
          <RangeControl
                value={Number(numberOfPosts)}
                onChange={onChangePostsNumber}
@@ -134,8 +134,8 @@ export default function Edit({
          />
       </BlockControls>
       <div { ...useBlockProps ( { className: attributes.align } )  }>
-         {! posts && 'Loading...'}
-         {posts && posts.length === 0 && 'No Posts'}
+         {! posts && __('Loading...', 'ucla-dcp-plugin')}
+         {posts && posts.length === 0 && __('No Posts', 'ucla-dcp-plugin')}
          {posts && posts.length > 0
          ?
             categories_selected && categories_selected.length == 0 || categories_selected === 'ALL' ? (
@@ -170,7 +170,7 @@ export default function Edit({
                          />
                          <div class="basic-card__buttons">
                            <a class="btn btn--tertiary" href={post.link}>
-                              Read more about {post.title.rendered}
+                              {__('Read more about', 'ucla-dcp-plugin')} {post.title.rendered}
                            </a>
                         </div>
                      </div>
@@ -209,7 +209,7 @@ export default function Edit({
                          />
                          <div class="basic-card__buttons">
                            <a class="btn btn--tertiary" href={post.link}>
-                              Read more about {post.title.rendered}
+                              {__('Read more about', 'ucla-dcp-plugin')} {post.title.rendered}
                            </a>
                         </div>
                      </div>

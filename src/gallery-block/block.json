@@ -2,7 +2,7 @@
 	"name": "uwai/gallery",
 	"title": "UWAI Gallery",
 	"category": "common",
-	"textdomain": "uwai",
+	"textdomain": "ucla-dcp-plugin",
 	"supports": {
 		"html": false
 	},

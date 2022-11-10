@@ -116,7 +116,7 @@ export default function Edit( {
 		<>
 			<InspectorControls>
 				<PanelBody
-					title={ __( 'Select card image', 'awp' ) }
+					title={ __( 'Select card image', 'ucla-dcp-plugin' ) }
 					initialOpen={ true }
 				>
 					<div className="editor-post-featured-image">
@@ -135,7 +135,7 @@ export default function Edit( {
 										onClick={ open }
 									>
 										{ ! attributes.mediaId &&
-											__( 'Choose an image', 'awp' ) }
+											__( 'Choose an image', 'ucla-dcp-plugin' ) }
 										{ mediaUrl && (
 											<img
 												src={ mediaUrl }
@@ -149,13 +149,13 @@ export default function Edit( {
 						{ attributes.mediaId && (
 							<MediaUploadCheck>
 								<MediaUpload
-									title={ __( 'Replace image', 'awp' ) }
+									title={ __( 'Replace image', 'ucla-dcp-plugin' ) }
 									value={ attributes.mediaId }
 									onSelect={ onSelectMedia }
 									allowedTypes={ [ 'image' ] }
 									render={ ( { open } ) => (
 										<Button onClick={ open } isDefault>
-											{ __( 'Replace image', 'awp' ) }
+											{ __( 'Replace image', 'ucla-dcp-plugin' ) }
 										</Button>
 									) }
 								/>
@@ -163,18 +163,18 @@ export default function Edit( {
 						) }
 						{ attributes.mediaId && (
 							<TextareaControl
-								label={ __( 'Alt text (alternative text)' ) }
+								label={ __( 'Alt text (alternative text)', 'ucla-dcp-plugin' ) }
 								value={ mediaAlt }
 								onChange={ onMediaAltChange }
 								help={
 									<>
 										<ExternalLink href="https://www.w3.org/WAI/tutorials/images/decision-tree">
 											{ __(
-												'Describe the purpose of the image'
+												'Describe the purpose of the image', 'ucla-dcp-plugin'
 											) }
 										</ExternalLink>
 										{ __(
-											'Leave empty if the image is purely decorative.'
+											'Leave empty if the image is purely decorative.', 'ucla-dcp-plugin'
 										) }
 									</>
 								}
@@ -182,9 +182,9 @@ export default function Edit( {
 						) }
 					</div>
 				</PanelBody>
-				<PanelBody title={ __( 'Style' ) }>
+				<PanelBody title={ __( 'Style', 'ucla-dcp-plugin' ) }>
 					<ToggleControl
-						label={ __( 'Switch to the "Grey" style of tile' ) }
+						label={ __( 'Switch to the "Grey" style of tile', 'ucla-dcp-plugin' ) }
 						onChange={ onToggleGreyStyle }
 						checked={ greyStyle }
 					/>
@@ -209,7 +209,7 @@ export default function Edit( {
 							tagName="span"
 							value={ title }
 							onChange={ onChangeTitle }
-							placeholder="A cool title.."
+							placeholder={__('A cool title..', 'ucla-dcp-plugin')}
 						/>
 					</h3>
 					<h4 className="person-card__department">
@@ -217,7 +217,7 @@ export default function Edit( {
 							tagName="span"
 							value={ department }
 							onChange={ onChangeDepartment }
-							placeholder="A cool dept.."
+							placeholder={__('A cool dept..', 'ucla-dcp-plugin')}
 						/>
 					</h4>
 
